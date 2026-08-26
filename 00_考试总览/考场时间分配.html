@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>考场时间分配表 · 按 2秒/字 倒推</title>
+<style>
+  :root{--pink:#ffdeeb;--blue:#e8f4fd;--yellow:#fff8c6;--ink:#2b2b2b;--line:#eee}
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);max-width:860px;margin:0 auto;padding:24px 16px 60px;line-height:1.7}
+  h1{font-size:24px;border-bottom:3px solid #ff7ab8;padding-bottom:10px}
+  h1 small{font-size:13px;color:#888;font-weight:normal}
+  .card{border-radius:10px;padding:13px 16px;margin:12px 0;border:1px solid var(--line);page-break-inside:avoid}
+  .pink{background:var(--pink)}.blue{background:var(--blue)}.yellow{background:var(--yellow)}
+  .tag{display:inline-block;font-size:12px;font-weight:700;background:#fff;border-radius:20px;padding:2px 10px;margin-bottom:6px;border:1px solid rgba(0,0,0,.12)}
+  table{width:100%;border-collapse:collapse;margin:8px 0;font-size:14px}
+  th,td{border:1px solid #ddd;padding:7px 9px;text-align:left;vertical-align:top}
+  th{background:#f9f9f9}
+  mark{background:var(--yellow);padding:0 3px;border-radius:3px}
+  .must{color:#d6336c;font-weight:700}
+  footer{margin-top:30px;color:#999;font-size:12px;text-align:center}
+  @media print{body{padding:0}}
+</style>
+</head>
+<body>
+<h1>考场时间分配表 <small>制表 2026-08-26 · 字数上限按 2秒/字（含思考）倒推 · AI 出参考答案一律按此字数封顶</small></h1>
+
+<div class="card pink">
+  <span class="tag">301 综合素质 · 120 分钟</span>
+  <table>
+  <tr><th>时段</th><th>模块</th><th>分值</th><th>时间</th><th>字数上限（你能写出的量）</th></tr>
+  <tr><td>0–35′</td><td>单选 29 题</td><td>58</td><td>35 分</td><td>—（选完即涂，犹豫题画圈跳过）</td></tr>
+  <tr><td>35–61′</td><td>材料分析 <b>2 题</b>（职业理念三观＋职业道德）</td><td>28</td><td>26 分（每题 13）</td><td><mark>每题 ≤390 字</mark>＝判定句1＋框架点3×120＋尾句</td></tr>
+  <tr><td>61–70′</td><td>阅读理解 1 题</td><td>14</td><td>9 分</td><td>两小问合计 ≤270 字</td></tr>
+  <tr><td>70–110′</td><td><b>作文（剩 40′ 一到无条件开写）</b></td><td>50</td><td>40 分</td><td><mark>写满 1000–1100 字</mark>（30 字/分）</td></tr>
+  <tr><td>110–120′</td><td>检查＋补圈题</td><td>—</td><td>10 分</td><td>—</td></tr>
+  </table>
+  分值核对：58＋28＋14＋50＝<b>150</b>✔
+  <b class="must">铁律：</b>剩余时间到 40 分钟时，前面没做完也立刻写作文；写够 1000 字再回头补圈题。
+</div>
+
+<div class="card blue">
+  <span class="tag">404 学科（高中数学）· 120 分钟</span>
+  <table>
+  <tr><th>时段</th><th>模块</th><th>分值</th><th>时间</th><th>字数上限</th></tr>
+  <tr><td>0–20′</td><td>单选 8 题</td><td>40</td><td>20 分（2.5/题）</td><td>—（公式卡直接套，卡壳就跳）</td></tr>
+  <tr><td>20–50′</td><td>简答 5 题</td><td>35</td><td>30 分（6/题）</td><td><mark>每题 ≤180 字</mark>＝结论句1＋定理＋展开2句</td></tr>
+  <tr><td>50–60′</td><td>解答 1 题</td><td>10</td><td>10 分</td><td>公式＋关键步骤，≤150 字符</td></tr>
+  <tr><td>60–75′</td><td>案例分析 2 问</td><td>20</td><td>15 分</td><td>两问合计 ≤450 字（每问 2-3 条套句）</td></tr>
+  <tr><td>75–100′</td><td>教学设计（最大头）</td><td>30</td><td>25 分</td><td><mark>≤700 字</mark>＝目标/重难点/环节+意图 五件套</td></tr>
+  <tr><td>100–115′</td><td>论述 1 题</td><td>15</td><td>15 分</td><td>照抄 354 字全稿（12 分）＋起笔 3 分</td></tr>
+  <tr><td>115–120′</td><td>检查/补圈题</td><td>—</td><td>5 分</td><td>—</td></tr>
+  </table>
+  <b class="must">顺序逻辑：</b>设计 30 分放论述前（要动脑的先做），论述是全稿照抄放最后，时间被吃也不慌。
+</div>
+
+<div class="card yellow">
+  <span class="tag">🤖 对 AI 的约束（以后所有参考答案都这样出）</span>
+  每题答案字数 ≤ 上表对应上限，标题标"实测 N 字 ≈ M 分钟"；
+  超字数的"标准答案原文"只作背景不给你抄；给的就是一份能抄完的。
+</div>
+
+<footer>打印贴桌角。考场上看表做题，不看感觉做题。</footer>
+</body>
+</html>

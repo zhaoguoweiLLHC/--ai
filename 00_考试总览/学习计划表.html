@@ -3,151 +3,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>学习计划表 · 17 天在职版 v3</title>
+<title>学习计划表 v4 · 二战 17 天补差版</title>
 <style>
-  :root {
-    --pink: #ffdeeb;   /* 必背/必做 */
-    --blue: #e8f4fd;   /* 补充/例子 */
-    --yellow: #fff8c6; /* 高亮 */
-    --ink: #2b2b2b;
-    --line: #eee;
-  }
-  * { box-sizing: border-box; }
-  body {
-    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
-    color: var(--ink);
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 24px 16px 60px;
-    line-height: 1.65;
-  }
-  h1 {
-    font-size: 25px;
-    border-bottom: 3px solid #ff7ab8;
-    padding-bottom: 10px;
-  }
-  h1 small { font-size: 13px; color: #888; font-weight: normal; }
-  h2 {
-    font-size: 18px;
-    margin: 30px 0 10px;
-    padding-left: 10px;
-    border-left: 5px solid #ff7ab8;
-  }
-  .card {
-    border-radius: 10px;
-    padding: 14px 16px;
-    margin: 12px 0;
-    border: 1px solid var(--line);
-    page-break-inside: avoid;
-  }
-  .card.pink   { background: var(--pink); }
-  .card.blue   { background: var(--blue); }
-  .card.yellow { background: var(--yellow); }
-  .card .tag {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    background: #fff;
-    border-radius: 20px;
-    padding: 2px 10px;
-    margin-bottom: 8px;
-    border: 1px solid rgba(0,0,0,.12);
-  }
-  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 13.5px; }
-  th, td { border: 1px solid #ddd; padding: 7px 9px; text-align: left; vertical-align: top; }
-  th { background: #f9f9f9; }
-  tr.we  { background: #f3fbf3; }
-  mark { background: var(--yellow); padding: 0 3px; border-radius: 3px; }
-  .must { color: #d6336c; font-weight: 700; }
-  .wk-tag { color: #1971c2; font-weight: 700; font-size: 12px; }
-  .we-tag { color: #2f9e44; font-weight: 700; font-size: 12px; }
-  ol, ul { padding-left: 22px; }
-  li { margin: 4px 0; }
-  code { background: #f1f1f1; border-radius: 4px; padding: 1px 5px; font-size: 12.5px; }
-  footer { margin-top: 36px; color: #999; font-size: 12px; text-align: center; }
-  @media print { body { padding: 0; } }
+  :root{--pink:#ffdeeb;--blue:#e8f4fd;--yellow:#fff8c6;--ink:#2b2b2b;--line:#eee;}
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);max-width:900px;margin:0 auto;padding:24px 16px 60px;line-height:1.65}
+  h1{font-size:25px;border-bottom:3px solid #ff7ab8;padding-bottom:10px}
+  h1 small{font-size:13px;color:#888;font-weight:normal}
+  h2{font-size:18px;margin:28px 0 10px;padding-left:10px;border-left:5px solid #ff7ab8}
+  .card{border-radius:10px;padding:13px 16px;margin:10px 0;border:1px solid var(--line);page-break-inside:avoid}
+  .pink{background:var(--pink)}.blue{background:var(--blue)}.yellow{background:var(--yellow)}
+  .tag{display:inline-block;font-size:12px;font-weight:700;background:#fff;border-radius:20px;padding:2px 10px;margin-bottom:6px;border:1px solid rgba(0,0,0,.12)}
+  table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}
+  th,td{border:1px solid #ddd;padding:6px 8px;text-align:left;vertical-align:top}
+  th{background:#f9f9f9}
+  tr.we{background:#f3fbf3}
+  tr.today{background:#ffe9a8;outline:3px solid #ffb400;outline-offset:-2px}
+  tr.today td:first-child{font-weight:800}
+  tr.today td:first-child::after{content:" 📍今天";color:#d9480f;font-weight:800}
+  mark{background:var(--yellow);padding:0 3px;border-radius:3px}
+  .must{color:#d6336c;font-weight:700}
+  .wk-tag{color:#1971c2;font-weight:700;font-size:12px}.we-tag{color:#2f9e44;font-weight:700;font-size:12px}
+  ol,ul{padding-left:22px}li{margin:4px 0}
+  code{background:#f1f1f1;border-radius:4px;padding:1px 5px;font-size:12.5px}
+  footer{margin-top:34px;color:#999;font-size:12px;text-align:center}
+  @media print{body{padding:0}}
 </style>
 </head>
 <body>
+<h1>学习计划表 v4 · 二战 17 天补差版 <small>制表 2026-08-26 · 笔试 9/12 · 只考 301 + 404</small></h1>
 
-<h1>学习计划表 · 17 天在职版 v3 <small>制表 2026-08-26 · 笔试 9/12（周六）· 只考 301 + 404</small></h1>
-
-<div class="card yellow">
-  <span class="tag">📌 排法原则</span>
-  <div><mark>写在公司、听在通勤、轻活在周末</mark>。通勤 2h＝听读输入，公司 3h＝动笔输出，周末 2h＝轻活。<br>
-  重活（整卷/成文）被工作打断 → 顺延到下一个工作日，<b>周末不补重活</b>。</div>
-</div>
-
-<div class="card blue">
-  <span class="tag">⏰ 四个时段菜单</span>
-  <table>
-    <tr><th>时段</th><th>时长</th><th>干什么</th><th>工具</th></tr>
-    <tr><td>早通勤</td><td>1h</td><td>听音频包，跟读默背（同一段听 2 遍）</td><td><code>00_考试总览/通勤音频/</code></td></tr>
-    <tr><td>晚通勤</td><td>1h</td><td>手机读次日起点卷的 真题文本/解析.txt</td><td>手机文件 App（提前 AirDrop 离线）</td></tr>
-    <tr><td>公司</td><td>3h</td><td><span class="must">重活</span>：整卷、成文、错题重做</td><td>电脑＋纸笔</td></tr>
-    <tr><td>周末</td><td>2h</td><td>轻活：立意 3 题、背框架、选择题、归错题</td><td>手机/纸质</td></tr>
-  </table>
+<div class="card yellow" id="today-focus" style="border:2px solid #ffb400">
+  <span class="tag" style="background:#ffb400;color:#fff">📅 今天干这三件</span>
+  <div id="tf-body" style="font-size:15px"></div>
 </div>
 
 <div class="card pink">
-  <span class="tag">🎧 通勤音频包（8/26 已换升级版）</span>
+  <span class="tag">🩺 上次怎么死的（66 / 50）</span>
   <ul style="margin:6px 0 0;">
-    <li><b>01_三观师德框架</b>（1:33）— 升级版对照表朗读，早通勤主力，听 2-3 遍＋默背</li>
-    <li><b>02_2020下解析朗读</b>（4:25）— 阶段 1 收尾时听</li>
-    <li><b>03_作文升级版</b>（1:35）— 开头/引用/三库/结尾，阶段 2 成文前听</li>
-    <li><b>04_301立意清单</b>（1:33）— 阶段 2 立意专项主力，听完当天 3 题对答案</li>
-    <li>每段配"朗读原文.txt"（读屏/跟读两用）。旧的 03_作文模板朗读 已删，防止背串。</li>
+    <li><b>301＝66</b>：作文没写够 1000 字 → <mark>速度与字数</mark>问题，不是知识问题（材料题自我感觉良好）。</li>
+    <li><b>404＝50</b>：计算没思路、公式用不上、主观不知从哪写 → <mark>公式记忆 + 主观框架</mark>双缺，是知识问题。</li>
+    <li>结论：学习时间的 <b>6 成给 404</b>（速记卡 + 主观框架），301 降为每天 15 分钟维护 + 作文纯速度训练。科二 78 已过，不用管。</li>
   </ul>
+</div>
+
+<div class="card blue">
+  <span class="tag"> 404 丢分点对策（满分 40选+35简+10解+15论+20案+30设）</span>
+  <table>
+    <tr><th>丢分点</th><th>分值</th><th>你的症状</th><th>对策新资料</th></tr>
+    <tr><td>单选1–6 大学数学</td><td>40</td><td>公式忘/无思路</td><td><code>404速记卡</code> 高数/线代/解几三簇，晨背15分钟</td></tr>
+    <tr><td>单选7–8 教育理论</td><td>含40内</td><td>生疏</td><td>404.01 大纲素养/教学法条目读1遍进卡</td></tr>
+    <tr><td>简答 5 题</td><td>35</td><td>不知从哪写</td><td><code>404主观题框架</code> "结论+定理+展开"三句法</td></tr>
+    <tr><td>案例 20 / 教学设计 30</td><td>50</td><td>不知从哪写</td><td>情境创设四角度套句 / 目标+环节+意图套句库</td></tr>
+  </table>
+  主观相关合计 ~95 分＝<span class="must">背框架的性价比是刷难题的 10 倍</span>。
 </div>
 
 <h2>一、逐日安排（蓝=工作日 · 绿=周末）</h2>
 <table>
-<tr><th>日期</th><th>类型</th><th>写（公司/周末）</th><th>听读（通勤）</th></tr>
-<tr><td>8/26 三</td><td class="wk-tag">工作日</td><td>20下 404 剩余大题做完</td><td>早:01 框架×2；晚:20下 解析</td></tr>
-<tr><td>8/27 四</td><td class="wk-tag">工作日</td><td>20下 选择收尾 + 错题重做</td><td>早:01×2；晚:20下 真题文本</td></tr>
-<tr><td>8/28 五</td><td class="wk-tag">工作日</td><td>吃透 20下 解析 + 默写教育观/学生观</td><td>早:01×2；晚:20下 解析</td></tr>
-<tr class="we"><td>8/29 六</td><td class="we-tag">周末</td><td>立意 3 题 + 背教师观 30 分钟</td><td>—</td></tr>
-<tr class="we"><td>8/30 日</td><td class="we-tag">周末</td><td>立意 3 题 + 背师德 30 分钟</td><td>—</td></tr>
-<tr><td>8/31 一</td><td class="wk-tag">工作日</td><td><mark>成文第 1 篇</mark>（限时 50 分钟）+ AI 批改</td><td>早:03+04 听 2 遍（先听清单再成文）</td></tr>
-<tr><td>9/1 二</td><td class="wk-tag">工作日</td><td>成文第 2 篇 + 重写偏题立意</td><td>早:03+04×2</td></tr>
-<tr><td>9/2 三</td><td class="wk-tag">工作日</td><td>404 · 25上 整卷限时</td><td>晚:25上 真题文本</td></tr>
-<tr><td>9/3 四</td><td class="wk-tag">工作日</td><td>301 · 25上 整卷限时（含作文）</td><td>晚:25上 材料题对照模板</td></tr>
-<tr><td>9/4 五</td><td class="wk-tag">工作日</td><td>404 · 24下 整卷 + 当天归因</td><td>晚:24下 真题文本</td></tr>
-<tr class="we"><td>9/5 六</td><td class="we-tag">周末</td><td>立意 3 题 + 301 · 24下 选择＋读解析</td><td>—</td></tr>
-<tr class="we"><td>9/6 日</td><td class="we-tag">周末</td><td>立意 3 题 + 错题本归并</td><td>—</td></tr>
-<tr><td>9/7 一</td><td class="wk-tag">工作日</td><td>404 · 24上 整卷；301 · 24下 材料手写</td><td>晚:24上 解析</td></tr>
-<tr><td>9/8 二</td><td class="wk-tag">工作日</td><td>21–23 年任选两套只刷选择</td><td>早:01×2</td></tr>
-<tr><td>9/9 三</td><td class="wk-tag">工作日</td><td>错题二刷 + 模板背记</td><td>早:01+03×2</td></tr>
-<tr><td>9/10 四</td><td class="wk-tag">工作日</td><td>框架终背（2 分钟默出）+ 查漏</td><td>早:01×2</td></tr>
-<tr><td>9/11 五</td><td class="wk-tag">工作日</td><td>翻错题本 + 备准考证文具，晚上放松</td><td>—</td></tr>
+<tr><th>日期</th><th>类型</th><th>404 主线（占2/3）</th><th>301 维护线（15分钟起）</th><th>通勤听读</th></tr>
+<tr data-date="8/26"><td>8/26 三</td><td class="wk-tag">工作日</td><td>吃透 20下 解析剩余题</td><td>已备齐，免维护</td><td>04 立意清单</td></tr>
+<tr data-date="8/27"><td>8/27 四</td><td class="wk-tag">工作日</td><td>重：404速记卡v1（高数簇）+ 背30分钟</td><td>立意3题＋三观10分钟</td><td>05 速记卡音频</td></tr>
+<tr data-date="8/28"><td>8/28 五</td><td class="wk-tag">工作日</td><td>重：20下 单选1-6重刷，错题上卡</td><td>立意3题＋三观10分钟</td><td>05 速记卡音频</td></tr>
+<tr class="we" data-date="8/29"><td>8/29 六</td><td class="we-tag">周末</td><td>轻：线代簇背30分钟＋21上单选</td><td>立意3题＋教师观10分钟</td><td>05 速记卡音频</td></tr>
+<tr class="we" data-date="8/30"><td>8/30 日</td><td class="we-tag">周末</td><td>轻：解几簇背30分钟＋21下单选</td><td>立意3题＋师德10分钟</td><td>05 速记卡音频</td></tr>
+<tr data-date="8/31"><td>8/31 一</td><td class="wk-tag">工作日</td><td>重：404·25上 整卷限时，错公式上卡</td><td><mark>成文1篇限时50分钟</mark>＋AI批改</td><td>公式+03升级版</td></tr>
+<tr data-date="9/1"><td>9/1 二</td><td class="wk-tag">工作日</td><td>重：25上 主观归因＋框架补条目</td><td>成文1篇＋偏题重写</td><td>03+04</td></tr>
+<tr data-date="9/2"><td>9/2 三</td><td class="wk-tag">工作日</td><td>重：404·24下 整卷限时</td><td>301·25上 材料题手写</td><td>晚:25上解析</td></tr>
+<tr data-date="9/3"><td>9/3 四</td><td class="wk-tag">工作日</td><td>中：24下 主观错题归因＋卡终背</td><td>案例框架默写×3</td><td>01×2</td></tr>
+<tr data-date="9/4"><td>9/4 五</td><td class="wk-tag">工作日</td><td>重：404·24上 整卷</td><td>301·24上 整卷（<mark>最后45分必留作文</mark>）</td><td>晚:24上解析</td></tr>
+<tr class="we" data-date="9/5"><td>9/5 六</td><td class="we-tag">周末</td><td>轻：23下单选＋卡复习</td><td>立意3题＋错题本</td><td>—</td></tr>
+<tr class="we" data-date="9/6"><td>9/6 日</td><td class="we-tag">周末</td><td>轻：23上单选＋错题二刷</td><td>立意3题＋听框架</td><td>—</td></tr>
+<tr data-date="9/7"><td>9/7 一</td><td class="wk-tag">工作日</td><td>重：404·23下 整卷＋教学设计1题（用框架）</td><td>301·24下 材料＋剩时作文1篇</td><td>晚:24下文本</td></tr>
+<tr data-date="9/8"><td>9/8 二</td><td class="wk-tag">工作日</td><td>中：22上/21下 两年单选＋卡背</td><td>301 单选10题</td><td>01×2</td></tr>
+<tr data-date="9/9"><td>9/9 三</td><td class="wk-tag">工作日</td><td>中：404 错题二刷＋五类框架终背</td><td>301 模板终背</td><td>01+03</td></tr>
+<tr data-date="9/10"><td>9/10 四</td><td class="wk-tag">工作日</td><td>重：404·22上 全真＋论述354字掐表</td><td>框架2分钟默出</td><td>01×2</td></tr>
+<tr data-date="9/11"><td>9/11 五</td><td class="wk-tag">工作日</td><td>轻：翻错题本＋备准考证文具</td><td>晚上放松</td><td>—</td></tr>
 </table>
 
-<div class="card blue">
-  合计：整卷 5 套（404×3、301×2）、成文 2 篇、立意 12 题、错题两刷；
-  通勤听读 ~30h ＝ 全部模板过 10 遍以上。<b>完成率优先，顺延不扣分。</b>
-</div>
-
-<h2>二、弹性规则</h2>
+<h2>二、三条新铁律（针对上次死因）</h2>
 <div class="card yellow">
   <ol>
-    <li>公司不足 3h：先保整卷/大题，选择题砍到周末。</li>
-    <li>周末崩盘：不补重活，通勤多听一遍兜底。</li>
-    <li>早通勤听记性最好：新框架第一遍放早上；晚上读材料当预习。</li>
-    <li>只练不改不长分：作文/立意必对答案或发 AI 批改。</li>
-    <li>周末家用电脑：先 <code>git pull</code> 同步本周新资料再开工（首次 <code>git clone</code>；没装 git 就到 GitHub 网页下 zip）。</li>
+    <li><span class="must">404 主观＝套框架</span>：动笔先写结论句（课标/定理名），再展开；空白也要把五类标题写满，阅卷按点给分。</li>
+    <li><span class="must">301 作文＝先写够</span>：开考 75 分钟时，不管前面做没做完，先动笔写作文；写够 1000 字再回头补。</li>
+    <li><span class="must">公式不裸背</span>：每天背卡后立刻做 2 道对应单选验证；背了不用＝没背。</li>
   </ol>
 </div>
 
 <h2>三、让老师（AI）配合的事</h2>
 <div class="card blue">
   <ul>
-    <li><span class="must">已完成 8/26</span>：升级版模板（301.05）＋ 301 立意清单 ＋ 通勤音频换新，周六直接开练。</li>
-    <li>立意练习/成文以 <b>301.05 升级版</b>为准；旧模板只作原文对照。</li>
-    <li>每讲完一套真题：双写 解析.txt / 解析.html ＋ 转新通勤音频。</li>
+    <li>[已备] 301 升级模板 + 立意清单 + 354 字全稿 + 音频 01/03/04。</li>
+    <li><span class="must">已完成 8/26</span>：<code>404速记卡</code>（高数/线代/解几概率/课标四簇＋主观第一笔）＋ <code>05_404速记卡.m4a</code>。</li>
+    <li><span class="must">9/1 前</span>：<code>404主观题框架</code>（简答三句法 / 案例四角度 / 教学设计套句库，萃自 404.04 中公）。</li>
+    <li>每讲完一卷：双写 解析.txt/html ＋ 新音频；白天不 push，下班听指令一次推。</li>
   </ul>
 </div>
 
-<footer>打印：Cmd+P 可存 PDF。完成一项画个勾。</footer>
-
+<footer>打印：Cmd+P 存 PDF。顺延不扣分；背记早上、刷题晚上、睡前单选上锁。</footer>
+<script>
+(function(){
+  var d=new Date(), key=(d.getMonth()+1)+"/"+d.getDate();
+  var row=document.querySelector('tr[data-date="'+key+'"]');
+  var box=document.getElementById("tf-body");
+  if(!row){ box.innerHTML = key+' 不在排期内（9/12 考试日：先写作文，写够1000字！）'; return; }
+  row.classList.add("today");
+  if(row.classList.contains("we")) row.style.background="#ffe9a8";
+  var tds=row.querySelectorAll("td");
+  box.innerHTML =
+    "① 404 主线：<b>"+tds[2].textContent.trim()+"</b><br>"+
+    "② 301 维护：<b>"+tds[3].textContent.trim()+"</b><br>"+
+    "③ 通勤听读：<b>"+tds[4].textContent.trim()+"</b>";
+  row.scrollIntoView({block:"center"});
+})();
+</script>
 </body>
 </html>
