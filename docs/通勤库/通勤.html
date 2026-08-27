@@ -40,7 +40,6 @@
 <footer>通勤包 · 离线可用 · 点击卡片展开背诵内容</footer>
 <script>
 // 通勤资料内容（直接内嵌，离线可看）
-var CONTENT = {
   '01': { title: '三观师德框架', desc: '职业理念+职业道德', content: [
     {h:'教育观', p:'<span class="hl">素质教育内涵</span>：面向全体、全面发展、个性发展、创新实践。'},
     {h:'教学观', p:'<span class="hl">四转变</span>：学习者为中心（启发引导）、关注人（鼓励安慰）、重过程（不直接给结论）、重创新。'},
@@ -84,63 +83,23 @@ var CONTENT = {
   ]},
 };
 
-// 从通勤任务 JSON 提取今天的通勤任务
-function parseTodayTasks() {
+// 显示所有背诵资料
+function renderAll() {
   var d = new Date();
-  var key = (d.getMonth()+1) + '/' + d.getDate();
-  var todayText = d.getFullYear() + '年' + (d.getMonth()+1) + '月' + d.getDate() + '日';
-  document.getElementById('today-date').textContent = todayText;
+  document.getElementById('today-date').textContent = d.getFullYear() + '年' + (d.getMonth()+1) + '月' + d.getDate() + '日';
 
-  return fetch('通勤任务.json')
-    .then(r => r.json())
-    .then(data => {
-      var today = data.find(function(item) { return item.date === key; });
-      var morning = [], evening = [];
-      if (today && today.tasks) {
-        today.tasks.forEach(function(t) {
-          var item = CONTENT[t.audio];
-          if (item) {
-            if (t.slot === 'morning') morning.push(item);
-            else if (t.slot === 'evening') evening.push(item);
-          }
-        });
-      }
-      return { date: todayText, morning: morning, evening: evening };
-    })
-    .catch(function() {
-      return { date: todayText, morning: [], evening: [] };
-    });
-}
-
-function renderTasks(data) {
   var container = document.getElementById('tasks');
   var html = '';
-
-  if (data.morning.length === 0 && data.evening.length === 0) {
-    container.innerHTML = '<div class="empty">今天没有通勤任务<br>好好上班/休息</div>';
-    return;
-  }
-
-  if (data.morning.length > 0) {
-    html += '<div class="card"><span class="tag tag-morning" style="margin:12px 16px;display:inline-block">\u{1F305} 早通勤</span></div>';
-    data.morning.forEach(function(item, i) {
-      var id = 'm' + i;
-      html += renderCard(id, item, 'morning');
-    });
-  }
-
-  if (data.evening.length > 0) {
-    html += '<div class="card"><span class="tag tag-evening" style="margin:12px 16px;display:inline-block">\u{1F319} 晚通勤</span></div>';
-    data.evening.forEach(function(item, i) {
-      var id = 'e' + i;
-      html += renderCard(id, item, 'evening');
-    });
-  }
-
+  var keys = ['01','02','03','04','05','06'];
+  keys.forEach(function(key, i) {
+    var item = CONTENT[key];
+    var id = 'card' + i;
+    html += renderCard(id, item);
+  });
   container.innerHTML = html;
 }
 
-function renderCard(id, item, slot) {
+function renderCard(id, item) {
   var html = '<div class="card">' +
     '<div class="card-header" onclick="toggleCard(\'' + id + '\')">' +
       '<div class="left">' +
@@ -171,7 +130,7 @@ function toggleDone(btn) {
   else btn.textContent = '';
 }
 
-parseTodayTasks().then(renderTasks);
+renderAll();
 </script>
 </body>
 </html>
