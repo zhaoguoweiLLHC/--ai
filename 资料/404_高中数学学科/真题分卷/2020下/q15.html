@@ -185,11 +185,20 @@
     if(!texts[key]) return;
     // 提取超链接里的纯文本作为高亮关键词
     var kw=a.textContent.trim();
+    // 去掉行号前缀(如 L413)和引号
+    kw=kw.replace(/^L\d[\d\-]*\s*/,'').replace(/^[\""]|[\""]$/g,'').trim();
+    // 去掉简写描述(如"深入社会生活各方面"只取核心词)
     var html=texts[key];
     // 转义正则特殊字符
     var esc=kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-    // 只高亮匹配当前关键词的部分
-    html=html.replace(new RegExp(esc,'g'),'<mark>$&</mark>');
+    // 先尝试完整匹配，匹配不到则取关键词前6个字模糊匹配
+    if(new RegExp(esc).test(html)){
+      html=html.replace(new RegExp(esc,'g'),'<mark>$&</mark>');
+    }else{
+      var short=kw.slice(0,6);
+      esc=short.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+      html=html.replace(new RegExp(esc,'g'),'<mark>$&</mark>');
+    }
     a.classList.add('tip');
     var box=document.createElement('span');
     box.className='tip-box';
