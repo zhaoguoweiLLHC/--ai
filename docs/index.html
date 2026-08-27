@@ -73,16 +73,28 @@ document.getElementById('frame').addEventListener('load', () => {
   document.getElementById('status').textContent = '已缓存·可离线';
 });
 
-// 刷新：强制重新加载 iframe + 通知 SW 更新
+// 刷新：清除SW缓存 + 强制重新加载
 function refresh() {
-  var f = document.getElementById('frame');
-  f.src = f.src;
   document.getElementById('status').textContent = '更新中…';
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.getRegistration().then(reg => {
-      if (reg) reg.update();
+      if (reg) {
+        // 清除所有缓存
+        caches.keys().then(names => names.forEach(n => caches.delete(n)));
+        // 注销SW再重新注册
+        reg.unregister().then(() => {
+          navigator.serviceWorker.register('./sw.js').then(() => {
+            location.reload();
+          });
+        });
+      } else {
+        location.reload();
+      }
     });
+  } else {
+    location.reload();
   }
+}
 }
 </script>
 </body>
