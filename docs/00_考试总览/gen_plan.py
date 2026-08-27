@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """学习计划表生成器：md 为唯一权威底，整张渲染 学习计划表.html（倒计时/今日卡/框勾选/图例）。
-用法：python3 gen_plan.py   之后跑 make_longimg.py 重渲 01 长图。
+用法：python3 gen_plan.py   生成后 git push 即可通过 PWA 查看。
 表结构：| 日期 | 当天计划（🌅早 / 🏢公司404·301 / 🌙晚） | 完成情况（纯勾选，例外才备注） |"""
 import re, html, os
 D=os.path.dirname(os.path.abspath(__file__))
