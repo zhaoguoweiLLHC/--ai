@@ -27,20 +27,17 @@ for line in md.split("\n"):
     if note_m: act=act[:note_m.start()].strip()
     # 按时段符号拆成 <ul><li> 列表（计划列用）
     def link_for(seg):
-        """根据计划项内容匹配对应资料文件路径"""
+        """根据计划项内容匹配通勤音频路径（非通勤资料手机上看不到，不生成链接）"""
         s=re.sub(r'^[🌅🏢🌙☀️]\s*','',seg).strip()
-        R='..'   # 相对路径：html 在 00_考试总览/ 下，项目根是 ../
         L='.'    # 同目录(00_考试总览/)
+        R='..'   # 上一级(pwa/)
         AU=os.path.join(L,'通勤音频')
-        T301=os.path.join(R,'301_综合素质/301.05答题模板升级版/答题模板升级版.html')
-        T404CARD=os.path.join(R,'404_高中数学学科/404.05速记卡/404速记卡.html')
-        T404FRAME=os.path.join(R,'404_高中数学学科/404.05速记卡/404主观题框架.html')
+        T404AUDIO=os.path.join(R,'404_高中数学学科/404.05速记卡')
         audio_map={'01':'01_三观师德框架_朗读原文.html','02':'02_2020下解析_朗读原文.html',
                    '03':'03_作文升级版_朗读原文.html','04':'04_301立意清单_朗读原文.html',
                    '05':'05_404速记卡_朗读原文.html','06':'06_主观题框架_朗读原文.html'}
         audio_dir={'01':AU,'02':AU,'03':AU,'04':AU,
-                   '05':os.path.join(R,'404_高中数学学科/404.05速记卡'),
-                   '06':os.path.join(R,'404_高中数学学科/404.05速记卡')}
+                   '05':T404AUDIO, '06':T404AUDIO}
         # 通勤音频编号 01-06（含组合如 01+03、03+04）
         am=re.match(r'^(0[1-6])(\+0[1-6])*$', s)
         if am:
@@ -55,46 +52,16 @@ for line in md.split("\n"):
         if am2:
             n='0'+am2.group(1)
             return os.path.join(audio_dir.get(n,AU), audio_map.get(n,''))
-        # 立意
+        # 立意 = 音频04
         if '立意' in s:
             return os.path.join(AU,'04_301立意清单_朗读原文.html')
-        # 301 内容（含 301 — 免维护）
-        if '301' in s:
-            if '框架' in s or '模板' in s or '默写' in s or '成文' in s or '材料' in s or '偏题' in s or '单选' in s or '整卷' in s or '—' in s:
-                return T301
-        # 301 三观/师德/教师观/学生观/教育观
-        if '三观' in s or '师德' in s or '教师观' in s or '学生观' in s or '教育观' in s:
-            return T301
-        # 404 速记卡（含卡背、卡·簇、卡复习、错题上卡）
-        if '卡' in s and ('簇' in s or '背' in s or '速记' in s or '复习' in s or '错题' in s):
-            return T404CARD
-        # 404 主观题框架（含 06框架、01框架）
-        if '框架' in s and ('404' in s or '案例' in s or '设计' in s or '五类' in s or '终背' in s or '听框架' in s):
-            return T404FRAME
-        # 404 真题分卷（4位或2位年份，如 2020下/20下/21上/25上）
-        vm=re.search(r'(?:(20)?(\d{2}))\s*([上下])', s)
-        if vm:
-            y=('20'+vm.group(2)) if not vm.group(1) else vm.group(1)
-            d=vm.group(3)
-            fp=os.path.join(R,'404_高中数学学科/真题分卷/%s%s'%(y,d))
-            if '解析' in s:
-                return os.path.join(fp,'解析.html')
-            elif '文本' in s:
-                return os.path.join(fp,'真题文本.html')
-            else:
-                return os.path.join(fp,'真题文本.html')
-        # 03 作文
+        # 03 作文 = 音频03
         if '作文' in s:
             return os.path.join(AU,'03_作文升级版_朗读原文.html')
-        # 论述354字
-        if '论述' in s or '354' in s:
-            return os.path.join(fp if vm else R,'真题文本.txt') if vm else T404FRAME
-        # 考场时间分配
-        if '时间' in s:
-            return os.path.join(L,'考场时间分配.html')
-        # 备考/放松/文具 = 无资料
-        if '放松' in s or '文具' in s or '准考证' in s:
-            return ''
+        # 三观/师德 = 音频01
+        if '三观' in s or '师德' in s or '教师观' in s or '学生观' in s or '教育观' in s:
+            return os.path.join(AU,'01_三观师德框架_朗读原文.html')
+        # 其余非通勤资料（404速记卡/框架/真题/301模板等）手机上看不到，不生成链接
         return ''
     def to_list(s):
         segs=re.split(r' (?=🌅|🏢|🌙|☀️)', s.strip())
