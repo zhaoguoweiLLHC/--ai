@@ -3,13 +3,13 @@
 用法：python3 gen_plan.py   生成后 git push 即可通过 PWA 查看。
 目录结构：资料/data/ = AI机器档(md/txt/json)，资料/source/ = 原件(doc/pdf/img)，docs/pwa/ = html人读版。
 表结构：| 日期 | 当天计划（🌅早 / 🏢公司404·301 / 🌙晚） | 完成情况（纯勾选，例外才备注） |"""
-import re, html, os
+import re, html, os, json
 D=os.path.dirname(os.path.abspath(__file__))  # docs/
 md=open(os.path.join(D,"..","资料","data","00_考试总览","学习计划表.md"),encoding="utf-8").read()
 def fmt(t):  # escape 后把 **xx** 变粗体
     return re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", html.escape(t))
 
-rows=[]
+rows=[]; rows_meta=[]
 for line in md.split("\n"):
     m=re.match(r"^\| (\d+/\d+) (.+?) \|(.+?)\|(.+?)\|\s*$", line)
     if not m: continue
@@ -89,6 +89,17 @@ for line in md.split("\n"):
         return '<ul class="seg" style="margin:0;padding:0;list-style:none">%s</ul>'%lis
     rows.append('<tr%s data-date="%s"><td>%s · %s%s</td><td style="padding:0">%s</td><td class="act-col" style="font-size:12px;padding:0">%s</td><td class="note-col" style="font-size:12px;padding:6px 8px">%s</td></tr>'%(
         ' class="we"' if wk else '',date,date,fmt(ctype),extra,to_list(plan),to_act_list(act),note))
+    # 收集通勤任务（早通勤🌅 + 晚通勤🌙 的音频编号）
+    commute_tasks=[]
+    for seg in re.split(r' (?=🌅|🏢|🌙|☀️)', plan.strip()):
+        seg=seg.strip()
+        if not seg: continue
+        slot='morning' if seg.startswith('🌅') else 'evening' if seg.startswith('🌙') else None
+        if not slot: continue
+        nm=re.search(r'0([1-6])', seg)
+        if nm:
+            commute_tasks.append({'slot':slot,'audio':'0'+nm.group(1),'text':re.sub(r'^[🌅🌙]\s*','',seg).strip()})
+    rows_meta.append({'date':date,'commute_tasks':commute_tasks})
 
 table='<table>\n<tr><th>日期</th><th>当天计划（🌅早通勤 / 🏢公司＝404·301 / 🌙晚通勤）</th><th>完成情况</th><th>备注</th></tr>\n'+"\n".join(rows)+"\n</table>"
 
@@ -214,5 +225,15 @@ H=f'''<!DOCTYPE html>
 }})();</script>
 </body>
 </html>'''
-open(os.path.join(D,"pwa","00_考试总览","学习计划表.html"),"w",encoding="utf-8").write(H)
+# 学习计划表 html 输出到 资料/source/
+src_dir=os.path.join(D,"..","资料","source","00_考试总览")
+os.makedirs(src_dir,exist_ok=True)
+open(os.path.join(src_dir,"学习计划表.html"),"w",encoding="utf-8").write(H)
+
+# 生成通勤任务 JSON（供 PWA 通勤页面读取）
+commute=[]
+for r in rows_meta:
+    commute.append({"date":r["date"],"tasks":r["commute_tasks"]})
+json_path=os.path.join(D,"pwa","通勤任务.json")
+open(json_path,"w",encoding="utf-8").write(json.dumps(commute,ensure_ascii=False))
 print("rows:",len(rows)," we:",H.count('class="we"'))

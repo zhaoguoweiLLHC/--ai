@@ -6,7 +6,7 @@ const ASSETS = [
   './index.html',
   './manifest.json',
   './pwa/通勤.html',
-  './pwa/00_考试总览/学习计划表.html',
+  './pwa/通勤任务.json',
 ];
 
 self.addEventListener('install', e => {

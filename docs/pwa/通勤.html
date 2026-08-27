@@ -77,51 +77,27 @@ var AUDIO = {
           src: '404_高中数学学科/404.05速记卡/06_主观题框架.m4a', text: '404_高中数学学科/404.05速记卡/06_主观题框架_朗读原文.html' }
 };
 
-// 从学习计划表提取今天的通勤任务
+// 从通勤任务 JSON 提取今天的通勤任务
 function parseTodayTasks() {
   var d = new Date();
   var key = (d.getMonth()+1) + '/' + d.getDate();
   var todayText = d.getFullYear() + '年' + (d.getMonth()+1) + '月' + d.getDate() + '日';
   document.getElementById('today-date').textContent = todayText;
 
-  // 读取 iframe 中的学习计划表
-  return fetch('00_考试总览/学习计划表.html')
-    .then(r => r.text())
-    .then(html => {
-      // 找到今天的行
-      var m = new RegExp('data-date="' + key + '"[^>]*>(.*?)</tr>', 's').exec(html);
-      if (!m) return { date: todayText, morning: [], evening: [] };
-
-      var rowHtml = m[1];
-      // 提取计划列（第二个 td）
-      var tds = rowHtml.match(/<td[^>]*>([\s\S]*?)<\/td>/g);
-      if (!tds || tds.length < 2) return { date: todayText, morning: [], evening: [] };
-
-      // 解析计划列的 li 内容
-      var planLis = (tds[1] || '').match(/<li[^>]*>([\s\S]*?)<\/li>/g) || [];
-      var tasks = [];
-      planLis.forEach(function(li) {
-        var text = li.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
-        tasks.push(text);
-      });
-
-      // 按时段分类
+  return fetch('通勤任务.json')
+    .then(r => r.json())
+    .then(data => {
+      var today = data.find(function(item) { return item.date === key; });
       var morning = [], evening = [];
-      tasks.forEach(function(t) {
-        // 通勤时段：🌅早通勤 和 🌙晚通勤
-        if (/\u{1F305}|\u{1F319}/u.test(t)) {
-          // 提取音频编号
-          var num = t.match(/0([1-6])/);
-          if (num) {
-            var item = AUDIO['0' + num[1]];
-            if (item) {
-              if (/\u{1F305}/u.test(t)) morning.push(item);
-              else if (/\u{1F319}/u.test(t)) evening.push(item);
-            }
+      if (today && today.tasks) {
+        today.tasks.forEach(function(t) {
+          var item = AUDIO[t.audio];
+          if (item) {
+            if (t.slot === 'morning') morning.push(item);
+            else if (t.slot === 'evening') evening.push(item);
           }
-        }
-      });
-
+        });
+      }
       return { date: todayText, morning: morning, evening: evening };
     })
     .catch(function() {
