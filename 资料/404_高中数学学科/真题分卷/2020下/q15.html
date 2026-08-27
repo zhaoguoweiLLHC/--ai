@@ -176,17 +176,24 @@
 (function(){
   var texts={
     'page=12':'数学学科核心素养包括：数学抽象、逻辑推理、数学建模、直观想象、数学运算和<b class="pk">数据分析</b>。',
-    'page=15':'数据分析是指针对研究对象获取数据，运用数学方法对数据进行整理、分析和推断，形成关于研究对象知识的素养。<mark>（过程六环节：收集→整理→提取→建模→推断→结论）</mark><br><br>数据分析是研究随机现象的重要数学技术，是<mark>大数据时代数学应用的主要方法</mark>，已经深入到科学、技术、工程和现代社会生活的各个方面。<br><br>提升获取有价值信息并进行定量分析的意识和能力……<mark>形成通过数据认识事物的思维品质</mark>。'
+    'page=15':'数据分析是指针对研究对象获取数据，运用数学方法对数据进行整理、分析和推断，形成关于研究对象知识的素养。（过程六环节：收集→整理→提取→建模→推断→结论）<br><br>数据分析是研究随机现象的重要数学技术，是大数据时代数学应用的主要方法，已经深入到科学、技术、工程和现代社会生活的各个方面。<br><br>提升获取有价值信息并进行定量分析的意识和能力……形成通过数据认识事物的思维品质。'
   };
   document.querySelectorAll('a[href*="404.02课程标准.pdf"]').forEach(function(a){
     var m=a.href.match(/page=(\d+)/);
     if(!m) return;
     var key='page='+m[1];
     if(!texts[key]) return;
+    // 提取超链接里的纯文本作为高亮关键词
+    var kw=a.textContent.trim();
+    var html=texts[key];
+    // 转义正则特殊字符
+    var esc=kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    // 只高亮匹配当前关键词的部分
+    html=html.replace(new RegExp(esc,'g'),'<mark>$&</mark>');
     a.classList.add('tip');
     var box=document.createElement('span');
     box.className='tip-box';
-    box.innerHTML=texts[key];
+    box.innerHTML=html;
     a.appendChild(box);
   });
 })();
