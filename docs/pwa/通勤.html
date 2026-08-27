@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>教资通勤</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #fff8c6; color: #2b2b2b; line-height: 1.6;
+    padding: 16px 14px 40px;
+  }
+  .header {
+    text-align: center; margin-bottom: 16px;
+  }
+  .header h1 { font-size: 20px; color: #d6336c; }
+  .header .date { font-size: 14px; color: #888; margin-top: 4px; }
+  .card {
+    background: #fff; border-radius: 12px; padding: 14px 16px;
+    margin: 10px 0; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  }
+  .card .tag {
+    display: inline-block; font-size: 12px; font-weight: 700; border-radius: 20px;
+    padding: 3px 12px; margin-bottom: 8px;
+  }
+  .tag-morning { background: #ffdeeb; color: #d6336c; }
+  .tag-evening  { background: #e8f4fd; color: #1a73e8; }
+  .task {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0; border-bottom: 1px solid #f0f0f0;
+  }
+  .task:last-child { border-bottom: none; }
+  .task .info { flex: 1; }
+  .task .info .title { font-size: 15px; font-weight: 600; }
+  .task .info .desc { font-size: 12px; color: #888; margin-top: 2px; }
+  .task audio { width: 100%; margin-top: 6px; }
+  .task .play-btn {
+    flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
+    border: none; background: #ff7ab8; color: #fff; font-size: 18px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+  .task .play-btn:active { background: #d6336c; }
+  .task .play-btn.playing { background: #d6336c; }
+  .done { text-decoration: line-through; opacity: .5; }
+  .check-btn {
+    flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+    border: 2px solid #ddd; background: #fff; font-size: 14px;
+    cursor: pointer; margin-left: 8px;
+  }
+  .check-btn.done { background: #4caf50; border-color: #4caf50; color: #fff; }
+  .empty { text-align: center; color: #999; padding: 30px 0; font-size: 14px; }
+  footer { text-align: center; color: #aaa; font-size: 11px; margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>教资通勤</h1>
+  <div class="date" id="today-date"></div>
+</div>
+<div id="tasks"></div>
+<footer>通勤包 · 离线可用 · 资料更新后 git push 自动同步</footer>
+<script>
+// 通勤音频配置
+var AUDIO = {
+  '01': { title: '三观师德框架', desc: '职业理念+职业道德答题模板',
+          src: '00_考试总览/通勤音频/01_三观师德框架.m4a', text: '00_考试总览/通勤音频/01_三观师德框架_朗读原文.html' },
+  '02': { title: '2020下解析', desc: '真题讲解跟读',
+          src: '00_考试总览/通勤音频/02_2020下解析朗读.m4a', text: '00_考试总览/通勤音频/02_2020下解析_朗读原文.html' },
+  '03': { title: '作文升级版', desc: '万能五段式作文模板',
+          src: '00_考试总览/通勤音频/03_作文升级版.m4a', text: '00_考试总览/通勤音频/03_作文升级版_朗读原文.html' },
+  '04': { title: '301立意清单', desc: '作文立意素材',
+          src: '00_考试总览/通勤音频/04_301立意清单.m4a', text: '00_考试总览/通勤音频/04_301立意清单_朗读原文.html' },
+  '05': { title: '404速记卡', desc: '公式四簇晨背',
+          src: '404_高中数学学科/404.05速记卡/05_404速记卡.m4a', text: '404_高中数学学科/404.05速记卡/05_404速记卡_朗读原文.html' },
+  '06': { title: '主观题框架', desc: '简答/案例/设计套句',
+          src: '404_高中数学学科/404.05速记卡/06_主观题框架.m4a', text: '404_高中数学学科/404.05速记卡/06_主观题框架_朗读原文.html' }
+};
+
+// 从学习计划表提取今天的通勤任务
+function parseTodayTasks() {
+  var d = new Date();
+  var key = (d.getMonth()+1) + '/' + d.getDate();
+  var todayText = d.getFullYear() + '年' + (d.getMonth()+1) + '月' + d.getDate() + '日';
+  document.getElementById('today-date').textContent = todayText;
+
+  // 读取 iframe 中的学习计划表
+  return fetch('00_考试总览/学习计划表.html')
+    .then(r => r.text())
+    .then(html => {
+      // 找到今天的行
+      var m = new RegExp('data-date="' + key + '"[^>]*>(.*?)</tr>', 's').exec(html);
+      if (!m) return { date: todayText, morning: [], evening: [] };
+
+      var rowHtml = m[1];
+      // 提取计划列（第二个 td）
+      var tds = rowHtml.match(/<td[^>]*>([\s\S]*?)<\/td>/g);
+      if (!tds || tds.length < 2) return { date: todayText, morning: [], evening: [] };
+
+      // 解析计划列的 li 内容
+      var planLis = (tds[1] || '').match(/<li[^>]*>([\s\S]*?)<\/li>/g) || [];
+      var tasks = [];
+      planLis.forEach(function(li) {
+        var text = li.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
+        tasks.push(text);
+      });
+
+      // 按时段分类
+      var morning = [], evening = [];
+      tasks.forEach(function(t) {
+        // 通勤时段：🌅早通勤 和 🌙晚通勤
+        if (/\u{1F305}|\u{1F319}/u.test(t)) {
+          // 提取音频编号
+          var num = t.match(/0([1-6])/);
+          if (num) {
+            var item = AUDIO['0' + num[1]];
+            if (item) {
+              if (/\u{1F305}/u.test(t)) morning.push(item);
+              else if (/\u{1F319}/u.test(t)) evening.push(item);
+            }
+          }
+        }
+      });
+
+      return { date: todayText, morning: morning, evening: evening };
+    })
+    .catch(function() {
+      return { date: todayText, morning: [], evening: [] };
+    });
+}
+
+function renderTasks(data) {
+  var container = document.getElementById('tasks');
+  var html = '';
+
+  if (data.morning.length === 0 && data.evening.length === 0) {
+    container.innerHTML = '<div class="empty">今天没有通勤任务<br>好好上班/休息</div>';
+    return;
+  }
+
+  if (data.morning.length > 0) {
+    html += '<div class="card"><span class="tag tag-morning">\u{1F305} 早通勤</span>';
+    data.morning.forEach(function(item, i) {
+      var id = 'm' + i;
+      html += '<div class="task" data-id="' + id + '">' +
+        '<div class="info">' +
+          '<div class="title">' + item.title + '</div>' +
+          '<div class="desc">' + item.desc + '</div>' +
+          '<audio id="audio-' + id + '" preload="none" style="width:100%;margin-top:6px">' +
+            '<source src="' + item.src + '" type="audio/mp4">' +
+          '</audio>' +
+          '<div style="margin-top:4px"><a href="' + item.text + '" target="_blank" style="font-size:12px;color:#1a73e8;text-decoration:none">\u{1F4D6} 看原文</a></div>' +
+        '</div>' +
+        '<button class="check-btn" onclick="toggleDone(this)"></button>' +
+      '</div>';
+    });
+    html += '</div>';
+  }
+
+  if (data.evening.length > 0) {
+    html += '<div class="card"><span class="tag tag-evening">\u{1F319} 晚通勤</span>';
+    data.evening.forEach(function(item, i) {
+      var id = 'e' + i;
+      html += '<div class="task" data-id="' + id + '">' +
+        '<div class="info">' +
+          '<div class="title">' + item.title + '</div>' +
+          '<div class="desc">' + item.desc + '</div>' +
+          '<audio id="audio-' + id + '" preload="none" style="width:100%;margin-top:6px">' +
+            '<source src="' + item.src + '" type="audio/mp4">' +
+          '</audio>' +
+          '<div style="margin-top:4px"><a href="' + item.text + '" target="_blank" style="font-size:12px;color:#1a73e8;text-decoration:none">\u{1F4D6} 看原文</a></div>' +
+        '</div>' +
+        '<button class="check-btn" onclick="toggleDone(this)"></button>' +
+      '</div>';
+    });
+    html += '</div>';
+  }
+
+  container.innerHTML = html;
+}
+
+function toggleDone(btn) {
+  btn.classList.toggle('done');
+  var task = btn.closest('.task');
+  task.classList.toggle('done');
+  if (btn.classList.contains('done')) btn.textContent = '\u2713';
+  else btn.textContent = '';
+}
+
+parseTodayTasks().then(renderTasks);
+</script>
+</body>
+</html>
