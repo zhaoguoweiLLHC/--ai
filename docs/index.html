@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="教资通勤">
+<link rel="manifest" href="./manifest.json">
+<title>教资备考通勤包</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #fff8c6;
+  }
+  /* 顶部栏 */
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 14px; background: #ff7ab8; color: #fff;
+    font-size: 15px; font-weight: 700; flex-shrink: 0;
+  }
+  .topbar .dot { font-size: 12px; opacity: .85; font-weight: normal; }
+  .topbar button {
+    background: rgba(255,255,255,.25); border: none; color: #fff;
+    border-radius: 16px; padding: 4px 12px; font-size: 12px; font-weight: 600;
+  }
+  .topbar button:active { background: rgba(255,255,255,.4); }
+  /* iframe 容器 */
+  .frame-wrap { height: calc(100vh - 36px); -webkit-overflow-scrolling: touch; overflow-y: auto; }
+  iframe { width: 100%; height: 100%; border: none; }
+  /* 加载提示 */
+  .loading {
+    position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+    flex-direction: column; background: #fff8c6; color: #d6336c; font-size: 16px;
+    z-index: 10;
+  }
+  .loading.hide { display: none; }
+  .loading .spin {
+    width: 32px; height: 32px; border: 3px solid #ffdeeb; border-top-color: #ff7ab8;
+    border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 12px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span>教资通勤包</span>
+  <span class="dot" id="status">加载中…</span>
+  <button onclick="refresh()">刷新</button>
+</div>
+<div class="loading" id="loading">
+  <div class="spin"></div>
+  <div>加载中…</div>
+</div>
+<div class="frame-wrap">
+  <iframe id="frame" src="./00_考试总览/学习计划表.html"></iframe>
+</div>
+<script>
+// 注册 Service Worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').then(reg => {
+    document.getElementById('status').textContent = '已缓存·可离线';
+  }).catch(() => {
+    document.getElementById('status').textContent = '在线模式';
+  });
+}
+
+// iframe 加载完成后隐藏 loading
+document.getElementById('frame').addEventListener('load', () => {
+  document.getElementById('loading').classList.add('hide');
+  document.getElementById('status').textContent = '已缓存·可离线';
+});
+
+// 刷新：强制重新加载 iframe + 通知 SW 更新
+function refresh() {
+  var f = document.getElementById('frame');
+  f.src = f.src;
+  document.getElementById('status').textContent = '更新中…';
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistration().then(reg => {
+      if (reg) reg.update();
+    });
+  }
+}
+</script>
+</body>
+</html>
