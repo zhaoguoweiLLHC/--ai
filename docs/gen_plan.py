@@ -125,8 +125,8 @@ H=f'''<!DOCTYPE html>
   table{{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px;table-layout:fixed}}
   th,td{{border:1px solid #ddd;padding:6px 8px;text-align:left;vertical-align:top}}
   th:nth-child(1),td:nth-child(1){{white-space:nowrap;width:16%}}
-  th:nth-child(3),td:nth-child(3){{width:8%}}
-  th:nth-child(4),td:nth-child(4){{width:8%}}
+  th:nth-child(3),td:nth-child(3){{width:12%}}
+  th:nth-child(4),td:nth-child(4){{width:12%}}
   .seg li:last-child{{border-bottom:none !important}}
   .seg-li{{display:block;border-bottom:1px solid #e0e0e0;padding:4px 8px;margin:0;height:28px;line-height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
   .seg-li:has(a):hover{{background:#fffbe6}}
