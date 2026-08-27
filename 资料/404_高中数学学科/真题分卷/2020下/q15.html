@@ -88,6 +88,16 @@
   .back-link{position:fixed;top:12px;left:12px;z-index:200;background:rgba(255,255,255,.9);
     border:1px solid #e8e8ee;border-radius:8px;padding:5px 14px;font-size:14px;
     text-decoration:none;color:#1971c2;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  /* 三档 tab */
+  .tabs{display:flex;gap:0;margin:14px 0 0;border-radius:12px 12px 0 0;overflow:hidden}
+  .tab-btn{flex:1;padding:10px 8px;border:none;background:#f2f3f7;font-size:14px;font-weight:600;
+    cursor:pointer;text-align:center;color:#8a8f98;border-bottom:3px solid transparent;transition:.2s}
+  .tab-btn.active-t{color:#fff}
+  .tab-btn[data-tab="t-full"].active-t{background:#eef6ff;color:#1971c2;border-bottom-color:#1971c2}
+  .tab-btn[data-tab="t-exam"].active-t{background:#e9f9ef;color:#2b8a3e;border-bottom-color:#2b8a3e}
+  .tab-btn[data-tab="t-life"].active-t{background:#ffecec;color:#c92a2a;border-bottom-color:#c92a2a}
+  .tab-content{display:none}
+  .tab-content.active-t{display:block}
 </style>
 </head>
 <body>
@@ -119,34 +129,43 @@
   </div>
 
 
-  <div class="block t-full">
-    <h3>🏆 第一档 · 满分版 · 实测529字（慢手写≈18分钟❌ · 预估13–15分｜<b>在家学习用，考场不整篇抄它</b>）</h3>
-    <p><b>〔开头〕</b>数据分析是六大核心素养之一。正如课标指出，数据分析是<a href="../../404.02课程标准.pdf#page=15" target="_blank" rel="noopener" title="新标签页打开课标PDF 第15页" ><mark>大数据时代数学应用的主要方法</mark></a>，已深入现代社会生活各方面，在中学数学教学中培养该能力意义重大。</p>
-    <ul class="points">
-      <li><span class="pt">一、社会意义 · 适应大数据时代的必然要求。</span>学生学会用数据说话，才能在信息时代理性判断；<span class="ex">例：疫情防控、天气预报、购物推荐皆建立在每日新增、增长率等数据的统计分析之上</span></li>
-      <li><span class="pt">二、课程意义 · 落实课标核心素养的内在要求。</span>课标要求“提升定量分析的意识和能力，<a href="../../404.02课程标准.pdf#page=15" target="_blank" rel="noopener" title="新标签页打开课标PDF 第15页" ><mark>形成通过数据认识事物的思维品质</mark></a>”，必修“统计与概率”主题正是载体；<span class="ex">例：统计第一课用统计图经历收集、整理数据的完整过程</span></li>
-      <li><span class="pt">三、能力意义 · 发展应用意识与实践能力。</span>教学应完整经历数据分析全链条；<span class="ex">例：“调查本校学生每周课外锻炼时间”：设计问卷→收集数据→绘频率分布直方图→用样本估计总体→提建议</span></li>
-      <li><span class="pt">四、价值观意义 · 培育科学精神与理性思维。</span>养成实事求是、不凭印象的态度；<span class="ex">例：讨论“城乡学生体质成绩是否有差异”，用抽样调查与独立性检验而非臆断</span></li>
-      <li><span class="pt">五、教学意义 · 促进学习方式变革与跨学科融合。</span>推动探究式学习，关联跨学科情境；<span class="ex">例：散点图＋线性回归方程分析成绩趋势，关联物理实验、地理数据</span></li>
-    </ul>
-    <p><b>〔结尾〕</b>综上，既是课标要求，也是时代要求；教师应立足真实情境，让学生经历完整的数据分析过程，学以致用。</p>
+  <div class=”tabs”>
+    <button class=”tab-btn active-t” data-tab=”t-full” onclick=”switchTab('t-full')”>🏆 一档·满分版 529字≈18分</button>
+    <button class=”tab-btn” data-tab=”t-exam” onclick=”switchTab('t-exam')”>🎯 二档·考场版 354字≈12分</button>
+    <button class=”tab-btn” data-tab=”t-life” onclick=”switchTab('t-life')”>🛟 三档·救命版 77字≈3分</button>
   </div>
-
-  <div class="block t-exam">
-    <h3>🎯 第二档 · 考场版 · 实测354字（慢手写≈12分钟✔ 正好顶满大题预算 · 预估11–13分）</h3>
-    <p><b>〔开头〕</b>数据分析是六大核心素养之一。正如课标指出，它是<a href="../../404.02课程标准.pdf#page=15" target="_blank" rel="noopener" title="新标签页打开课标PDF 第15页" ><mark>大数据时代数学应用的主要方法</mark></a>，已深入科学、技术与社会生活各方面，培养该能力意义重大。</p>
-    <ul class="points">
-      <li><span class="pt">一、社会意义 · 大数据时代公民必备素养。</span>学生学会用数据说话，才能在信息时代理性判断；<span class="ex">例：疫情研判、天气预报、购物推荐皆建立在数据统计分析之上</span></li>
-      <li><span class="pt">二、课程意义 · 落实课标核心素养。</span>课标要求“提升定量分析的意识和能力，<a href="../../404.02课程标准.pdf#page=15" target="_blank" rel="noopener" title="新标签页打开课标PDF 第15页" ><mark>形成通过数据认识事物的思维品质</mark></a>”；<span class="ex">例：“调查本校学生每周课外锻炼时间”：设计问卷→收集数据→绘频率分布直方图→样本估计总体→提建议，经历全过程</span></li>
-      <li><span class="pt">三、发展意义 · 培育科学精神与跨学科意识。</span>养成不凭印象、用数据说话的态度；<span class="ex">例：散点图＋回归方程分析成绩趋势，关联物理实验数据</span></li>
-    </ul>
-    <p><b>〔结尾〕</b>综上，既是课标要求也是时代要求，教师应立足真实情境，让学生经历完整过程，学以致用。</p>
+  <div class=”tab-content active-t” id=”t-full”>
+    <div class=”block t-full”>
+      <h3>🏆 第一档 · 满分版 · 实测529字（慢手写≈18分钟❌ · 预估13–15分｜<b>在家学习用，考场不整篇抄它</b>）</h3>
+      <p><b>〔开头〕</b>数据分析是六大核心素养之一。正如课标指出，数据分析是<a href=”../../404.02课程标准.pdf#page=15” target=”_blank” rel=”noopener” title=”新标签页打开课标PDF 第15页” ><mark>大数据时代数学应用的主要方法</mark></a>，已深入现代社会生活各方面，在中学数学教学中培养该能力意义重大。</p>
+      <ul class=”points”>
+        <li><span class=”pt”>一、社会意义 · 适应大数据时代的必然要求。</span>学生学会用数据说话，才能在信息时代理性判断；<span class=”ex”>例：疫情防控、天气预报、购物推荐皆建立在每日新增、增长率等数据的统计分析之上</span></li>
+        <li><span class=”pt”>二、课程意义 · 落实课标核心素养的内在要求。</span>课标要求”提升定量分析的意识和能力，<a href=”../../404.02课程标准.pdf#page=15” target=”_blank” rel=”noopener” title=”新标签页打开课标PDF 第15页” ><mark>形成通过数据认识事物的思维品质</mark></a>”，必修”统计与概率”主题正是载体；<span class=”ex”>例：统计第一课用统计图经历收集、整理数据的完整过程</span></li>
+        <li><span class=”pt”>三、能力意义 · 发展应用意识与实践能力。</span>教学应完整经历数据分析全链条；<span class=”ex”>例：”调查本校学生每周课外锻炼时间”：设计问卷→收集数据→绘频率分布直方图→用样本估计总体→提建议</span></li>
+        <li><span class=”pt”>四、价值观意义 · 培育科学精神与理性思维。</span>养成实事求是、不凭印象的态度；<span class=”ex”>例：讨论”城乡学生体质成绩是否有差异”，用抽样调查与独立性检验而非臆断</span></li>
+        <li><span class=”pt”>五、教学意义 · 促进学习方式变革与跨学科融合。</span>推动探究式学习，关联跨学科情境；<span class=”ex”>例：散点图＋线性回归方程分析成绩趋势，关联物理实验、地理数据</span></li>
+      </ul>
+      <p><b>〔结尾〕</b>综上，既是课标要求，也是时代要求；教师应立足真实情境，让学生经历完整的数据分析过程，学以致用。</p>
+    </div>
   </div>
-
-  <div class="block t-life">
-    <h3>🛟 第三档 · 救命版 · 实测77字（≈3分钟 · 预估6–8分）</h3>
-    <p>数据分析是六大核心素养之一，是<a href="../../404.02课程标准.pdf#page=15" target="_blank" rel="noopener" title="新标签页打开课标PDF 第15页" ><mark>大数据时代数学应用的主要方法</mark></a>。教学应让学生经历<a href="../../404.02课程标准.pdf#page=15" target="_blank" rel="noopener" title="新标签页打开课标PDF 第15页" ><mark>收集—整理—建模—推断</mark></a>完整过程（<span class="ex">如问卷调查一例</span>），培养用数据说话的态度。</p>
-    <p style="font-size:13px;color:#777">三句＝素养名＋课标原话＋过程六环节＋例；阅卷按词给分，这几个词全中就有底分。</p>
+  <div class=”tab-content” id=”t-exam”>
+    <div class=”block t-exam”>
+      <h3>🎯 第二档 · 考场版 · 实测354字（慢手写≈12分钟✔ 正好顶满大题预算 · 预估11–13分）</h3>
+      <p><b>〔开头〕</b>数据分析是六大核心素养之一。正如课标指出，它是<a href=”../../404.02课程标准.pdf#page=15” target=”_blank” rel=”noopener” title=”新标签页打开课标PDF 第15页” ><mark>大数据时代数学应用的主要方法</mark></a>，已深入科学、技术与社会生活各方面，培养该能力意义重大。</p>
+      <ul class=”points”>
+        <li><span class=”pt”>一、社会意义 · 大数据时代公民必备素养。</span>学生学会用数据说话，才能在信息时代理性判断；<span class=”ex”>例：疫情研判、天气预报、购物推荐皆建立在数据统计分析之上</span></li>
+        <li><span class=”pt”>二、课程意义 · 落实课标核心素养。</span>课标要求”提升定量分析的意识和能力，<a href=”../../404.02课程标准.pdf#page=15” target=”_blank” rel=”noopener” title=”新标签页打开课标PDF 第15页” ><mark>形成通过数据认识事物的思维品质</mark></a>”；<span class=”ex”>例：”调查本校学生每周课外锻炼时间”：设计问卷→收集数据→绘频率分布直方图→样本估计总体→提建议，经历全过程</span></li>
+        <li><span class=”pt”>三、发展意义 · 培育科学精神与跨学科意识。</span>养成不凭印象、用数据说话的态度；<span class=”ex”>例：散点图＋回归方程分析成绩趋势，关联物理实验数据</span></li>
+      </ul>
+      <p><b>〔结尾〕</b>综上，既是课标要求也是时代要求，教师应立足真实情境，让学生经历完整过程，学以致用。</p>
+    </div>
+  </div>
+  <div class=”tab-content” id=”t-life”>
+    <div class=”block t-life”>
+      <h3>🛟 第三档 · 救命版 · 实测77字（≈3分钟 · 预估6–8分）</h3>
+      <p>数据分析是六大核心素养之一，是<a href=”../../404.02课程标准.pdf#page=15” target=”_blank” rel=”noopener” title=”新标签页打开课标PDF 第15页” ><mark>大数据时代数学应用的主要方法</mark></a>。教学应让学生经历<a href=”../../404.02课程标准.pdf#page=15” target=”_blank” rel=”noopener” title=”新标签页打开课标PDF 第15页” ><mark>收集—整理—建模—推断</mark></a>完整过程（<span class=”ex”>如问卷调查一例</span>），培养用数据说话的态度。</p>
+      <p style=”font-size:13px;color:#777”>三句＝素养名＋课标原话＋过程六环节＋例；阅卷按词给分，这几个词全中就有底分。</p>
+    </div>
   </div>
 
   <p style="text-align:center;margin:10px 0"><a href="../../三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></p>
@@ -164,6 +183,11 @@
 </section>
 <footer><a href="解析.html">← 返回目录</a></footer>
 <script>
+// 三档 tab 切换
+function switchTab(id){
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
+  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
+}
 // 课标原文 tooltip：hover显示原文，点击仍跳转PDF
 (function(){
   var texts={
