@@ -122,8 +122,10 @@ H=f'''<!DOCTYPE html>
   .card{{border-radius:10px;padding:13px 16px;margin:10px 0;border:1px solid var(--line);page-break-inside:avoid}}
   .pink{{background:var(--pink)}}.blue{{background:var(--blue)}}.yellow{{background:var(--yellow)}}
   .tag{{display:inline-block;font-size:12px;font-weight:700;background:#fff;border-radius:20px;padding:2px 10px;margin-bottom:6px;border:1px solid rgba(0,0,0,.12)}}
-  table{{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}}
+  table{{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px;table-layout:fixed}}
   th,td{{border:1px solid #ddd;padding:6px 8px;text-align:left;vertical-align:top}}
+  td:first-child,th:first-child{{white-space:nowrap;width:10%}}
+  td:last-child,th:last-child{{width:12%}}
   .seg li:last-child{{border-bottom:none !important}}
   .seg-li{{display:block;border-bottom:1px solid #e0e0e0;padding:4px 8px;margin:0;height:28px;line-height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
   .seg-li:has(a):hover{{background:#fffbe6}}
