@@ -74,6 +74,17 @@
     section.card{box-shadow:none;border:1px solid #eee;break-inside:avoid}
     header.top{box-shadow:none}
   }
+  /* 课标原文 tooltip */
+  .tip{position:relative;cursor:pointer}
+  .tip-box{display:none;position:absolute;bottom:130%;left:50%;transform:translateX(-50%);
+    width:380px;max-width:90vw;background:#fff;border:1px solid #f6c3d6;border-radius:12px;
+    padding:12px 16px;font-size:14px;line-height:1.7;color:#333;z-index:100;
+    box-shadow:0 4px 16px rgba(0,0,0,.12)}
+  .tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    border:8px solid transparent;border-top-color:#fff}
+  .tip-box b.pk{color:#d6336c}
+  .tip-box mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:3px}
+  .tip:hover .tip-box,.tip.tip-open .tip-box{display:block}
 </style>
 </head>
 <body>
@@ -101,15 +112,6 @@
   <div class="block k-blue">
     <h3>🔍 审题 · 三个硬约束</h3>
     ① 必须回应<b>“大数据时代”</b>背景；② 落到<b>中学数学课堂</b>；③ <b>“结合实例”＝硬性要求</b>——任何篇幅下例子都可压缩、不可缺席。
-  </div>
-
-  <div class="block k-bibei">
-    <h3>📖 课标原文 · 范文可直接引用</h3>
-    <p style="margin:0 0 6px;font-size:13px;color:#777">整块都摘自课标（行号可点）；<span class="pk">红＝问点词（本题问的对象＝"数据分析"，蓝句子都为它服务）</span>、<mark>蓝＝必背·范文照抄·阅卷认它</mark>，黑字＝语境读懂即可。</p>
-    <p><a href="../../404.02课程标准.pdf#page=12" target="_blank" rel="noopener" title="新标签页打开课标PDF 第12页" ><span class="line">L307-308</span></a>数学学科核心素养包括：数学抽象、逻辑推理、数学建模、直观想象、数学运算和<b class="pk">数据分析</b>。</p>
-    <p><a href="../../404.02课程标准.pdf#page=15" target="_blank" rel="noopener" title="新标签页打开课标PDF 第15页" ><span class="line">L409-412</span></a>数据分析是指针对研究对象获取数据，运用数学方法对数据进行整理、分析和推断，形成关于研究对象知识的素养。<mark>（过程六环节：收集→整理→提取→建模→推断→结论）</mark></p>
-    <p><a href="../../404.02课程标准.pdf#page=15" target="_blank" rel="noopener" title="新标签页打开课标PDF 第15页" ><span class="line">L413-415</span></a>数据分析是研究随机现象的重要数学技术，是<mark>大数据时代数学应用的主要方法</mark>，已经深入到科学、技术、工程和现代社会生活的各个方面。</p>
-    <p><a href="../../404.02课程标准.pdf#page=15" target="_blank" rel="noopener" title="新标签页打开课标PDF 第15页" ><span class="line">L418-421</span></a>提升获取有价值信息并进行定量分析的意识和能力……<mark>形成通过数据认识事物的思维品质</mark>。</p>
   </div>
 
   <div class="block k-bibei">
@@ -176,6 +178,32 @@
 
 </section>
 <footer>单题页 ｜ 打印：Cmd+P 存 PDF ｜ 其他题见 <a href="解析.html">目录</a></footer>
+<script>
+// 课标原文 tooltip：自动给指向课标PDF的超链接加tooltip
+(function(){
+  var texts={
+    'page=12':'数学学科核心素养包括：数学抽象、逻辑推理、数学建模、直观想象、数学运算和<b class="pk">数据分析</b>。',
+    'page=15':'数据分析是指针对研究对象获取数据，运用数学方法对数据进行整理、分析和推断，形成关于研究对象知识的素养。<mark>（过程六环节：收集→整理→提取→建模→推断→结论）</mark><br><br>数据分析是研究随机现象的重要数学技术，是<mark>大数据时代数学应用的主要方法</mark>，已经深入到科学、技术、工程和现代社会生活的各个方面。<br><br>提升获取有价值信息并进行定量分析的意识和能力……<mark>形成通过数据认识事物的思维品质</mark>。'
+  };
+  document.querySelectorAll('a[href*="404.02课程标准.pdf"]').forEach(function(a){
+    var m=a.href.match(/page=(\d+)/);
+    if(!m) return;
+    var key='page='+m[1];
+    if(!texts[key]) return;
+    // 保留原始href用于"查看PDF"链接
+    a.classList.add('tip');
+    var box=document.createElement('span');
+    box.className='tip-box';
+    box.innerHTML=texts[key]+'<br><br><a href="'+a.getAttribute('href')+'" target="_blank" style="font-size:12px;color:#1971c2">📖 跳转课标PDF第'+m[1]+'页 ↗</a>';
+    a.appendChild(box);
+    // 手机端点击切换
+    a.addEventListener('click',function(e){
+      if(!e.target.closest('.tip-box')) e.preventDefault();
+      a.classList.toggle('tip-open');
+    });
+  });
+})();
+</script>
 </div>
 </body>
 </html>
