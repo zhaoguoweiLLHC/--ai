@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """学习计划表生成器：md 为唯一权威底，整张渲染 学习计划表.html（倒计时/今日卡/框勾选/图例）。
 用法：python3 gen_plan.py   生成后 git push 即可通过 PWA 查看。
-目录结构：data/ = AI机器档(md/txt/json)，source/ = 原件(doc/pdf/img)，pwa/ = html人读版。
+目录结构：资料/data/ = AI机器档(md/txt/json)，资料/source/ = 原件(doc/pdf/img)，docs/pwa/ = html人读版。
 表结构：| 日期 | 当天计划（🌅早 / 🏢公司404·301 / 🌙晚） | 完成情况（纯勾选，例外才备注） |"""
 import re, html, os
 D=os.path.dirname(os.path.abspath(__file__))  # docs/
-md=open(os.path.join(D,"data","00_考试总览","学习计划表.md"),encoding="utf-8").read()
+md=open(os.path.join(D,"..","资料","data","00_考试总览","学习计划表.md"),encoding="utf-8").read()
 def fmt(t):  # escape 后把 **xx** 变粗体
     return re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", html.escape(t))
 
