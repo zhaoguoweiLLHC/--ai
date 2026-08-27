@@ -5,8 +5,8 @@ const ASSETS = [
   './',
   './index.html',
   './manifest.json',
-  './pwa/通勤.html',
-  './pwa/通勤任务.json',
+  './通勤库/通勤.html',
+  './通勤库/通勤任务.json',
 ];
 
 self.addEventListener('install', e => {

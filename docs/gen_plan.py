@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """学习计划表生成器：md 为唯一权威底，整张渲染 学习计划表.html（倒计时/今日卡/框勾选/图例）。
 用法：python3 gen_plan.py   生成后 git push 即可通过 PWA 查看。
-目录结构：资料/data/ = AI机器档(md/txt/json)，资料/source/ = 原件(doc/pdf/img)，docs/pwa/ = html人读版。
+目录结构：.ai-cache/ = AI机器档(md/json)，资料/ = 人看原件(doc/pdf/img/html)，docs/通勤库/ = 通勤页面+音频。
 表结构：| 日期 | 当天计划（🌅早 / 🏢公司404·301 / 🌙晚） | 完成情况（纯勾选，例外才备注） |"""
 import re, html, os, json
 D=os.path.dirname(os.path.abspath(__file__))  # docs/
@@ -30,7 +30,7 @@ for line in md.split("\n"):
         """根据计划项内容匹配通勤音频路径（非通勤资料手机上看不到，不生成链接）"""
         s=re.sub(r'^[🌅🏢🌙☀️]\s*','',seg).strip()
         L='.'    # 同目录(00_考试总览/)
-        R='..'   # 上一级(pwa/)
+        R='..'   # 上一级(通勤库/)
         AU=os.path.join(L,'通勤音频')
         T404AUDIO=os.path.join(R,'404_高中数学学科/404.05速记卡')
         audio_map={'01':'01_三观师德框架_朗读原文.html','02':'02_2020下解析_朗读原文.html',
@@ -234,6 +234,6 @@ open(os.path.join(src_dir,"学习计划表.html"),"w",encoding="utf-8").write(H)
 commute=[]
 for r in rows_meta:
     commute.append({"date":r["date"],"tasks":r["commute_tasks"]})
-json_path=os.path.join(D,"pwa","通勤任务.json")
+json_path=os.path.join(D,"通勤库","通勤任务.json")
 open(json_path,"w",encoding="utf-8").write(json.dumps(commute,ensure_ascii=False))
 print("rows:",len(rows)," we:",H.count('class="we"'))
