@@ -3,52 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <title>教资通勤</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: #fff8c6; color: #2b2b2b; line-height: 1.6;
-    padding: 16px 14px 40px;
-  }
-  .header {
-    text-align: center; margin-bottom: 16px;
-  }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #fff8c6; color: #2b2b2b; line-height: 1.6; padding: 12px 14px 40px; }
+  .header { text-align: center; margin-bottom: 12px; }
   .header h1 { font-size: 20px; color: #d6336c; }
-  .header .date { font-size: 14px; color: #888; margin-top: 4px; }
-  .card {
-    background: #fff; border-radius: 12px; padding: 14px 16px;
-    margin: 10px 0; box-shadow: 0 1px 4px rgba(0,0,0,.08);
-  }
-  .card .tag {
-    display: inline-block; font-size: 12px; font-weight: 700; border-radius: 20px;
-    padding: 3px 12px; margin-bottom: 8px;
-  }
+  .header .date { font-size: 13px; color: #888; margin-top: 2px; }
+  .card { background: #fff; border-radius: 12px; margin: 10px 0; box-shadow: 0 1px 4px rgba(0,0,0,.08); overflow: hidden; }
+  .card-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; cursor: pointer; }
+  .card-header .left { display: flex; align-items: center; gap: 8px; }
+  .tag { font-size: 12px; font-weight: 700; border-radius: 20px; padding: 3px 12px; }
   .tag-morning { background: #ffdeeb; color: #d6336c; }
-  .tag-evening  { background: #e8f4fd; color: #1a73e8; }
-  .task {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 10px 0; border-bottom: 1px solid #f0f0f0;
-  }
-  .task:last-child { border-bottom: none; }
-  .task .info { flex: 1; }
-  .task .info .title { font-size: 15px; font-weight: 600; }
-  .task .info .desc { font-size: 12px; color: #888; margin-top: 2px; }
-  .task audio { width: 100%; margin-top: 6px; }
-  .task .play-btn {
-    flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
-    border: none; background: #ff7ab8; color: #fff; font-size: 18px;
-    cursor: pointer; display: flex; align-items: center; justify-content: center;
-  }
-  .task .play-btn:active { background: #d6336c; }
-  .task .play-btn.playing { background: #d6336c; }
-  .done { text-decoration: line-through; opacity: .5; }
-  .check-btn {
-    flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
-    border: 2px solid #ddd; background: #fff; font-size: 14px;
-    cursor: pointer; margin-left: 8px;
-  }
+  .tag-evening { background: #e8f4fd; color: #1a73e8; }
+  .card-title { font-size: 15px; font-weight: 600; }
+  .card-desc { font-size: 12px; color: #888; }
+  .check-btn { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ddd; background: #fff; font-size: 14px; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
   .check-btn.done { background: #4caf50; border-color: #4caf50; color: #fff; }
+  .card-body { display: none; padding: 0 16px 14px; font-size: 14px; line-height: 1.8; }
+  .card-body.open { display: block; }
+  .card-body h4 { font-size: 14px; color: #d6336c; margin: 10px 0 4px; }
+  .card-body p { margin: 4px 0; }
+  .card-body .hl { color: #1a73e8; font-weight: 600; }
+  .card-body .key { background: #fff3bf; border-radius: 4px; padding: 1px 4px; }
   .empty { text-align: center; color: #999; padding: 30px 0; font-size: 14px; }
   footer { text-align: center; color: #aaa; font-size: 11px; margin-top: 20px; }
 </style>
@@ -59,22 +37,51 @@
   <div class="date" id="today-date"></div>
 </div>
 <div id="tasks"></div>
-<footer>通勤包 · 离线可用 · 资料更新后 git push 自动同步</footer>
+<footer>通勤包 · 离线可用 · 点击卡片展开背诵内容</footer>
 <script>
-// 通勤音频配置
-var AUDIO = {
-  '01': { title: '三观师德框架', desc: '职业理念+职业道德答题模板',
-          src: '00_考试总览/通勤音频/01_三观师德框架.m4a', text: '00_考试总览/通勤音频/01_三观师德框架_朗读原文.html' },
-  '02': { title: '2020下解析', desc: '真题讲解跟读',
-          src: '00_考试总览/通勤音频/02_2020下解析朗读.m4a', text: '00_考试总览/通勤音频/02_2020下解析_朗读原文.html' },
-  '03': { title: '作文升级版', desc: '万能五段式作文模板',
-          src: '00_考试总览/通勤音频/03_作文升级版.m4a', text: '00_考试总览/通勤音频/03_作文升级版_朗读原文.html' },
-  '04': { title: '301立意清单', desc: '作文立意素材',
-          src: '00_考试总览/通勤音频/04_301立意清单.m4a', text: '00_考试总览/通勤音频/04_301立意清单_朗读原文.html' },
-  '05': { title: '404速记卡', desc: '公式四簇晨背',
-          src: '404_高中数学学科/404.05速记卡/05_404速记卡.m4a', text: '404_高中数学学科/404.05速记卡/05_404速记卡_朗读原文.html' },
-  '06': { title: '主观题框架', desc: '简答/案例/设计套句',
-          src: '404_高中数学学科/404.05速记卡/06_主观题框架.m4a', text: '404_高中数学学科/404.05速记卡/06_主观题框架_朗读原文.html' }
+// 通勤资料内容（直接内嵌，离线可看）
+var CONTENT = {
+  '01': { title: '三观师德框架', desc: '职业理念+职业道德', content: [
+    {h:'教育观', p:'<span class="hl">素质教育内涵</span>：面向全体、全面发展、个性发展、创新实践。'},
+    {h:'教学观', p:'<span class="hl">四转变</span>：学习者为中心（启发引导）、关注人（鼓励安慰）、重过程（不直接给结论）、重创新。'},
+    {h:'学生观', p:'发展的人（相信能进步）、独特的人（因材施教）、独立意义的人（学习主体）。'},
+    {h:'教师观', p:'<span class="hl">常备四条</span>：促进者、研究者、课程建设开发者、尊重赞赏。<span class="hl">触发三条</span>：反思、合作、社区型开放教师。'},
+    {h:'职业道德六条', p:'爱国守法、爱岗敬业、关爱学生、教书育人、为人师表、终身学习。最常考：<span class="key">爱岗敬业、关爱学生、教书育人、为人师表</span>。'},
+  ]},
+  '02': { title: '2020下解析跟读', desc: '真题第15题论述题', content: [
+    {h:'题目', p:'结合实例阐述在中学数学教学中培养学生的数据分析能力的意义。'},
+    {h:'审题', p:'三个硬约束：①回应"大数据时代"②落到"中学数学课堂"③"结合实例"不可缺席。'},
+    {h:'选角度', p:'意义类＝XX对谁有价值 → 四主体：<span class="hl">学生·社会时代·课程学科·教学学法</span>。'},
+    {h:'关键课标句', p:'<span class="key">大数据时代数学应用的主要方法</span>、<span class="key">形成通过数据认识事物的思维品质</span>。开头引用即得分。'},
+    {h:'考场版(354字)', p:'开头引课标→社会意义(大数据公民素养)→课程意义(课标核心素养)→发展意义(科学精神+跨学科)→结尾学以致用。每点带例。'},
+  ]},
+  '03': { title: '作文模板', desc: '万能五段式', content: [
+    {h:'结构', p:'开头引题(100字)→分论点三段(每段200字)→结尾扣题(100字)。共约1000字。'},
+    {h:'开头模板', p:'"在XX的今天，XX的重要性日益凸显。作为教师，我们应当XX，让学生在XX中成长。"'},
+    {h:'分论点', p:'三个角度：<span class="hl">是什么(内涵)→为什么(意义)→怎么做(实践)</span>。每段：分论点句+理论+例子+小结。'},
+    {h:'结尾模板', p:'"总之，XX不是一句口号，而是需要教师XX、学生XX。只有这样，才能XX。"'},
+    {h:'注意事项', p:'<span class="key">开考75分钟必须开始写作文</span>，写够1000字再回头。'},
+  ]},
+  '04': { title: '301立意清单', desc: '作文立意素材', content: [
+    {h:'立意方向', p:'正面积极、教育相关、结合教师职业。'},
+    {h:'常用立意', p:'因材施教、终身学习、创新教学、关爱学生、榜样力量、实践出真知、合作共赢。'},
+    {h:'2020下', p:'"教育不能只教知识"→全面发展/素质教育。'},
+    {h:'2023上', p:'"教师是最好的引路人"→榜样示范/引导发现。'},
+    {h:'2024下', p:'"与时俱进的教育"→终身学习/创新适应。'},
+  ]},
+  '05': { title: '404速记卡', desc: '公式四簇', content: [
+    {h:'A 高数簇', p:'A1等价无穷小：sin x∼x∼tan x∼ln(1+x)∼eˣ−1；1−cos x∼x²/2。<br>A2重要极限：lim sin x/x=1；lim(1+1/x)ˣ=e。<br>A3极值：y′=0嫌疑点，左正右负=极大。<br>A4切线：k=y′(x₀)，y−y₀=k(x−x₀)。<br>A6隐函数：两边对x求导，带y′解出。'},
+    {h:'B 线代簇', p:'B1相关判定：det[a,b,c]=0〔年年考〕。<br>B2秩：r(A)=r(A|b)则有解。<br>B3通解：Ax=0基础解系×k；Ax=b特解+齐次。<br>B4恒等式：(AB)ᵀ=BᵀAᵀ；det(AB)=detA·detB；(A+B)²≠A²+2AB+B²。'},
+    {h:'C 解几概率', p:'C1截线：xy=k双曲线；x²+y²=r²圆；y=ax²抛物线。<br>C4垂直：a⊥b⇔a·b=0；cosθ=a·b/(‖a‖‖b‖)。<br>C7古典概率：数数/组合→比值。<br>C8至少一次：P=1−(1−p₁)(1−p₂)。'},
+    {h:'D 课标数学史', p:'D1六大素养：抽象、推理、建模、直观想象、运算、数据分析。<br>D2四主线：函数、几何与代数、概率统计、建模探究。<br>D3认人：吴文俊=机器证明；祖暅=幂势既同；《九章算术》=方程术。'},
+  ]},
+  '06': { title: '主观题框架', desc: '简答/案例/设计套句', content: [
+    {h:'简答三句法', p:'<span class="hl">结论句→定理/课标名→展开2句</span>。每题≤180字。'},
+    {h:'案例四角度', p:'情境创设是否合理→教学评价是否恰当→学生参与是否充分→教师引导是否有效。'},
+    {h:'教学设计五件套', p:'<span class="key">教学目标→重难点→教学环节+设计意图→板书设计→教学反思</span>。30分最大头。'},
+    {h:'论述', p:'照抄354字全稿(12分)+起笔3分。先写结论句，课标原话必背。'},
+    {h:'第一笔口诀', p:'求导题先写"令y′=0"；线代先写"r(A)=?"或"det=0"；概率先写事件定义+独立/互斥判定；解几先设法向量再点积。'},
+  ]},
 };
 
 // 从通勤任务 JSON 提取今天的通勤任务
@@ -91,7 +98,7 @@ function parseTodayTasks() {
       var morning = [], evening = [];
       if (today && today.tasks) {
         today.tasks.forEach(function(t) {
-          var item = AUDIO[t.audio];
+          var item = CONTENT[t.audio];
           if (item) {
             if (t.slot === 'morning') morning.push(item);
             else if (t.slot === 'evening') evening.push(item);
@@ -115,50 +122,51 @@ function renderTasks(data) {
   }
 
   if (data.morning.length > 0) {
-    html += '<div class="card"><span class="tag tag-morning">\u{1F305} 早通勤</span>';
+    html += '<div class="card"><span class="tag tag-morning" style="margin:12px 16px;display:inline-block">\u{1F305} 早通勤</span></div>';
     data.morning.forEach(function(item, i) {
       var id = 'm' + i;
-      html += '<div class="task" data-id="' + id + '">' +
-        '<div class="info">' +
-          '<div class="title">' + item.title + '</div>' +
-          '<div class="desc">' + item.desc + '</div>' +
-          '<audio id="audio-' + id + '" preload="none" style="width:100%;margin-top:6px">' +
-            '<source src="' + item.src + '" type="audio/mp4">' +
-          '</audio>' +
-          '<div style="margin-top:4px"><a href="' + item.text + '" target="_blank" style="font-size:12px;color:#1a73e8;text-decoration:none">\u{1F4D6} 看原文</a></div>' +
-        '</div>' +
-        '<button class="check-btn" onclick="toggleDone(this)"></button>' +
-      '</div>';
+      html += renderCard(id, item, 'morning');
     });
-    html += '</div>';
   }
 
   if (data.evening.length > 0) {
-    html += '<div class="card"><span class="tag tag-evening">\u{1F319} 晚通勤</span>';
+    html += '<div class="card"><span class="tag tag-evening" style="margin:12px 16px;display:inline-block">\u{1F319} 晚通勤</span></div>';
     data.evening.forEach(function(item, i) {
       var id = 'e' + i;
-      html += '<div class="task" data-id="' + id + '">' +
-        '<div class="info">' +
-          '<div class="title">' + item.title + '</div>' +
-          '<div class="desc">' + item.desc + '</div>' +
-          '<audio id="audio-' + id + '" preload="none" style="width:100%;margin-top:6px">' +
-            '<source src="' + item.src + '" type="audio/mp4">' +
-          '</audio>' +
-          '<div style="margin-top:4px"><a href="' + item.text + '" target="_blank" style="font-size:12px;color:#1a73e8;text-decoration:none">\u{1F4D6} 看原文</a></div>' +
-        '</div>' +
-        '<button class="check-btn" onclick="toggleDone(this)"></button>' +
-      '</div>';
+      html += renderCard(id, item, 'evening');
     });
-    html += '</div>';
   }
 
   container.innerHTML = html;
 }
 
+function renderCard(id, item, slot) {
+  var html = '<div class="card">' +
+    '<div class="card-header" onclick="toggleCard(\'' + id + '\')">' +
+      '<div class="left">' +
+        '<div><span class="card-title">' + item.title + '</span>' +
+        '<br><span class="card-desc">' + item.desc + '</span></div>' +
+      '</div>' +
+      '<button class="check-btn" onclick="event.stopPropagation();toggleDone(this)"></button>' +
+    '</div>' +
+    '<div class="card-body" id="' + id + '">';
+
+  item.content.forEach(function(c) {
+    html += '<h4>' + c.h + '</h4><p>' + c.p + '</p>';
+  });
+
+  html += '</div></div>';
+  return html;
+}
+
+function toggleCard(id) {
+  var body = document.getElementById(id);
+  body.classList.toggle('open');
+}
+
 function toggleDone(btn) {
   btn.classList.toggle('done');
-  var task = btn.closest('.task');
-  task.classList.toggle('done');
+  var card = btn.closest('.card');
   if (btn.classList.contains('done')) btn.textContent = '\u2713';
   else btn.textContent = '';
 }
