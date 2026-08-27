@@ -5,7 +5,7 @@
 表结构：| 日期 | 当天计划（🌅早 / 🏢公司404·301 / 🌙晚） | 完成情况（纯勾选，例外才备注） |"""
 import re, html, os, json
 D=os.path.dirname(os.path.abspath(__file__))  # docs/
-md=open(os.path.join(D,"..","资料","data","00_考试总览","学习计划表.md"),encoding="utf-8").read()
+md=open(os.path.join(D,"..",".ai-cache","00_考试总览","学习计划表.md"),encoding="utf-8").read()
 def fmt(t):  # escape 后把 **xx** 变粗体
     return re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", html.escape(t))
 
@@ -226,7 +226,7 @@ H=f'''<!DOCTYPE html>
 </body>
 </html>'''
 # 学习计划表 html 输出到 资料/source/
-src_dir=os.path.join(D,"..","资料","source","00_考试总览")
+src_dir=os.path.join(D,"..","资料","00_考试总览")
 os.makedirs(src_dir,exist_ok=True)
 open(os.path.join(src_dir,"学习计划表.html"),"w",encoding="utf-8").write(H)
 
