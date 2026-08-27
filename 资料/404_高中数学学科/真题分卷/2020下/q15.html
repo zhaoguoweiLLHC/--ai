@@ -84,7 +84,7 @@
     border:8px solid transparent;border-top-color:#fff}
   .tip-box b.pk{color:#d6336c}
   .tip-box mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:3px}
-  .tip:hover .tip-box,.tip.tip-open .tip-box{display:block}
+  .tip:hover .tip-box{display:block}
 </style>
 </head>
 <body>
@@ -126,15 +126,6 @@
     <p style="margin:0 0 0;font-size:14px"><b>换个知识点（建模/直观想象…）怎么办：</b>角度库原样用，内容必须换成该点的课标原话——<b class="pk">角度是模板，内容不是</b>。</p>
   </div>
 
-  <div class="block k-gold">
-    <h3>🧭 三档结构说明（先读图例看图｜通用规则见 CLAUDE.md，各年解析不再重复）</h3>
-    <ul style="margin:4px 0;padding-left:20px">
-      <li><b>分工</b>：🏆 一档＝在家学习"往满分长"（考场不整篇抄它）；🎯 二档＝考场按时间预算照抄；🛟 三档＝一点不会/时间崩盘时蹭底分。</li>
-      <li><b>过渡</b>：二档写完有余 3–4 分钟 → 补一条点句 ≈ +1 分（④形成用数据判断的求实态度；⑤促进学习方式转变与跨学科融合）；二档写不完 → 从每点<b class="pk">句末黄色例子往前砍</b>，黑色结论句一字不砍（阅卷标准就在这句上）；砍到底＝三档。</li>
-      <li><b>为什么二档是主角</b>：二档比一档少约 2 分，但省下的 ≈10 分钟让给<b>本科其余大题</b>（教学设计 30 分＋案例 20 分＝又一个 <span class="pk">50 分池</span>）；而 650 字你 22 分钟写不完，中途断尾的残稿反而只值 8–9 分。阅卷按点给分，写上的全拿。（预估分只看各档标题，不重复。）</li>
-    </ul>
-    <p style="margin:8px 0 0"><b>🎨 颜色图例</b>：档底色＝<span style="color:#1971c2">蓝=满分目标（在家学）</span> / <span style="color:#2b8a3e">绿=考场实际（主角）</span> / <span style="color:#c92a2a">红=救命兜底（警示）</span>；文内＝<span class="pt">红字＝得分点标题/层次/问点词</span>、<mark>蓝＝课标核心句（必背·照抄·阅卷认它；其余课标黑字读语境）</mark>、<span class="ex">黄底＝例子（可砍）</span>、黑字＝结论句（阅卷标准，一字不砍）。</p>
-  </div>
 
   <div class="block t-full">
     <h3>🏆 第一档 · 满分版 · 实测529字（慢手写≈18分钟❌ · 预估13–15分｜<b>在家学习用，考场不整篇抄它</b>）</h3>
@@ -166,6 +157,8 @@
     <p style="font-size:13px;color:#777">三句＝素养名＋课标原话＋过程六环节＋例；阅卷按词给分，这几个词全中就有底分。</p>
   </div>
 
+  <p style="text-align:center;margin:10px 0"><a href="../../三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></p>
+
   <div class="block k-gold">
     <h3>💡 得分技巧</h3>
     <ul class="tips">
@@ -179,7 +172,7 @@
 </section>
 <footer>单题页 ｜ 打印：Cmd+P 存 PDF ｜ 其他题见 <a href="解析.html">目录</a></footer>
 <script>
-// 课标原文 tooltip：自动给指向课标PDF的超链接加tooltip
+// 课标原文 tooltip：hover显示原文，点击仍跳转PDF
 (function(){
   var texts={
     'page=12':'数学学科核心素养包括：数学抽象、逻辑推理、数学建模、直观想象、数学运算和<b class="pk">数据分析</b>。',
@@ -190,17 +183,11 @@
     if(!m) return;
     var key='page='+m[1];
     if(!texts[key]) return;
-    // 保留原始href用于"查看PDF"链接
     a.classList.add('tip');
     var box=document.createElement('span');
     box.className='tip-box';
-    box.innerHTML=texts[key]+'<br><br><a href="'+a.getAttribute('href')+'" target="_blank" style="font-size:12px;color:#1971c2">📖 跳转课标PDF第'+m[1]+'页 ↗</a>';
+    box.innerHTML=texts[key];
     a.appendChild(box);
-    // 手机端点击切换
-    a.addEventListener('click',function(e){
-      if(!e.target.closest('.tip-box')) e.preventDefault();
-      a.classList.toggle('tip-open');
-    });
   });
 })();
 </script>
