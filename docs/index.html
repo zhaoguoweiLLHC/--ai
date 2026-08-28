@@ -60,8 +60,15 @@
 <script>
 // 注册 Service Worker
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js').then(reg => {
+  navigator.serviceWorker.register('./sw.js?v=2').then(reg => {
     document.getElementById('status').textContent = '已缓存·可离线';
+    // 检查是否有新版本
+    reg.addEventListener('updatefound', () => {
+      var nw = reg.installing;
+      nw.addEventListener('statechange', () => {
+        if (nw.state === 'activated') location.reload();
+      });
+    });
   }).catch(() => {
     document.getElementById('status').textContent = '在线模式';
   });
