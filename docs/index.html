@@ -73,6 +73,11 @@ document.getElementById('frame').addEventListener('load', () => {
   document.getElementById('status').textContent = '已缓存·可离线';
 });
 
+// 3秒超时也隐藏loading（防止iframe卡住）
+setTimeout(() => {
+  document.getElementById('loading').classList.add('hide');
+}, 3000);
+
 // 刷新：清除SW缓存 + 强制重新加载
 function refresh() {
   document.getElementById('status').textContent = '更新中…';
