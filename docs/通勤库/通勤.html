@@ -84,6 +84,15 @@ var CONTENT = {
   ]},
 };
 
+// 模板图片
+var IMAGES = [
+  { title: '教育观答题模板', desc: '301 材料分析必背', src: '301_综合素质/301.02职业理念答题模板/教育观答题模板.webp' },
+  { title: '学生观答题模板', desc: '301 材料分析必背', src: '301_综合素质/301.02职业理念答题模板/学生观答题模板.jpg' },
+  { title: '教师观答题模板', desc: '301 材料分析必背', src: '301_综合素质/301.02职业理念答题模板/教师观答题模板.webp' },
+  { title: '师德答题模板', desc: '301 材料分析必背', src: '301_综合素质/师德答题模板.jpg' },
+  { title: '作文模板', desc: '301 万能五段式', src: '301_综合素质/作文模板.webp' },
+];
+
 // 显示所有背诵资料
 function renderAll() {
   var d = new Date();
@@ -96,6 +105,12 @@ function renderAll() {
     var item = CONTENT[key];
     var id = 'card' + i;
     html += renderCard(id, item);
+  });
+  // 模板图片卡片
+  html += '<div class="card"><span class="tag" style="margin:12px 16px;display:inline-block;background:#fff3bf;color:#b26a00">📋 301答题模板图片</span></div>';
+  IMAGES.forEach(function(img, i) {
+    var id = 'img' + i;
+    html += renderImageCard(id, img);
   });
   container.innerHTML = html;
 }
@@ -116,6 +131,21 @@ function renderCard(id, item) {
   });
 
   html += '</div></div>';
+  return html;
+}
+
+function renderImageCard(id, img) {
+  var html = '<div class="card">' +
+    '<div class="card-header" onclick="toggleCard(\'' + id + '\')">' +
+      '<div class="left">' +
+        '<div><span class="card-title">' + img.title + '</span>' +
+        '<br><span class="card-desc">' + img.desc + '</span></div>' +
+      '</div>' +
+      '<button class="check-btn" onclick="event.stopPropagation();toggleDone(this)"></button>' +
+    '</div>' +
+    '<div class="card-body" id="' + id + '">' +
+      '<img src="' + img.src + '" style="width:100%;border-radius:8px;margin:4px 0" />' +
+    '</div></div>';
   return html;
 }
 
