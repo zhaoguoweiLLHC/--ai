@@ -106,6 +106,9 @@ function renderAll() {
     var id = 'img' + i;
     html += renderImageCard(id, img);
   });
+  // 真题解析链接
+  html += '<div class="card"><span class="tag" style="margin:12px 16px;display:inline-block;background:#e8f4fd;color:#1a73e8">📖 2020下真题解析</span></div>';
+  html += '<div class="card" style="cursor:pointer" onclick="window.open(\'404_高中数学学科/真题分卷/2020下/解析.html\',\'_blank\')"><div class="card-header"><div class="left"><div><span class="card-title">2020下解析目录</span><br><span class="card-desc">第15题论述题 · 第16题案例分析</span></div></div></div></div>';
   container.innerHTML = html;
 }
 
