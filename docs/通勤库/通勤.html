@@ -100,12 +100,6 @@ function renderAll() {
 
   var container = document.getElementById('tasks');
   var html = '';
-  var keys = ['01','02','03','04','05','06'];
-  keys.forEach(function(key, i) {
-    var item = CONTENT[key];
-    var id = 'card' + i;
-    html += renderCard(id, item);
-  });
   // 模板图片卡片
   html += '<div class="card"><span class="tag" style="margin:12px 16px;display:inline-block;background:#fff3bf;color:#b26a00">📋 301答题模板图片</span></div>';
   IMAGES.forEach(function(img, i) {
