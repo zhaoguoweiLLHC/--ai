@@ -223,7 +223,10 @@ function renderPlan(data){
   var tfBody=document.getElementById('tf-body');
   if(todayRow){
     var tds=todayRow.querySelectorAll('td');
-    tfBody.innerHTML='① 今天计划：'+tds[1].textContent.trim()+'<br>② 完成情况：'+tds[2].textContent.trim();
+    // 复制列表结构到今日卡片
+    var planHtml=tds[1].innerHTML;
+    var statusHtml=tds[2].innerHTML;
+    tfBody.innerHTML='<b>① 今天计划：</b>'+planHtml+'<br><b>② 完成情况：</b>'+statusHtml;
     todayRow.scrollIntoView({block:'center'});
   } else {
     tfBody.innerHTML=todayKey+' 不在排期内';
