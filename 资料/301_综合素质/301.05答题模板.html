@@ -165,15 +165,15 @@ function renderEssay(){
     }
   });
 
-  // 2. 生成1200格的格子纸
-  var html='<div class="grid-wrap"><div class="grid-container"><div class="grid-row"><div class="grid-segline"></div><div class="grid-paper">';
+  // 2. 生成1200格的格子纸，段名在格子纸外部左侧
+  var html='<div class="grid-wrap"><div class="grid-container"><div class="grid-paper">';
   for(var row=0;row<totalLines;row++){
     html+='<div class="grid-line">';
     for(var col=0;col<lineLen;col++){
       var idx=row*lineLen+col;
-      // 段名
+      // 段名在行首格子外部
       if(segLabels[idx] && col===0){
-        html+='<span class="grid-segline">'+segLabels[idx]+'</span>';
+        html+='<span class="grid-seglabel">'+segLabels[idx]+'</span>';
       }
       var cell=gridContent[idx];
       if(cell && cell.char){
@@ -184,7 +184,6 @@ function renderEssay(){
       } else {
         html+='<span class="grid-empty"></span>';
       }
-      // 200字标记
       if((idx+1)%200===0 && idx+1<=totalGrids){
         html+='<span class="grid-mark">'+(idx+1)+'</span>';
       }
@@ -204,7 +203,7 @@ updateTotal();
 <div id="essay-output"></div>
 <script>
 renderEssay();
-document.write('<style>.grid-container{display:inline-block;margin:0 auto;position:relative}.grid-paper{background:#fff;border:1px solid #ddd;border-radius:8px;padding:0;display:inline-block;position:relative}.grid-line{display:flex;flex-wrap:nowrap;padding:0;position:relative;min-height:32px}.grid-char{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;font-size:16px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;flex-shrink:0;box-sizing:border-box}.grid-char:nth-child(20){border-right:none}.grid-empty{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;flex-shrink:0;box-sizing:border-box}.grid-empty:nth-child(20){border-right:none}.grid-mark{position:absolute;right:-56px;top:50%;transform:translateY(-50%);font-size:12px;color:#d6336c;font-weight:700;white-space:nowrap}.grid-segline{display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:12px;font-weight:600;color:#d6336c;text-align:right;min-height:32px;width:110px;flex-shrink:0}.grid-segline .gc{font-weight:400;color:#888;font-size:11px}.grid-segline button{font-size:11px;padding:1px 8px;border:1px solid #ff7ab8;border-radius:10px;background:#fff;color:#d6336c;cursor:pointer;margin-top:2px}.grid-row{display:flex;align-items:stretch}.grid-wrap{text-align:center}.grid-toolbar{text-align:center;margin:8px 0}</style>');
+document.write('<style>.grid-container{display:inline-block;margin:0 auto;position:relative}.grid-paper{background:#fff;border:1px solid #ddd;border-radius:8px;padding:0;display:inline-block;position:relative}.grid-line{display:flex;flex-wrap:nowrap;padding:0;position:relative;min-height:32px}.grid-char{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;font-size:16px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;flex-shrink:0;box-sizing:border-box}.grid-char:nth-child(20){border-right:none}.grid-empty{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;flex-shrink:0;box-sizing:border-box}.grid-empty:nth-child(20){border-right:none}.grid-mark{position:absolute;right:-40px;top:50%;transform:translateY(-50%);font-size:12px;color:#d6336c;font-weight:700;white-space:nowrap}.grid-seglabel{position:absolute;left:-130px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:600;color:#d6336c;text-align:right;width:120px;white-space:nowrap;line-height:1.4}.grid-seglabel button{font-size:11px;padding:1px 8px;border:1px solid #ff7ab8;border-radius:10px;background:#fff;color:#d6336c;cursor:pointer;margin-top:2px}.grid-wrap{text-align:center}.grid-toolbar{text-align:center;margin:8px 0}</style>');
 var absPos=0;
 essaySections.forEach(function(s,i){
   var count=s.text.replace(/\s/g,'').length;
