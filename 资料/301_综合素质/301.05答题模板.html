@@ -132,17 +132,16 @@ function renderEssay(){
 
   essaySections.forEach(function(s,i){
     var count=s.text.replace(/\s/g,'').length;
-    var segLabel='<div class="grid-seglabel">'+s.title+'<br><span class="gc">（'+count+'字）</span>';
+    var labelHtml=s.title+' ('+count+'字)';
     if(s.introToggle){
-      segLabel+='<br><button onclick="toggleIntro()">'+(useMainIntro?'切换备用开头':'切换主开头')+'</button>';
+      labelHtml+='<br><button onclick="toggleIntro()" style="font-size:11px;padding:1px 8px;border:1px solid #ff7ab8;border-radius:10px;background:#fff;color:#d6336c;cursor:pointer">'+(useMainIntro?'切换备用开头':'切换主开头')+'</button>';
     }
-    segLabel+='</div>';
 
     if(s.title.indexOf('标题')===0){
       var titleChars=s.text.split('');
       var pad=Math.floor((20-titleChars.length)/2);
       html+='<div class="grid-line">';
-      html+=segLabel;
+      html+='<span class="grid-seglabel">'+labelHtml+'</span>';
       for(var p=0;p<pad;p++){ html+='<span class="grid-empty"></span>'; absPos++; }
       for(var t=0;t<titleChars.length;t++){
         html+='<span class="grid-char"><b>'+titleChars[t]+'</b></span>';
@@ -157,13 +156,15 @@ function renderEssay(){
 
     var fullText='\u3000\u3000'+s.text;
     var chars=fullText.split('');
+    var labelAdded=false;
     for(var j=0;j<chars.length;j++){
       if(j%lineLen===0){
         if(j>0) html+='</div>';
         html+='<div class="grid-line">';
-        if(j===0){
-          html+=segLabel;
-        }
+      }
+      // 在每段第一个格子的位置加左侧标签
+      if(j===0){
+        html+='<span class="grid-seglabel">'+labelHtml+'</span>';
       }
       var charStyle='';
       if(chars[j]==='X') charStyle=' style="background:#e8f4fd;color:#1971c2;font-weight:700"';
