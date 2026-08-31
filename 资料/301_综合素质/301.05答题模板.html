@@ -113,25 +113,35 @@ var essaySections=[
 var totalAll=0;
 essaySections.forEach(function(s){totalAll+=s.text.replace(/\s/g,'').length});
 document.getElementById('total-count').textContent='共'+totalAll+'字';
-document.write('<style>.grid-paper{background:#fff;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin:8px 0}.grid-line{display:flex;flex-wrap:wrap;border-bottom:1px solid #f0f0f0;min-height:30px;padding:2px 0}.grid-char{display:inline-flex;align-items:center;justify-content:center;width:22px;height:26px;font-size:16px;border-right:1px solid #f5f5f5}.grid-char:nth-child(20){border-right:none}.grid-label{font-size:14px;font-weight:600;color:#d6336c;margin:12px 0 4px}.grid-count{font-weight:400;color:#888;font-size:13px}.grid-mark{background:#fff8c6;border-radius:4px;padding:1px 4px;font-size:12px;color:#b26a00}</style>');
+document.write('<style>.grid-paper{background:#fff;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin:8px 0}.grid-line{display:flex;flex-wrap:wrap;border-bottom:1px solid #f0f0f0;min-height:30px;padding:2px 0}.grid-char{display:inline-flex;align-items:center;justify-content:center;width:22px;height:26px;font-size:16px;border-right:1px solid #f5f5f5}.grid-char:nth-child(20){border-right:none}.grid-empty{width:22px;height:26px;border-right:1px solid #f5f5f5;display:inline-block}.grid-label{font-size:14px;font-weight:600;color:#d6336c;margin:12px 0 4px}.grid-count{font-weight:400;color:#888;font-size:13px}.grid-title{text-align:center;font-size:18px;font-weight:700;margin:8px 0;padding:8px 0;letter-spacing:3px}</style>');
+var absBase=0;
 essaySections.forEach(function(s,i){
-  var chars=s.text.split('');
   var count=s.text.replace(/\s/g,'').length;
   document.write('<div class="grid-label">'+s.title+' <span class="grid-count">（'+count+'字）</span></div>');
   document.write('<div class="grid-paper">');
+  // 标题居中
+  if(s.title==='标题'){
+    document.write('<div class="grid-title">'+s.text+'</div></div>');
+    absBase+=count;
+    return;
+  }
+  // 正文段首缩进两格：在文本前加两个全角空格
+  var fullText='\u3000\u3000'+s.text;
+  var chars=fullText.split('');
   var lineLen=20;
   for(var j=0;j<chars.length;j++){
-    if(j%lineLen===0 && j>0) document.write('</div><div class="grid-line">');
-    if(j%lineLen===0) document.write('<div class="grid-line">');
+    if(j%lineLen===0){
+      if(j>0) document.write('</div>');
+      document.write('<div class="grid-line">');
+    }
+    var absPos=absBase+j-1; // 缩进空格不算字数
+    if(absPos<absBase) absPos=absBase; // 空格位置
     var markClass='';
-    // 标记1000字位置
-    var absCount=0;
-    for(var k=0;k<i;k++) absCount+=essaySections[k].text.replace(/\s/g,'').length;
-    absCount+=j+1;
-    if(absCount===1000) markClass=' style="background:#fff3bf;color:#d6336c"';
+    if(absPos===999) markClass=' style="background:#fff3bf;color:#d6336c"'; // 第1000字
     document.write('<span class="grid-char"'+markClass+'>'+chars[j]+'</span>');
   }
   document.write('</div></div>');
+  absBase+=count;
 });
 </script>
 
