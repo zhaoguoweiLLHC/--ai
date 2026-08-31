@@ -113,13 +113,14 @@ var essaySections=[
 var totalAll=0;
 essaySections.forEach(function(s){totalAll+=s.text.replace(/\s/g,'').length});
 document.getElementById('total-count').textContent='共'+totalAll+'字';
-document.write('<style>.grid-paper{background:#fff;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin:8px 0;overflow-x:auto}.grid-line{display:flex;flex-wrap:wrap;padding:0}.grid-char{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;font-size:16px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee}.grid-char:nth-child(20){border-right:none}.grid-empty{width:32px;height:32px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;display:inline-block}.grid-empty:nth-child(20){border-right:none}.grid-label{font-size:14px;font-weight:600;color:#d6336c;margin:12px 0 4px}.grid-count{font-weight:400;color:#888;font-size:13px}.grid-title{text-align:center;font-size:18px;font-weight:700;margin:8px 0;padding:8px 0;letter-spacing:3px}</style>');
-var absPos=0; // 格子位置（含缩进空格）
+document.write('<style>.grid-paper{background:#fff;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin:8px auto;overflow-x:auto;width:fit-content;max-width:100%}.grid-line{display:flex;flex-wrap:nowrap;padding:0}.grid-char{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;font-size:16px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;flex-shrink:0}.grid-char:nth-child(20){border-right:none}.grid-empty{width:32px;height:32px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;display:inline-block;flex-shrink:0}.grid-empty:nth-child(20){border-right:none}.grid-label{font-size:14px;font-weight:600;color:#d6336c;margin:12px 0 4px;text-align:center}.grid-count{font-weight:400;color:#888;font-size:13px}.grid-wrap{text-align:center}.grid-title{text-align:center;font-size:18px;font-weight:700;margin:8px 0;padding:8px 0;letter-spacing:3px}</style>');
+var absPos=0;
 essaySections.forEach(function(s,i){
   var count=s.text.replace(/\s/g,'').length;
+  document.write('<div class="grid-wrap">');
   document.write('<div class="grid-label">'+s.title+' <span class="grid-count">（'+count+'字）</span></div>');
   document.write('<div class="grid-paper">');
-  // 标题放进格子，居中（前面补空格）
+  // 标题放进格子，居中
   if(s.title==='标题'){
     var titleChars=s.text.split('');
     var pad=Math.floor((20-titleChars.length)/2);
@@ -131,7 +132,7 @@ essaySections.forEach(function(s,i){
       document.write('<span class="grid-char"'+mc+'><b>'+titleChars[t]+'</b></span>');
       absPos++;
     }
-    document.write('</div></div>');
+    document.write('</div></div></div>');
     return;
   }
   // 正文段首缩进两格
@@ -144,11 +145,15 @@ essaySections.forEach(function(s,i){
       document.write('<div class="grid-line">');
     }
     var markClass='';
-    if(absPos===999) markClass=' style="background:#fff3bf;color:#d6336c"'; // 第1000格
-    document.write('<span class="grid-char"'+markClass+'>'+chars[j]+'</span>');
+    if(absPos===999) markClass=' style="background:#fff3bf;color:#d6336c"';
+    // 高亮所有XX
+    var charStyle=markClass;
+    if(chars[j]==='X' && !charStyle) charStyle=' style="background:#e8f4fd;color:#1971c2;font-weight:700"';
+    else if(chars[j]==='X' && charStyle) charStyle=' style="background:#e8f4fd;color:#1971c2;font-weight:700"';
+    document.write('<span class="grid-char"'+charStyle+'>'+chars[j]+'</span>');
     absPos++;
   }
-  document.write('</div></div>');
+  document.write('</div></div></div>');
 });
 </script>
 
