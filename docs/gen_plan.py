@@ -27,40 +27,28 @@ for line in md.split("\n"):
     if note_m: act=act[:note_m.start()].strip()
     # 按时段符号拆成 <ul><li> 列表（计划列用）
     def link_for(seg):
-        """根据计划项内容匹配通勤音频路径（非通勤资料手机上看不到，不生成链接）"""
+        """根据计划项内容匹配资料文件路径（从 资料/00_考试总览/ 出发）"""
         s=re.sub(r'^[🌅🏢🌙☀️]\s*','',seg).strip()
-        # 计划表在 资料/00_考试总览/，通勤音频在 docs/通勤库/00_考试总览/通勤音频/
-        AU='../../docs/通勤库/00_考试总览/通勤音频'
-        T404AUDIO='../../docs/通勤库/404_高中数学学科/404.05速记卡'
-        audio_map={'01':'01_三观师德框架_朗读原文.html','02':'02_2020下解析_朗读原文.html',
-                   '03':'03_作文升级版_朗读原文.html','04':'04_301立意清单_朗读原文.html',
-                   '05':'05_404速记卡_朗读原文.html','06':'06_主观题框架_朗读原文.html'}
-        audio_dir={'01':AU,'02':AU,'03':AU,'04':AU,
-                   '05':T404AUDIO, '06':T404AUDIO}
-        # 通勤音频编号 01-06（含组合如 01+03、03+04）
-        am=re.match(r'^(0[1-6])(\+0[1-6])*$', s)
-        if am:
-            n=s[:2]
-            return os.path.join(audio_dir.get(n,AU), audio_map.get(n,''))
-        # 01框架 / 06框架 = 音频01/06 + 框架
-        if re.match(r'^0[1-6]框架', s):
-            n=s[:2]
-            return os.path.join(audio_dir.get(n,AU), audio_map.get(n,''))
-        # 02朗读 / 02 朗读（无前导0）
-        am2=re.match(r'^0?([1-6])\s*(朗读|朗读\()', s)
-        if am2:
-            n='0'+am2.group(1)
-            return os.path.join(audio_dir.get(n,AU), audio_map.get(n,''))
-        # 立意 = 音频04
-        if '立意' in s:
-            return os.path.join(AU,'04_301立意清单_朗读原文.html')
-        # 03 作文 = 音频03
-        if '作文' in s:
-            return os.path.join(AU,'03_作文升级版_朗读原文.html')
-        # 三观/师德 = 音频01
-        if '三观' in s or '师德' in s or '教师观' in s or '学生观' in s or '教育观' in s:
-            return os.path.join(AU,'01_三观师德框架_朗读原文.html')
-        # 其余非通勤资料（404速记卡/框架/真题/301模板等）手机上看不到，不生成链接
+        R='../../'  # 从 资料/00_考试总览/ 到项目根
+        # 404速记卡
+        if '速记卡' in s or '卡A簇' in s or '卡B簇' in s or '卡C簇' in s or '卡D簇' in s:
+            return R+'资料/404_高中数学学科/404.05速记卡/404速记卡.html'
+        # 404主观题框架
+        if '框架' in s and ('404' in s or '主观' in s or '五类' in s or '终背' in s):
+            return R+'资料/404_高中数学学科/404.05速记卡/404主观题框架.html'
+        # 301答题模板升级版
+        if '模板' in s and '301' in s:
+            return R+'资料/301_综合素质/301.05答题模板升级版.html'
+        # 2020下解析
+        if '2020下' in s and ('解析' in s or '第15' in s or '第16' in s or '第17' in s or '整卷' in s or '大题' in s):
+            return R+'资料/404_高中数学学科/真题分卷/2020下/解析.html'
+        # 其他年份真题
+        vm=re.search(r'(20\d{2}[上下])', s)
+        if vm:
+            y=vm.group(1)
+            fp=R+'资料/404_高中数学学科/真题分卷/'+y+'/'
+            if '第15' in s or '第16' in s or '第17' in s or '大题' in s or '整卷' in s:
+                return fp+'解析.html'
         return ''
     def to_list(s):
         segs=re.split(r' (?=🌅|🏢|🌙|☀️)', s.strip())
