@@ -180,7 +180,18 @@ function renderEssay(){
     }
     html+='</div></div></div>'; // 关闭grid-line, grid-paper, grid-row
   });
-  html+='</div></div>';
+  // 补满到1200格（60行x20格）
+  var totalGrids=1200;
+  while(absPos<totalGrids){
+    if(absPos%lineLen===0){
+      if(absPos>0) html+='</div>';
+      html+='<div class="grid-line">';
+    }
+    html+='<span class="grid-empty"></span>';
+    absPos++;
+    if(absPos>0 && absPos%200===0){ html+='<span class="grid-mark">'+absPos+'</span>'; }
+  }
+  html+='</div></div></div>';
   out.innerHTML=html;
 }
 function toggleIntro(){
