@@ -172,8 +172,13 @@ function renderEssay(){
         html+='<span class="grid-mark">'+absPos+'</span>';
       }
     }
-    html+='</div></div>'; // 关闭最后一个grid-line里的grid-paper和grid-row
-    html+='</div>'; // 关闭grid-line
+    // 补满当前行到20格
+    var remainder=chars.length%lineLen;
+    if(remainder>0){
+      for(var r=0;r<lineLen-remainder;r++){ html+='<span class="grid-empty"></span>'; absPos++; }
+      if(absPos>0 && absPos%200===0){ html+='<span class="grid-mark">'+absPos+'</span>'; }
+    }
+    html+='</div></div>'; // 关闭grid-paper和grid-row
   });
   html+='</div></div>';
   out.innerHTML=html;
