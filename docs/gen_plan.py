@@ -128,10 +128,8 @@ H=f'''<!DOCTYPE html>
   th:nth-child(4),td:nth-child(4){{width:12%}}
   .seg li:last-child{{border-bottom:none !important}}
   .seg-li{{display:block;border-bottom:1px solid #e0e0e0;padding:4px 8px;margin:0;height:28px;line-height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
-  .seg-li a:hover{{background:#fffbe6;border-radius:4px}}
   .seg-li a{{text-decoration:none;color:#1971c2}}
-  .seg-li a:hover{{text-decoration:underline}}
-  .seg-li a{{text-decoration:none;color:inherit}}
+  .seg-li a:hover{{background:#fffbe6;border-radius:4px;text-decoration:underline}}
   th{{background:#f9f9f9}}
   tr.we{{background:#f3fbf3}}
   tr.today{{background:#ffe9a8;outline:3px solid #ffb400;outline-offset:-2px}}
