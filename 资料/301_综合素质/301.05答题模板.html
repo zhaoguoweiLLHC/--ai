@@ -119,10 +119,19 @@ essaySections.forEach(function(s,i){
   var count=s.text.replace(/\s/g,'').length;
   document.write('<div class="grid-label">'+s.title+' <span class="grid-count">（'+count+'字）</span></div>');
   document.write('<div class="grid-paper">');
-  // 标题居中
+  // 标题放进格子，居中（前面补空格）
   if(s.title==='标题'){
-    document.write('<div class="grid-title">'+s.text+'</div></div>');
-    absPos+=s.text.length; // 标题也算格子
+    var titleChars=s.text.split('');
+    var pad=Math.floor((20-titleChars.length)/2);
+    document.write('<div class="grid-line">');
+    for(var p=0;p<pad;p++){ document.write('<span class="grid-empty"></span>'); absPos++; }
+    for(var t=0;t<titleChars.length;t++){
+      var mc='';
+      if(absPos===999) mc=' style="background:#fff3bf;color:#d6336c"';
+      document.write('<span class="grid-char"'+mc+'><b>'+titleChars[t]+'</b></span>');
+      absPos++;
+    }
+    document.write('</div></div>');
     return;
   }
   // 正文段首缩进两格
