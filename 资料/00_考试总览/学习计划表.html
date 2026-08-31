@@ -231,6 +231,8 @@ function renderPlan(data){
 }
 
 renderPlan(JSON.parse(document.getElementById('plan-data').textContent));
+// 如果有HTTP服务，优先用fetch读外部JSON（改JSON不用改HTML）
+fetch('学习计划表.json').then(r=>r.json()).then(renderPlan).catch(function(){});
 </script>
 </body>
 </html>
