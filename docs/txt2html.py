@@ -90,6 +90,7 @@ def convert(src, title=None):
     if in_ul: body_html.append('</ul>')
     if in_table: body_html.append('</table>')
 
+    body_content = '\n'.join(body_html) if any(p.startswith('<h1>') for p in body_html) else '<h1>'+html.escape(title)+'</h1>\n'+'\n'.join(body_html)
     h = '''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -116,10 +117,9 @@ def convert(src, title=None):
 </style>
 </head>
 <body>
-<h1>%s</h1>
 %s
 </body>
-</html>''' % (html.escape(title), html.escape(title), '\n'.join(body_html))
+</html>''' % (html.escape(title), body_content)
 
     open(out, 'w', encoding='utf-8').write(h)
     return out
