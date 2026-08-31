@@ -42,6 +42,10 @@ def convert(src, title=None):
             if m:
                 body_parts.append('<li>%s</li>' % fmt(m.group(2)))
                 continue
+        # Markdown 表格：| xxx | yyy | 格式
+        if re.match(r'^\|.*\|\s*$', line):
+            body_parts.append('TABLE:'+line)
+            continue
         # 通用：全角空格开头 = 缩进说明
         if line.startswith('　'):
             body_parts.append('<p style="margin:2px 0;padding-left:1.5em;color:#555">%s</p>' % fmt(line.strip()))
@@ -50,21 +54,41 @@ def convert(src, title=None):
         body_parts.append('<p style="margin:4px 0">%s</p>' % fmt(line))
 
     # 组装列表：连续 <li> 包进 <ul>
+    # 组装表格：连续 TABLE: 行转为 <table>
     body_html = []
     in_ul = False
+    in_table = False
     for p in body_parts:
         if p.startswith('<li>'):
+            if in_table: body_html.append('</table>'); in_table=False
             if not in_ul:
                 body_html.append('<ul style="padding-left:22px">')
                 in_ul = True
             body_html.append(p)
+        elif p.startswith('TABLE:'):
+            if in_ul: body_html.append('</ul>'); in_ul=False
+            if not in_table:
+                body_html.append('<table style="width:100%;border-collapse:collapse;margin:8px 0;font-size:13.5px">')
+                in_table = True
+                is_header = True
+            else:
+                is_header = False
+            # 解析表格行
+            cells = [c.strip() for c in p[6:].strip('|').split('|')]
+            # 跳过分隔行 |---|---|
+            if all(re.match(r'^[-:]+$', c) for c in cells):
+                is_header = False
+                continue
+            if is_header:
+                body_html.append('<tr>'+''.join('<th style="border:1px solid #ddd;padding:6px 8px;background:#f9f9f9;text-align:left">%s</th>' % fmt(c) for c in cells)+'</tr>')
+            else:
+                body_html.append('<tr>'+''.join('<td style="border:1px solid #ddd;padding:6px 8px;vertical-align:top">%s</td>' % fmt(c) for c in cells)+'</tr>')
         else:
-            if in_ul:
-                body_html.append('</ul>')
-                in_ul = False
+            if in_ul: body_html.append('</ul>'); in_ul=False
+            if in_table: body_html.append('</table>'); in_table=False
             body_html.append(p)
-    if in_ul:
-        body_html.append('</ul>')
+    if in_ul: body_html.append('</ul>')
+    if in_table: body_html.append('</table>')
 
     h = '''<!DOCTYPE html>
 <html lang="zh-CN">
