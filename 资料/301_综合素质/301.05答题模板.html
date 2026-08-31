@@ -125,74 +125,73 @@ function updateTotal(){
 function renderEssay(){
   var essaySections=getSections();
   var out=document.getElementById('essay-output');
-  out.innerHTML='';
-  var absPos=0;
+  var totalGrids=1200;
   var lineLen=20;
-  var html='<div class="grid-wrap"><div class="grid-container">';
+  var totalLines=totalGrids/lineLen; // 60行
+
+  // 1. 先把所有文字按格子序号放到数组里
+  var gridContent=[]; // gridContent[格子序号] = {char, bold, xx}
+  var segLabels={}; // segLabels[格子序号] = 段名html
+  var absPos=0;
 
   essaySections.forEach(function(s,i){
-    var count=s.text.replace(/\s/g,'').length;
     var labelHtml=s.title;
     if(s.introToggle){
       labelHtml+='<br><button onclick="toggleIntro()">'+(useMainIntro?'切换备用':'切换主开头')+'</button>';
     }
+    segLabels[absPos]=labelHtml;
 
     if(s.title.indexOf('标题')===0){
       var titleChars=s.text.split('');
       var pad=Math.floor((20-titleChars.length)/2);
-      html+='<div class="grid-row"><div class="grid-segline">'+labelHtml+'</div><div class="grid-paper">';
-      html+='<div class="grid-line">';
-      for(var p=0;p<pad;p++){ html+='<span class="grid-empty"></span>'; absPos++; }
-      for(var t=0;t<titleChars.length;t++){
-        html+='<span class="grid-char"><b>'+titleChars[t]+'</b></span>';
-        absPos++;
-      }
+      for(var p=0;p<pad;p++){ gridContent[absPos++]={empty:true}; }
+      for(var t=0;t<titleChars.length;t++){ gridContent[absPos++]={char:titleChars[t],bold:true}; }
       var padEnd=20-pad-titleChars.length;
-      for(var p2=0;p2<padEnd;p2++){ html+='<span class="grid-empty"></span>'; absPos++; }
-      if(absPos>0 && absPos%200===0){ html+='<span class="grid-mark">'+absPos+'</span>'; }
-      html+='</div>';
-      html+='</div></div>'; // 关闭grid-paper和grid-row
+      for(var p2=0;p2<padEnd;p2++){ gridContent[absPos++]={empty:true}; }
       return;
     }
 
     // 正文段首缩进两格
-    var fullText='\u3000\u3000'+s.text;
-    var chars=fullText.split('');
-    html+='<div class="grid-row"><div class="grid-segline">'+labelHtml+'</div><div class="grid-paper">';
+    gridContent[absPos++]={empty:true};
+    gridContent[absPos++]={empty:true};
+    var chars=s.text.split('');
     for(var j=0;j<chars.length;j++){
-      if(j%lineLen===0){
-        if(j>0) html+='</div>';
-        html+='<div class="grid-line">';
-      }
-      var charStyle='';
-      if(chars[j]==='X') charStyle=' style="background:#e8f4fd;color:#1971c2;font-weight:700"';
-      html+='<span class="grid-char"'+charStyle+'>'+chars[j]+'</span>';
-      absPos++;
-      if(absPos>0 && absPos%200===0){
-        html+='<span class="grid-mark">'+absPos+'</span>';
-      }
+      gridContent[absPos++]={char:chars[j],xx:(chars[j]==='X')};
     }
-    // 补满当前行到20格
-    var filled=chars.length%lineLen;
-    if(filled>0){
-      for(var r=0;r<lineLen-filled;r++){ html+='<span class="grid-empty"></span>'; absPos++; }
-      if(absPos>0 && absPos%200===0){ html+='<span class="grid-mark">'+absPos+'</span>'; }
+    // 补满当前行
+    var remainder=absPos%lineLen;
+    if(remainder>0){
+      for(var r=0;r<lineLen-remainder;r++){ gridContent[absPos++]={empty:true}; }
     }
-    html+='</div></div></div>'; // 关闭grid-line, grid-paper, grid-row
   });
-  // 补满到1200格（60行x20格），空行包裹在grid-row+grid-paper里对齐
-  var totalGrids=1200;
-  html+='<div class="grid-row"><div class="grid-segline"></div><div class="grid-paper">';
-  while(absPos<totalGrids){
-    if(absPos%lineLen===0){
-      if(absPos>0) html+='</div>';
-      html+='<div class="grid-line">';
+
+  // 2. 生成1200格的格子纸
+  var html='<div class="grid-wrap"><div class="grid-container"><div class="grid-row"><div class="grid-segline"></div><div class="grid-paper">';
+  for(var row=0;row<totalLines;row++){
+    html+='<div class="grid-line">';
+    for(var col=0;col<lineLen;col++){
+      var idx=row*lineLen+col;
+      // 段名
+      if(segLabels[idx] && col===0){
+        html+='<span class="grid-segline">'+segLabels[idx]+'</span>';
+      }
+      var cell=gridContent[idx];
+      if(cell && cell.char){
+        var style='';
+        if(cell.xx) style=' style="background:#e8f4fd;color:#1971c2;font-weight:700"';
+        if(cell.bold) html+='<span class="grid-char"'+style+'><b>'+cell.char+'</b></span>';
+        else html+='<span class="grid-char"'+style+'>'+cell.char+'</span>';
+      } else {
+        html+='<span class="grid-empty"></span>';
+      }
+      // 200字标记
+      if((idx+1)%200===0 && idx+1<=totalGrids){
+        html+='<span class="grid-mark">'+(idx+1)+'</span>';
+      }
     }
-    html+='<span class="grid-empty"></span>';
-    absPos++;
-    if(absPos>0 && absPos%200===0){ html+='<span class="grid-mark">'+absPos+'</span>'; }
+    html+='</div>';
   }
-  html+='</div></div></div>'; // 关闭grid-line, grid-paper, grid-row
+  html+='</div></div></div>';
   out.innerHTML=html;
 }
 function toggleIntro(){
