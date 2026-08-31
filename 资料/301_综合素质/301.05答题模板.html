@@ -21,6 +21,18 @@
   .must { color:#d6336c; font-weight:700; }
   mark { background:var(--yellow); padding:0 3px; border-radius:3px; }
   @media print { body { padding:0; } }
+  .grid-container{display:inline-block;margin:0 auto;position:relative}
+  .grid-paper{background:#fff;border:1px solid #ddd;border-radius:8px;padding:0;display:inline-block;position:relative}
+  .grid-line{display:flex;flex-wrap:nowrap;padding:0;position:relative;min-height:32px}
+  .grid-char{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;font-size:16px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;flex-shrink:0;box-sizing:border-box}
+  .grid-char:nth-child(25){border-right:none}
+  .grid-empty{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;flex-shrink:0;box-sizing:border-box}
+  .grid-empty:nth-child(25){border-right:none}
+  .grid-mark{position:absolute;right:-40px;top:50%;transform:translateY(-50%);font-size:12px;color:#d6336c;font-weight:700;white-space:nowrap}
+  .grid-seglabel{position:absolute;left:-130px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:600;color:#d6336c;text-align:right;width:120px;white-space:nowrap;line-height:1.4}
+  .grid-seglabel button{font-size:11px;padding:1px 8px;border:1px solid #ff7ab8;border-radius:10px;background:#fff;color:#d6336c;cursor:pointer;margin-top:2px}
+  .grid-wrap{text-align:center}
+  .grid-toolbar{text-align:center;margin:8px 0}
 </style>
 </head>
 <body>
