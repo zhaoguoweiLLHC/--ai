@@ -143,10 +143,10 @@ function renderEssay(){
 
     if(s.title.indexOf('标题')===0){
       var titleChars=s.text.split('');
-      var pad=Math.floor((20-titleChars.length)/2);
+      var pad=Math.floor((25-titleChars.length)/2);
       for(var p=0;p<pad;p++){ gridContent[absPos++]={empty:true}; }
       for(var t=0;t<titleChars.length;t++){ gridContent[absPos++]={char:titleChars[t],bold:true}; }
-      var padEnd=20-pad-titleChars.length;
+      var padEnd=25-pad-titleChars.length;
       for(var p2=0;p2<padEnd;p2++){ gridContent[absPos++]={empty:true}; }
       return;
     }
@@ -203,46 +203,6 @@ updateTotal();
 <div id="essay-output"></div>
 <script>
 renderEssay();
-document.write('<style>.grid-container{display:inline-block;margin:0 auto;position:relative}.grid-paper{background:#fff;border:1px solid #ddd;border-radius:8px;padding:0;display:inline-block;position:relative}.grid-line{display:flex;flex-wrap:nowrap;padding:0;position:relative;min-height:32px}.grid-char{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;font-size:16px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;flex-shrink:0;box-sizing:border-box}.grid-char:nth-child(25){border-right:none}.grid-empty{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;flex-shrink:0;box-sizing:border-box}.grid-empty:nth-child(25){border-right:none}.grid-mark{position:absolute;right:-40px;top:50%;transform:translateY(-50%);font-size:12px;color:#d6336c;font-weight:700;white-space:nowrap}.grid-seglabel{position:absolute;left:-130px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:600;color:#d6336c;text-align:right;width:120px;white-space:nowrap;line-height:1.4}.grid-seglabel button{font-size:11px;padding:1px 8px;border:1px solid #ff7ab8;border-radius:10px;background:#fff;color:#d6336c;cursor:pointer;margin-top:2px}.grid-wrap{text-align:center}.grid-toolbar{text-align:center;margin:8px 0}</style>');
-var absPos=0;
-essaySections.forEach(function(s,i){
-  var count=s.text.replace(/\s/g,'').length;
-  document.write('<div class="grid-wrap">');
-  document.write('<div class="grid-label">'+s.title+' <span class="grid-count">（'+count+'字）</span></div>');
-  document.write('<div class="grid-paper">');
-  // 标题放进格子，居中
-  if(s.title==='标题'){
-    var titleChars=s.text.split('');
-    var pad=Math.floor((20-titleChars.length)/2);
-    document.write('<div class="grid-line">');
-    for(var p=0;p<pad;p++){ document.write('<span class="grid-empty"></span>'); absPos++; }
-    for(var t=0;t<titleChars.length;t++){
-      document.write('<span class="grid-char"><b>'+titleChars[t]+'</b></span>');
-      absPos++;
-    }
-    // 补满20格
-    var padEnd=20-pad-titleChars.length;
-    for(var p2=0;p2<padEnd;p2++){ document.write('<span class="grid-empty"></span>'); absPos++; }
-    document.write('</div></div></div>');
-    return;
-  }
-  // 正文段首缩进两格
-  var fullText='\u3000\u3000'+s.text;
-  var chars=fullText.split('');
-  var lineLen=25;
-    }
-    // 高亮所有XX
-    var charStyle='';
-    if(chars[j]==='X') charStyle=' style="background:#e8f4fd;color:#1971c2;font-weight:700"';
-    document.write('<span class="grid-char"'+charStyle+'>'+chars[j]+'</span>');
-    absPos++;
-    // 每200字在格子右侧标注（绝对定位，不占格子位置）
-    if(absPos%200===0){
-      document.write('<span class="grid-mark">'+absPos+'字</span>');
-    }
-  }
-  document.write('</div></div></div>');
-});
 </script>
 
 <h2>六、301 立意清单（2020下–2025下，中学；用于逐题对答案）</h2>
