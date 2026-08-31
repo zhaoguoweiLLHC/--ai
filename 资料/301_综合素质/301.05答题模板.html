@@ -142,38 +142,31 @@ function renderEssay(){
       var pad=Math.floor((20-titleChars.length)/2);
       html+='<div class="grid-row"><div class="grid-segline">'+labelHtml+'</div><div class="grid-paper">';
       html+='<div class="grid-line">';
-      for(var p=0;p<pad;p++){ html+='<span class="grid-empty"></span>'; }
+      for(var p=0;p<pad;p++){ html+='<span class="grid-empty"></span>'; absPos++; }
       for(var t=0;t<titleChars.length;t++){
         html+='<span class="grid-char"><b>'+titleChars[t]+'</b></span>';
         absPos++;
       }
       var padEnd=20-pad-titleChars.length;
-      for(var p2=0;p2<padEnd;p2++){ html+='<span class="grid-empty"></span>'; }
+      for(var p2=0;p2<padEnd;p2++){ html+='<span class="grid-empty"></span>'; absPos++; }
       if(absPos%200===0){ html+='<span class="grid-mark">'+absPos+'字</span>'; }
       html+='</div>';
       html+='</div></div>'; // 关闭grid-paper和grid-row
       return;
     }
 
-    // 正文段首缩进两格（不计数）
-    var indent=2;
-    var chars=s.text.split('');
+    // 正文段首缩进两格
+    var fullText='\u3000\u3000'+s.text;
+    var chars=fullText.split('');
     html+='<div class="grid-row"><div class="grid-segline">'+labelHtml+'</div><div class="grid-paper">';
-    var posInLine=0; // 当前行已放格子数（含缩进）
     for(var j=0;j<chars.length;j++){
-      if(j===0){
+      if(j%lineLen===0){
+        if(j>0) html+='</div>';
         html+='<div class="grid-line">';
-        for(var ind=0;ind<indent;ind++){ html+='<span class="grid-empty"></span>'; }
-        posInLine=indent;
-      }
-      if(posInLine>=lineLen){
-        html+='</div><div class="grid-line">';
-        posInLine=0;
       }
       var charStyle='';
       if(chars[j]==='X') charStyle=' style="background:#e8f4fd;color:#1971c2;font-weight:700"';
       html+='<span class="grid-char"'+charStyle+'>'+chars[j]+'</span>';
-      posInLine++;
       absPos++;
       if(absPos%200===0){
         html+='<span class="grid-mark">'+absPos+'字</span>';
