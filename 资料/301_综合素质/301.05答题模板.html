@@ -124,21 +124,25 @@ function updateTotal(){
 }
 function renderEssay(){
   var essaySections=getSections();
-  document.getElementById('essay-output').innerHTML='';
+  var out=document.getElementById('essay-output');
+  out.innerHTML='';
   var absPos=0;
+  var lineLen=20;
+  var html='<div class="grid-wrap"><div class="grid-container"><div class="grid-paper">';
+
   essaySections.forEach(function(s,i){
     var count=s.text.replace(/\s/g,'').length;
-    var html='<div class="grid-wrap">';
-    html+='<div class="grid-label">'+s.title+' <span class="grid-count">（'+count+'字）</span>';
+    var segLabel='<div class="grid-seglabel">'+s.title+'<br><span class="gc">（'+count+'字）</span>';
     if(s.introToggle){
-      html+=' <button onclick="toggleIntro()" style="font-size:12px;padding:2px 10px;border:1px solid #ff7ab8;border-radius:12px;background:#fff;color:#d6336c;cursor:pointer;margin-left:8px">'+(useMainIntro?'切换备用开头':'切换主开头')+'</button>';
+      segLabel+='<br><button onclick="toggleIntro()">'+(useMainIntro?'切换备用开头':'切换主开头')+'</button>';
     }
-    html+='</div>';
-    html+='<div class="grid-paper">';
-    if(s.title==='标题'){
+    segLabel+='</div>';
+
+    if(s.title.indexOf('标题')===0){
       var titleChars=s.text.split('');
       var pad=Math.floor((20-titleChars.length)/2);
       html+='<div class="grid-line">';
+      html+=segLabel;
       for(var p=0;p<pad;p++){ html+='<span class="grid-empty"></span>'; absPos++; }
       for(var t=0;t<titleChars.length;t++){
         html+='<span class="grid-char"><b>'+titleChars[t]+'</b></span>';
@@ -146,17 +150,20 @@ function renderEssay(){
       }
       var padEnd=20-pad-titleChars.length;
       for(var p2=0;p2<padEnd;p2++){ html+='<span class="grid-empty"></span>'; absPos++; }
-      html+='</div></div></div>';
-      document.getElementById('essay-output').innerHTML+=html;
+      if(absPos%200===0){ html+='<span class="grid-mark">'+absPos+'字</span>'; }
+      html+='</div>';
       return;
     }
+
     var fullText='\u3000\u3000'+s.text;
     var chars=fullText.split('');
-    var lineLen=20;
     for(var j=0;j<chars.length;j++){
       if(j%lineLen===0){
         if(j>0) html+='</div>';
         html+='<div class="grid-line">';
+        if(j===0){
+          html+=segLabel;
+        }
       }
       var charStyle='';
       if(chars[j]==='X') charStyle=' style="background:#e8f4fd;color:#1971c2;font-weight:700"';
@@ -166,9 +173,9 @@ function renderEssay(){
         html+='<span class="grid-mark">'+absPos+'字</span>';
       }
     }
-    html+='</div></div></div>';
-    document.getElementById('essay-output').innerHTML+=html;
   });
+  html+='</div></div></div>';
+  out.innerHTML=html;
 }
 function toggleIntro(){
   useMainIntro=!useMainIntro;
@@ -180,7 +187,7 @@ updateTotal();
 <div id="essay-output"></div>
 <script>
 renderEssay();
-document.write('<style>.grid-paper{background:#fff;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin:8px auto;display:inline-block;position:relative}.grid-line{display:flex;flex-wrap:nowrap;padding:0;position:relative}.grid-char{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;font-size:16px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;flex-shrink:0}.grid-char:nth-child(20){border-right:none}.grid-empty{width:32px;height:32px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;display:inline-block;flex-shrink:0}.grid-empty:nth-child(20){border-right:none}.grid-label{font-size:14px;font-weight:600;color:#d6336c;margin:12px 0 4px;text-align:center}.grid-count{font-weight:400;color:#888;font-size:13px}.grid-wrap{text-align:center}.grid-mark{position:absolute;right:-56px;top:50%;transform:translateY(-50%);font-size:12px;color:#d6336c;font-weight:700;white-space:nowrap}</style>');
+document.write('<style>.grid-container{display:inline-block;margin:0 auto;position:relative}.grid-paper{background:#fff;border:1px solid #ddd;border-radius:8px;padding:0;display:inline-block;position:relative}.grid-line{display:flex;flex-wrap:nowrap;padding:0;position:relative}.grid-char{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;font-size:16px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;flex-shrink:0}.grid-char:nth-child(20){border-right:none}.grid-empty{width:32px;height:32px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;display:inline-block;flex-shrink:0}.grid-empty:nth-child(20){border-right:none}.grid-mark{position:absolute;right:-56px;top:50%;transform:translateY(-50%);font-size:12px;color:#d6336c;font-weight:700;white-space:nowrap}.grid-seglabel{position:absolute;left:-120px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:600;color:#d6336c;text-align:right;width:110px;white-space:nowrap}.grid-seglabel .gc{font-weight:400;color:#888;font-size:11px}.grid-seglabel button{font-size:11px;padding:1px 8px;border:1px solid #ff7ab8;border-radius:10px;background:#fff;color:#d6336c;cursor:pointer;margin-top:2px}.grid-wrap{text-align:center}.grid-toolbar{text-align:center;margin:8px 0}</style>');
 var absPos=0;
 essaySections.forEach(function(s,i){
   var count=s.text.replace(/\s/g,'').length;
