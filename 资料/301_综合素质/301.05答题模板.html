@@ -180,8 +180,9 @@ function renderEssay(){
     }
     html+='</div></div></div>'; // 关闭grid-line, grid-paper, grid-row
   });
-  // 补满到1200格（60行x20格）
+  // 补满到1200格（60行x20格），空行包裹在grid-row+grid-paper里对齐
   var totalGrids=1200;
+  html+='<div class="grid-row"><div class="grid-segline"></div><div class="grid-paper">';
   while(absPos<totalGrids){
     if(absPos%lineLen===0){
       if(absPos>0) html+='</div>';
@@ -191,7 +192,7 @@ function renderEssay(){
     absPos++;
     if(absPos>0 && absPos%200===0){ html+='<span class="grid-mark">'+absPos+'</span>'; }
   }
-  html+='</div></div></div>';
+  html+='</div></div></div>'; // 关闭grid-line, grid-paper, grid-row
   out.innerHTML=html;
 }
 function toggleIntro(){
