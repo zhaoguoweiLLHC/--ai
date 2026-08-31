@@ -15,14 +15,15 @@
 > 大文件先 grep 关键词定行号再按行 Read（课标全文36万字，切勿整读）。
 > 注意：解析.md 是转录/抽取件；涉及复杂公式或逐字核对时，回读 `资料/` 下的原始 PDF/图片。
 >
-> **目录结构（2026-08-27 起）**：
-> - `.ai-cache/` ＝ AI 机器档（.md .json），AI 读取，隐藏目录，按科目直接放文件
-> - `资料/` ＝ 人看原件（.doc .pdf .webp .jpg .html），按科目分目录，多文件才建子目录
-> - `docs/` ＝ PWA 壳 + `docs/通勤库/` 通勤页面+音频 + 脚本（gen_plan.py/txt2html.py）
+> **目录结构（2026-08-31 起）**：
+> - `.ai-cache/` ＝ AI 机器档（.md），仅PDF/DOC/图片的转录件，AI读取，隐藏目录
+> - `资料/` ＝ 人看原件（.doc .pdf .webp .jpg .html .json），按科目分目录
+> - `docs/` ＝ PWA 壳 + `docs/通勤库/` 通勤页面+音频 + txt2html.py
+> - **学习计划表**：数据在 `资料/00_考试总览/学习计划表.json`，展示在 `资料/00_考试总览/学习计划表.html`（JS读JSON动态渲染）。改计划只改JSON，刷新页面即生效，不再需要 gen_plan.py。
 
 ### 00 考试总览
 - `.ai-cache/00_考试总览/01考试标准_解析.md` ＋ `资料/00_考试总览/01考试标准.doc`（教资考试总体标准）
-- `.ai-cache/00_考试总览/学习计划表.md` ＋ `资料/00_考试总览/学习计划表.html`（整体备考计划）
+- `资料/00_考试总览/学习计划表.json`（数据）＋ `资料/00_考试总览/学习计划表.html`（展示，JS读JSON渲染）＋ `资料/00_考试总览/考场时间分配.html`（考场各模块时间预算）
 - `.ai-cache/00_考试总览/考场时间分配.md` ＋ `资料/00_考试总览/考场时间分配.html`（考场各模块时间预算）
 - `.ai-cache/00_考试总览/通勤音频/01-04_朗读原文.md` ＋ `docs/通勤库/通勤音频/01-04.m4a + 朗读原文.html`（通勤音频）
 
@@ -62,6 +63,5 @@
   讲真题则把解析存进对应卷文件夹的 解析.md。
 - 解析方式：PDF 用 `pdftotext -layout`；旧版 .doc 用 `textutil -convert txt`；
   图片由 AI 识读转录为 txt（文件内标注"人工识读转录"）。
-- **学习计划表.md 为唯一权威**：html 为生成产物，禁手工双改；md 改动后在 `docs/` 下跑：
-  `python3 gen_plan.py`，然后 git push 即可通过 PWA 查看。
+- **学习计划表.json 为唯一权威**：改计划只改JSON，刷新页面即生效，不再需要 gen_plan.py。
 - **目录结构**：`.ai-cache/`＝AI 机器档(txt/md/json)，`资料/`＝人看原件(doc/pdf/img/html)，`docs/`＝PWA 通勤。GitHub Pages 服务 `docs/` 目录。PWA 地址：`https://zhaoguoweillhc.github.io/-ai/`。

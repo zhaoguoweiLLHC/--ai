@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>学习计划表 v4 · 二战补差版</title>
+<title>学习计划表</title>
 <style>
   :root{--pink:#ffdeeb;--blue:#e8f4fd;--yellow:#fff8c6;--ink:#2b2b2b;--line:#eee}
   *{box-sizing:border-box}
@@ -19,10 +19,6 @@
   th:nth-child(1),td:nth-child(1){white-space:nowrap;width:16%}
   th:nth-child(3),td:nth-child(3){width:12%}
   th:nth-child(4),td:nth-child(4){width:12%}
-  .seg li:last-child{border-bottom:none !important}
-  .seg-li{display:block;border-bottom:1px solid #e0e0e0;padding:4px 8px;margin:0;height:28px;line-height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .seg-li a{text-decoration:none;color:#1971c2}
-  .seg-li a:hover{background:#fffbe6;border-radius:4px;text-decoration:underline}
   th{background:#f9f9f9}
   tr.we{background:#f3fbf3}
   tr.today{background:#ffe9a8;outline:3px solid #ffb400;outline-offset:-2px}
@@ -33,103 +29,155 @@
   ol,ul{padding-left:22px}li{margin:4px 0}
   code{background:#f1f1f1;border-radius:4px;padding:1px 5px;font-size:12.5px}
   footer{margin-top:34px;color:#999;font-size:12px;text-align:center}
+  .seg li:last-child{border-bottom:none !important}
+  .seg-li{display:block;border-bottom:1px solid #e0e0e0;padding:4px 8px;margin:0;height:28px;line-height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .seg-li a{text-decoration:none;color:#1971c2}
+  .seg-li a:hover{background:#fffbe6;border-radius:4px;text-decoration:underline}
+  .seg{margin:0;padding:0;list-style:none}
+  .seg-label{font-size:12px;color:#888;margin:8px 0}
   @media print{body{padding:0}}
 </style>
 </head>
 <body>
-<h1>学习计划表 v4 · 二战补差版 <small>制表 2026-08-26 · 笔试 9/12 · 只考 301 + 404</small></h1>
-
-<div class="card yellow" style="text-align:center;font-size:17px">⏳ 距 9/12 笔试还有 <b id="cd" style="font-size:26px;color:#d6336c">--</b> 天</div>
-
-<div class="card yellow" id="today-focus" style="border:2px solid #ffb400">
-  <span class="tag" style="background:#ffb400;color:#fff"> 今天计划 · 完成打勾</span>
-  <div id="tf-body" style="font-size:15px"></div>
-</div>
-
-<div class="card pink">
-  <span class="tag">🩺 上次怎么死的（66 / 50）</span>
-  <ul style="margin:6px 0 0;">
-    <li><b>301＝66</b>：作文没写够 1000 字 → <mark>速度与字数</mark>问题，不是知识问题。</li>
-    <li><b>404＝50</b>：计算没思路、主观无框架 → <mark>公式记忆 + 主观框架</mark>双缺。</li>
-    <li>结论：6 成时间给 404（速记卡+框架）；301 每天 15 分钟维护＋作文速度训练；科二 78 已过。</li>
-  </ul>
-</div>
-
-<div class="card blue">
-  <span class="tag">⚔️ 404 丢分点对策（40选+35简+10解+15论+20案+30设）</span>
-  <table>
-    <tr><th>丢分点</th><th>分值</th><th>症状</th><th>对策</th></tr>
-    <tr><td>单选1–6 大学数学</td><td>40</td><td>公式忘/无思路</td><td><code>404速记卡</code> 三簇晨背15分</td></tr>
-    <tr><td>简答5题</td><td>35</td><td>不知从哪写</td><td><code>404主观题框架</code> 三句法</td></tr>
-    <tr><td>案例20/设计30</td><td>50</td><td>不知从哪写</td><td>四角度套句 / 五件套套句库</td></tr>
-  </table>
-  主观相关约 95 分＝<span class="must">背框架性价比是刷难题的10倍</span>。
-</div>
-
-<h2>一、逐日安排（白=工作日 · 绿=周末 · <span style="background:#ffe9a8;padding:0 4px;border:1px solid #ffb400;border-radius:4px">黄=当天</span>）</h2>
-<table>
-<tr><th>日期</th><th>当天计划（🌅早通勤 / 🏢公司＝404·301 / 🌙晚通勤）</th><th>完成情况</th><th>备注</th></tr>
-<tr data-date="8/31"><td>8/31 · 一 · 工作日</td><td style="padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢404 2020下第17题教学设计(框架)＋速记卡A簇背诵15分(高数极限/导数/切线)">🏢&nbsp;&nbsp;<a href="../../资料/404_高中数学学科/真题分卷/2020下/解析.html" target="_blank">404 2020下第17题教学设计(框架)</a>＋<a href="../../资料/404_高中数学学科/404.05速记卡/404速记卡.html" target="_blank">速记卡A簇背诵15分(高数极限/导数/切线)</a></li><li class="seg-li" title="🏢301作文立意练习3题">🏢&nbsp;&nbsp;<a href="../../资料/301_综合素质/301.05答题模板.html" target="_blank">301作文立意练习3题</a></li><li class="seg-li" title="🌙 总结">🌙&nbsp;&nbsp;<a href="../../资料/00_考试总览/每日总结.html" target="_blank">总结</a></li></ul></td><td class="act-col" style="font-size:12px;padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢4⬜">⬜</li><li class="seg-li" title="🏢3">⬜</li><li class="seg-li" title="🌙">⬜</li></ul></td><td class="note-col" style="font-size:12px;padding:6px 8px"></td></tr>
-<tr data-date="9/1"><td>9/1 · 二 · 工作日</td><td style="padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢404 2021上整卷大题(简答+案例+设计+论述)＋速记卡A簇做2道单选验证">🏢&nbsp;&nbsp;<a href="../../资料/404_高中数学学科/真题分卷/2021上/解析.html" target="_blank">404 2021上整卷大题(简答+案例+设计+论述)</a>＋<a href="../../资料/404_高中数学学科/404.05速记卡/404速记卡.html" target="_blank">速记卡A簇做2道单选验证</a></li><li class="seg-li" title="🏢301作文立意练习3题＋作文1篇(计时40分)">🏢&nbsp;&nbsp;<a href="../../资料/301_综合素质/301.05答题模板.html" target="_blank">301作文立意练习3题</a>＋<a href="../../资料/301_综合素质/作文库/作文目录.html" target="_blank">作文1篇(计时40分)</a></li><li class="seg-li" title="🌙 总结">🌙&nbsp;&nbsp;<a href="../../资料/00_考试总览/每日总结.html" target="_blank">总结</a></li></ul></td><td class="act-col" style="font-size:12px;padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢4⬜">⬜</li><li class="seg-li" title="🏢3">⬜</li><li class="seg-li" title="🌙">⬜</li></ul></td><td class="note-col" style="font-size:12px;padding:6px 8px"></td></tr>
-<tr data-date="9/2"><td>9/2 · 三 · 工作日</td><td style="padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢404 2021上单选1-8刷＋错题录入">🏢&nbsp;&nbsp;<a href="../../资料/404_高中数学学科/真题分卷/2021上/解析.html" target="_blank">404 2021上单选1-8刷</a>＋<a href="../../资料/404_高中数学学科/错题本.html" target="_blank">错题录入</a></li><li class="seg-li" title="🏢301材料分析2题(三观+师德)">🏢&nbsp;&nbsp;<a href="../../资料/301_综合素质/301.05答题模板.html" target="_blank">301材料分析2题(三观+师德)</a></li><li class="seg-li" title="🌙 总结">🌙&nbsp;&nbsp;<a href="../../资料/00_考试总览/每日总结.html" target="_blank">总结</a></li></ul></td><td class="act-col" style="font-size:12px;padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢4⬜">⬜</li><li class="seg-li" title="🏢3">⬜</li><li class="seg-li" title="🌙">⬜</li></ul></td><td class="note-col" style="font-size:12px;padding:6px 8px"></td></tr>
-<tr data-date="9/3"><td>9/3 · 四 · 工作日</td><td style="padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢404 2021下整卷大题＋速记卡B簇背诵15分(线代行列式/秩/特征值)">🏢&nbsp;&nbsp;<a href="../../资料/404_高中数学学科/真题分卷/2021下/解析.html" target="_blank">404 2021下整卷大题</a>＋<a href="../../资料/404_高中数学学科/404.05速记卡/404速记卡.html" target="_blank">速记卡B簇背诵15分(线代行列式/秩/特征值)</a></li><li class="seg-li" title="🏢301作文立意练习3题＋作文1篇(计时40分)">🏢&nbsp;&nbsp;<a href="../../资料/301_综合素质/301.05答题模板.html" target="_blank">301作文立意练习3题</a>＋<a href="../../资料/301_综合素质/作文库/作文目录.html" target="_blank">作文1篇(计时40分)</a></li><li class="seg-li" title="🌙 总结">🌙&nbsp;&nbsp;<a href="../../资料/00_考试总览/每日总结.html" target="_blank">总结</a></li></ul></td><td class="act-col" style="font-size:12px;padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢4⬜">⬜</li><li class="seg-li" title="🏢3">⬜</li><li class="seg-li" title="🌙">⬜</li></ul></td><td class="note-col" style="font-size:12px;padding:6px 8px"></td></tr>
-<tr data-date="9/4"><td>9/4 · 五 · 工作日</td><td style="padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢404 2021下单选1-8刷＋错题录入">🏢&nbsp;&nbsp;<a href="../../资料/404_高中数学学科/真题分卷/2021下/解析.html" target="_blank">404 2021下单选1-8刷</a>＋<a href="../../资料/404_高中数学学科/错题本.html" target="_blank">错题录入</a></li><li class="seg-li" title="🏢301材料分析2题(教育观+学生观)">🏢&nbsp;&nbsp;<a href="../../资料/301_综合素质/301.05答题模板.html" target="_blank">301材料分析2题(教育观+学生观)</a></li><li class="seg-li" title="🌙 总结">🌙&nbsp;&nbsp;<a href="../../资料/00_考试总览/每日总结.html" target="_blank">总结</a></li></ul></td><td class="act-col" style="font-size:12px;padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢4⬜">⬜</li><li class="seg-li" title="🏢3">⬜</li><li class="seg-li" title="🌙">⬜</li></ul></td><td class="note-col" style="font-size:12px;padding:6px 8px"></td></tr>
-<tr class="we" data-date="9/5"><td>9/5 · 六 · 周末</td><td style="padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢404 2022上整卷限时(大题优先)＋速记卡C簇背诵15分(解几截线/概率)">🏢&nbsp;&nbsp;<a href="../../资料/404_高中数学学科/真题分卷/2022上/解析.html" target="_blank">404 2022上整卷限时(大题优先)</a>＋<a href="../../资料/404_高中数学学科/404.05速记卡/404速记卡.html" target="_blank">速记卡C簇背诵15分(解几截线/概率)</a></li><li class="seg-li" title="🏢301作文立意练习3题＋作文1篇(计时40分)">🏢&nbsp;&nbsp;<a href="../../资料/301_综合素质/301.05答题模板.html" target="_blank">301作文立意练习3题</a>＋<a href="../../资料/301_综合素质/作文库/作文目录.html" target="_blank">作文1篇(计时40分)</a></li><li class="seg-li" title="🌙 总结">🌙&nbsp;&nbsp;<a href="../../资料/00_考试总览/每日总结.html" target="_blank">总结</a></li></ul></td><td class="act-col" style="font-size:12px;padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢4⬜">⬜</li><li class="seg-li" title="🏢3">⬜</li><li class="seg-li" title="🌙">⬜</li></ul></td><td class="note-col" style="font-size:12px;padding:6px 8px"></td></tr>
-<tr class="we" data-date="9/6"><td>9/6 · 日 · 周末</td><td style="padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢404 2022上单选刷＋2022下大题速览框架">🏢&nbsp;&nbsp;<a href="../../资料/404_高中数学学科/真题分卷/2022上/解析.html" target="_blank">404 2022上单选刷＋2022下大题速览框架</a></li><li class="seg-li" title="🏢301材料分析2题(教师观+师德)">🏢&nbsp;&nbsp;<a href="../../资料/301_综合素质/301.05答题模板.html" target="_blank">301材料分析2题(教师观+师德)</a></li><li class="seg-li" title="🌙 总结">🌙&nbsp;&nbsp;<a href="../../资料/00_考试总览/每日总结.html" target="_blank">总结</a></li></ul></td><td class="act-col" style="font-size:12px;padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢4⬜">⬜</li><li class="seg-li" title="🏢3">⬜</li><li class="seg-li" title="🌙">⬜</li></ul></td><td class="note-col" style="font-size:12px;padding:6px 8px"></td></tr>
-<tr data-date="9/7"><td>9/7 · 一 · 工作日</td><td style="padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢404 2022下整卷大题＋速记卡D簇背诵15分(课标素养/数学史)">🏢&nbsp;&nbsp;<a href="../../资料/404_高中数学学科/真题分卷/2022下/解析.html" target="_blank">404 2022下整卷大题</a>＋<a href="../../资料/404_高中数学学科/404.05速记卡/404速记卡.html" target="_blank">速记卡D簇背诵15分(课标素养/数学史)</a></li><li class="seg-li" title="🏢301作文立意练习3题＋作文1篇(计时40分)">🏢&nbsp;&nbsp;<a href="../../资料/301_综合素质/301.05答题模板.html" target="_blank">301作文立意练习3题</a>＋<a href="../../资料/301_综合素质/作文库/作文目录.html" target="_blank">作文1篇(计时40分)</a></li><li class="seg-li" title="🌙 总结">🌙&nbsp;&nbsp;<a href="../../资料/00_考试总览/每日总结.html" target="_blank">总结</a></li></ul></td><td class="act-col" style="font-size:12px;padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢4⬜">⬜</li><li class="seg-li" title="🏢3">⬜</li><li class="seg-li" title="🌙">⬜</li></ul></td><td class="note-col" style="font-size:12px;padding:6px 8px"></td></tr>
-<tr data-date="9/8"><td>9/8 · 二 · 工作日</td><td style="padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢404 2022下单选刷＋2023上大题速览框架">🏢&nbsp;&nbsp;<a href="../../资料/404_高中数学学科/真题分卷/2022下/解析.html" target="_blank">404 2022下单选刷＋2023上大题速览框架</a></li><li class="seg-li" title="🏢301阅读理解2题">🏢&nbsp;&nbsp;301阅读理解2题</li><li class="seg-li" title="🌙 总结">🌙&nbsp;&nbsp;<a href="../../资料/00_考试总览/每日总结.html" target="_blank">总结</a></li></ul></td><td class="act-col" style="font-size:12px;padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢4⬜">⬜</li><li class="seg-li" title="🏢3">⬜</li><li class="seg-li" title="🌙">⬜</li></ul></td><td class="note-col" style="font-size:12px;padding:6px 8px"></td></tr>
-<tr data-date="9/9"><td>9/9 · 三 · 工作日</td><td style="padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢404 2023上整卷大题＋速记卡A+B簇复习">🏢&nbsp;&nbsp;<a href="../../资料/404_高中数学学科/真题分卷/2023上/解析.html" target="_blank">404 2023上整卷大题</a>＋<a href="../../资料/404_高中数学学科/404.05速记卡/404速记卡.html" target="_blank">速记卡A+B簇复习</a></li><li class="seg-li" title="🏢301作文立意练习3题＋作文1篇(计时40分)">🏢&nbsp;&nbsp;<a href="../../资料/301_综合素质/301.05答题模板.html" target="_blank">301作文立意练习3题</a>＋<a href="../../资料/301_综合素质/作文库/作文目录.html" target="_blank">作文1篇(计时40分)</a></li><li class="seg-li" title="🌙 总结">🌙&nbsp;&nbsp;<a href="../../资料/00_考试总览/每日总结.html" target="_blank">总结</a></li></ul></td><td class="act-col" style="font-size:12px;padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢4⬜">⬜</li><li class="seg-li" title="🏢3">⬜</li><li class="seg-li" title="🌙">⬜</li></ul></td><td class="note-col" style="font-size:12px;padding:6px 8px"></td></tr>
-<tr data-date="9/10"><td>9/10 · 四 · 工作日</td><td style="padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢404 2023上单选刷＋错题本二刷＋主观题五类框架终背">🏢&nbsp;&nbsp;<a href="../../资料/404_高中数学学科/真题分卷/2023上/解析.html" target="_blank">404 2023上单选刷</a>＋错题本二刷＋<a href="../../资料/404_高中数学学科/404.05速记卡/404主观题框架.html" target="_blank">主观题五类框架终背</a></li><li class="seg-li" title="🏢301答题模板终背(三观+师德+作文模板)">🏢&nbsp;&nbsp;<a href="../../资料/301_综合素质/301.05答题模板.html" target="_blank">301答题模板终背(三观+师德+作文模板)</a></li><li class="seg-li" title="🌙 总结">🌙&nbsp;&nbsp;<a href="../../资料/00_考试总览/每日总结.html" target="_blank">总结</a></li></ul></td><td class="act-col" style="font-size:12px;padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢4⬜">⬜</li><li class="seg-li" title="🏢3">⬜</li><li class="seg-li" title="🌙">⬜</li></ul></td><td class="note-col" style="font-size:12px;padding:6px 8px"></td></tr>
-<tr data-date="9/11"><td>9/11 · 五 · 考前</td><td style="padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢404 翻错题本＋备准考证文具">🏢&nbsp;&nbsp;404 翻错题本＋备准考证文具</li><li class="seg-li" title="🏢301 —">🏢&nbsp;&nbsp;301 —</li><li class="seg-li" title="🌙 总结">🌙&nbsp;&nbsp;<a href="../../资料/00_考试总览/每日总结.html" target="_blank">总结</a></li></ul></td><td class="act-col" style="font-size:12px;padding:0"><ul class="seg" style="margin:0;padding:0;list-style:none"><li class="seg-li" title="🏢4⬜">⬜</li><li class="seg-li" title="🏢3">⬜</li><li class="seg-li" title="🌙">⬜</li></ul></td><td class="note-col" style="font-size:12px;padding:6px 8px"></td></tr>
-</table>
-
-<h2>二、三条新铁律</h2>
-<div class="card yellow"><ol>
-  <li><span class="must">404 主观＝套框架</span>：先写结论句，空白也写满五类标题。</li>
-  <li><span class="must">301 作文＝先写够</span>：开考75分钟先动作文，写够1000字再回头。</li>
-  <li><span class="must">公式不裸背</span>：背卡后立刻做2道单选验证。</li>
-</ol></div>
-
-<h2>三、让老师（AI）配合的事</h2>
-<div class="card blue"><ul>
-  <li>[已备] 301升级模板＋立意清单＋354字全稿＋音频01/03/04/05/06。</li>
-  <li>[已完成8/26] 404速记卡、404主观题框架（含📚角度库＋人读版html锚点）。</li>
-  <li>每天按报到时点回填完成列（工作日到岗/下班/到家；周末12/18/22点）；只打勾不解释，例外才备注；没做顺延不扣分。</li>
-  <li>每讲完一卷：双写解析双档＋新音频；白天不push，下班听口令一次推。</li>
-</ul></div>
-
-<footer>md 为权威底，本 html 由 gen_plan.py 生成 · 打印 Cmd+P 存 PDF</footer>
+<div id="app"></div>
 <script>
-(function(){
-  var d=new Date(), key=(d.getMonth()+1)+"/"+d.getDate();
-  var row=document.querySelector('tr[data-date="'+key+'"]');
-  var box=document.getElementById("tf-body");
-  var exam=new Date(d.getFullYear(),8,12), now=new Date(d.getFullYear(),d.getMonth(),d.getDate());
-  var days=Math.round((exam-now)/86400000);
-  document.getElementById("cd").textContent = days>0?days:(days===0?"0·今天考试!":"考完");
-  if(!row){ box.innerHTML=key+" 不在排期内（9/12：先写作文，写够1000字！）"; return; }
-  row.classList.add("today");
-  if(row.classList.contains("we")) row.style.background="#ffe9a8";
-  var tds=row.querySelectorAll("td");
-  // 按时段拆成列表显示；完成列同样拆列表但去 icon
-  function toList(s){var segs=s.split(/ (?=🌅|🏢|🌙|☀️)/);return '<ul class="seg" style="margin:0;padding:0;list-style:none">'+segs.map(function(x){return '<li style="display:block;border-bottom:1px solid #e0e0e0;padding:4px 8px;margin:0"><b>'+x+'</b></li>'}).join('')+'</ul>';}
-  function toActList(s){var segs=s.split(/ (?=🌅|🏢|🌙|☀️)/).map(function(x){return x.replace(/^[🌅🏢🌙☀️]\s*/,'').replace(/^[43]\s*/,'').replace(/^🏠\s*/,'').replace(/⬜\s*🏠⬜/,'⬜').replace(/🏠/g,'').trim()||'⬜';});return '<ul class="seg" style="margin:0;padding:0;list-style:none">'+segs.map(function(x){return '<li style="display:block;border-bottom:1px solid #e0e0e0;padding:4px 8px;margin:0">'+x+'</li>'}).join('')+'</ul>';}
-  var note=tds[3] ? tds[3].textContent.trim() : '';
-  box.innerHTML="<b>① 今天计划：</b>"+toList(tds[1].textContent.trim())+"<br><b>② 完成勾选：</b>"+toActList(tds[2].textContent.trim())+(note? "<br><b>③ 备注：</b>"+note : "");
-  row.scrollIntoView({block:"center"});
-})();
-// 未来日期隐藏完成列和备注列内容
-(function(){
-  var today=new Date();
-  document.querySelectorAll('tr[data-date]').forEach(function(tr){
-    var ds=tr.dataset.date.split('/');
-    var d=new Date(today.getFullYear(),parseInt(ds[0])-1,parseInt(ds[1]));
-    if(d>today){
-      var ac=tr.querySelector('.act-col'), nc=tr.querySelector('.note-col');
-      if(ac) ac.innerHTML='';
-      if(nc) nc.innerHTML='';
+var DATA_URL='学习计划表.json';
+var R='../'; // 从 资料/00_考试总览/ 到项目根
+
+var LINK_MAP=[
+  [/速记卡[A-D]簇[^＋]*/, R+'资料/404_高中数学学科/404.05速记卡/404速记卡.html'],
+  [/404\s*速记卡[^＋]*/, R+'资料/404_高中数学学科/404.05速记卡/404速记卡.html'],
+  [/速记卡[^＋]*/, R+'资料/404_高中数学学科/404.05速记卡/404速记卡.html'],
+  [/主观题.*框架[^＋]*|五类框架[^＋]*|框架终背[^＋]*/, R+'资料/404_高中数学学科/404.05速记卡/404主观题框架.html'],
+  [/301\s*作文立意[^＋]*/, R+'资料/301_综合素质/301.05答题模板.html'],
+  [/作文立意[^＋]*/, R+'资料/301_综合素质/301.05答题模板.html'],
+  [/301.*模板[^＋]*/, R+'资料/301_综合素质/301.05答题模板.html'],
+  [/301\s*材料分析[^＋]*/, R+'资料/301_综合素质/301.05答题模板.html'],
+  [/材料分析[^＋]*/, R+'资料/301_综合素质/301.05答题模板.html'],
+  [/作文1篇[^＋]*/, R+'资料/301_综合素质/作文库/作文目录.html'],
+  [/404\s*\d{4}[上下].*第1[5-7]题[^＋]*/, null],
+  [/404\s*\d{4}[上下].*整卷[^＋]*/, null],
+  [/404\s*\d{4}[上下].*大题[^＋]*/, null],
+  [/404\s*\d{4}[上下].*单选[^＋]*/, null],
+  [/错题录入/, R+'资料/404_高中数学学科/错题本.html'],
+  [/总结/, R+'资料/00_考试总览/每日总结.html'],
+  [/阅读理解/, R+'资料/301_综合素质/301.05答题模板.html'],
+];
+
+function addLinks(text){
+  LINK_MAP.forEach(function(item){
+    var pattern=item[0], link=item[1];
+    if(!link){
+      var m=text.match(/(20\d{2}[上下])/);
+      if(m && pattern.test(text)){
+        link=R+'资料/404_高中数学学科/真题分卷/'+m[1]+'/解析.html';
+      }
+    }
+    if(link && pattern.test(text)){
+      var parts=text.split(/(<a [^>]*>.*?<\/a>)/);
+      for(var i=0;i<parts.length;i++){
+        if(parts[i].startsWith('<a ')) continue;
+        if(pattern.test(parts[i])){
+          var m=parts[i].match(pattern);
+          var kw=m[0];
+          parts[i]=parts[i].replace(kw,'<a href="'+link+'" target="_blank">'+kw+'</a>');
+          break;
+        }
+      }
+      text=parts.join('');
     }
   });
-})();</script>
+  return text;
+}
+
+function escapeHtml(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function renderPlan(data){
+  var now=new Date();
+  var todayKey=(now.getMonth()+1)+'/'+now.getDate();
+  var examDate=data.examDate.split('/');
+  var exam=new Date(now.getFullYear(),parseInt(examDate[0])-1,parseInt(examDate[1]));
+  var days=Math.round((exam-now)/86400000);
+
+  var h='';
+  // 标题
+  h+='<h1>'+escapeHtml(data.title)+' <small>笔试 '+data.examDate+'</small></h1>';
+  // 倒计时
+  h+='<div class="card yellow" style="text-align:center;font-size:17px">距 '+data.examDate+' 笔试还有 <b style="font-size:26px;color:#d6336c">'+(days>0?days:(days===0?'0·今天考试!':'考完'))+'</b> 天</div>';
+  // 今日卡片
+  h+='<div class="card yellow" id="today-focus" style="border:2px solid #ffb400"><span class="tag" style="background:#ffb400;color:#fff"> 今天计划 · 完成打勾</span><div id="tf-body" style="font-size:15px"></div></div>';
+  // 概况
+  h+='<div class="card pink"><span class="tag">📋 计划概况</span><p style="margin:6px 0">'+escapeHtml(data.summary)+'</p></div>';
+  // 404对策
+  h+='<div class="card blue"><span class="tag">⚔️ 404 丢分点对策</span><table><tr><th>丢分点</th><th>分值</th><th>症状</th><th>对策</th></tr>';
+  data.strategy['404丢分点'].forEach(function(r){
+    h+='<tr><td>'+escapeHtml(r.丢分点)+'</td><td>'+r.分值+'</td><td>'+escapeHtml(r.症状)+'</td><td>'+escapeHtml(r.对策)+'</td></tr>';
+  });
+  h+='</table></div>';
+  // 逐日安排
+  h+='<h2>一、逐日安排</h2>';
+  h+='<div class="seg-label">'+escapeHtml(data.speedCardNote)+'</div>';
+  h+='<table><tr><th>日期</th><th>当天计划</th><th>完成情况</th><th>备注</th></tr>';
+  data.schedule.forEach(function(r){
+    var isToday=r.date===todayKey;
+    var isWeekend=r.type==='周末';
+    var futureCheck=false;
+    var parts=r.date.split('/');
+    var rowDate=new Date(now.getFullYear(),parseInt(parts[0])-1,parseInt(parts[1]));
+    if(rowDate>now) futureCheck=true;
+
+    h+='<tr'+(isToday?' class="today"':'')+(isWeekend&&!isToday?' class="we"':'')+' data-date="'+r.date+'">';
+    h+='<td>'+r.date+' · '+r.weekday+' · '+r.type+'</td>';
+    h+='<td style="padding:0"><ul class="seg">';
+    var tasks=r.tasks.split(' ');
+    tasks.forEach(function(task){
+      if(!task.trim()) return;
+      var iconMatch=task.match(/^([🌅🏢🌙☀️])\s*(.*)/);
+      var txt=iconMatch?iconMatch[1]+'&nbsp;&nbsp;'+escapeHtml(iconMatch[2]):escapeHtml(task);
+      txt=addLinks(txt);
+      h+='<li class="seg-li">'+txt+'</li>';
+    });
+    h+='</ul></td>';
+    // 完成情况：未来日期清空
+    var status=futureCheck?'':escapeHtml(r.status);
+    h+='<td style="font-size:12px;padding:0">'+status+'</td>';
+    h+='<td style="font-size:12px;padding:6px 8px">'+escapeHtml(r.note)+'</td>';
+    h+='</tr>';
+  });
+  h+='</table>';
+  // 铁律
+  h+='<h2>二、三条铁律</h2><div class="card yellow"><ol>';
+  data.rules.forEach(function(r){h+='<li>'+escapeHtml(r)+'</li>';});
+  h+='</ol></div>';
+  // 真题进度
+  h+='<h2>三、真题进度追踪</h2><table><tr><th>年份</th><th>选择</th><th>简答</th><th>解答</th><th>论述</th><th>案例</th><th>设计</th><th>状态</th></tr>';
+  data.progress.forEach(function(r){
+    h+='<tr><td>'+r.year+'</td><td>'+r.选择+'</td><td>'+r.简答+'</td><td>'+r.解答+'</td><td>'+r.论述+'</td><td>'+r.案例+'</td><td>'+r.设计+'</td><td>'+escapeHtml(r.状态)+'</td></tr>';
+  });
+  h+='</table>';
+  // AI配合
+  h+='<h2>四、AI 配合事项</h2><div class="card blue"><ul>';
+  data.aiNotes.forEach(function(r){h+='<li>'+escapeHtml(r)+'</li>';});
+  h+='</ul></div>';
+  h+='<footer>数据存 学习计划表.json · 改数据刷新即生效</footer>';
+
+  document.getElementById('app').innerHTML=h;
+
+  // 今日卡片
+  var todayRow=document.querySelector('tr.today');
+  var tfBody=document.getElementById('tf-body');
+  if(todayRow){
+    var tds=todayRow.querySelectorAll('td');
+    tfBody.innerHTML='① 今天计划：'+tds[1].textContent.trim()+'<br>② 完成情况：'+tds[2].textContent.trim();
+    todayRow.scrollIntoView({block:'center'});
+  } else {
+    tfBody.innerHTML=todayKey+' 不在排期内';
+  }
+}
+
+fetch(DATA_URL).then(r=>r.json()).then(renderPlan).catch(function(e){
+  document.getElementById('app').innerHTML='<p style="color:red">加载失败：'+e.message+'</p>';
+});
+</script>
 </body>
 </html>
