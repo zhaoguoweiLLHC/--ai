@@ -130,6 +130,9 @@ essaySections.forEach(function(s,i){
       document.write('<span class="grid-char"><b>'+titleChars[t]+'</b></span>');
       absPos++;
     }
+    // 补满20格
+    var padEnd=20-pad-titleChars.length;
+    for(var p2=0;p2<padEnd;p2++){ document.write('<span class="grid-empty"></span>'); absPos++; }
     document.write('</div></div></div>');
     return;
   }
