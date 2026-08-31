@@ -59,7 +59,7 @@ for line in md.split("\n"):
                     if re.search(pattern, part):
                         m=re.search(pattern, part)
                         kw=m.group(0)
-                        parts[i]=part.replace(kw, '<a href="%s" target="_blank" style="color:inherit;text-decoration:none">%s</a>'%(html.escape(link),kw), 1)
+                        parts[i]=part.replace(kw, '<a href="%s" target="_blank">%s</a>'%(html.escape(link),kw), 1)
                         break  # 每个pattern只替换一次
                 seg_text=''.join(parts)
         return seg_text
