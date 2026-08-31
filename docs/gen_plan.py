@@ -26,41 +26,47 @@ for line in md.split("\n"):
     note=fmt(note_m.group(1)) if note_m else ''
     if note_m: act=act[:note_m.start()].strip()
     # 按时段符号拆成 <ul><li> 列表（计划列用）
-    def link_for(seg):
-        """根据计划项内容匹配资料文件路径（从 资料/00_考试总览/ 出发）"""
-        s=re.sub(r'^[🌅🏢🌙☀️]\s*','',seg).strip()
-        R='../../'  # 从 资料/00_考试总览/ 到项目根
-        # 404速记卡
-        if '速记卡' in s or '卡A簇' in s or '卡B簇' in s or '卡C簇' in s or '卡D簇' in s:
-            return R+'资料/404_高中数学学科/404.05速记卡/404速记卡.html'
-        # 404主观题框架
-        if '框架' in s and ('404' in s or '主观' in s or '五类' in s or '终背' in s):
-            return R+'资料/404_高中数学学科/404.05速记卡/404主观题框架.html'
-        # 301答题模板升级版
-        if '模板' in s and '301' in s:
-            return R+'资料/301_综合素质/301.05答题模板升级版.html'
-        # 2020下解析
-        if '2020下' in s and ('解析' in s or '第15' in s or '第16' in s or '第17' in s or '整卷' in s or '大题' in s):
-            return R+'资料/404_高中数学学科/真题分卷/2020下/解析.html'
-        # 其他年份真题
-        vm=re.search(r'(20\d{2}[上下])', s)
-        if vm:
-            y=vm.group(1)
-            fp=R+'资料/404_高中数学学科/真题分卷/'+y+'/'
-            if '第15' in s or '第16' in s or '第17' in s or '大题' in s or '整卷' in s:
-                return fp+'解析.html'
-        return ''
+    R='../../'  # 从 资料/00_考试总览/ 到项目根
+    LINK_MAP=[
+        # (正则关键词, 链接路径, 优先级)
+        (r'速记卡[A-D]簇', R+'资料/404_高中数学学科/404.05速记卡/404速记卡.html', 1),
+        (r'速记卡', R+'资料/404_高中数学学科/404.05速记卡/404速记卡.html', 1),
+        (r'主观题.*框架|五类框架|框架终背', R+'资料/404_高中数学学科/404.05速记卡/404主观题框架.html', 2),
+        (r'作文立意|立意练习|立意清单', R+'资料/301_综合素质/301.05答题模板升级版.html', 3),
+        (r'301.*模板|模板终背', R+'资料/301_综合素质/301.05答题模板升级版.html', 3),
+        (r'材料分析', R+'资料/301_综合素质/301.05答题模板升级版.html', 3),
+        (r'2020下.*第1[5-7]题|2020下.*整卷|2020下.*大题', R+'资料/404_高中数学学科/真题分卷/2020下/解析.html', 4),
+        (r'20\d{2}[上下].*(?:整卷|大题|第1[5-7])', None, 4),  # 动态匹配
+    ]
+    def add_links(seg_text):
+        """在纯文本中把关键词替换成超链接，跳过已有<a>标签内的内容"""
+        for pattern, link, _ in LINK_MAP:
+            if not link:
+                m=re.search(r'(20\d{2}[上下])', seg_text)
+                if m and re.search(pattern, seg_text):
+                    y=m.group(1)
+                    link=R+'资料/404_高中数学学科/真题分卷/'+y+'/解析.html'
+            if link:
+                # 只在不在<a>标签内的文本里匹配
+                parts=re.split(r'(<a [^>]*>.*?</a>)', seg_text)
+                for i,part in enumerate(parts):
+                    if part.startswith('<a '): continue  # 跳过已有链接
+                    if re.search(pattern, part):
+                        m=re.search(pattern, part)
+                        kw=m.group(0)
+                        parts[i]=part.replace(kw, '<a href="%s" target="_blank" style="color:inherit;text-decoration:none">%s</a>'%(html.escape(link),kw), 1)
+                        break  # 每个pattern只替换一次
+                seg_text=''.join(parts)
+        return seg_text
     def to_list(s):
         segs=re.split(r' (?=🌅|🏢|🌙|☀️)', s.strip())
         items=[]
         for x in segs:
             if not x.strip(): continue
-            link=link_for(x)
             txt=re.sub(r'^([🌅🏢🌙☀️])\s*',r'\1&nbsp;&nbsp;',fmt(x)) if re.match(r'^[🌅🏢🌙☀️]',x.strip()) else fmt(x)
-            if link:
-                items.append('<li class="seg-li" title="%s"><a href="%s" target="_blank" style="color:inherit;text-decoration:none">%s</a></li>'%(html.escape(x.strip()),html.escape(link),txt))
-            else:
-                items.append('<li class="seg-li" title="%s">%s</li>'%(html.escape(x.strip()),txt))
+            # 在文本内添加多个超链接
+            txt=add_links(txt)
+            items.append('<li class="seg-li" title="%s">%s</li>'%(html.escape(x.strip()),txt))
         return '<ul class="seg" style="margin:0;padding:0;list-style:none">%s</ul>'%(''.join(items))
     # 完成列：同样按时段拆成列表（一一对应），但去掉时段 icon 只留勾选
     def to_act_list(s):
