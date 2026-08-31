@@ -132,7 +132,7 @@ function renderEssay(){
 
   essaySections.forEach(function(s,i){
     var count=s.text.replace(/\s/g,'').length;
-    var labelHtml=s.title+'<br><span class="gc">（'+count+'字）</span>';
+    var labelHtml=s.title;
     if(s.introToggle){
       labelHtml+='<br><button onclick="toggleIntro()">'+(useMainIntro?'切换备用':'切换主开头')+'</button>';
     }
