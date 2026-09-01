@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学习计划表</title>
+<style>
+  :root{--pink:#ffdeeb;--blue:#e8f4fd;--yellow:#fff8c6;--ink:#2b2b2b;--line:#eee}
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);max-width:900px;margin:0 auto;padding:24px 16px 60px;line-height:1.65}
+  h1{font-size:25px;border-bottom:3px solid #ff7ab8;padding-bottom:10px}
+  h1 small{font-size:13px;color:#888;font-weight:normal}
+  h2{font-size:18px;margin:28px 0 10px;padding-left:10px;border-left:5px solid #ff7ab8}
+  .card{border-radius:10px;padding:13px 16px;margin:10px 0;border:1px solid var(--line);page-break-inside:avoid}
+  .pink{background:var(--pink)}.blue{background:var(--blue)}.yellow{background:var(--yellow)}
+  .tag{display:inline-block;font-size:12px;font-weight:700;background:#fff;border-radius:20px;padding:2px 10px;margin-bottom:6px;border:1px solid rgba(0,0,0,.12)}
+  table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px;table-layout:fixed}
+  th,td{border:1px solid #ddd;padding:6px 8px;text-align:left;vertical-align:top}
+  th:nth-child(1),td:nth-child(1){white-space:nowrap;width:16%}
+  th:nth-child(3),td:nth-child(3){width:12%}
+  th:nth-child(4),td:nth-child(4){width:12%}
+  th{background:#f9f9f9}
+  tr.we{background:#f3fbf3}
+  tr.today{background:#ffe9a8;outline:3px solid #ffb400;outline-offset:-2px}
+  tr.today td:first-child{font-weight:800}
+  tr.today td:first-child::after{content:"\A📍今天";white-space:pre;color:#d9480f;font-weight:800}
+  mark{background:var(--yellow);padding:0 3px;border-radius:3px}
+  .must{color:#d6336c;font-weight:700}
+  ol,ul{padding-left:22px}li{margin:4px 0}
+  code{background:#f1f1f1;border-radius:4px;padding:1px 5px;font-size:12.5px}
+  footer{margin-top:34px;color:#999;font-size:12px;text-align:center}
+  .seg li:last-child{border-bottom:none !important}
+  .seg-li{display:block;border-bottom:1px solid #e0e0e0;padding:4px 8px;margin:0;line-height:20px;overflow:visible;white-space:normal;word-break:break-word}
+  .seg-li a{text-decoration:none;color:#1971c2}
+  .seg-li a:hover{background:#fffbe6;border-radius:4px;text-decoration:underline}
+  .seg{margin:0;padding:0;list-style:none}
+  .seg-label{font-size:12px;color:#888;margin:8px 0}
+  @media print{body{padding:0}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+var DATA_URL='学习计划表.json';
+var R='../';        // 到 动态/ 根（同目录用 ./）
+var F='../../资料/'; // 到 资料/ 根（固定模板原件）
+
+var LINK_MAP=[
+  [/速记卡[A-D]簇[^＋]*/, F+'404_高中数学学科/404.05速记卡/404速记卡.html'],
+  [/科三\s*速记卡[^＋]*/, F+'404_高中数学学科/404.05速记卡/404速记卡.html'],
+  [/速记卡[^＋]*/, F+'404_高中数学学科/404.05速记卡/404速记卡.html'],
+  [/主观题.*框架[^＋]*|五类框架[^＋]*|框架终背[^＋]*/, F+'404_高中数学学科/404.05速记卡/404主观题框架.html'],
+  [/科一\s*作文立意[^＋]*/, F+'301_综合素质/301.05答题模板.html'],
+  [/作文立意[^＋]*/, F+'301_综合素质/301.05答题模板.html'],
+  [/科一.*模板[^＋]*/, F+'301_综合素质/301.05答题模板.html'],
+  [/科一\s*材料分析[^＋]*/, F+'301_综合素质/301.05答题模板.html'],
+  [/材料分析[^＋]*/, F+'301_综合素质/301.05答题模板.html'],
+  [/作文1篇[^＋]*/, R+'301_综合素质/作文库/作文目录.html'],
+  [/科三\s*\d{4}[上下].*第1[5-7]题[^＋]*/, null],
+  [/科三\s*\d{4}[上下].*整卷[^＋]*/, null],
+  [/科三\s*\d{4}[上下].*大题[^＋]*/, null],
+  [/科三\s*\d{4}[上下].*单选[^＋]*/, null],
+  [/错题录入/, R+'404_高中数学学科/错题本.html'],
+  [/总结/, R+'00_考试总览/每日总结.html'],
+  [/阅读理解/, F+'301_综合素质/301.05答题模板.html'],
+];
+
+function addLinks(text){
+  LINK_MAP.forEach(function(item){
+    var pattern=item[0], link=item[1];
+    if(!link){
+      var m=text.match(/(20\d{2}[上下])/);
+      if(m && pattern.test(text)){
+        link=R+'404_高中数学学科/真题分卷/'+m[1]+'/解析.html';
+      }
+    }
+    if(link && pattern.test(text)){
+      var parts=text.split(/(<a [^>]*>.*?<\/a>)/);
+      for(var i=0;i<parts.length;i++){
+        if(parts[i].startsWith('<a ')) continue;
+        if(pattern.test(parts[i])){
+          var m=parts[i].match(pattern);
+          var kw=m[0];
+          parts[i]=parts[i].replace(kw,'<a href="'+link+'" target="_blank">'+kw+'</a>');
+          break;
+        }
+      }
+      text=parts.join('');
+    }
+  });
+  return text;
+}
+
+function escapeHtml(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function renderPlan(data){
+  var now=new Date();
+  var todayKey=(now.getMonth()+1)+'/'+now.getDate();
+  var examDate=data.examDate.split('/');
+  var exam=new Date(now.getFullYear(),parseInt(examDate[0])-1,parseInt(examDate[1]));
+  var days=Math.round((exam-now)/86400000);
+
+  var h='';
+  // 标题 + 倒计时
+  var daysText=days>0?'距 '+data.examDate+' 还有 <b style="font-size:26px;color:#d6336c">'+days+'</b> 天':(days===0?'<b style="color:#d6336c">今天考试!</b>':'已考完');
+  h+='<h1>'+escapeHtml(data.title)+' <small style="float:right;font-size:15px;color:#d6336c">'+daysText+'</small></h1>';
+  // 今日卡片
+  h+='<div class="card yellow" id="today-focus" style="border:2px solid #ffb400"><div id="tf-body" style="font-size:15px"></div></div>';
+  // 概况
+  h+='<div class="card pink"><span class="tag">📋 计划概况</span><p style="margin:6px 0">'+escapeHtml(data.summary)+'</p></div>';
+  // 科三对策
+  h+='<div class="card blue"><span class="tag">⚔️ 科三 丢分点对策</span><table><tr><th>丢分点</th><th>分值</th><th>症状</th><th>对策</th></tr>';
+  data.strategy['科三丢分点'].forEach(function(r){
+    h+='<tr><td>'+escapeHtml(r.丢分点)+'</td><td>'+r.分值+'</td><td>'+escapeHtml(r.症状)+'</td><td>'+escapeHtml(r.对策)+'</td></tr>';
+  });
+  h+='</table></div>';
+  // 逐日安排
+  h+='<h2>一、逐日安排</h2>';
+  h+='<table><tr><th>日期</th><th>当天计划</th><th>完成情况</th><th>备注</th></tr>';
+  data.schedule.forEach(function(r){
+    var isToday=r.date===todayKey;
+    var isWeekend=r.type==='周末';
+    var futureCheck=false;
+    var parts=r.date.split('/');
+    var rowDate=new Date(now.getFullYear(),parseInt(parts[0])-1,parseInt(parts[1]));
+    if(rowDate>now) futureCheck=true;
+
+    h+='<tr'+(isToday?' class="today"':'')+(isWeekend&&!isToday?' class="we"':'')+' data-date="'+r.date+'">';
+    h+='<td>'+r.date+' · '+r.weekday+' · '+r.type+'</td>';
+    h+='<td style="padding:0"><ul class="seg">';
+    // 按emoji图标分段，不是空格
+    var rawTasks=r.tasks.split(/ (?=[🌅🏢🌙☀️])/u);
+    rawTasks.forEach(function(task){
+      if(!task.trim()) return;
+      // 用 u flag 正确匹配 emoji
+      var iconMatch=task.match(/^([🌅🏢🌙☀️])\s*(.*)/u);
+      var txt=iconMatch?iconMatch[1]+'&nbsp;&nbsp;'+escapeHtml(iconMatch[2]):escapeHtml(task);
+      txt=addLinks(txt);
+      h+='<li class="seg-li">'+txt+'</li>';
+    });
+    h+='</ul></td>';
+    // 完成情况：未来日期清空，每任务一行，和左边计划对齐
+    var statusHtml='';
+    if(!futureCheck){
+      var statusParts=r.status.split(' ');
+      statusHtml='<ul class="seg">';
+      statusParts.forEach(function(st){
+        if(!st.trim()) return;
+        statusHtml+='<li class="seg-li" style="font-size:14px;text-align:center">'+escapeHtml(st)+'</li>';
+      });
+      statusHtml+='</ul>';
+    }
+    h+='<td style="padding:0">'+statusHtml+'</td>';
+    h+='<td style="font-size:12px;padding:6px 8px">'+escapeHtml(r.note)+'</td>';
+    h+='</tr>';
+  });
+  h+='</table>';
+  // 铁律
+  h+='<h2>二、三条铁律</h2><div class="card yellow"><ol>';
+  data.rules.forEach(function(r){h+='<li>'+escapeHtml(r)+'</li>';});
+  h+='</ol></div>';
+  // 真题进度
+  h+='<h2>三、真题进度追踪</h2><table><tr><th>年份</th><th>选择</th><th>简答</th><th>解答</th><th>论述</th><th>案例</th><th>设计</th><th>状态</th></tr>';
+  data.progress.forEach(function(r){
+    h+='<tr><td>'+r.year+'</td><td>'+r.选择+'</td><td>'+r.简答+'</td><td>'+r.解答+'</td><td>'+r.论述+'</td><td>'+r.案例+'</td><td>'+r.设计+'</td><td>'+escapeHtml(r.状态)+'</td></tr>';
+  });
+  h+='</table>';
+  // AI配合
+  h+='<h2>四、AI 配合事项</h2><div class="card blue"><ul>';
+  data.aiNotes.forEach(function(r){h+='<li>'+escapeHtml(r)+'</li>';});
+  h+='</ul></div>';
+  h+='<footer>数据存 学习计划表.json · 改数据刷新即生效</footer>';
+
+  document.getElementById('app').innerHTML=h;
+
+  // 今日卡片
+  var todayRow=document.querySelector('tr.today');
+  var tfBody=document.getElementById('tf-body');
+  if(todayRow){
+    var tds=todayRow.querySelectorAll('td');
+    // 复制列表行到今日卡片，用表格对齐
+    var planLis=tds[1].querySelectorAll('li');
+    var statusLis=tds[2].querySelectorAll('li');
+    var rows='';
+    for(var i=0;i<planLis.length;i++){
+      rows+='<tr><td style="padding:4px 8px;border-bottom:1px solid #e0e0e0;width:90%">'+planLis[i].innerHTML+'</td>'+
+            '<td style="padding:4px 8px;border-bottom:1px solid #e0e0e0;text-align:center;width:10%;font-size:14px">'+
+            (statusLis[i]?statusLis[i].innerHTML:'⬜')+'</td></tr>';
+    }
+    tfBody.innerHTML='<table style="width:100%;border-collapse:collapse;table-layout:fixed"><thead><tr><th style="text-align:left;padding:4px 8px;width:90%;border-bottom:2px solid #ffb400">今天计划</th><th style="padding:4px 8px;width:10%;border-bottom:2px solid #ffb400">完成</th></tr></thead><tbody>'+rows+'</tbody></table>';
+    todayRow.scrollIntoView({block:'center'});
+  } else {
+    tfBody.innerHTML=todayKey+' 不在排期内';
+  }
+}
+
+fetch('学习计划表.json').then(r=>r.json()).then(renderPlan).catch(function(e){
+  document.getElementById('app').innerHTML='<p style="color:#c92a2a;text-align:center;padding:40px">加载 学习计划表.json 失败，请通过 HTTP 服务访问（python3 -m http.server 8899）</p>';
+});
+</script>
+</body>
+</html>
