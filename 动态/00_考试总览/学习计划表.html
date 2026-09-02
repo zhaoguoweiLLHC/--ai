@@ -106,6 +106,8 @@ function renderPlan(data){
   // 标题 + 倒计时
   var daysText=days>0?'距 '+data.examDate+' 还有 <b style="font-size:26px;color:#d6336c">'+days+'</b> 天':(days===0?'<b style="color:#d6336c">今天考试!</b>':'已考完');
   h+='<h1>'+escapeHtml(data.title)+' <small style="float:right;font-size:15px;color:#d6336c">'+daysText+'</small></h1>';
+  // 成绩诊断链接（灰色低调）
+  h+='<p style="margin:0 0 10px;font-size:12px;color:#aaa"><a href="成绩诊断.html" style="color:#aaa;text-decoration:none">📊 成绩诊断与丢分点对策 →</a></p>';
   // 今日卡片 + 当前进度（左右并排）
   h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0">';
   h+='<div class="card yellow" id="today-focus" style="margin:0;border:2px solid #ffb400"><div id="tf-body" style="font-size:15px"></div></div>';
@@ -114,8 +116,6 @@ function renderPlan(data){
   h+='<li>选择题：未刷</li>';
   h+='</ul></div>';
   h+='</div>';
-  // 成绩诊断与丢分点对策（链接到单独文件）
-  h+='<div class="card pink"><a href="成绩诊断.html" style="text-decoration:none;color:#2b2b2b"><span class="tag">📊 成绩诊断与丢分点对策 →</span></a></div>';
   // 学习策略（偶尔调整）
   h+='<div class="card yellow"><span class="tag">⏰ 学习策略</span><p style="margin:6px 0;font-size:13px">通勤不安排任务，晚上0.5h总结，白天公司时间重点突破大题</p></div>';
   // 逐日安排
