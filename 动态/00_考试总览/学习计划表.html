@@ -10,7 +10,7 @@
   body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);max-width:900px;margin:0 auto;padding:24px 16px 60px;line-height:1.65}
   h1{font-size:25px;border-bottom:3px solid #ff7ab8;padding-bottom:10px}
   h1 small{font-size:13px;color:#888;font-weight:normal}
-  h2{font-size:18px;margin:28px 0 10px;padding-left:10px;border-left:5px solid #ff7ab8}
+  h2{font-size:18px;margin:28px 0 10px;padding-left:10px;border-left:5px solid #ff7ab8;display:flex;align-items:baseline;justify-content:space-between}
   .card{border-radius:10px;padding:13px 16px;margin:10px 0;border:1px solid var(--line);page-break-inside:avoid}
   .pink{background:var(--pink)}.blue{background:var(--blue)}.yellow{background:var(--yellow)}
   .tag{display:inline-block;font-size:12px;font-weight:700;background:#fff;border-radius:20px;padding:2px 10px;margin-bottom:6px;border:1px solid rgba(0,0,0,.12)}
@@ -115,7 +115,7 @@ function renderPlan(data){
   h+='</ul></div>';
   h+='</div>';
   // 逐日安排 + 学习策略
-  h+='<h2>一、逐日安排 <small style="float:right;font-size:12px;color:#888;font-weight:normal">⏰ 通勤不安排任务，晚上0.5h总结，白天公司时间重点突破大题</small></h2>';
+  h+='<h2><span>一、逐日安排</span><small style="font-size:12px;color:#888;font-weight:normal">⏰ 通勤不安排任务，晚上0.5h总结，白天公司时间重点突破大题</small></h2>';
   h+='<table><tr><th>日期</th><th>当天计划</th><th>完成情况</th><th>备注</th></tr>';
   data.schedule.forEach(function(r){
     var isToday=r.date===todayKey;
