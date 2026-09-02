@@ -114,10 +114,8 @@ function renderPlan(data){
   h+='<li>选择题：未刷</li>';
   h+='</ul></div>';
   h+='</div>';
-  // 学习策略（偶尔调整）
-  h+='<div class="card yellow"><span class="tag">⏰ 学习策略</span><p style="margin:6px 0;font-size:13px">通勤不安排任务，晚上0.5h总结，白天公司时间重点突破大题</p></div>';
-  // 逐日安排
-  h+='<h2>一、逐日安排</h2>';
+  // 逐日安排 + 学习策略
+  h+='<h2>一、逐日安排 <small style="float:right;font-size:12px;color:#888;font-weight:normal">⏰ 通勤不安排任务，晚上0.5h总结，白天公司时间重点突破大题</small></h2>';
   h+='<table><tr><th>日期</th><th>当天计划</th><th>完成情况</th><th>备注</th></tr>';
   data.schedule.forEach(function(r){
     var isToday=r.date===todayKey;
