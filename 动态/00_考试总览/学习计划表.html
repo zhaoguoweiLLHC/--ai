@@ -108,22 +108,18 @@ function renderPlan(data){
   h+='<h1>'+escapeHtml(data.title)+' <small style="float:right;font-size:15px;color:#d6336c">'+daysText+'</small></h1>';
   // 今日卡片
   h+='<div class="card yellow" id="today-focus" style="border:2px solid #ffb400"><div id="tf-body" style="font-size:15px"></div></div>';
-  // 概况（分模块）
-  h+='<h2>📋 计划概况</h2>';
-  h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0">';
-  // 成绩诊断
-  h+='<div class="card pink" style="margin:0"><span class="tag">📊 成绩诊断</span><ul style="margin:6px 0;padding-left:20px;font-size:13px">';
+  // 当前进度（和今日卡片一起，每天关注的）
+  h+='<div class="card blue"><span class="tag">📌 当前进度</span><ul style="margin:6px 0;padding-left:20px;font-size:13px">';
+  h+='<li>2020下：论述✅ 案例✅ 设计✅ 大题完成</li>';
+  h+='<li>选择题：未刷</li>';
+  h+='</ul></div>';
+  // 成绩诊断（固定不变）
+  h+='<div class="card pink"><span class="tag">📊 成绩诊断</span><ul style="margin:6px 0;padding-left:20px;font-size:13px">';
   h+='<li>科一＝66（作文没写够1000字）→ <b>速度与字数问题</b></li>';
   h+='<li>科三＝50（计算无思路、主观无框架）→ <b>公式记忆+主观框架双缺</b></li>';
   h+='<li>科二＝78 已合格</li>';
   h+='</ul></div>';
-  // 当前进度
-  h+='<div class="card blue" style="margin:0"><span class="tag">📌 当前进度</span><ul style="margin:6px 0;padding-left:20px;font-size:13px">';
-  h+='<li>2020下：论述✅ 案例✅ 设计✅ 大题完成</li>';
-  h+='<li>选择题：未刷</li>';
-  h+='</ul></div>';
-  // 优先级 + 学习策略（左右并排）
-  h+='</div>';
+  // 优先级 + 学习策略（偶尔调整，左右并排）
   h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0">';
   h+='<div class="card yellow" style="margin:0"><span class="tag">🎯 优先级</span><p style="margin:6px 0;font-size:13px"><b>科三：</b>大题→选择题<br><b>科一：</b>作文立意→三大题→选择题</p></div>';
   h+='<div class="card yellow" style="margin:0"><span class="tag">⏰ 学习策略</span><p style="margin:6px 0;font-size:13px">通勤不安排任务，晚上0.5h总结，白天公司时间重点突破大题</p></div>';
