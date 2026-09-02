@@ -46,9 +46,8 @@ var R='../';        // 到 动态/ 根（同目录用 ./）
 var F='../../资料/'; // 到 资料/ 根（固定模板原件）
 
 var LINK_MAP=[
-  [/速记卡[A-D]簇[^＋]*/, F+'404_高中数学学科/404.05速记卡/404速记卡.html'],
-  [/科三\s*速记卡[^＋]*/, F+'404_高中数学学科/404.05速记卡/404速记卡.html'],
-  [/速记卡[^＋]*/, F+'404_高中数学学科/404.05速记卡/404速记卡.html'],
+  [/速记卡([A-D])簇/, F+'404_高中数学学科/404.05速记卡/404速记卡.html#$1'],
+  [/速记卡/, F+'404_高中数学学科/404.05速记卡/404速记卡.html'],
   [/主观题.*框架[^＋]*|五类框架[^＋]*|框架终背[^＋]*/, F+'404_高中数学学科/404.05速记卡/404主观题框架.html'],
   [/科一\s*作文立意[^＋]*/, F+'301_综合素质/301.05答题模板.html'],
   [/作文立意[^＋]*/, F+'301_综合素质/301.05答题模板.html'],
@@ -67,15 +66,17 @@ function addLinks(text){
   // 再匹配其他规则
   LINK_MAP.forEach(function(item){
     var pattern=item[0], link=item[1];
-    if(!link) return; // null的已单独处理
-    if(link && pattern.test(text)){
+    if(!link) return;
+    if(pattern.test(text)){
       var parts=text.split(/(<a [^>]*>.*?<\/a>)/);
       for(var i=0;i<parts.length;i++){
         if(parts[i].startsWith('<a ')) continue;
-        if(pattern.test(parts[i])){
-          var m=parts[i].match(pattern);
+        var m=parts[i].match(pattern);
+        if(m){
           var kw=m[0];
-          parts[i]=parts[i].replace(kw,'<a href="'+link+'" target="_blank">'+kw+'</a>');
+          // 支持 $1 反向引用
+          var realLink=link.replace(/\$1/g,m[1]||'');
+          parts[i]=parts[i].replace(kw,'<a href="'+realLink+'" target="_blank" style="color:#1971c2">'+kw+'</a>');
           break;
         }
       }
