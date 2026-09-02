@@ -114,23 +114,22 @@ function renderPlan(data){
   h+='<li>选择题：未刷</li>';
   h+='</ul></div>';
   h+='</div>';
-  // 成绩诊断（固定不变）
-  h+='<div class="card pink"><span class="tag">📊 成绩诊断</span><ul style="margin:6px 0;padding-left:20px;font-size:13px">';
+  // 成绩诊断 + 丢分点对策（同一模块）
+  h+='<div class="card pink"><span class="tag">📊 成绩诊断与丢分点对策</span><ul style="margin:6px 0;padding-left:20px;font-size:13px">';
   h+='<li>科一＝66（作文没写够1000字）→ <b>速度与字数问题</b></li>';
   h+='<li>科三＝50（计算无思路、主观无框架）→ <b>公式记忆+主观框架双缺</b></li>';
   h+='<li>科二＝78 已合格</li>';
-  h+='</ul></div>';
+  h+='</ul>';
+  h+='<table style="table-layout:fixed;margin-top:10px"><colgroup><col style="width:12%"><col style="width:8%"><col style="width:30%"><col style="width:50%"></colgroup><tr><th>丢分点</th><th>分值</th><th>症状</th><th>对策</th></tr>';
+  data.strategy['科三丢分点'].forEach(function(r){
+    h+='<tr><td>'+escapeHtml(r.丢分点)+'</td><td>'+r.分值+'</td><td>'+escapeHtml(r.症状)+'</td><td>'+escapeHtml(r.对策)+'</td></tr>';
+  });
+  h+='</table></div>';
   // 优先级 + 学习策略（偶尔调整，左右并排）
   h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0">';
   h+='<div class="card yellow" style="margin:0"><span class="tag">🎯 优先级</span><p style="margin:6px 0;font-size:13px"><b>科三：</b>大题→选择题<br><b>科一：</b>作文立意→三大题→选择题</p></div>';
   h+='<div class="card yellow" style="margin:0"><span class="tag">⏰ 学习策略</span><p style="margin:6px 0;font-size:13px">通勤不安排任务，晚上0.5h总结，白天公司时间重点突破大题</p></div>';
   h+='</div>';
-  // 科三对策
-  h+='<div class="card blue"><span class="tag">⚔️ 科三 丢分点对策</span><table style="table-layout:fixed"><colgroup><col style="width:12%"><col style="width:8%"><col style="width:30%"><col style="width:50%"></colgroup><tr><th>丢分点</th><th>分值</th><th>症状</th><th>对策</th></tr>';
-  data.strategy['科三丢分点'].forEach(function(r){
-    h+='<tr><td>'+escapeHtml(r.丢分点)+'</td><td>'+r.分值+'</td><td>'+escapeHtml(r.症状)+'</td><td>'+escapeHtml(r.对策)+'</td></tr>';
-  });
-  h+='</table></div>';
   // 逐日安排
   h+='<h2>一、逐日安排</h2>';
   h+='<table><tr><th>日期</th><th>当天计划</th><th>完成情况</th><th>备注</th></tr>';
