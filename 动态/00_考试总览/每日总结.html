@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日总结表</title>
+<title>每日总结</title>
 <style>
   :root { --pink:#ffdeeb; --blue:#e8f4fd; --yellow:#fff8c6; --ink:#2b2b2b; --line:#eee; }
   * { box-sizing:border-box; }
@@ -11,28 +11,79 @@
          max-width:860px; margin:0 auto; padding:24px 16px 60px; line-height:1.7; }
   h1 { font-size:25px; border-bottom:3px solid #ff7ab8; padding-bottom:10px; }
   h1 small { font-size:13px; color:#888; font-weight:normal; }
-  h2 { font-size:18px; margin:28px 0 10px; padding-left:10px; border-left:5px solid #ff7ab8; }
-  h3 { font-size:16px; margin:20px 0 8px; }
   .card { border-radius:10px; padding:13px 16px; margin:10px 0; border:1px solid var(--line); }
-  .yellow { background:var(--yellow); }
-  hr { border:none; border-top:1px dashed #ccc; margin:14px 0; }
+  .back-link { position:fixed; top:12px; left:12px; z-index:200; background:rgba(255,255,255,.9);
+    border:1px solid #e8e8ee; border-radius:8px; padding:5px 14px; font-size:14px;
+    text-decoration:none; color:#1971c2; box-shadow:0 2px 8px rgba(0,0,0,.08); }
   blockquote { border-left:4px solid #ff7ab8; margin:8px 0; padding:6px 14px; background:#fff5fa; border-radius:0 8px 8px 0; }
-  ul,li { margin:3px 0; }
-  .must { color:#d6336c; font-weight:700; }
-  mark { background:var(--yellow); padding:0 3px; border-radius:3px; }
+  table { width:100%; border-collapse:collapse; margin:10px 0; font-size:13px; table-layout:fixed; }
+  th,td { border:1px solid #ddd; padding:6px 8px; text-align:left; vertical-align:top; }
+  th { background:#f9f9f9; }
+  th:nth-child(1),td:nth-child(1) { width:12%; }
+  th:nth-child(2),td:nth-child(2) { width:44%; }
+  th:nth-child(3),td:nth-child(3) { width:44%; }
+  .plan { color:#1971c2; }
+  .actual { color:#2b8a3e; }
+  .gap { color:#c92a2a; }
+  .seg { margin:0; padding:0; list-style:none; }
+  .seg li { padding:2px 0; }
   @media print { body { padding:0; } }
 </style>
 </head>
 <body>
-<h1>每日总结表</h1>
+<a href="学习计划表.html" class="back-link">← 返回计划表</a>
+<h1>每日总结 <small>期望计划 vs 实际执行</small></h1>
 
-<blockquote>每天晚上0.5h：总结当天学习，补白天进度或预习明天任务。</blockquote>
+<blockquote>每天晚上0.5h：对比期望计划和实际执行，总结偏差原因。</blockquote>
 
-<table style="width:100%;border-collapse:collapse;font-size:14px">
-<tr style="background:#f9f9f9"><th style="border:1px solid #ddd;padding:6px 8px;text-align:left">日期</th><th style="border:1px solid #ddd;padding:6px 8px;text-align:left">今日完成</th><th style="border:1px solid #ddd;padding:6px 8px;text-align:left">未完成→明天补</th><th style="border:1px solid #ddd;padding:6px 8px;text-align:left">备注</th></tr>
-<tr><td style="border:1px solid #ddd;padding:6px 8px">8/31</td><td style="border:1px solid #ddd;padding:6px 8px">文档结构调整（资料/动态拆分）、学习计划表优化、学习了q16案例分析第16题（基本不等式教学情境评价）、复习了q15</td><td style="border:1px solid #ddd;padding:6px 8px">科三2020下第17题教学设计(框架) 未做</td><td style="border:1px solid #ddd;padding:6px 8px">了解了情境创设的意义四条（激发兴趣、反映数学与生活联系、体现数学化过程、增强应用意识）和方法四条（联系生活、数学故事、动手实践、编设问题）+不为情境而情境</td></tr>
-<tr><td style="border:1px solid #ddd;padding:6px 8px">9/1</td><td style="border:1px solid #ddd;padding:6px 8px">修正q15/q16角度库标注、tooltip完善</td><td style="border:1px solid #ddd;padding:6px 8px"></td><td style="border:1px solid #ddd;padding:6px 8px"></td></tr>
-</table>
+<div id="summary-table"></div>
 
+<script>
+function escapeHtml(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function renderSummary(data){
+  var now=new Date();
+  var today0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  var rows='';
+
+  data.schedule.forEach(function(r){
+    var parts=r.date.split('/');
+    var rowDate=new Date(now.getFullYear(),parseInt(parts[0])-1,parseInt(parts[1]));
+    // 只显示历史日期（今天之前）
+    if(rowDate >= today0) return;
+
+    // 期望计划：拆分任务
+    var planTasks=r.tasks.split(/ (?=[\u{1f319}\u{1f3e2}\u{1f305}\u2600\ufe0f])/u);
+    var planHtml='<ul class="seg">';
+    planTasks.forEach(function(t){
+      if(!t.trim()) return;
+      planHtml+='<li>'+escapeHtml(t)+'</li>';
+    });
+    planHtml+='</ul>';
+
+    // 实际执行：从 note 字段或 status 推断
+    var actualHtml='—';
+    if(r.note){
+      actualHtml='<ul class="seg"><li>'+escapeHtml(r.note)+'</li></ul>';
+    }
+
+    rows+='<tr><td><b>'+r.date+'</b><br>'+r.weekday+' '+r.type+'</td>'+
+          '<td class="plan">'+planHtml+'</td>'+
+          '<td class="actual">'+actualHtml+'</td></tr>';
+  });
+
+  if(!rows){
+    rows='<tr><td colspan="3" style="text-align:center;color:#aaa;padding:20px">暂无历史记录</td></tr>';
+  }
+
+  document.getElementById('summary-table').innerHTML=
+    '<table><thead><tr><th>日期</th><th>期望计划</th><th>实际执行</th></tr></thead><tbody>'+
+    rows+'</tbody></table>';
+}
+
+fetch('学习计划表.json').then(r=>r.json()).then(renderSummary).catch(function(e){
+  document.getElementById('summary-table').innerHTML='<p style="color:#c92a2a">加载 学习计划表.json 失败</p>';
+});
+</script>
 </body>
 </html>

@@ -106,44 +106,38 @@ function renderPlan(data){
   // 标题 + 倒计时
   var daysText=days>0?'距 '+examDate+' 还有 <b style="font-size:26px;color:#d6336c">'+days+'</b> 天':(days===0?'<b style="color:#d6336c">今天考试!</b>':'已考完');
   h+='<h1>'+escapeHtml(data.title)+' <small style="float:right;font-size:15px;color:#d6336c">'+daysText+'</small></h1>';
-  // 今日卡片
-  h+='<div class="card yellow" id="today-focus" style="border:2px solid #ffb400"><div id="tf-body" style="font-size:15px"></div></div>';
-  // 逐日安排 + 学习策略
+  // 逐日安排 + 学习策略（只显示今天及未来）
   h+='<h2><span>一、逐日安排</span><small style="font-size:12px;color:#888;font-weight:normal">⏰ 通勤不安排任务，晚上0.5h总结，白天公司时间重点突破大题</small></h2>';
   h+='<table><tr><th>日期</th><th>当天计划</th><th>完成情况</th><th>备注</th></tr>';
   data.schedule.forEach(function(r){
     var isToday=r.date===todayKey;
     var isWeekend=r.type==='周末';
-    var futureCheck=false;
     var parts=r.date.split('/');
     var rowDate=new Date(now.getFullYear(),parseInt(parts[0])-1,parseInt(parts[1]));
-    if(rowDate>now) futureCheck=true;
+    // 跳过历史日期
+    if(rowDate < new Date(now.getFullYear(),now.getMonth(),now.getDate()) && !isToday) return;
 
     h+='<tr'+(isToday?' class="today"':'')+(isWeekend&&!isToday?' class="we"':'')+' data-date="'+r.date+'">';
     h+='<td>'+r.date+' · '+r.weekday+' · '+r.type+'</td>';
     h+='<td style="padding:0"><ul class="seg">';
-    // 按emoji图标分段，不是空格
     var rawTasks=r.tasks.split(/ (?=[🌅🏢🌙☀️])/u);
     rawTasks.forEach(function(task){
       if(!task.trim()) return;
-      // 用 u flag 正确匹配 emoji
       var iconMatch=task.match(/^([🌅🏢🌙☀️])\s*(.*)/u);
       var txt=iconMatch?iconMatch[1]+'&nbsp;&nbsp;'+escapeHtml(iconMatch[2]):escapeHtml(task);
       txt=addLinks(txt);
       h+='<li class="seg-li">'+txt+'</li>';
     });
     h+='</ul></td>';
-    // 完成情况：未来日期清空，每任务一行，和左边计划对齐
+    // 完成情况
     var statusHtml='';
-    if(!futureCheck){
-      var statusParts=r.status.split(' ');
-      statusHtml='<ul class="seg">';
-      statusParts.forEach(function(st){
-        if(!st.trim()) return;
-        statusHtml+='<li class="seg-li" style="font-size:14px;text-align:center">'+escapeHtml(st)+'</li>';
-      });
-      statusHtml+='</ul>';
-    }
+    var statusParts=r.status.split(' ');
+    statusHtml='<ul class="seg">';
+    statusParts.forEach(function(st){
+      if(!st.trim()) return;
+      statusHtml+='<li class="seg-li" style="font-size:14px;text-align:center">'+escapeHtml(st)+'</li>';
+    });
+    statusHtml+='</ul>';
     h+='<td style="padding:0">'+statusHtml+'</td>';
     h+='<td style="font-size:12px;padding:6px 8px">'+escapeHtml(r.note)+'</td>';
     h+='</tr>';
@@ -163,28 +157,6 @@ function renderPlan(data){
   h+='<footer>数据存 学习计划表.json · 改数据刷新即生效</footer>';
 
   document.getElementById('app').innerHTML=h;
-
-  // 今日卡片
-  var todayRow=document.querySelector('tr.today');
-  var tfBody=document.getElementById('tf-body');
-  if(todayRow){
-    var tds=todayRow.querySelectorAll('td');
-    // 复制列表行到今日卡片，用表格对齐
-    var planLis=tds[1].querySelectorAll('li');
-    var statusLis=tds[2].querySelectorAll('li');
-    var rows='';
-    for(var i=0;i<planLis.length;i++){
-      var planText=planLis[i].textContent||'';
-      var planHtml=planLis[i].innerHTML;
-      rows+='<tr><td style="padding:4px 8px;border-bottom:1px solid #e0e0e0;width:90%;max-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="'+planText.replace(/"/g,'&quot;')+'">'+planHtml+'</td>'+
-            '<td style="padding:4px 8px;border-bottom:1px solid #e0e0e0;text-align:center;width:10%;font-size:14px">'+
-            (statusLis[i]?statusLis[i].innerHTML:'⬜')+'</td></tr>';
-    }
-    tfBody.innerHTML='<table style="width:100%;border-collapse:collapse;table-layout:fixed"><thead><tr><th style="text-align:left;padding:4px 8px;width:90%;border-bottom:2px solid #ffb400">今天计划</th><th style="padding:4px 8px;width:10%;border-bottom:2px solid #ffb400">完成</th></tr></thead><tbody>'+rows+'</tbody></table>';
-    todayRow.scrollIntoView({block:'center'});
-  } else {
-    tfBody.innerHTML=todayKey+' 不在排期内';
-  }
 }
 
 fetch('学习计划表.json').then(r=>r.json()).then(renderPlan).catch(function(e){
