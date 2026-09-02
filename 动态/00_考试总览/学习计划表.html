@@ -56,21 +56,18 @@ var LINK_MAP=[
   [/科一\s*材料分析[^＋]*/, F+'301_综合素质/301.05答题模板.html'],
   [/材料分析[^＋]*/, F+'301_综合素质/301.05答题模板.html'],
   [/作文1篇[^＋]*/, R+'301_综合素质/作文库/作文目录.html'],
-  [/科三\s*\d{4}[上下].*(?:整卷|大题|单选|第1[5-7]题)[^＋]*/, null],
   [/错题录入/, R+'404_高中数学学科/错题本.html'],
   [/总结/, R+'00_考试总览/每日总结.html'],
   [/阅读理解/, F+'301_综合素质/301.05答题模板.html'],
 ];
 
 function addLinks(text){
+  // 先把年份替换成链接（可能有多个年份）
+  text=text.replace(/(20\d{2}[上下])/g,'<a href="'+R+'404_高中数学学科/真题分卷/$1/解析.html" target="_blank" style="color:#1971c2">$1</a>');
+  // 再匹配其他规则
   LINK_MAP.forEach(function(item){
     var pattern=item[0], link=item[1];
-    if(!link){
-      var m=text.match(/(20\d{2}[上下])/);
-      if(m && pattern.test(text)){
-        link=R+'404_高中数学学科/真题分卷/'+m[1]+'/解析.html';
-      }
-    }
+    if(!link) return; // null的已单独处理
     if(link && pattern.test(text)){
       var parts=text.split(/(<a [^>]*>.*?<\/a>)/);
       for(var i=0;i<parts.length;i++){
