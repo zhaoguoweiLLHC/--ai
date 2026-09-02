@@ -125,11 +125,8 @@ function renderPlan(data){
     h+='<tr><td>'+escapeHtml(r.丢分点)+'</td><td>'+r.分值+'</td><td>'+escapeHtml(r.症状)+'</td><td>'+escapeHtml(r.对策)+'</td></tr>';
   });
   h+='</table></div>';
-  // 优先级 + 学习策略（偶尔调整，左右并排）
-  h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0">';
-  h+='<div class="card yellow" style="margin:0"><span class="tag">🎯 优先级</span><p style="margin:6px 0;font-size:13px"><b>科三：</b>大题→选择题<br><b>科一：</b>作文立意→三大题→选择题</p></div>';
-  h+='<div class="card yellow" style="margin:0"><span class="tag">⏰ 学习策略</span><p style="margin:6px 0;font-size:13px">通勤不安排任务，晚上0.5h总结，白天公司时间重点突破大题</p></div>';
-  h+='</div>';
+  // 学习策略（偶尔调整）
+  h+='<div class="card yellow"><span class="tag">⏰ 学习策略</span><p style="margin:6px 0;font-size:13px">通勤不安排任务，晚上0.5h总结，白天公司时间重点突破大题</p></div>';
   // 逐日安排
   h+='<h2>一、逐日安排</h2>';
   h+='<table><tr><th>日期</th><th>当天计划</th><th>完成情况</th><th>备注</th></tr>';
@@ -199,7 +196,9 @@ function renderPlan(data){
     var statusLis=tds[2].querySelectorAll('li');
     var rows='';
     for(var i=0;i<planLis.length;i++){
-      rows+='<tr><td style="padding:4px 8px;border-bottom:1px solid #e0e0e0;width:90%">'+planLis[i].innerHTML+'</td>'+
+      var planText=planLis[i].textContent||'';
+      var planHtml=planLis[i].innerHTML;
+      rows+='<tr><td style="padding:4px 8px;border-bottom:1px solid #e0e0e0;width:90%;max-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="'+planText.replace(/"/g,'&quot;')+'">'+planHtml+'</td>'+
             '<td style="padding:4px 8px;border-bottom:1px solid #e0e0e0;text-align:center;width:10%;font-size:14px">'+
             (statusLis[i]?statusLis[i].innerHTML:'⬜')+'</td></tr>';
     }
