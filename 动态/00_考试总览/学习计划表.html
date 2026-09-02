@@ -106,13 +106,14 @@ function renderPlan(data){
   // 标题 + 倒计时
   var daysText=days>0?'距 '+data.examDate+' 还有 <b style="font-size:26px;color:#d6336c">'+days+'</b> 天':(days===0?'<b style="color:#d6336c">今天考试!</b>':'已考完');
   h+='<h1>'+escapeHtml(data.title)+' <small style="float:right;font-size:15px;color:#d6336c">'+daysText+'</small></h1>';
-  // 今日卡片
-  h+='<div class="card yellow" id="today-focus" style="border:2px solid #ffb400"><div id="tf-body" style="font-size:15px"></div></div>';
-  // 当前进度（和今日卡片一起，每天关注的）
-  h+='<div class="card blue"><span class="tag">📌 当前进度</span><ul style="margin:6px 0;padding-left:20px;font-size:13px">';
+  // 今日卡片 + 当前进度（左右并排）
+  h+='<div style="display:grid;grid-template-columns:2fr 1fr;gap:10px;margin:8px 0">';
+  h+='<div class="card yellow" id="today-focus" style="margin:0;border:2px solid #ffb400"><div id="tf-body" style="font-size:15px"></div></div>';
+  h+='<div class="card blue" style="margin:0"><span class="tag">📌 当前进度</span><ul style="margin:6px 0;padding-left:20px;font-size:13px">';
   h+='<li>2020下：论述✅ 案例✅ 设计✅ 大题完成</li>';
   h+='<li>选择题：未刷</li>';
   h+='</ul></div>';
+  h+='</div>';
   // 成绩诊断（固定不变）
   h+='<div class="card pink"><span class="tag">📊 成绩诊断</span><ul style="margin:6px 0;padding-left:20px;font-size:13px">';
   h+='<li>科一＝66（作文没写够1000字）→ <b>速度与字数问题</b></li>';
