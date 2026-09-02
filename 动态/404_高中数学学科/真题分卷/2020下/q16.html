@@ -67,7 +67,7 @@
 <section class="card" id="q16">
   <div class="qhead">
     <span class="badge b-an">案例分析</span>
-    <h2><a href="../../../资料/404_高中数学学科/真题分卷/2020下原卷.pdf#page=3" target="_blank" rel="noopener" style="color:inherit;text-decoration:none" title="点击打开原卷PDF第3页">第 16 题 · 基本不等式教学情境评价</a></h2>
+    <h2><a href="../../../../资料/404_高中数学学科/真题分卷/2020下原卷.pdf#page=3" target="_blank" rel="noopener" style="color:inherit;text-decoration:none" title="点击打开原卷PDF第3页">第 16 题 · 基本不等式教学情境评价</a></h2>
     <span class="score">20 分</span>
   </div>
 
@@ -83,13 +83,13 @@
     <h3>🧠 推导 · 案例分析通用四步</h3>
     <ul class="points" style="list-style:none;padding-left:4px">
       <li><span class="pt">① 审题：</span>两问。问①评价两个情境（要分别评价、各说好坏）；问②情境创设注意事项（通用方法题，背框架即可）。</li>
-      <li><span class="pt">② 定框架：</span>问①用 <a href="../../../资料/404_高中数学学科/404.05速记卡/404主观题框架.html#角度库" target="_blank" rel="noopener"><b>案例四角度</b> ↗</a>：激发兴趣、反映数学与生活联系、体现数学化过程、增强应用意识，逐条对号入座评价。问②用<a href="../../../资料/404_高中数学学科/404.04中公教学知识.webp" target="_blank"> 中公 L67 情境创设方法四条</a>＋奥苏贝尔"有意义的接受学习"。</li>
+      <li><span class="pt">② 定框架：</span>问①用 <a href="../../../../资料/404_高中数学学科/404.05速记卡/404主观题框架.html#角度库" target="_blank" rel="noopener"><b>情境创设意义四条</b> ↗</a>（中公L66）：激发兴趣、反映数学与生活联系、体现数学化过程、增强应用意识，逐条对号入座评价。问②用<a href="../../../../资料/404_高中数学学科/404.04中公教学知识.webp" target="_blank"> 中公 L67 情境创设方法四条</a>＋奥苏贝尔"有意义的接受学习"。</li>
       <li><span class="pt">③ 填内容：</span>情境1（双十一降价）——结合基本不等式(a+b)/2≥√(ab)，丙方案(算术平均)≥甲乙(几何平均的变形)，激发兴趣、联系生活、体现数学化过程；但可能忽视数学本质推导。情境2（天平称重）——天平原理是力矩平衡，称重是算术平均还是几何平均问题，引发认知冲突、动手实践；但情境较抽象，学生可能不理解物理原理。</li>
       <li><span class="pt">④ 取点：</span>问①两个情境各评2-3个角度（≤240字）；问②四条方法各一句话（≤210字）。</li>
     </ul>
   </div>
 
-  <p style="text-align:center;margin:10px 0"><a href="../../../资料/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></p>
+  <p style="text-align:center;margin:10px 0"><a href="../../../../资料/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></p>
 
   <div class="tabs">
     <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 一档·满分版 450字</button>
@@ -158,6 +158,44 @@ function switchTab(id){
   document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
   document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
 }
+// 课标 tooltip 样式需要 .tip/.tip-box，从 q15 复制
+</script>
+<style>
+.tip{position:relative;cursor:pointer}
+.tip-box{display:none;position:absolute;bottom:130%;left:50%;transform:translateX(-50%);
+  width:380px;max-width:90vw;background:#fff;border:1px solid #f6c3d6;border-radius:12px;
+  padding:12px 16px;font-size:14px;line-height:1.7;color:#333;z-index:100;
+  box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:8px solid transparent;border-top-color:#fff}
+.tip-box b.pk{color:#d6336c}
+.tip-box mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:3px}
+.tip:hover .tip-box{display:block}
+</style>
+<script>
+// 中公教学知识 tooltip
+(function(){
+  var text='创设数学问题情境的意义（中公L66）：<mark>激发学生学习兴趣</mark>，使学生积极主动投入学习活动；<mark>反映数学与生活的联系</mark>；<mark>体现数学化的过程</mark>；<mark>增强学生应用数学的意识</mark>。<br><br>创设数学问题情境的方法（中公L67）：<mark>联系生活实际</mark>、<mark>利用数学故事</mark>、<mark>动手实践</mark>、<mark>编设具体数学问题</mark>等，引导学生在真实情境中发现问题和提出问题。<br><br>奥苏贝尔"有意义的接受学习"（L50）：情境创设应服务于教学目标，不能脱离数学本质。';
+  document.querySelectorAll('a[href*="404.04中公教学知识"]').forEach(function(a){
+    a.classList.add('tip');
+    var box=document.createElement('span');
+    box.className='tip-box';
+    box.innerHTML=text;
+    a.appendChild(box);
+  });
+})();
+
+// 角度库/框架 tooltip
+(function(){
+  var text='<b class="pk">案例分析·情境评价框架</b><br>问①评价情境创设：先判定句（合理/需改进），再用意义四条逐条对号：<br><br>① <mark>激发兴趣</mark>：是否贴近生活、调动积极性<br>② <mark>反映数学与生活联系</mark>：是否体现数学应用价值<br>③ <mark>体现数学化过程</mark>：学生是否经历从生活到模型的抽象<br>④ <mark>增强应用意识</mark>：是否指向实际问题解决<br><br>问②情境创设注意什么（方法四条L67）：<br>联系生活实际、利用数学故事、动手实践、编设具体问题<br>＋不为情境而情境（不能脱离数学本质）';
+  document.querySelectorAll('a[href*="404主观题框架"]').forEach(function(a){
+    a.classList.add('tip');
+    var box=document.createElement('span');
+    box.className='tip-box';
+    box.innerHTML=text;
+    a.appendChild(box);
+  });
+})();
 </script>
 </body>
 </html>

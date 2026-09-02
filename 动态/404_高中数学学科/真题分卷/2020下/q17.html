@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2020下半年 · 高中数学教资 · 第17题解析</title>
+<style>
+  :root{
+    --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
+    --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#f2f3f7;color:var(--ink);
+       font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       line-height:1.85;font-size:16px}
+  .wrap{max-width:860px;margin:0 auto;padding:28px 18px 60px}
+  section.card{background:#fff;border-radius:16px;padding:24px 26px;margin-bottom:20px;
+       box-shadow:0 2px 10px rgba(30,30,60,.07)}
+  .qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .qhead h2{font-size:19px;margin:0}
+  .badge{border-radius:8px;padding:2px 12px;font-size:13px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:14px}
+  .origin{background:#f7f7fa;border-left:4px solid #b9bdc9;border-radius:8px;
+       padding:12px 16px;color:#555;font-size:15px;margin:12px 0}
+  .block{border-radius:12px;padding:14px 18px;margin:14px 0}
+  .block h3{margin:0 0 8px;font-size:15px;letter-spacing:.5px}
+  .k-bibei{background:var(--pink-bg);border:1px solid #f6c3d6}
+  .k-bibei h3{color:var(--pink)}
+  .k-blue{background:var(--blue-bg);border:1px solid #c4dcf8}
+  .k-blue h3{color:var(--blue)}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0}
+  .k-gold h3{color:var(--gold)}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:3px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:4px}
+  .pk{color:var(--pink);font-weight:700}
+  .ex{background:#fff3bf;border-radius:8px;padding:2px 8px;color:#9a7b00}
+  .points{list-style:none;padding-left:4px}
+  .points>li{margin:10px 0}
+  .points .pt{font-weight:700;color:var(--pink)}
+  ul.tips{margin:6px 0;padding-left:20px}
+  ul.tips li{margin:6px 0}
+  footer{color:#9aa0aa;font-size:13px;text-align:center;margin-top:26px}
+  .back-link{position:fixed;top:12px;left:12px;z-index:200;background:rgba(255,255,255,.9);
+    border:1px solid #e8e8ee;border-radius:8px;padding:5px 14px;font-size:14px;
+    text-decoration:none;color:#1971c2;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  .tabs{display:flex;gap:0;margin:14px 0 0;border-radius:12px 12px 0 0;overflow:hidden}
+  .tab-btn{flex:1;padding:10px 8px;border:none;background:#f2f3f7;font-size:14px;font-weight:600;
+    cursor:pointer;text-align:center;color:#8a8f98;border-bottom:3px solid transparent;transition:.2s}
+  .tab-btn.active-t{color:#fff}
+  .tab-btn[data-tab="t-full"].active-t{background:#eef6ff;color:#1971c2;border-bottom-color:#1971c2}
+  .tab-btn[data-tab="t-exam"].active-t{background:#e9f9ef;color:#2b8a3e;border-bottom-color:#2b8a3e}
+  .tab-btn[data-tab="t-life"].active-t{background:#ffecec;color:#c92a2a;border-bottom-color:#c92a2a}
+  .tab-content{display:none}
+  .tab-content.active-t{display:block}
+  .tip{position:relative;cursor:pointer}
+  .tip-box{display:none;position:absolute;bottom:130%;left:50%;transform:translateX(-50%);
+    width:380px;max-width:90vw;background:#fff;border:1px solid #f6c3d6;border-radius:12px;
+    padding:12px 16px;font-size:14px;line-height:1.7;color:#333;z-index:100;
+    box-shadow:0 4px 16px rgba(0,0,0,.12)}
+  .tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    border:8px solid transparent;border-top-color:#fff}
+  .tip-box b.pk{color:#d6336c}
+  .tip-box mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:3px}
+  .tip:hover .tip-box{display:block}
+  @media print{
+    body{background:#fff}
+    .wrap{max-width:none;padding:0}
+    section.card{box-shadow:none;border:1px solid #eee;break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="解析.html" class="back-link">← 返回目录</a>
+<section class="card" id="q17">
+  <div class="qhead">
+    <span class="badge b-she">教学设计</span>
+    <h2><a href="../../../../资料/404_高中数学学科/真题分卷/2020下原卷.pdf#page=4" target="_blank" rel="noopener" style="color:inherit;text-decoration:none" title="点击打开原卷PDF第4页">第 17 题 · 二分法教学设计</a></h2>
+    <span class="score">30 分</span>
+  </div>
+
+  <div class="origin">
+    二分法是运用函数性质求方程近似解的基本方法。课标提出的学习要求(2)：结合具体连续函数及其图象特点，了解函数零点存在定理，探索用二分法求方程近似解的思路，并会画程序框图，能借助计算工具用二分法求方程近似解，了解一般性。<br>
+    请以达到学习要求(2)为目的，设计"二分法"的一个教学方案，要求：<br>
+    (1) 写出明确的教学重点（6分）<br>
+    (2) 设计主要的教学环节（问题导入、二分法生成过程、巩固新知识）及其设计意图（18分）<br>
+    (3) 说明教学方案的特色以及实施的注意事项（6分）
+  </div>
+
+  <div class="block k-bibei">
+    <h3>🧠 推导 · 教学设计五件套套用</h3>
+    <ul class="points" style="list-style:none;padding-left:4px">
+      <li><span class="pt">① 审题：</span>三个硬约束：针对课标要求(2)设计；环节名称固定（问题导入、二分法生成过程、巩固新知识），不能自己编；三个小问分别对应重点6分、环节+意图18分、特色注意6分。</li>
+      <li><span class="pt">② 选框架：</span>用 <a href="../../../../资料/404_高中数学学科/404.05速记卡/404主观题框架.html#角度库" target="_blank" rel="noopener"><b>教学设计五件套</b> ↗</a>（中公L38-51），但环节必须按题目给的三个名称写，不能套四环节模板。</li>
+      <li><span class="pt">③ 填内容：</span>课标原文（<a href="../../../../资料/404_高中数学学科/404.02课程标准.pdf#page=30" target="_blank" rel="noopener" title="新标签页打开课标PDF 第30页"><mark>L917-919 零点存在定理＋二分法思路＋程序框图</mark></a>）；具体函数用 f(x)=x³+x-1（经典例题）；导入用猜价格游戏。</li>
+      <li><span class="pt">④ 取点：</span>(1)重点2句≤30字；(2)每环节＝步骤+意图，3个环节各约150字；(3)特色2条+注意3条。</li>
+    </ul>
+    <p style="margin:0 0 0;font-size:14px"><b>换个知识点怎么办：</b>教学设计五件套框架不变，内容换成该知识点的课标要求和具体实例——<b class="pk">框架是模板，内容不是</b>。</p>
+  </div>
+
+  <p style="text-align:center;margin:10px 0"><a href="../../../../资料/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></p>
+
+  <div class="tabs">
+    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 一档·满分版 680字</button>
+    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 二档·考场版 540字≈18分</button>
+    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 三档·救命版 120字</button>
+  </div>
+  <div class="tab-content active-t" id="t-full">
+    <div class="block t-full" style="background:#eef6ff;border:1px solid #b6d6f7">
+      <h3 style="color:#1971c2">🏆 第一档 · 满分版 · 实测680字（慢手写≈23分钟❌ · 预估27–30分｜在家学习用）</h3>
+
+      <p><b>（1）教学重点（6分）</b></p>
+      <p>重点：二分法求方程近似解的思路与步骤（定区间→取中点→算符号→缩区间→重复）。难点：零点存在定理的运用及"二分"递推思想的理解。</p>
+
+      <p><b>（2）教学环节及设计意图（18分）</b></p>
+      <ul class="points">
+        <li><span class="pt">环节一：问题导入</span><br>
+          教师提出"猜价格"游戏：商品价格在0~1000元之间，如何用最少次数猜中？引导学生发现"每次取中间值"策略——大了往下半区找，小了往上半区找。<br>
+          <b>设计意图：</b>以生活实例<a href="../../../../资料/404_高中数学学科/404.04中公教学知识.webp" target="_blank">激发兴趣</a>（L66），让学生直观感受"二分"思想，为从生活情境到数学模型的抽象做准备。</li>
+        <li><span class="pt">环节二：二分法生成过程</span><br>
+          ①回顾零点存在定理：连续函数f(x)在[a,b]上f(a)·f(b)<0，则(a,b)内至少有一个零点。<br>
+          ②以具体函数f(x)=x³+x-1为例：f(0)=-1<0，f(1)=1>0，故(0,1)内有零点。<br>
+          ③取中点c=0.5，f(0.5)=-0.375<0，零点在(0.5,1)；再取中点0.75，f(0.75)>0，零点在(0.5,0.75)；如此反复，区间不断缩小。<br>
+          ④归纳一般步骤：定区间→取中点→算f(中点)符号→确定新区间→重复，直至区间长度满足精度要求。<br>
+          ⑤画程序框图：开始→输入a,b,精度ε→算f(a),f(b)→取中点c=(a+b)/2→判断f(c)符号→更新a或b→判断|b-a|<ε→输出c。<br>
+          <b>设计意图：</b>学生经历具体函数探究→一般步骤归纳→框图表征的完整过程，发展<b>数学运算</b>与<b>逻辑推理</b>素养，体现从生活到数学的数学化过程。</li>
+        <li><span class="pt">环节三：巩固新知识</span><br>
+          练习1：用二分法求f(x)=x²-2在(1,2)内的近似解（前3步）。<br>
+          练习2：判断方程x³-2x+1=0是否可用二分法（需满足连续+端点异号）。<br>
+          <b>设计意图：</b>变式练习巩固步骤，及时反馈，分层达标；练习2深化对使用条件的理解。</li>
+      </ul>
+
+      <p><b>（3）特色与注意事项（6分）</b></p>
+      <p><b>特色：</b>①从生活游戏导入，经历"具体函数→一般步骤→程序框图"的探究过程，层次清晰；②以学生为主体，教师引导探究，发展四能。<br>
+      <b>注意：</b>①必须满足f(a)·f(b)<0且函数连续，使用前要验证条件；②二分法不能求偶数重根（端点不变号）；③让学生亲自动手计算和画框图，不流于形式。</p>
+    </div>
+  </div>
+  <div class="tab-content" id="t-exam">
+    <div class="block t-exam" style="background:#e9f9ef;border:1px solid #b2e2c5">
+      <h3 style="color:#2b8a3e">🎯 第二档 · 考场版 · 实测540字（慢手写≈18分钟✔ · 预估24–27分）</h3>
+
+      <p><b>（1）教学重点（6分）</b></p>
+      <p>重点：二分法求方程近似解的思路与步骤。难点：零点存在定理的运用及"二分"递推思想的理解。</p>
+
+      <p><b>（2）教学环节及设计意图（18分）</b></p>
+      <ul class="points">
+        <li><span class="pt">环节一：问题导入</span><br>
+          "猜价格"游戏：价格在0~1000元，每次取中间值，大了往下、小了往上。<br>
+          <b>意图：</b>以生活实例激发兴趣，直观感受二分思想。</li>
+        <li><span class="pt">环节二：二分法生成过程</span><br>
+          ①回顾零点存在定理：f(a)·f(b)<0则(a,b)内有零点。<br>
+          ②以f(x)=x³+x-1为例，f(0)<0，f(1)>0，(0,1)内有零点。<br>
+          ③取中点0.5→f(0.5)<0→零点在(0.5,1)；取0.75→f(0.75)>0→零点在(0.5,0.75)……<br>
+          ④归纳步骤：定区间→取中点→算符号→缩区间→重复至精度。<br>
+          ⑤画程序框图。<br>
+          <b>意图：</b>经历具体→一般→框图的探究过程，发展数学运算与逻辑推理素养，体现数学化。</li>
+        <li><span class="pt">环节三：巩固新知识</span><br>
+          练习1：求f(x)=x²-2在(1,2)近似解（前3步）。练习2：判断方程能否用二分法。<br>
+          <b>意图：</b>变式练习，及时反馈，分层达标。</li>
+      </ul>
+
+      <p><b>（3）特色与注意事项（6分）</b></p>
+      <p><b>特色：</b>生活导入→具体探究→一般归纳→框图表征，层次清晰，学生主体。<br>
+      <b>注意：</b>①需满足f(a)·f(b)<0且连续；②不能求偶数重根；③让学生动手计算，不流于形式。</p>
+    </div>
+  </div>
+  <div class="tab-content" id="t-life">
+    <div class="block t-life" style="background:#ffecec;border:1px solid #ffc9c9">
+      <h3 style="color:#c92a2a">🛟 第三档 · 救命版 · 实测120字（≈4分钟 · 预估12–15分）</h3>
+      <p><b>(1)</b> 重点：二分法求方程近似解的步骤。难点：零点存在定理运用。</p>
+      <p><b>(2)</b> ①导入：猜价格游戏，每次取中点。意图：激发兴趣，感受二分思想。<br>
+      ②生成：f(a)·f(b)<0则有零点→取中点→算符号→缩区间→重复→画框图。意图：探究发现，发展运算素养。<br>
+      ③巩固：练习求x²-2近似解。意图：巩固步骤。</p>
+      <p><b>(3)</b> 特色：生活导入到数学化。注意：需连续且端点异号；不能求偶重根；动手算。</p>
+      <p style="font-size:13px;color:#777">框架分＝重点+三环节名称+三意图+特色注意，写满即有底分。</p>
+    </div>
+  </div>
+
+  <div class="block k-gold">
+    <h3>💡 得分技巧</h3>
+    <ul class="tips">
+      <li>环节名称必须用题目给的三个（<span class="pk">问题导入、二分法生成过程、巩固新知识</span>），不能自己编；</li>
+      <li>每个环节都要写"设计意图"，这是阅卷按点给分的关键；</li>
+      <li>二分法生成过程要写出<b>具体函数和具体步骤</b>（取中点、算符号），不能只写抽象描述；</li>
+      <li><b>画程序框图</b>是课标要求(2)明确提到的，写了就得分；</li>
+      <li>注意事项里"<span class="pk">连续</span>""<span class="pk">端点异号</span>"是核心得分点；</li>
+      <li>题目要求达到学习要求(2)，答案必须覆盖：零点存在定理、二分法思路、程序框图、一般性。</li>
+    </ul>
+  </div>
+
+</section>
+<footer><a href="解析.html">← 返回目录</a></footer>
+<script>
+function switchTab(id){
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
+  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
+}
+// 课标原文 tooltip
+(function(){
+  var text='课标L917-919（第22页）：<br>①结合学过的函数图象，了解<mark>函数零点与方程解的关系</mark>。<br>②结合具体连续函数及其图象的特点，了解<mark>函数零点存在定理</mark>，<mark>探索用二分法求方程近似解的思路</mark>并会画<mark>程序框图</mark>，能借助计算工具用二分法求方程近似解，了解用二分法求方程近似解具有<mark>一般性</mark>。';
+  document.querySelectorAll('a[href*="404.02课程标准.pdf"]').forEach(function(a){
+    a.classList.add('tip');
+    var box=document.createElement('span');
+    box.className='tip-box';
+    box.innerHTML=text;
+    a.appendChild(box);
+  });
+})();
+// 中公教学知识 tooltip
+(function(){
+  var text='创设数学问题情境的意义（中公L66）：<mark>激发学生学习兴趣</mark>，使学生积极主动投入学习活动；<mark>反映数学与生活的联系</mark>；<mark>体现数学化的过程</mark>；<mark>增强学生应用数学的意识</mark>。<br><br>探究学习策略（L52）：提出猜想→检验论证→总结提高。<br><br>教学设计五件套（L38-51）：教学目标三维→重难点→教学环节+意图→板书设计→特色注意。';
+  document.querySelectorAll('a[href*="404.04中公教学知识"]').forEach(function(a){
+    a.classList.add('tip');
+    var box=document.createElement('span');
+    box.className='tip-box';
+    box.innerHTML=text;
+    a.appendChild(box);
+  });
+})();
+// 框架 tooltip
+(function(){
+  var text='<b class="pk">教学设计五件套（30分 · ≤700字）</b><br>(1) 教学目标·三维（≤150字）<br>(2) 重难点（≤60字）<br>(3) 教学环节+意图（≤420字）<br>(4) 板书设计（≤40字）<br>(5) 特色与注意（≤30字）<br><br>本题要求环节固定：<mark>问题导入</mark>、<mark>二分法生成过程</mark>、<mark>巩固新知识</mark>，不能套四环节模板。';
+  document.querySelectorAll('a[href*="404主观题框架"]').forEach(function(a){
+    a.classList.add('tip');
+    var box=document.createElement('span');
+    box.className='tip-box';
+    box.innerHTML=text;
+    a.appendChild(box);
+  });
+})();
+</script>
+</div>
+</body>
+</html>
