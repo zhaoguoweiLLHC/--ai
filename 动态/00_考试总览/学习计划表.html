@@ -135,9 +135,23 @@ function renderPlan(data){
   });
   h+='</table>';
   // 真题进度
+  var ZT='../404_高中数学学科/真题分卷/';
+  function progressLink(year,cell){
+    if(cell==='⬜') return cell;
+    var m=cell.match(/✅(q\d+)/);
+    if(m) return '<a href="'+ZT+year+'/'+m[1]+'.html" style="color:#1971c2;text-decoration:none">'+cell+'</a>';
+    return cell;
+  }
   h+='<h2>二、真题进度追踪</h2><table><tr><th>年份</th><th>选择</th><th>简答</th><th>解答</th><th>论述</th><th>案例</th><th>设计</th><th>状态</th></tr>';
   data.progress.forEach(function(r){
-    h+='<tr><td>'+r.year+'</td><td>'+r.选择+'</td><td>'+r.简答+'</td><td>'+r.解答+'</td><td>'+r.论述+'</td><td>'+r.案例+'</td><td>'+r.设计+'</td><td>'+escapeHtml(r.状态)+'</td></tr>';
+    h+='<tr><td><a href="'+ZT+r.year+'/解析.html" style="color:#1971c2;text-decoration:none">'+r.year+'</a></td>'+
+        '<td>'+progressLink(r.year,r.选择)+'</td>'+
+        '<td>'+progressLink(r.year,r.简答)+'</td>'+
+        '<td>'+progressLink(r.year,r.解答)+'</td>'+
+        '<td>'+progressLink(r.year,r.论述)+'</td>'+
+        '<td>'+progressLink(r.year,r.案例)+'</td>'+
+        '<td>'+progressLink(r.year,r.设计)+'</td>'+
+        '<td>'+escapeHtml(r.状态)+'</td></tr>';
   });
   h+='</table>';
   // 附录
