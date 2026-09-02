@@ -157,18 +157,14 @@ function renderPlan(data){
     h+='</tr>';
   });
   h+='</table>';
-  // 铁律
-  h+='<h2>二、三条铁律</h2><div class="card yellow"><ol>';
-  data.rules.forEach(function(r){h+='<li>'+escapeHtml(r)+'</li>';});
-  h+='</ol></div>';
   // 真题进度
-  h+='<h2>三、真题进度追踪</h2><table><tr><th>年份</th><th>选择</th><th>简答</th><th>解答</th><th>论述</th><th>案例</th><th>设计</th><th>状态</th></tr>';
+  h+='<h2>二、真题进度追踪</h2><table><tr><th>年份</th><th>选择</th><th>简答</th><th>解答</th><th>论述</th><th>案例</th><th>设计</th><th>状态</th></tr>';
   data.progress.forEach(function(r){
     h+='<tr><td>'+r.year+'</td><td>'+r.选择+'</td><td>'+r.简答+'</td><td>'+r.解答+'</td><td>'+r.论述+'</td><td>'+r.案例+'</td><td>'+r.设计+'</td><td>'+escapeHtml(r.状态)+'</td></tr>';
   });
   h+='</table>';
   // AI配合
-  h+='<h2>四、AI 配合事项</h2><div class="card blue"><ul>';
+  h+='<h2>三、AI 配合事项</h2><div class="card blue"><ul>';
   data.aiNotes.forEach(function(r){h+='<li>'+escapeHtml(r)+'</li>';});
   h+='</ul></div>';
   // 附录
