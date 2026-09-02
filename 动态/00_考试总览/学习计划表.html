@@ -187,7 +187,7 @@ function renderPlan(data){
   }
 }
 
-fetch('学习计划表.json').then(r=>r.json()).then(renderPlan).catch(function(e){
+fetch(DATA_URL).then(r=>r.json()).then(renderPlan).catch(function(e){
   document.getElementById('app').innerHTML='<p style="color:#c92a2a;text-align:center;padding:40px">加载 学习计划表.json 失败，请通过 HTTP 服务访问（python3 -m http.server 8899）</p>';
 });
 </script>
