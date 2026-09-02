@@ -81,7 +81,7 @@ function renderSummary(data){
     rows+'</tbody></table>';
 }
 
-fetch('学习计划表.json').then(r=>r.json()).then(renderSummary).catch(function(e){
+fetch('../../.ai-cache/00_考试总览/学习计划表.json').then(r=>r.json()).then(renderSummary).catch(function(e){
   document.getElementById('summary-table').innerHTML='<p style="color:#c92a2a">加载 学习计划表.json 失败</p>';
 });
 </script>

@@ -41,7 +41,7 @@
 <body>
 <div id="app"></div>
 <script>
-var DATA_URL='学习计划表.json';
+var DATA_URL='../../.ai-cache/00_考试总览/学习计划表.json';
 var R='../';        // 到 动态/ 根（同目录用 ./）
 var F='../../资料/'; // 到 资料/ 根（固定模板原件）
 
@@ -154,7 +154,7 @@ function renderPlan(data){
   h+='<li><a href="成绩诊断.html" style="color:#1971c2;text-decoration:none">📊 成绩诊断与考场策略 →</a></li>';
   h+='<li><a href="每日总结.html" style="color:#1971c2;text-decoration:none">📝 每日总结 →</a></li>';
   h+='</ul></div>';
-  h+='<footer>数据存 学习计划表.json · 改数据刷新即生效</footer>';
+  h+='<footer>数据存 .ai-cache/00_考试总览/学习计划表.json · 改数据刷新即生效</footer>';
 
   document.getElementById('app').innerHTML=h;
 
