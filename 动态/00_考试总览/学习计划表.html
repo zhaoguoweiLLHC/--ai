@@ -106,8 +106,6 @@ function renderPlan(data){
   // 标题 + 倒计时
   var daysText=days>0?'距 '+data.examDate+' 还有 <b style="font-size:26px;color:#d6336c">'+days+'</b> 天':(days===0?'<b style="color:#d6336c">今天考试!</b>':'已考完');
   h+='<h1>'+escapeHtml(data.title)+' <small style="float:right;font-size:15px;color:#d6336c">'+daysText+'</small></h1>';
-  // 成绩诊断链接（灰色低调）
-  h+='<p style="margin:0 0 10px;font-size:12px;color:#aaa"><a href="成绩诊断.html" style="color:#aaa;text-decoration:none">📊 成绩诊断与丢分点对策 →</a></p>';
   // 今日卡片 + 当前进度（左右并排）
   h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0">';
   h+='<div class="card yellow" id="today-focus" style="margin:0;border:2px solid #ffb400"><div id="tf-body" style="font-size:15px"></div></div>';
@@ -172,6 +170,11 @@ function renderPlan(data){
   // AI配合
   h+='<h2>四、AI 配合事项</h2><div class="card blue"><ul>';
   data.aiNotes.forEach(function(r){h+='<li>'+escapeHtml(r)+'</li>';});
+  h+='</ul></div>';
+  // 附录
+  h+='<h2>附录</h2><div class="card" style="background:#f9f9f9"><ul style="margin:6px 0;padding-left:20px;font-size:13px">';
+  h+='<li><a href="成绩诊断.html" style="color:#1971c2;text-decoration:none">📊 成绩诊断与丢分点对策 →</a></li>';
+  h+='<li><a href="每日总结.html" style="color:#1971c2;text-decoration:none">📝 每日总结 →</a></li>';
   h+='</ul></div>';
   h+='<footer>数据存 学习计划表.json · 改数据刷新即生效</footer>';
 
