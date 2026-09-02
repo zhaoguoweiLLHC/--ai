@@ -102,7 +102,7 @@ function renderPlan(data){
   var daysText=days>0?'距 '+examDate+' 还有 <b style="font-size:26px;color:#d6336c">'+days+'</b> 天':(days===0?'<b style="color:#d6336c">今天考试!</b>':'已考完');
   h+='<h1>'+escapeHtml(data.title)+' <small style="float:right;font-size:15px;color:#d6336c">'+daysText+'</small></h1>';
   // 今日卡片
-  h+='<div class="card yellow" id="today-focus" style="border:2px solid #ffb400"><div id="tf-body" style="font-size:15px"></div></div>';
+  h+='<div class="card yellow" id="today-focus" style="border:2px solid #ffb400"><div id="tf-body" style="font-size:17px"></div></div>';
   // 逐日安排 + 学习策略（只显示今天及未来）
   h+='<h2><span>一、逐日安排</span><small style="font-size:12px;color:#888;font-weight:normal">⏰ 通勤不安排任务，晚上0.5h总结，白天公司时间重点突破大题</small></h2>';
   h+='<table><tr><th>日期</th><th>当天计划</th></tr>';
@@ -178,11 +178,11 @@ function renderPlan(data){
       var txt=iconMatch?iconMatch[1]+'&nbsp;&nbsp;'+escapeHtml(iconMatch[2]):escapeHtml(task);
       txt=addLinks(txt);
       var st=statusParts[idx]||'⬜';
-      rows+='<tr><td style="padding:4px 8px;border-bottom:1px solid #e0e0e0;width:90%">'+txt+'</td>'+
-            '<td style="padding:4px 8px;border-bottom:1px solid #e0e0e0;text-align:center;width:10%;font-size:14px">'+
+      rows+='<tr><td style="padding:6px 10px;border-bottom:1px solid #e0e0e0;width:90%">'+txt+'</td>'+
+            '<td style="padding:6px 10px;border-bottom:1px solid #e0e0e0;text-align:center;width:10%;font-size:16px">'+
             escapeHtml(st)+'</td></tr>';
     });
-    tfBody.innerHTML='<table style="width:100%;border-collapse:collapse;table-layout:fixed"><thead><tr><th style="text-align:left;padding:4px 8px;width:90%;border-bottom:2px solid #ffb400">今天计划</th><th style="padding:4px 8px;width:10%;border-bottom:2px solid #ffb400">完成</th></tr></thead><tbody>'+rows+'</tbody></table>';
+    tfBody.innerHTML='<table style="width:100%;border-collapse:collapse;table-layout:fixed"><thead><tr><th style="text-align:left;padding:6px 10px;width:90%;border-bottom:2px solid #ffb400;font-size:16px">今天计划</th><th style="padding:6px 10px;width:10%;border-bottom:2px solid #ffb400;font-size:16px">完成</th></tr></thead><tbody>'+rows+'</tbody></table>';
   } else {
     tfBody.innerHTML=todayKey+' 不在排期内';
   }
