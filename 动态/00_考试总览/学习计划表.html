@@ -96,15 +96,15 @@ function escapeHtml(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').repla
 function renderPlan(data){
   var now=new Date();
   var todayKey=(now.getMonth()+1)+'/'+now.getDate();
-  var examDate=data.examDate.split('/');
-  var exam=new Date(now.getFullYear(),parseInt(examDate[0])-1,parseInt(examDate[1]));
+  var examDate='9/12';
+  var exam=new Date(now.getFullYear(),8,12); // 9/12 考试日
   // 用日期差（去掉时分秒），今天不算
   var today0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
   var days=Math.round((exam-today0)/86400000);
 
   var h='';
   // 标题 + 倒计时
-  var daysText=days>0?'距 '+data.examDate+' 还有 <b style="font-size:26px;color:#d6336c">'+days+'</b> 天':(days===0?'<b style="color:#d6336c">今天考试!</b>':'已考完');
+  var daysText=days>0?'距 '+examDate+' 还有 <b style="font-size:26px;color:#d6336c">'+days+'</b> 天':(days===0?'<b style="color:#d6336c">今天考试!</b>':'已考完');
   h+='<h1>'+escapeHtml(data.title)+' <small style="float:right;font-size:15px;color:#d6336c">'+daysText+'</small></h1>';
   // 今日卡片 + 当前进度（左右并排）
   h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0">';
