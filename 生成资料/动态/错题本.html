@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>错题本</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:#2b2b2b;max-width:860px;margin:0 auto;padding:24px 16px 60px;line-height:1.7}
+  h1{font-size:25px;border-bottom:3px solid #ff7ab8;padding-bottom:10px;margin-bottom:16px}
+  .back-link{position:fixed;top:12px;left:12px;z-index:200;background:rgba(255,255,255,.9);border:1px solid #e8e8ee;border-radius:8px;padding:5px 14px;font-size:14px;text-decoration:none;color:#1971c2;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  .tabs{display:flex;gap:0;margin-bottom:0;border-radius:12px 12px 0 0;overflow:hidden}
+  .tab-btn{flex:1;padding:10px;border:none;background:#f2f3f7;font-size:15px;font-weight:600;cursor:pointer;text-align:center;color:#8a8f98;border-bottom:3px solid transparent}
+  .tab-btn.active{color:#fff}
+  .tab-btn[data-tab="t404"].active{background:#eef6ff;color:#1971c2;border-bottom-color:#1971c2}
+  .tab-btn[data-tab="t301"].active{background:#fdeef4;color:#d6336c;border-bottom-color:#d6336c}
+  .tab-content{display:none}
+  .tab-content.active{display:block}
+  iframe{width:100%;border:none;min-height:600px}
+</style>
+</head>
+<body>
+<a href="00_考试总览/学习计划表.html" class="back-link">← 返回计划表</a>
+<h1>错题本</h1>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="t404" onclick="switchTab('t404')">科三 404</button>
+  <button class="tab-btn" data-tab="t301" onclick="switchTab('t301')">科一 301</button>
+</div>
+
+<div class="tab-content active" id="t404">
+  <iframe src="404_高中数学学科/404错题本.html"></iframe>
+</div>
+<div class="tab-content" id="t301">
+  <iframe src="301_综合素质/301错题本.html"></iframe>
+</div>
+
+<script>
+function switchTab(id){
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active',b.dataset.tab===id)});
+  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active',c.id===id)});
+}
+</script>
+</body>
+</html>
