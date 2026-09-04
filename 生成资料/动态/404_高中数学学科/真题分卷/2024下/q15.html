@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2024下 · 第15题 · 论述题</title>
+<style>
+  :root{
+    --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
+    --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#f2f3f7;color:var(--ink);
+       font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       line-height:1.85;font-size:16px}
+  .wrap{max-width:860px;margin:0 auto;padding:28px 18px 60px}
+  section.card{background:#fff;border-radius:16px;padding:24px 26px;margin-bottom:20px;
+       box-shadow:0 2px 10px rgba(30,30,60,.07)}
+  .qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .qhead h2{font-size:19px;margin:0}
+  .badge{border-radius:8px;padding:2px 12px;font-size:13px;font-weight:600;white-space:nowrap}
+  .b-lun{background:var(--pink);color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:14px}
+  .origin{background:#f7f7fa;border-left:4px solid #b9bdc9;border-radius:8px;
+       padding:12px 16px;color:#555;font-size:15px;margin:12px 0}
+  .block{border-radius:12px;padding:14px 18px;margin:14px 0}
+  .block h3{margin:0 0 8px;font-size:15px;letter-spacing:.5px}
+  .k-bibei{background:var(--pink-bg);border:1px solid #f6c3d6}
+  .k-bibei h3{color:var(--pink)}
+  .k-blue{background:var(--blue-bg);border:1px solid #c4dcf8}
+  .k-blue h3{color:var(--blue)}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0}
+  .k-gold h3{color:var(--gold)}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:3px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:4px}
+  .pk{color:var(--pink);font-weight:700}
+  .ex{background:#fff3bf;border-radius:8px;padding:2px 8px;color:#9a7b00}
+  .points{list-style:none;padding-left:4px}
+  .points>li{margin:10px 0}
+  .points .pt{font-weight:700;color:var(--pink)}
+  ul.tips{margin:6px 0;padding-left:20px}
+  ul.tips li{margin:6px 0}
+  .wait{color:#9aa0aa;text-align:center;padding:10px 0;font-size:14px}
+  footer{color:#9aa0aa;font-size:13px;text-align:center;margin-top:26px}
+  .back-link{position:fixed;top:12px;left:12px;z-index:200;background:rgba(255,255,255,.9);
+    border:1px solid #e8e8ee;border-radius:8px;padding:5px 14px;font-size:14px;
+    text-decoration:none;color:#1971c2;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  .tabs{display:flex;gap:0;margin:14px 0 0;border-radius:12px 12px 0 0;overflow:hidden}
+  .tab-btn{flex:1;padding:10px 8px;border:none;background:#f2f3f7;font-size:14px;font-weight:600;
+    cursor:pointer;text-align:center;color:#8a8f98;border-bottom:3px solid transparent;transition:.2s}
+  .tab-btn.active-t{color:#fff}
+  .tab-btn[data-tab="t-full"].active-t{background:#eef6ff;color:#1971c2;border-bottom-color:#1971c2}
+  .tab-btn[data-tab="t-exam"].active-t{background:#e9f9ef;color:#2b8a3e;border-bottom-color:#2b8a3e}
+  .tab-btn[data-tab="t-life"].active-t{background:#ffecec;color:#c92a2a;border-bottom-color:#c92a2a}
+  .tab-content{display:none}
+  .tab-content.active-t{display:block}
+  .t-full{background:#eef6ff;border:1px solid #b6d6f7}
+  .t-exam{background:#e9f9ef;border:1px solid #b2e2c5}
+  .t-life{background:#ffecec;border:1px solid #ffc9c9}
+  details{margin:14px 0;padding:14px 18px;border-radius:12px;border:1px solid #f6c3d6;background:#fdeef4}
+  details summary::-webkit-details-marker{display:none}
+  details summary::before{content:"▸ ";font-size:12px}
+  details[open] summary::before{content:"▾ ";font-size:12px}
+  .tip{position:relative;cursor:pointer}
+  .tip-box{display:none;position:absolute;bottom:130%;left:50%;transform:translateX(-50%);
+    width:380px;max-width:90vw;background:#fff;border:1px solid #f6c3d6;border-radius:12px;
+    padding:12px 16px;font-size:14px;line-height:1.7;color:#333;z-index:100;
+    box-shadow:0 4px 16px rgba(0,0,0,.12)}
+  .tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    border:8px solid transparent;border-top-color:#fff}
+  .tip-box b.pk{color:#d6336c}
+  .tip-box mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:3px}
+  .tip:hover .tip-box{display:block}
+  @media print{
+    body{background:#fff}
+    .wrap{max-width:none;padding:0}
+    section.card{box-shadow:none;border:1px solid #eee;break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="解析.html" class="back-link">← 返回目录</a>
+<section class="card" id="q15">
+  <div class="qhead">
+    <span class="badge b-lun">论述题</span>
+    <h2><a href="../../../../../外部资料/404_高中数学学科/真题分卷/2024下原卷.pdf" target="_blank" rel="noopener" style="color:inherit;text-decoration:none" title="点击打开原卷PDF">第 15 题 · 数学习题设计的整体性与针对性</a></h2>
+    <span class="score">15 分</span>
+  </div>
+
+  <div class="origin">习题设计是巩固学生课堂学习的有效手段，同时也是教师教学情况的反馈载体。试论述数学习题设计要重视整体性和针对性的举措。（15分）</div>
+
+  <details class="block k-bibei" open>
+<summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导 · 论述题通用四步</summary>
+
+    
+    <ul class="points" style="list-style:none;padding-left:4px">
+      <li><span class="pt">① 审题 · 三个硬约束：</span>必须围绕<b>"习题设计"</b>展开；必须覆盖<b>整体性</b>和<b>针对性</b>两个维度，缺一不可；必须写<b>"举措"</b>即具体做法，不能只说意义不谈操作。</li>
+      <li><span class="pt">② 选框架：</span>"论述…的举措"＝<b>XX 怎么做</b> → 用 <a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html#角度库" target="_blank" rel="noopener" title="打开框架页·角度库" style="color:#1971c2"><b>角度库</b> ↗</a>思路分两层：整体性从<b>知识体系/目标维度/学段衔接</b>展开，针对性从<b>学生差异/教学目标/反馈诊断</b>展开，每个角度下举1-2条具体举措。</li>
+      <li><span class="pt">③ 填内容：</span>课标要求习题设计应体现<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=8" target="_blank" rel="noopener" title="新标签页打开课标PDF 第8页"><mark>数学核心素养的综合表现</mark></a>，注重知识的系统性和连贯性；教学常识出自 <a href="../../../../../外部资料/404_高中数学学科/404.04中公教学知识.webp" target="_blank">404.04 中公教学知识</a>——习题设计原则包括：目的性、层次性、典型性、多样性、启发性。</li>
+      <li><span class="pt">④ 取点：</span>整体性3条＋针对性3条＝6个得分点，阅卷按角度给分。一档各角度举例充分（每条2-3句），二档每条压缩到1句。开头引用题干"巩固学习＋反馈载体"点题，结尾总结呼应。</li>
+    </ul>
+    <p style="margin:0 0 0;font-size:14px"><b>换个知识点（习题/作业/评价设计…）怎么办：</b>整体性＋针对性的框架原样用，内容换成该知识点的课标原话和教学常识——<b class="pk">框架是模板，内容不是</b>。</p>
+  
+</details>
+
+  
+
+  <div class="tabs">
+    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版 <small style="font-size:11px;color:#888">728字≈25min·得分：13-15</small></button>
+    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版 <small style="font-size:11px;color:#888">396字≈14min·得分：11-13</small></button>
+    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版 <small style="font-size:11px;color:#888">112字≈4min·得分：6-8</small></button>
+  </div>
+  <div class="tab-content active-t" id="t-full">
+    <div class="block t-full">
+      <p>习题设计是巩固学生课堂学习的有效手段，也是教师教学情况的反馈载体。做好习题设计，应当从整体性和针对性两个维度统筹规划，具体举措如下。</p>
+      <ul class="points">
+        <li><span class="pt">一、重视整体性的举措</span></li>
+        <li><span class="pt">1. 知识体系的整体设计。</span>习题设计应立足单元整体，关注知识的前后衔接与逻辑关联，避免碎片化。教师应梳理章节知识结构，使习题覆盖核心概念、定理和方法，体现知识的系统性和连贯性。<span class="ex">例：设计"函数"单元习题时，从函数概念→表示→性质→应用层层递进，每道题都服务于知识链条中某一环节。</span></li>
+        <li><span class="pt">2. 目标维度的整体设计。</span>习题应兼顾知识理解、技能训练、能力发展和素养提升多个维度，体现<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=8" target="_blank" rel="noopener" title="新标签页打开课标PDF 第8页"><mark>数学核心素养的综合表现</mark></a>，不能只重计算轻思维。<span class="ex">例：一道几何习题既考查定理运用（知识），又考查推理论证（能力），还渗透直观想象（素养）。</span></li>
+        <li><span class="pt">3. 学段衔接的整体设计。</span>习题设计应关注初高中衔接和章节过渡，体现螺旋上升，使习题难度梯度合理，帮助学生建立完整的认知结构。</li>
+        <li><span class="pt">二、重视针对性的举措</span></li>
+        <li><span class="pt">4. 针对学生差异分层设计。</span>习题应体现层次性，设置基础题、提高题和拓展题，满足不同水平学生的发展需求，使每个学生都有收获。<span class="ex">例：基础题面向全体（如公式直接代入），提高题面向中等（如变式应用），拓展题面向学有余力（如开放探究）。</span></li>
+        <li><span class="pt">5. 针对教学目标精准设计。</span>习题应紧扣本节课的教学目标和重难点，每道题有明确的目的性，避免盲目刷题。<span class="ex">例：若本节课重点是"导数的几何意义"，则习题应围绕切线方程、瞬时变化率设计，而非泛泛复习求导公式。</span></li>
+        <li><span class="pt">6. 针对反馈诊断设计。</span>习题应发挥教学反馈功能，教师通过习题批改诊断学生薄弱环节和自身教学不足，及时调整教学策略。<span class="ex">例：设置诊断性习题，针对易错点（如忽略定义域）专项设计，精准定位学生问题，实现以题促教。</span></li>
+      </ul>
+      <p>综上所述，习题设计应做到整体性与针对性兼顾：整体性保证知识体系完整、目标多元、学段衔接；针对性保证分层施教、目标精准、反馈有效。唯有二者并重，才能使习题真正成为巩固学习和改进教学的利器。</p>
+    </div>
+  </div>
+  <div class="tab-content" id="t-exam">
+    <div class="block t-exam">
+      <p>习题设计是巩固学习和反馈教学的载体，应从整体性和针对性两个维度统筹。</p>
+      <ul class="points">
+        <li><span class="pt">一、整体性举措</span></li>
+        <li><span class="pt">1. 知识体系整体设计：</span>立足单元整体，关注前后衔接，使习题覆盖核心知识，体现系统性和连贯性；<span class="ex">例："函数"单元习题从概念→表示→性质→应用层层递进</span></li>
+        <li><span class="pt">2. 目标维度整体设计：</span>兼顾知识、技能、能力、素养多维目标，体现<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=8" target="_blank" rel="noopener" title="新标签页打开课标PDF 第8页"><mark>核心素养综合表现</mark></a>；<span class="ex">例：几何习题既考定理又考推理，渗透直观想象</span></li>
+        <li><span class="pt">3. 学段衔接整体设计：</span>关注初高中衔接，难度梯度合理，螺旋上升。</li>
+        <li><span class="pt">二、针对性举措</span></li>
+        <li><span class="pt">4. 分层设计：</span>设基础题、提高题、拓展题，满足不同水平学生；<span class="ex">例：基础题公式代入→提高题变式→拓展题开放探究</span></li>
+        <li><span class="pt">5. 精准目标设计：</span>紧扣教学目标和重难点，每题有明确目的性；<span class="ex">例：重点"导数几何意义"则围绕切线方程设计</span></li>
+        <li><span class="pt">6. 反馈诊断设计：</span>通过习题诊断薄弱环节，以题促教；<span class="ex">例：针对易错点设诊断性习题，精准定位问题</span></li>
+      </ul>
+      <p>综上，整体性保证体系完整、目标多元，针对性保证分层施教、反馈有效，二者并重才能使习题真正发挥功能。</p>
+    </div>
+  </div>
+  <div class="tab-content" id="t-life">
+    <div class="block t-life">
+      <p>习题设计应重视<b class="pk">整体性</b>（知识体系完整、目标多维、学段衔接）和<b class="pk">针对性</b>（分层设计、精准目标、反馈诊断）。整体性举措：立足单元整体设计习题覆盖核心知识，兼顾知识技能能力素养多维目标。针对性举措：设基础提高拓展三层题，紧扣教学重难点，通过习题诊断薄弱环节以题促教。</p>
+      <p style="font-size:13px;color:#777;margin-top:8px"><a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html#角度库" target="_blank" style="font-size:13px;color:#b26a00;text-decoration:none">📐 查看万能骨架（角度库）→</a></p>
+    </div>
+  </div>
+
+  <div class="block k-gold">
+    <h3>💡 得分技巧</h3>
+    <ul class="tips">
+      <li>必须分<b>整体性</b>和<b>针对性</b>两大板块作答，缺一不可，阅卷按板块给分；</li>
+      <li>每条举措用"举措名＋解释＋例子"三段式，例子是得分关键——宁可解释短，不能没例子；</li>
+      <li>开头引用题干"巩固学习＋反馈载体"点题，结尾总结呼应两大维度，拿结构分；</li>
+      <li>整体性关键词：<span class="pk">知识体系、目标维度、学段衔接</span>；针对性关键词：<span class="pk">分层设计、精准目标、反馈诊断</span>；</li>
+      <li>"以题促教"是针对性板块的金句，写出即可被阅卷识别。</li>
+    </ul>
+  </div>
+
+</section>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></div>
+<footer><a href="解析.html">← 返回目录</a></footer>
+<script>
+function switchTab(id){
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
+  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
+}
+// 课标原文 tooltip
+(function(){
+  var texts={
+    'page=8':'课标指出，数学核心素养具有整体性、综合性和阶段性。教学应重视<mark>数学核心素养的综合表现</mark>，关注知识之间的内在联系，注重习题设计的系统性和连贯性，使学生在解决问题中综合运用所学知识和方法。'
+  };
+  document.querySelectorAll('a[href*="404.02课程标准.pdf"]').forEach(function(a){
+    var m=a.href.match(/page=(\d+)/);
+    if(!m) return;
+    var key='page='+m[1];
+    if(!texts[key]) return;
+    var kw=a.textContent.trim();
+    kw=kw.replace(/^L\d[\d\-]*\s*/,'').replace(/^[\u201c\u201d""\u0022]+|[\u201c\u201d""\u0022]+$/g,'').trim();
+    var kwMap={'数学核心素养的综合表现':'数学核心素养的综合表现',
+               '核心素养综合表现':'数学核心素养的综合表现'};
+    kw=kwMap[kw]||kw;
+    var html=texts[key];
+    var esc=kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    html=html.replace(new RegExp(esc,'g'),'<mark>$&</mark>');
+    a.classList.add('tip');
+    var box=document.createElement('span');
+    box.className='tip-box';
+    box.innerHTML=html;
+    a.appendChild(box);
+  });
+})();
+// 中公教学知识 tooltip
+(function(){
+  var text='习题设计原则（中公教学知识）：<br>① <mark>目的性</mark>：每道题有明确目标，服务于教学重难点。<br>② <mark>层次性</mark>：由易到难、由简到繁，分层设计。<br>③ <mark>典型性</mark>：选题典型，举一反三。<br>④ <mark>多样性</mark>：题型丰富，避免单一重复。<br>⑤ <mark>启发性</mark>：激发思维，促进思考。<br><br>习题设计的功能：巩固知识、训练技能、发展能力、反馈教学。';
+  document.querySelectorAll('a[href*="404.04中公教学知识"]').forEach(function(a){
+    a.classList.add('tip');
+    var box=document.createElement('span');
+    box.className='tip-box';
+    box.innerHTML=text;
+    a.appendChild(box);
+  });
+})();
+// 角度库 tooltip
+(function(){
+  var text='<b class="pk">论述"举措"类角度库（通用，分两大板块）</b><br><br>整体性（3条）：<br>① <mark>知识体系</mark>：前后衔接、系统连贯<br>② <mark>目标维度</mark>：知识/技能/能力/素养多维<br>③ <mark>学段衔接</mark>：螺旋上升、梯度合理<br><br>针对性（3条）：<br>④ <mark>分层设计</mark>：基础/提高/拓展<br>⑤ <mark>精准目标</mark>：紧扣重难点<br>⑥ <mark>反馈诊断</mark>：以题促教<br><br>每条写"举措名＋解释＋例子"三段式。';
+  document.querySelectorAll('a[href*="404主观题框架"]').forEach(function(a){
+    a.classList.add('tip');
+    var box=document.createElement('span');
+    box.className='tip-box';
+    box.innerHTML=text;
+    a.appendChild(box);
+  });
+})();
+</script>
+</div>
+</body>
+</html>

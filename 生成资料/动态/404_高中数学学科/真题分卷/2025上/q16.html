@@ -85,40 +85,68 @@
     (3) 可以从哪些维度评价研究报告。（6分）
   </div>
 
-  <!-- 用户作答区 -->
-  <div class="block k-user">
-    <h3>✏️ 我的作答</h3>
-    <div style="min-height:200px;padding:10px;border:1px dashed #b6d6f7;border-radius:8px;font-size:15px;color:#666">
-      <span class="wait">在这里写你的答案，写完发给AI评析评分</span>
+  <details class="block k-bibei" open>
+    <summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导 · 三问拆解</summary>
+
+    <ul class="points" style="list-style:none;padding-left:4px">
+      <li><span class="pt">① 审题：</span>三问。问①考杨辉三角性质（知识题，背记）；问②从教师和学生两个角度分析过程性评价作用（教学理论题）；问③评价研究报告的维度（评价理论题，背框架）。</li>
+      <li><span class="pt">② 定框架：</span>问①背杨辉三角性质——<a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html#角度库" target="_blank" rel="noopener"><b>对称性、二项式系数和、递推关系</b> ↗</a>等；问②从教师角度（及时反馈、调整教学、了解学情）和学生角度（自我反思、激发动力、明确方向）展开；问③从<a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html" target="_blank" rel="noopener"><b>科学性、规范性、创新性、实用性</b> ↗</a>等维度评价。</li>
+      <li><span class="pt">③ 填内容：</span>问①列出3-4条杨辉三角性质，每条一句话；问②教师角度3点+学生角度3点，结合"评价量表"关键词；问③列出4个评价维度，各一句话说明。</li>
+      <li><span class="pt">④ 取点：</span>问①≤90字；问②≤250字（本题主体）；问③≤120字。</li>
+    </ul>
+
+  </details>
+
+  <div class="tabs">
+    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版 <small style="font-size:11px;color:#888">612字≈20min·得分：18-20</small></button>
+    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版 <small style="font-size:11px;color:#888">398字≈15min·得分：15-17</small></button>
+    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版 <small style="font-size:11px;color:#888">102字≈4min·得分：9-11</small></button>
+  </div>
+  <div class="tab-content active-t" id="t-full">
+    <div class="block t-full">
+      <ul class="points">
+        <li>(1) <span class="pt">杨辉三角形的其他性质：</span>①<b>对称性</b>：杨辉三角中每一行的二项式系数关于中间项对称，即 C(n,k)=C(n,n-k)；②<b>二项式系数和</b>：第 n 行各系数之和为 2^n，即 C(n,0)+C(n,1)+…+C(n,n)=2^n；③<b>递推关系</b>：每个数等于它上方两数之和，即 C(n,k)=C(n-1,k-1)+C(n-1,k)；④<b>斜行求和</b>：第 k 条斜行（从左上到右下）上各数之和等于第 k 个斐波那契数。</li>
+      </ul>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li>(2) <span class="pt">从教师角度：</span>①<b>及时反馈</b>：通过评价量表，教师可及时了解学生在探究过程中的表现和困难，调整教学策略；②<b>了解学情</b>：量表从多个维度记录学生的学习过程，帮助教师全面掌握学情，因材施教；③<b>调整教学</b>：依据过程性数据，教师可反思教学设计的有效性，优化后续教学安排。<br>
+        <span class="pt">从学生角度：</span>①<b>自我反思</b>：学生借助量表明确自身在探究过程中的优势与不足，促进自我反思与元认知发展；②<b>激发动力</b>：过程性评价关注学习过程而非仅看结果，让学生获得持续的学习成就感和内驱力；③<b>明确方向</b>：量表提供具体评价指标，帮助学生明确后续努力方向，有针对性地改进学习。</li>
+      </ul>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li>(3) <span class="pt">评价研究报告的维度：</span>①<b>科学性</b>：研究方法是否正确，数据是否准确，结论是否合理；②<b>规范性</b>：报告结构是否完整，格式是否规范，语言表达是否清晰；③<b>创新性</b>：是否有独特的视角或方法，是否提出新的发现或见解；④<b>实用性</b>：研究成果是否有实际应用价值，能否解决实际问题。</li>
+      </ul>
+    </div>
+  </div>
+  <div class="tab-content" id="t-exam">
+    <div class="block t-exam">
+      <ul class="points">
+        <li>(1) <span class="pt">杨辉三角性质：</span>①<b>对称性</b>：C(n,k)=C(n,n-k)；②<b>系数和</b>：第 n 行系数之和为 2^n；③<b>递推关系</b>：C(n,k)=C(n-1,k-1)+C(n-1,k)；④<b>斜行求和</b>：斜行各数之和构成斐波那契数列。</li>
+      </ul>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li>(2) <span class="pt">教师角度：</span>①通过量表<b>及时反馈</b>学生学习状况，调整教学策略；②<b>全面了解学情</b>，因材施教；③依据过程数据<b>反思教学设计</b>，优化教学。<br>
+        <span class="pt">学生角度：</span>①借助量表<b>自我反思</b>，发现优缺点；②关注过程而非仅结果，<b>激发学习动力</b>；③量表提供明确指标，<b>指明努力方向</b>。</li>
+      </ul>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li>(3) <span class="pt">评价维度：</span>①<b>科学性</b>（方法正确、数据准确、结论合理）；②<b>规范性</b>（结构完整、格式规范、语言清晰）；③<b>创新性</b>（独特视角或新发现）；④<b>实用性</b>（有应用价值、能解决实际问题）。</li>
+      </ul>
+    </div>
+  </div>
+  <div class="tab-content" id="t-life">
+    <div class="block t-life">
+      <p>(1) 杨辉三角性质：<span class="pk">对称性</span>（C(n,k)=C(n,n-k)）、<span class="pk">系数和为2^n</span>、<span class="pk">递推关系</span>、<span class="pk">斜行和为斐波那契数</span>。</p>
+      <p>(2) 教师：<span class="pk">及时反馈、了解学情、调整教学</span>；学生：<span class="pk">自我反思、激发动力、明确方向</span>。</p>
+      <p>(3) 评价维度：<span class="pk">科学性、规范性、创新性、实用性</span>。</p>
+      <p style="font-size:13px;color:#777;margin-top:8px"><a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html" target="_blank" style="font-size:13px;color:#b26a00;text-decoration:none">📐 查看万能骨架（性质+评价+报告维度）→</a></p>
     </div>
   </div>
 
-  <!-- AI评析区（待填） -->
-  <div class="block k-gold" style="display:none" id="ai-eval">
-    <h3>🎯 AI评析与评分</h3>
-    <div id="eval-content"></div>
-  </div>
-
-  <!-- 推导区（待填） -->
-  <details class="block k-bibei" id="derive-block" style="display:none">
-    <summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导</summary>
-    <div id="derive-content"></div>
-  </details>
-
-  <!-- 三档答案区（待填） -->
-  <div class="tabs" id="answer-tabs" style="display:none">
-    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版</button>
-    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版</button>
-    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版</button>
-  </div>
-  <div class="tab-content active-t" id="t-full" style="display:none">
-    <div class="block t-full"><div id="full-content"></div></div>
-  </div>
-  <div class="tab-content" id="t-exam" style="display:none">
-    <div class="block t-exam"><div id="exam-content"></div></div>
-  </div>
-  <div class="tab-content" id="t-life" style="display:none">
-    <div class="block t-life"><div id="life-content"></div></div>
+  <div class="block k-gold">
+    <h3>💡 得分技巧</h3>
+    <ul class="tips">
+      <li>问①是<b>纯背记题</b>，至少写出3条杨辉三角性质，每条带名称+一句话解释；</li>
+      <li>问②必须<b>分教师和学生两个角度</b>作答，各写2-3点，每点用<span class="pk">关键词+一句话</span>，务必提到"评价量表"这一材料关键词；</li>
+      <li>问③背评价维度框架：<span class="pk">科学性、规范性、创新性、实用性</span>，每个维度一句话说明即可；</li>
+      <li>三问时间分配建议：问①3min、问②8min、问③4min，合计约15min。</li>
+    </ul>
   </div>
 
 </section>
