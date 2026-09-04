@@ -20,6 +20,11 @@
   #角度库{scroll-margin-top:20px}
   #角度库 h2{border-left-color:var(--blue)}
   footer{color:#9aa0aa;font-size:12px;text-align:center;margin-top:26px}
+  .module-tip{cursor:pointer;position:relative}
+  .module-tip:hover{color:#1971c2}
+  .tip-img{display:none;position:fixed;top:50%;right:16px;transform:translateY(-50%);z-index:200;max-width:400px;max-height:80vh;border:2px solid #e5487c;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.15);background:#fff;padding:8px}
+  .tip-img img{max-width:100%;max-height:75vh;border-radius:4px}
+  .module-tip:hover .tip-img{display:block}
 </style>
 </head>
 <body>
@@ -46,16 +51,39 @@
 <p>换知识点（建模/直观想象…）＝同一张表，<span class="ex">换填课标原话</span>；填法演示见各卷解析"🧠推导"块。</p>
 </div>
 
-<div class="card"><h2>三、案例分析（20分两问 · 合计≤450字）</h2>
+<div class="card"><h2 class="module-tip" data-img="../../../../外部资料/404_高中数学学科/404.04中公教学知识.webp">三、案例分析（20分两问 · 合计≤450字）</h2>
 <p>问①评情境：判定句＋四角度＝激发兴趣/数学与生活联系/数学化过程/应用意识 <span class="src">（L66）</span>。</p>
 <p>问②注意什么：方法四条＝生活实际/数学故事/动手实践/编设具体问题＋"不为情境而情境" <span class="src">（L67/L50）</span>。</p></div>
 
-<div class="card"><h2>四、教学设计（30分 · ≤700字 · 五件套）</h2>
-<p>①三维目标 ②重难点 ③四环节＋意图（导入-新知三步-巩固变式-小结自述）④板书三块 ⑤特色一句 <span class="src">（L52/L66-67/L81/L51）</span>。</p></div>
+<div class="card"><h2 class="module-tip" data-img="../../../../外部资料/404_高中数学学科/教学设计模板/01.jpg">四、教学设计（30分 · ≤700字 · 五环节）</h2>
+<p>①教学目标·三维：知道/理解/应用＿＿（概念方法）＋通过独立思考小组讨论提升合作交流 <span class="src">（模板P1）</span>。</p>
+<p>②重难点：重点＝＿＿；难点＝＿＿（常＝方法/思想内化）。</p>
+<p>③教学五环节＋意图 <span class="src">（模板P1-6）</span>：</p>
+<table>
+<tr><th>环节</th><th>内容</th><th>设计意图</th></tr>
+<tr><td><b>一、导入新课</b></td><td>教师展示生活实例/物理情境，提出问题；学生观察、独立思考、讨论</td><td>激发兴趣，感受数学与生活/其他学科联系</td></tr>
+<tr><td><b>二、讲授新课</b></td><td>①初步感知：教师提出目标问题，学生四人一组讨论，教师巡视指导<br>②自主探究：教师抛出第二个知识点问题，学生自主探究抢答<br>③总结归纳：教师组织学生梳理知识点</td><td>层层提问引导，体现教师主导；小组讨论自主探究，体现学生主体</td></tr>
+<tr><td><b>三、巩固练习</b></td><td>教师多媒体展示不同层次习题，学生独立思考或板演，教师评价订正</td><td>及时巩固，分层达标，学以致用</td></tr>
+<tr><td><b>四、课堂小结</b></td><td>教师引导学生从知识/能力/情感畅谈收获，多种方式评价</td><td>检验重点认识，增强信心荣誉感</td></tr>
+<tr><td><b>五、布置作业</b></td><td>课后剩余练习＋教师设计生活实际问题</td><td>再巩固再认识</td></tr>
+</table>
+<p>④板书设计：提纲式，突出概念-性质-方法三块 <span class="src">（L81）</span>。</p>
+<p>⑤特色与注意：情境真实、探究充分、不流于形式 <span class="src">（L51/L59）</span>。</p>
+<p class="src">来源：外部资料/404_高中数学学科/教学设计模板/01-06.jpg（6张图片模板）</p></div>
 
 <div class="card"><h2>五、万能套句</h2>
 <p>教学＝学生学与教师教统一；教学有法、教无定法；学生主体教师主导；四能＝发现/提出/分析/解决；提问＝目的/启发/适度/循序 <span class="src">（L55/L58/L71）</span>。</p></div>
 
 <footer>人读版 · 角度库锚点 #角度库 供解析页跳转 · 源 md 同目录</footer>
+<script>
+document.querySelectorAll('.module-tip').forEach(function(el){
+  var img=el.dataset.img;
+  if(!img) return;
+  var div=document.createElement('span');
+  div.className='tip-img';
+  div.innerHTML='<img src="'+img+'" alt="原件图片" />';
+  el.appendChild(div);
+});
+</script>
 </body>
 </html>
