@@ -24,9 +24,11 @@
   .origin{background:#f7f7fa;border-left:4px solid #b9bdc9;border-radius:8px;
        padding:12px 16px;color:#555;font-size:15px;margin:12px 0}
   .block{border-radius:12px;padding:14px 18px;margin:14px 0}
-  .block h3{margin:0 0 8px;font-size:15px}
+  .block h3{margin:0 0 8px;font-size:15px;letter-spacing:.5px}
   .k-bibei{background:var(--pink-bg);border:1px solid #f6c3d6}
   .k-bibei h3{color:var(--pink)}
+  .k-blue{background:var(--blue-bg);border:1px solid #c4dcf8}
+  .k-blue h3{color:var(--blue)}
   .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0}
   .k-gold h3{color:var(--gold)}
   a{color:#1971c2;text-decoration:underline;text-underline-offset:3px}
@@ -59,6 +61,16 @@
   details summary::-webkit-details-marker{display:none}
   details summary::before{content:"▸ ";font-size:12px}
   details[open] summary::before{content:"▾ ";font-size:12px}
+  .tip{position:relative;cursor:pointer}
+  .tip-box{display:none;position:absolute;bottom:130%;left:50%;transform:translateX(-50%);
+    width:380px;max-width:90vw;background:#fff;border:1px solid #f6c3d6;border-radius:12px;
+    padding:12px 16px;font-size:14px;line-height:1.7;color:#333;z-index:100;
+    box-shadow:0 4px 16px rgba(0,0,0,.12)}
+  .tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    border:8px solid transparent;border-top-color:#fff}
+  .tip-box b.pk{color:#d6336c}
+  .tip-box mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:3px}
+  .tip:hover .tip-box{display:block}
   @media print{
     body{background:#fff}
     .wrap{max-width:none;padding:0}
@@ -72,7 +84,7 @@
 <section class="card" id="q17">
   <div class="qhead">
     <span class="badge b-she">教学设计</span>
-    <h2>第 17 题 · 倾斜角和斜率 · 教案设计</h2>
+    <h2><a href="../../../../../外部资料/404_高中数学学科/真题分卷/2024下原卷.pdf" target="_blank" rel="noopener" style="color:inherit;text-decoration:none" title="点击打开原卷PDF">第 17 题 · 倾斜角和斜率 · 教案设计</a></h2>
     <span class="score">30 分</span>
   </div>
 
@@ -83,29 +95,125 @@
     (3) 请以"倾斜角和斜率"为题，撰写教案。要求包含教学目标、教学重点、课程导入、新课讲授、巩固练习、小结作业等环节及每一环节的设计意图。（30分）
   </div>
 
-  <details class="block k-bibei">
-    <summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导</summary>
-    <div class="wait">待生成</div>
-  </details>
+  <details class="block k-bibei" open>
+<summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导 · 教学设计三问拆解</summary>
+
+    
+    <ul class="points" style="list-style:none;padding-left:4px">
+      <li><span class="pt">① 审题 · 三问拆解：</span>问(1)数学知识：倾斜角取值范围＋斜率定义（约5-6分）；问(2)数学知识：两点式斜率公式（约4-5分）；问(3)教学设计：完整教案，含六个环节及设计意图（约19-21分）。<b>问(3)是核心得分点</b>，环节名称固定，不能自己编。</li>
+      <li><span class="pt">② 选框架：</span>问(1)(2)直接作答；问(3)用 <a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html#角度库" target="_blank" rel="noopener"><b>教学设计六环节</b> ↗</a>：教学目标（三维）→教学重点→课程导入→新课讲授→巩固练习→小结作业，每环节写"教师活动/学生活动/设计意图"。</li>
+      <li><span class="pt">③ 填内容：</span>问(1)倾斜角范围[0°,180°)，斜率k=tan α（α≠90°）。问(2)两点P1(x1,y1)、P2(x2,x2)在直线L上，k=(y2-y1)/(x2-x1)（x1≠x2）。问(3)课标要求理解<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=25" target="_blank" rel="noopener" title="新标签页打开课标PDF 第25页"><mark>直线的倾斜角和斜率的概念</mark></a>；导入用坡度实例（如楼梯坡度、道路坡度）；新课讲授从倾斜角定义→斜率定义→两点式公式层层推进。</li>
+      <li><span class="pt">④ 取点：</span>问(1)2句；问(2)1个公式＋1句说明；问(3)每环节约120-150字，六个环节共约800字。设计意图是阅卷按点给分的关键，每个环节都不能漏。</li>
+    </ul>
+    <p style="margin:0 0 0;font-size:14px"><b>换个知识点怎么办：</b>教学设计六环节框架不变，内容换成该知识点的课标要求和具体实例——<b class="pk">框架是模板，内容不是</b>。</p>
+  
+</details>
+
+  
 
   <div class="tabs">
-    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版</button>
-    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版</button>
-    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版</button>
+    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版 <small style="font-size:11px;color:#888">952字≈32min·得分：27-30</small></button>
+    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版 <small style="font-size:11px;color:#888">580字≈20min·得分：24-27</small></button>
+    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版 <small style="font-size:11px;color:#888">185字≈7min·得分：12-15</small></button>
   </div>
   <div class="tab-content active-t" id="t-full">
-    <div class="block t-full"><div class="wait">待生成</div></div>
+    <div class="block t-full">
+      <p>(1) <b>倾斜角的取值范围：</b>当直线L与x轴相交时，把x轴绕交点按逆时针方向旋转到与直线L重合时所转的最小正角α称为直线L的倾斜角。规定当直线L与x轴平行或重合时，倾斜角α=0°。因此倾斜角的取值范围是 <b>0° ≤ α < 180°</b>。</p>
+      <p><b>斜率的定义：</b>当倾斜角α≠90°时，把 <b>k = tan α</b> 称为直线L的斜率。当α=90°时，直线L垂直于x轴，斜率k不存在。</p>
+
+      <p>(2) <b>两点式斜率表达式：</b>若直线L上有两点 P₁(x₁, y₁) 和 P₂(x₂, y₂)（其中 x₁ ≠ x₂），则直线L的斜率为：<br>
+      <b>k = (y₂ - y₁) / (x₂ - x₁)</b><br>
+      当 x₁ = x₂ 时，直线L垂直于x轴，斜率不存在。</p>
+
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li>(3) <span class="pt">一、教学目标</span><br>
+          ①知识与技能：理解倾斜角和斜率的概念，掌握斜率公式 k=tan α 及两点式 k=(y₂-y₁)/(x₂-x₁)，能求给定直线的倾斜角和斜率。<br>
+          ②过程与方法：经历从直观图形到代数刻画的抽象过程，体会数形结合思想，发展数学抽象和直观想象素养。<br>
+          ③情感态度与价值观：感受倾斜角和斜率在实际生活中的广泛应用，激发学习兴趣。<br>
+          <b>设计意图：</b>三维目标明确，既有知识技能要求，又渗透素养发展和情感体验，体现新课标理念。</li>
+        <li><span class="pt">二、教学重点</span><br>
+          重点：倾斜角和斜率的概念，斜率公式及其应用。<br>
+          难点：斜率与倾斜角的关系（特别是α=90°时斜率不存在），数形结合思想的理解。<br>
+          <b>设计意图：</b>明确重难点，使教学有的放矢，为后续直线方程的学习奠定基础。</li>
+        <li><span class="pt">三、课程导入</span><br>
+          教师活动：教师展示日常生活中"坡度"的实例——楼梯的陡缓、公路的坡度标识，引导学生观察"倾斜程度"的直观感受。提问："如何用数学量来刻画直线的倾斜程度？"<br>
+          学生活动：学生观察图片，结合生活经验思考如何描述"陡"与"缓"，初步感知倾斜程度与角度的关系。<br>
+          <b>设计意图：</b>以生活实例<a href="../../../../../外部资料/404_高中数学学科/404.04中公教学知识.webp" target="_blank">激发兴趣</a>（L66），从直观感受到数学抽象，体现数学与生活的联系，为引入倾斜角概念做铺垫。</li>
+        <li><span class="pt">四、新课讲授</span><br>
+          ①引入倾斜角：教师引导学生观察坐标系中不同倾斜程度的直线，定义倾斜角α（x轴绕交点逆时针旋转到与直线重合的最小正角），强调范围[0°,180°)。<br>
+          ②引入斜率：教师指出仅有倾斜角还不够"代数化"，引导学生将倾斜角与正切函数联系，定义斜率 k=tan α（α≠90°），讨论α=90°时斜率不存在。<br>
+          ③推导两点式公式：教师提问"已知直线上两点如何求斜率？"，引导学生结合直角三角形和正切定义，推导 k=(y₂-y₁)/(x₂-x₁)。<br>
+          学生活动：学生在教师引导下逐步理解概念，自主推导两点式公式，小组讨论特殊情况（x₁=x₂时）。<br>
+          <b>设计意图：</b>层层递进——从倾斜角（几何）到斜率（代数）到两点式公式（坐标），体现数形结合思想；学生自主推导公式，经历数学化过程，发展逻辑推理和数学运算素养。</li>
+        <li><span class="pt">五、巩固练习</span><br>
+          教师活动：教师布置分层练习。基础题：已知A(1,2)、B(3,6)，求直线AB的斜率和倾斜角。提高题：已知直线斜率k=1，求倾斜角；已知斜率k=-√3，求倾斜角。拓展题：若三点A(1,1)、B(2,0)、C(0,m)共线，求m的值。<br>
+          学生活动：学生独立完成基础题和提高题，板演展示，拓展题小组讨论。<br>
+          <b>设计意图：</b>分层练习满足不同水平学生需求，基础题巩固公式应用，提高题深化斜率与倾斜角关系，拓展题考查共线条件，及时反馈学习效果。</li>
+        <li><span class="pt">六、小结作业</span><br>
+          小结：教师引导学生从知识（倾斜角范围、斜率定义、两点式公式）、方法（数形结合、坐标法）、思想（从几何到代数的转化）三方面总结本节课收获。<br>
+          作业：①课本课后练习第1-3题；②思考题：斜率k的符号与倾斜角α的关系，并画出k>0、k<0、k=0时的直线示意图。<br>
+          <b>设计意图：</b>小结帮助学生建构知识体系，作业分层布置巩固课堂所学，思考题为下节"直线方程"做铺垫。</li>
+      </ul>
+    </div>
   </div>
   <div class="tab-content" id="t-exam">
-    <div class="block t-exam"><div class="wait">待生成</div></div>
+    <div class="block t-exam">
+      <p>(1) <b>倾斜角范围：</b>0° ≤ α < 180°。<b>斜率定义：</b>k = tan α（α≠90°时），α=90°时斜率不存在。</p>
+      <p>(2) <b>两点式斜率：</b>k = (y₂ - y₁) / (x₂ - x₁)（x₁ ≠ x₂）。</p>
+
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li>(3) <span class="pt">一、教学目标</span><br>
+          ①知识与技能：理解倾斜角和斜率概念，掌握斜率公式及应用。<br>
+          ②过程与方法：经历几何到代数的抽象过程，体会数形结合。<br>
+          ③情感态度：感受斜率在生活中的应用，激发兴趣。<br>
+          <b>设计意图：</b>三维目标兼顾知识技能、素养发展和情感体验。</li>
+        <li><span class="pt">二、教学重点</span><br>
+          重点：倾斜角和斜率的概念及斜率公式。难点：斜率与倾斜角的关系，数形结合思想。<br>
+          <b>设计意图：</b>明确重难点，为后续直线方程学习奠定基础。</li>
+        <li><span class="pt">三、课程导入</span><br>
+          教师展示楼梯坡度、公路坡度实例，提问"如何用数学量刻画直线的倾斜程度？"引导学生从直观感受过渡到数学描述。<br>
+          <b>设计意图：</b>以生活实例<span class="pk">激发兴趣</span>，从直观到抽象，体现数学与生活联系。</li>
+        <li><span class="pt">四、新课讲授</span><br>
+          ①倾斜角定义：x轴绕交点逆时针旋转到与直线重合的最小正角α，范围[0°,180°)。<br>
+          ②斜率定义：k=tan α（α≠90°），α=90°时斜率不存在。<br>
+          ③两点式公式推导：结合直角三角形和正切定义，推导k=(y₂-y₁)/(x₂-x₁)。<br>
+          学生自主推导公式，小组讨论特殊情况。<br>
+          <b>设计意图：</b>从几何到代数层层递进，学生自主推导，发展逻辑推理和运算素养。</li>
+        <li><span class="pt">五、巩固练习</span><br>
+          基础题：A(1,2)、B(3,6)求斜率和倾斜角。提高题：k=1和k=-√3时求倾斜角。拓展题：A(1,1)、B(2,0)、C(0,m)共线求m。<br>
+          <b>设计意图：</b>分层练习巩固公式，及时反馈，拓展题考查共线条件。</li>
+        <li><span class="pt">六、小结作业</span><br>
+          小结：从知识、方法、思想三方面总结。作业：课后练习1-3题＋思考斜率符号与倾斜角关系。<br>
+          <b>设计意图：</b>建构知识体系，巩固所学，为后续做铺垫。</li>
+      </ul>
+    </div>
   </div>
   <div class="tab-content" id="t-life">
-    <div class="block t-life"><div class="wait">待生成</div></div>
+    <div class="block t-life">
+      <p>(1) 倾斜角范围<span class="pk">0°≤α<180°</span>，斜率<span class="pk">k=tan α</span>（α≠90°），α=90°时不存在。</p>
+      <p>(2) 两点式：<span class="pk">k=(y₂-y₁)/(x₂-x₁)</span>（x₁≠x₂）。</p>
+      <p>(3) 教案：<br>
+      ①教学目标：理解概念掌握公式，数形结合，激发兴趣。<br>
+      ②重点：倾斜角、斜率概念及公式。<br>
+      ③导入：楼梯坡度<span class="pk">激发兴趣</span>。<br>
+      ④新课：倾斜角定义→斜率定义→两点式推导，<span class="pk">数形结合</span>。<br>
+      ⑤巩固：求斜率、倾斜角、共线问题，分层练习。<br>
+      ⑥小结作业：总结知识方法思想，课后练习＋思考斜率符号。</p>
+      <p style="font-size:13px;color:#777;margin-top:8px"><a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html" target="_blank" style="font-size:13px;color:#b26a00;text-decoration:none">📐 查看万能骨架（教学设计六环节）→</a></p>
+    </div>
   </div>
 
   <div class="block k-gold">
     <h3>💡 得分技巧</h3>
-    <div class="wait">待生成</div>
+    <ul class="tips">
+      <li>三问必须<b>分开作答</b>，标明(1)(2)(3)，阅卷按问给分；</li>
+      <li>问(1)倾斜角范围必须写<b>半开半闭区间</b> <span class="pk">0° ≤ α < 180°</span>，漏掉"="或"<"都扣分；</li>
+      <li>问(2)两点式公式必须写<b> x₁ ≠ x₂ </b>的条件，否则不严谨；</li>
+      <li>问(3)环节名称必须用题目给的六个：<span class="pk">教学目标、教学重点、课程导入、新课讲授、巩固练习、小结作业</span>，不能自己编；</li>
+      <li>每个环节都要写<b>"设计意图"</b>，这是阅卷按点给分的关键；</li>
+      <li>新课讲授要体现<b>从倾斜角到斜率到两点式</b>的层层递进，写出数形结合思想；</li>
+      <li>巩固练习要<b>分层设计</b>（基础/提高/拓展），体现因材施教。</li>
+    </ul>
   </div>
 
 </section>
@@ -116,6 +224,52 @@ function switchTab(id){
   document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
   document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
 }
+// 课标原文 tooltip
+(function(){
+  var texts={
+    'page=25':'课标要求：在平面直角坐标系中，结合具体图形，探索确定直线位置的几何要素。理解<mark>直线的倾斜角和斜率的概念</mark>，经历用代数方法刻画直线斜率的过程，掌握过两点的直线斜率公式，感受<mark>数形结合</mark>的思想方法。'
+  };
+  document.querySelectorAll('a[href*="404.02课程标准.pdf"]').forEach(function(a){
+    var m=a.href.match(/page=(\d+)/);
+    if(!m) return;
+    var key='page='+m[1];
+    if(!texts[key]) return;
+    var kw=a.textContent.trim();
+    kw=kw.replace(/^L\d[\d\-]*\s*/,'').replace(/^[\u201c\u201d""\u0022]+|[\u201c\u201d""\u0022]+$/g,'').trim();
+    var kwMap={'直线的倾斜角和斜率的概念':'直线的倾斜角和斜率的概念'};
+    kw=kwMap[kw]||kw;
+    var html=texts[key];
+    var esc=kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    html=html.replace(new RegExp(esc,'g'),'<mark>$&</mark>');
+    a.classList.add('tip');
+    var box=document.createElement('span');
+    box.className='tip-box';
+    box.innerHTML=html;
+    a.appendChild(box);
+  });
+})();
+// 中公教学知识 tooltip
+(function(){
+  var text='创设数学问题情境的意义（中公L66）：<mark>激发学生学习兴趣</mark>，使学生积极主动投入学习活动；<mark>反映数学与生活的联系</mark>；<mark>体现数学化的过程</mark>；<mark>增强学生应用数学的意识</mark>。<br><br>教学设计五件套（L38-51）：教学目标三维→重难点→教学环节+意图→板书设计→特色注意。本题要求六环节：教学目标、教学重点、课程导入、新课讲授、巩固练习、小结作业。';
+  document.querySelectorAll('a[href*="404.04中公教学知识"]').forEach(function(a){
+    a.classList.add('tip');
+    var box=document.createElement('span');
+    box.className='tip-box';
+    box.innerHTML=text;
+    a.appendChild(box);
+  });
+})();
+// 框架 tooltip
+(function(){
+  var text='<b class="pk">教学设计六环节（30分）</b><br>本题固定环节：<br>(1) 教学目标·三维（≤120字）<br>(2) 教学重点·重难点（≤60字）<br>(3) 课程导入·生活实例（≤120字）<br>(4) 新课讲授·层层递进（≤250字）<br>(5) 巩固练习·分层设计（≤150字）<br>(6) 小结作业·总结+拓展（≤100字）<br><br>每环节必写"设计意图"，阅卷按环节给分。';
+  document.querySelectorAll('a[href*="404主观题框架"]').forEach(function(a){
+    a.classList.add('tip');
+    var box=document.createElement('span');
+    box.className='tip-box';
+    box.innerHTML=text;
+    a.appendChild(box);
+  });
+})();
 </script>
 </div>
 </body>

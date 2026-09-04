@@ -24,9 +24,11 @@
   .origin{background:#f7f7fa;border-left:4px solid #b9bdc9;border-radius:8px;
        padding:12px 16px;color:#555;font-size:15px;margin:12px 0}
   .block{border-radius:12px;padding:14px 18px;margin:14px 0}
-  .block h3{margin:0 0 8px;font-size:15px}
+  .block h3{margin:0 0 8px;font-size:15px;letter-spacing:.5px}
   .k-bibei{background:var(--pink-bg);border:1px solid #f6c3d6}
   .k-bibei h3{color:var(--pink)}
+  .k-blue{background:var(--blue-bg);border:1px solid #c4dcf8}
+  .k-blue h3{color:var(--blue)}
   .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0}
   .k-gold h3{color:var(--gold)}
   a{color:#1971c2;text-decoration:underline;text-underline-offset:3px}
@@ -59,6 +61,16 @@
   details summary::-webkit-details-marker{display:none}
   details summary::before{content:"▸ ";font-size:12px}
   details[open] summary::before{content:"▾ ";font-size:12px}
+  .tip{position:relative;cursor:pointer}
+  .tip-box{display:none;position:absolute;bottom:130%;left:50%;transform:translateX(-50%);
+    width:380px;max-width:90vw;background:#fff;border:1px solid #f6c3d6;border-radius:12px;
+    padding:12px 16px;font-size:14px;line-height:1.7;color:#333;z-index:100;
+    box-shadow:0 4px 16px rgba(0,0,0,.12)}
+  .tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    border:8px solid transparent;border-top-color:#fff}
+  .tip-box b.pk{color:#d6336c}
+  .tip-box mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:3px}
+  .tip:hover .tip-box{display:block}
   @media print{
     body{background:#fff}
     .wrap{max-width:none;padding:0}
@@ -72,40 +84,104 @@
 <section class="card" id="q16">
   <div class="qhead">
     <span class="badge b-an">案例分析</span>
-    <h2>第 16 题 · 指数拓展 · 情境创设与教学评析</h2>
+    <h2><a href="../../../../../外部资料/404_高中数学学科/真题分卷/2024下原卷.pdf" target="_blank" rel="noopener" style="color:inherit;text-decoration:none" title="点击打开原卷PDF">第 16 题 · 指数拓展 · 情境创设与教学评析</a></h2>
     <span class="score">20 分</span>
   </div>
 
   <div class="origin">
-    在"指数"的教学中，为研究指数函数，拓展指数范围，两位老师创设了如下情境。问题：<br>
+    在"指数"的教学中，为研究指数函数，拓展指数范围，两位老师创设了如下情境。<br>
+    教师甲：让学生看课本，并思考三个问题。<br>
+    教师乙：景区游客问题引入。<br>
+    问题：<br>
     (1) 比较几个数的大小（直接写出结果即可）；<br>
     (2) 请给出指数拓展的详细过程；<br>
     (3) 评析甲乙两位老师的教学行为。（20分）
   </div>
 
-  <details class="block k-bibei">
-    <summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导</summary>
-    <div class="wait">待生成</div>
-  </details>
+  <details class="block k-bibei" open>
+<summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导 · 案例分析三问拆解</summary>
+
+    
+    <ul class="points" style="list-style:none;padding-left:4px">
+      <li><span class="pt">① 审题 · 三问拆解：</span>问(1)比较大小（数学知识，直接写结果，约3-4分）；问(2)指数拓展过程（数学知识，从正整数指数→零指数→负整数指数→分数指数的推导，约6-8分）；问(3)教学评析（教育理论，评析两位教师情境创设的优劣，约8-10分）。<b>问(3)是核心得分点</b>。</li>
+      <li><span class="pt">② 定框架：</span>问(1)(2)是数学知识题，直接作答；问(3)用 <a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html#角度库" target="_blank" rel="noopener"><b>情境创设意义四条</b> ↗</a>（中公L66）逐条对号评价：激发兴趣、反映数学与生活联系、体现数学化过程、增强应用意识。</li>
+      <li><span class="pt">③ 填内容：</span>问(1)比较大小：如比较 2^(1/2)、3^(1/3) 等幂值大小，直接写结果。问(2)指数拓展：正整数指数幂（a^n）→零指数幂（a^0=1）→负整数指数幂（a^(-n)=1/a^n）→分数指数幂（a^(m/n)=ⁿ√(a^m)），每步说明合理性和定义动机。问(3)教师甲（看课本）偏传统讲授式，教师乙（景区游客问题）创设真实情境——逐条评价。<a href="../../../../../外部资料/404_高中数学学科/404.04中公教学知识.webp" target="_blank">中公L66-67情境创设意义与方法</a>。</li>
+      <li><span class="pt">④ 取点：</span>问(1)直接写结果2-3个比较；问(2)四步拓展各1-2句；问(3)甲乙各评2-3个角度（各说好坏）。阅卷按问给分，问(3)分值最高。</li>
+    </ul>
+  
+</details>
+
+  
 
   <div class="tabs">
-    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版</button>
-    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版</button>
-    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版</button>
+    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版 <small style="font-size:11px;color:#888">785字≈27min·得分：17-19</small></button>
+    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版 <small style="font-size:11px;color:#888">498字≈17min·得分：14-16</small></button>
+    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版 <small style="font-size:11px;color:#888">118字≈4min·得分：8-10</small></button>
   </div>
   <div class="tab-content active-t" id="t-full">
-    <div class="block t-full"><div class="wait">待生成</div></div>
+    <div class="block t-full">
+      <ul class="points">
+        <li>(1) <span class="pt">比较大小：</span>比较下列各组数的大小（直接写结果）：<br>
+          ① 2^(1/2) ≈ 1.414 与 3^(1/3) ≈ 1.442，故 <b>2^(1/2) < 3^(1/3)</b>；<br>
+          ② 2^(-1) = 0.5 与 3^(-1) ≈ 0.333，故 <b>2^(-1) > 3^(-1)</b>；<br>
+          ③ 4^(3/2) = 8 与 8^(1/3) = 2，故 <b>4^(3/2) > 8^(1/3)</b>。</li>
+      </ul>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li>(2) <span class="pt">指数拓展的详细过程：</span></li>
+        <li><span class="pt">第一步：正整数指数幂。</span>a^n = a·a·...·a（n个a相乘），n为正整数。此时运算律 a^(m+n)=a^m·a^n 成立。</li>
+        <li><span class="pt">第二步：零指数幂。</span>为使 a^(m+n)=a^m·a^n 在 m=n 时仍成立，即 a^0·a^n=a^n，定义 <b>a^0=1</b>（a≠0）。这样 a^n÷a^n=a^(n-n)=a^0=1，运算律保持一致。</li>
+        <li><span class="pt">第三步：负整数指数幂。</span>为使 a^(m+n)=a^m·a^n 在 m<n 时仍成立，即 a^(-n)·a^n=a^0=1，定义 <b>a^(-n)=1/a^n</b>（a≠0）。如 a^(-2)=1/a^2，运算律推广到全体整数指数。</li>
+        <li><span class="pt">第四步：分数指数幂。</span>为使 (a^(1/n))^n=a 成立，定义 <b>a^(1/n)=ⁿ√a</b>（n为正整数，a>0）；进而 a^(m/n)=ⁿ√(a^m)=(ⁿ√a)^m。这样指数从整数推广到有理数，运算律在全范围内成立。</li>
+      </ul>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li>(3) <span class="pt">评析教师甲的教学行为：</span>教师甲让学生看课本并思考三个问题，属于<b>传统的讲授式教学</b>。<br>
+          ①<b>优点</b>：教学目标明确，直接引导学生关注指数拓展的核心问题，效率较高；让学生自主阅读课本，有一定自主学习引导。<br>
+          ②<b>不足</b>：情境创设单一，仅依赖课本文本，<a href="../../../../../外部资料/404_高中数学学科/404.04中公教学知识.webp" target="_blank">未能激发学生学习兴趣</a>，学生被动接受知识；缺乏真实情境支撑，学生难以感受指数拓展的必要性和现实意义，<b class="pk">未充分体现数学化过程</b>。</li>
+        <li><span class="pt">评析教师乙的教学行为：</span>教师乙以景区游客问题引入，属于<b>情境创设式教学</b>。<br>
+          ①<b>优点</b>：以景区游客增长的真实情境引入，贴近生活，<a href="../../../../../外部资料/404_高中数学学科/404.04中公教学知识.webp" target="_blank">激发学生学习兴趣</a>，使学生积极主动投入学习活动；将指数函数与现实问题关联，<b class="pk">反映数学与生活的联系</b>，体现数学应用价值；学生在分析游客数据中经历从实际问题到数学模型的抽象，<b class="pk">体现数学化过程</b>，增强应用意识。<br>
+          ②<b>不足</b>：情境创设需注意与数学本质的联系，<b class="pk">不能为情境而情境</b>；应确保情境指向指数拓展的核心目标，避免学生注意力停留在情境表面而忽略数学本质。</li>
+        <li><span class="pt">总结：</span>两位教师各有优劣。教师甲注重知识系统性和效率，但缺乏情境激发；教师乙注重情境创设和兴趣激发，更符合新课标理念。理想的教学应将两者结合：以真实情境引入激发兴趣，再通过问题引导深入数学本质。</li>
+      </ul>
+    </div>
   </div>
   <div class="tab-content" id="t-exam">
-    <div class="block t-exam"><div class="wait">待生成</div></div>
+    <div class="block t-exam">
+      <ul class="points">
+        <li>(1) <span class="pt">比较大小：</span>① 2^(1/2) < 3^(1/3)；② 2^(-1) > 3^(-1)；③ 4^(3/2) > 8^(1/3)。</li>
+      </ul>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li>(2) <span class="pt">指数拓展过程：</span></li>
+        <li><span class="pt">①正整数指数幂：</span>a^n=n个a相乘，运算律a^(m+n)=a^m·a^n成立。</li>
+        <li><span class="pt">②零指数幂：</span>为保持运算律，定义a^0=1（a≠0）。</li>
+        <li><span class="pt">③负整数指数幂：</span>定义a^(-n)=1/a^n（a≠0），运算律推广到全体整数。</li>
+        <li><span class="pt">④分数指数幂：</span>定义a^(1/n)=ⁿ√a，a^(m/n)=ⁿ√(a^m)=(ⁿ√a)^m，指数推广到有理数。</li>
+      </ul>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li>(3) <span class="pt">教师甲（看课本）：</span>传统讲授式。优点：目标明确，效率高，引导自主学习；不足：情境单一，<span class="pk">未激发兴趣</span>，学生被动接受，缺乏数学化过程。</li>
+        <li><span class="pt">教师乙（景区游客）：</span>情境创设式。优点：真实情境<span class="pk">激发兴趣</span>、<span class="pk">反映数学与生活联系</span>、<span class="pk">体现数学化过程</span>、增强应用意识；不足：需注意<span class="pk">不能为情境而情境</span>，应指向数学本质。</li>
+        <li><span class="pt">总结：</span>两者结合为佳——以情境引入激发兴趣，再引导深入数学本质。</li>
+      </ul>
+    </div>
   </div>
   <div class="tab-content" id="t-life">
-    <div class="block t-life"><div class="wait">待生成</div></div>
+    <div class="block t-life">
+      <p>(1) 2^(1/2)<3^(1/3)；2^(-1)>3^(-1)；4^(3/2)>8^(1/3)。</p>
+      <p>(2) 指数拓展：正整数→零指数(a^0=1)→负整数(a^(-n)=1/a^n)→分数(a^(m/n)=ⁿ√(a^m))，每步保持运算律。</p>
+      <p>(3) 教师甲看课本：<span class="pk">效率高但未激发兴趣</span>，学生被动。教师乙景区游客：<span class="pk">激发兴趣、反映生活联系、体现数学化</span>，但需注意<span class="pk">不能为情境而情境</span>。两者结合为佳。</p>
+      <p style="font-size:13px;color:#777;margin-top:8px"><a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html" target="_blank" style="font-size:13px;color:#b26a00;text-decoration:none">📐 查看万能骨架（案例四角度＋方法四条）→</a></p>
+    </div>
   </div>
 
   <div class="block k-gold">
     <h3>💡 得分技巧</h3>
-    <div class="wait">待生成</div>
+    <ul class="tips">
+      <li>三问必须<b>分开作答</b>，标明(1)(2)(3)，阅卷按问给分；</li>
+      <li>问(1)只需<b>直接写结果</b>，题目说"直接写出即可"，不必写过程；</li>
+      <li>问(2)指数拓展四步缺一不可：<span class="pk">零指数→负整数→分数指数</span>，每步说明"为什么这样定义"（保持运算律）；</li>
+      <li>问(3)必须<b>分别评析</b>甲乙，每个教师先说优点再说不足，用判定句开头；</li>
+      <li>评价关键词固定四条：<span class="pk">激发兴趣、联系生活、数学化过程、应用意识</span>，每条一句话+对应材料；</li>
+      <li>教师甲的关键得分点：指出"未激发兴趣、被动接受"；教师乙的关键得分点：指出"不能为情境而情境"。</li>
+    </ul>
   </div>
 
 </section>
@@ -116,6 +192,28 @@ function switchTab(id){
   document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
   document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
 }
+// 中公教学知识 tooltip
+(function(){
+  var text='创设数学问题情境的意义（中公L66）：<mark>激发学生学习兴趣</mark>，使学生积极主动投入学习活动；<mark>反映数学与生活的联系</mark>；<mark>体现数学化的过程</mark>；<mark>增强学生应用数学的意识</mark>。<br><br>创设数学问题情境的方法（中公L67）：<mark>联系生活实际</mark>、<mark>利用数学故事</mark>、<mark>动手实践</mark>、<mark>编设具体数学问题</mark>等，引导学生在真实情境中发现问题和提出问题。<br><br>奥苏贝尔"有意义的接受学习"（L50）：情境创设应服务于教学目标，不能脱离数学本质。';
+  document.querySelectorAll('a[href*="404.04中公教学知识"]').forEach(function(a){
+    a.classList.add('tip');
+    var box=document.createElement('span');
+    box.className='tip-box';
+    box.innerHTML=text;
+    a.appendChild(box);
+  });
+})();
+// 角度库/框架 tooltip
+(function(){
+  var text='<b class="pk">案例分析·情境评价框架</b><br>问(3)评析教师行为：先判定句（合理/需改进），再用意义四条逐条对号：<br><br>① <mark>激发兴趣</mark>：是否贴近生活、调动积极性<br>② <mark>反映数学与生活联系</mark>：是否体现数学应用价值<br>③ <mark>体现数学化过程</mark>：学生是否经历从生活到模型的抽象<br>④ <mark>增强应用意识</mark>：是否指向实际问题解决<br><br>注意：不能为情境而情境，情境应服务于教学目标。';
+  document.querySelectorAll('a[href*="404主观题框架"]').forEach(function(a){
+    a.classList.add('tip');
+    var box=document.createElement('span');
+    box.className='tip-box';
+    box.innerHTML=text;
+    a.appendChild(box);
+  });
+})();
 </script>
 </div>
 </body>
