@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2022上 · 第q16题</title>
+<style>
+  :root{
+    --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
+    --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
+       font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
+  .b-an{background:#f08c00;color:#fff}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
+  .pk{color:var(--pink);font-weight:700}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
+  .points .pt{font-weight:700;color:var(--pink)}
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="card" id="qq16">
+  <div class="qhead">
+    <span class="badge b-an">案例分析</span>
+    <h2>第 16 题 · 偶函数定义教学 · 甲乙两位教师教法评价</h2>
+    <span class="score">20 分</span>
+  </div>
+  <div class="origin">案例：甲、乙两位教师教学偶函数定义。<br>
+    【教师甲】先问点关于y轴的对称点，再让学生填表观察自变量互为相反数时函数值的关系，发现f(-x)=f(x)，由此给出偶函数定义。<br>
+    【教师乙】先让学生画 y=x² 和 y=|x| 的图象，观察图象关于y轴对称，再问能否用符号语言描述，学生发现 f(-x)=f(x)，由此给出偶函数定义。<br>
+    问题：(1) 写出偶函数的定义，并简要说明函数奇偶性的作用；（10分）<br>
+    (2) 对甲、乙两位教师的教学进行评价。（10分）</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><ul class="points">
+        <li>(1) <span class="pt">偶函数的定义及奇偶性的作用</span></li>
+      </ul>
+      <p><b>偶函数的定义：</b>设函数 f(x) 的定义域为 D，若 D 关于原点对称，且对于任意 x∈D，都有 <b>f(-x)=f(x)</b>，则称 f(x) 为偶函数。偶函数的图象关于<b>y轴对称</b>。</p>
+      <p><b>函数奇偶性的作用：</b></p>
+      <p>①<b>简化函数研究</b>：利用奇偶性，只需研究定义域的一半（如 x≥0 部分），另一半由对称性直接得到，减少工作量。</p>
+      <p>②<b>判断图象对称性</b>：奇偶性揭示了函数图象的对称特征（偶函数关于y轴对称，奇函数关于原点对称），有助于准确作图和分析函数性质。</p>
+      <p>③<b>预测函数值</b>：已知一侧的函数值，可由奇偶性直接得出对称点的函数值，无需重复计算。</p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li>(2) <span class="pt">对甲、乙两位教师教学的评价</span></li>
+      </ul>
+      <p><b>教师甲的评价：</b>甲教师从<b>代数特征</b>切入教学——先回顾点关于y轴的对称，再让学生填表计算，观察自变量互为相反数时函数值的关系，归纳出 f(-x)=f(x)，由此给出偶函数定义。这一教法<b>优点</b>是：从具体计算出发，逻辑层次清晰，学生通过自主计算发现规律，体现了归纳思想；<b>不足</b>是：缺少几何直观的铺垫，学生可能不理解"为什么要研究自变量互为相反数时的函数值关系"，动机不够明确。建议在归纳代数特征后补充图象观察，实现数形结合。</p>
+      <p><b>教师乙的评价：</b>乙教师从<b>几何直观</b>切入教学——先让学生画函数图象，观察图象关于y轴对称的共性特征，再引导学生用符号语言精确描述，即 f(-x)=f(x)，由此给出偶函数定义。这一教法<b>优点</b>是：从图形直观入手，符合学生认知规律（从直观到抽象），学生容易理解"对称"这一核心概念；类比函数单调性的研究方法（先画图观察→再用符号语言描述），体现了知识间的联系。<b>不足</b>是：学生手绘图象可能不够精确，影响观察效果；从"图象对称"到"符号语言 f(-x)=f(x)"的抽象跨度较大，部分学生可能跟不上。</p>
+      <p><b>对比总结：</b>甲侧重代数归纳，乙侧重几何直观，两者各有优劣。理想的教学应<b>数形结合</b>——先从图象直观引入（如乙），再通过代数计算验证（如甲），让学生从"形"和"数"两个角度理解偶函数的本质，发展<b>直观想象</b>与<b>逻辑推理</b>素养。</p></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题：</span>两问。问①写<b>偶函数定义</b>+说明<b>奇偶性的作用</b>（知识题+理解题）。问②评价甲乙两位教师的教学（教学评价题）。</li>
+      <li><span class="pt">② 定框架：</span>问①——定义：设函数f(x)的定义域D关于原点对称，若∀x∈D，f(-x)=f(x)，则f(x)为偶函数；作用：简化函数研究（只需研究一半，另一半对称可得）、判断图象对称性。问②——分别评价甲和乙：甲从<b>代数特征</b>切入（填表→发现f(-x)=f(x)），乙从<b>几何直观</b>切入（画图→观察对称→符号化），各有优劣。</li>
+      <li><span class="pt">③ 填内容：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>甲评价：从具体计算入手→代数特征→归纳定义，逻辑清晰，但缺少几何直观，学生可能不理解"为什么研究f(-x)"</li>
+          <li>乙评价：从画图入手→几何直观→符号化，直观性强，但学生画图可能不精确，且从图形到符号的跳跃较大</li>
+          <li>两者都体现了"归纳→定义"的教学思路，但切入点不同</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p>(1) <b>偶函数定义：</b>设f(x)定义域D关于原点对称，若∀x∈D，f(-x)=f(x)，则f(x)为偶函数，图象关于y轴对称。</p>
+      <p><b>奇偶性作用：</b>①简化函数研究（只需研究一半）；②判断图象对称性，帮助作图；③预测函数值。</p>
+      <p>(2) <b>教师甲：</b>从<b>代数特征</b>切入（填表→发现f(-x)=f(x)→归纳定义），逻辑清晰，体现归纳思想；但缺少几何直观铺垫，学生可能不理解研究动机。</p>
+      <p><b>教师乙：</b>从<b>几何直观</b>切入（画图→观察对称→符号化），符合从直观到抽象的认知规律，类比单调性研究方法；但从图象到符号语言跨度较大。</p>
+      <p><b>对比：</b>甲重代数、乙重几何，各有优劣。理想教法应<b>数形结合</b>——先图象直观引入再代数验证，发展直观想象与逻辑推理素养。</p></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>(1) 偶函数：D关于原点对称，<span class="pk">∀x∈D, f(-x)=f(x)</span>。作用：<span class="pk">简化研究</span>（研究一半）、<span class="pk">判断对称性</span>、<span class="pk">预测函数值</span>。</p>
+      <p>(2) 甲：<span class="pk">代数切入</span>（填表归纳），逻辑清晰但缺直观；乙：<span class="pk">几何切入</span>（画图→符号化），直观但跨度大。理想：<span class="pk">数形结合</span>。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="k-gold">
+    <h3>💡 得分技巧</h3>
+    <ul class="tips"><li>问①定义必须写全：<span class="pk">定义域关于原点对称</span>+<span class="pk">∀x∈D, f(-x)=f(x)</span>，不写定义域条件扣分；</li>
+      <li>作用至少答三点：<span class="pk">简化研究、判断对称性、预测函数值</span>；</li>
+      <li>问②必须<b>分别评价</b>甲和乙，先说优点再说不足；</li>
+      <li>核心区分：甲<span class="pk">代数特征切入</span> vs 乙<span class="pk">几何直观切入</span>；</li>
+      <li>评价结尾要有<b>对比总结</b>，提出理想方案——<span class="pk">数形结合</span>，体现教学评价的专业性。</li></ul>
+  </div>
+</section>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
+<footer><a href="解析.html">← 返回目录</a></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2022上 · 第q15题</title>
+<style>
+  :root{
+    --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
+    --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
+       font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
+  .b-an{background:#f08c00;color:#fff}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
+  .pk{color:var(--pink);font-weight:700}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
+  .points .pt{font-weight:700;color:var(--pink)}
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="card" id="qq15">
+  <div class="qhead">
+    <span class="badge b-lun">论述题</span>
+    <h2>第 15 题 · 数学史在数学教学各阶段的作用</h2>
+    <span class="score">15 分</span>
+  </div>
+  <div class="origin">论述数学史在数学教学各阶段（导入、形成、应用）的作用。</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><p>数学史是数学文化的重要组成部分，将数学史融入教学各阶段，不仅能激发学生的学习兴趣，更能帮助学生理解数学本质、感受数学文化。现从导入、形成、应用三个阶段论述数学史的作用。</p>
+      <ul class="points">
+        <li><span class="pt">一、在导入阶段的作用 · 激发兴趣，引入主题。</span>在课的导入环节引入数学史，能以生动的历史故事或数学家的探索经历吸引学生注意力，激发好奇心和学习动机，为新知识的学习创设良好的情境。<span class="ex">例：讲授"等差数列求和"时，讲述高斯幼年计算1+2+…+100的故事，激发学生探究求和方法的兴趣；讲授"勾股定理"时，介绍中国古代《周髀算经》中"勾三股四弦五"的记载，引发民族自豪感。</span></li>
+        <li><span class="pt">二、在形成阶段的作用 · 理解本质，体会思想。</span>在概念和定理的形成环节，追溯其历史发展过程，能帮助学生理解数学概念产生的<b>必要性和合理性</b>，体会数学思想方法的形成过程，避免死记硬背。数学史揭示了数学知识不是凭空产生的，而是在解决实际问题中逐步发展的。<span class="ex">例：讲授"对数"概念时，介绍纳皮尔为简化天文计算而发明对数的历史背景，帮助学生理解对数"简化运算"的本质功能；讲授"微积分"时，介绍牛顿和莱布尼茨从不同角度创立微积分的过程，体会极限思想的形成。</span></li>
+        <li><span class="pt">三、在应用阶段的作用 · 拓展视野，培养素养。</span>在知识应用环节，展示数学知识在历史上的应用实例和数学家的创新精神，能拓展学生的数学视野，培养应用意识和创新意识，增强文化自信。<span class="ex">例：讲授"二项式定理"时，介绍杨辉三角早于帕斯卡三角的历史事实，培养学生的文化自信；讲授"概率"时，介绍帕斯卡和费马通过赌博问题创立概率论的故事，展示数学源于生活、服务生活。</span></li>
+      </ul>
+      <p>综上所述，数学史在导入阶段激发兴趣、在形成阶段帮助理解、在应用阶段拓展视野，是落实课标"体现数学文化"要求的重要途径。教师应善于挖掘教材中的数学史素材，将其有机融入教学各环节，提升教学的文化品位和育人价值。</p></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题 · 结构约束：</span>必须按<b>三个阶段</b>（导入、形成、应用）分别论述数学史的作用，不能笼统写。分值<b>15分</b>，每阶段约5分，开头+结尾各1-2分。</li>
+      <li><span class="pt">② 定框架：</span>导入阶段→激发兴趣、引入主题；形成阶段→帮助理解概念来源和发展、体会数学思想；应用阶段→拓展视野、培养创新意识和文化自信。每阶段写"作用+举例"。</li>
+      <li><span class="pt">③ 填内容：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>导入：用数学故事/历史人物引入新课，激发好奇心和学习动机</li>
+          <li>形成：追溯概念的历史发展过程，帮助学生理解概念产生的必要性和合理性</li>
+          <li>应用：展示数学知识在历史中的应用，培养应用意识和文化自信</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p>数学史是数学文化的重要载体，在教学各阶段具有不同作用。</p>
+      <ul class="points">
+        <li><span class="pt">一、导入阶段 · 激发兴趣，引入主题。</span>以历史故事或数学家经历引入新课，激发好奇心和学习动机。<span class="ex">例：高斯求和故事引入等差数列求和。</span></li>
+        <li><span class="pt">二、形成阶段 · 理解本质，体会思想。</span>追溯概念历史发展，帮助学生理解概念产生的必要性和合理性，体会数学思想的形成。<span class="ex">例：纳皮尔发明对数简化运算，帮助理解对数本质。</span></li>
+        <li><span class="pt">三、应用阶段 · 拓展视野，培养素养。</span>展示数学知识的历史应用和数学家创新精神，拓展视野，培养应用意识和文化自信。<span class="ex">例：杨辉三角早于帕斯卡三角，培养文化自信。</span></li>
+      </ul>
+      <p>综上，数学史在导入激发兴趣、形成帮助理解、应用拓展视野，是落实"体现数学文化"的重要途径。</p></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>导入阶段：<span class="pk">激发兴趣</span>（故事引入）；形成阶段：<span class="pk">理解本质</span>（追溯概念发展）；应用阶段：<span class="pk">拓展视野</span>（展示历史应用、文化自信）。数学史是落实"体现数学文化"的重要途径。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="k-gold">
+    <h3>💡 得分技巧</h3>
+    <ul class="tips"><li>必须按<b>三阶段</b>分别论述：<span class="pk">导入、形成、应用</span>，不能笼统写；</li>
+      <li>每阶段核心词：<span class="pk">导入=激发兴趣</span>、<span class="pk">形成=理解本质</span>、<span class="pk">应用=拓展视野</span>；</li>
+      <li>每阶段必须配<b>举例</b>——高斯求和、纳皮尔对数、杨辉三角等经典素材；</li>
+      <li>开头点题"数学文化"，结尾呼应课标"体现数学文化"要求；</li>
+      <li>金句：<span class="pk">"数学知识不是凭空产生的，而是在解决实际问题中逐步发展的"</span>。</li></ul>
+  </div>
+</section>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
+<footer><a href="解析.html">← 返回目录</a></footer>
+</div>
+</body>
+</html>

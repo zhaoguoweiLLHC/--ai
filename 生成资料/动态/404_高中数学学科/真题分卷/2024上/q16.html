@@ -3,119 +3,149 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2024上 · 第16题 · 案例分析</title>
+<title>2024上 · 第q16题</title>
 <style>
   :root{
     --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
     --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
   }
-  *{box-sizing:border-box}
-  body{margin:0;background:#f2f3f7;color:var(--ink);
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
        font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-       line-height:1.85;font-size:16px}
-  .wrap{max-width:860px;margin:0 auto;padding:28px 18px 60px}
-  section.card{background:#fff;border-radius:16px;padding:24px 26px;margin-bottom:20px;
-       box-shadow:0 2px 10px rgba(30,30,60,.07)}
-  .qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-  .qhead h2{font-size:19px;margin:0}
-  .badge{border-radius:8px;padding:2px 12px;font-size:13px;font-weight:600;white-space:nowrap}
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
   .b-an{background:#f08c00;color:#fff}
-  .score{color:var(--pink);font-weight:700;font-size:14px}
-  .origin{background:#f7f7fa;border-left:4px solid #b9bdc9;border-radius:8px;
-       padding:12px 16px;color:#555;font-size:15px;margin:12px 0}
-  .block{border-radius:12px;padding:14px 18px;margin:14px 0}
-  .block h3{margin:0 0 8px;font-size:15px}
-  .k-bibei{background:var(--pink-bg);border:1px solid #f6c3d6}
-  .k-bibei h3{color:var(--pink)}
-  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0}
-  .k-gold h3{color:var(--gold)}
-  a{color:#1971c2;text-decoration:underline;text-underline-offset:3px}
-  mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:4px}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
   .pk{color:var(--pink);font-weight:700}
-  .ex{background:#fff3bf;border-radius:8px;padding:2px 8px;color:#9a7b00}
-  .points{list-style:none;padding-left:4px}
-  .points>li{margin:10px 0}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
   .points .pt{font-weight:700;color:var(--pink)}
-  ul.tips{margin:6px 0;padding-left:20px}
-  ul.tips li{margin:6px 0}
-  .wait{color:#9aa0aa;text-align:center;padding:10px 0;font-size:14px}
-  footer{color:#9aa0aa;font-size:13px;text-align:center;margin-top:26px}
-  .back-link{position:fixed;top:12px;left:12px;z-index:200;background:rgba(255,255,255,.9);
-    border:1px solid #e8e8ee;border-radius:8px;padding:5px 14px;font-size:14px;
-    text-decoration:none;color:#1971c2;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-  .tabs{display:flex;gap:0;margin:14px 0 0;border-radius:12px 12px 0 0;overflow:hidden}
-  .tab-btn{flex:1;padding:10px 8px;border:none;background:#f2f3f7;font-size:14px;font-weight:600;
-    cursor:pointer;text-align:center;color:#8a8f98;border-bottom:3px solid transparent;transition:.2s}
-  .tab-btn.active-t{color:#fff}
-  .tab-btn[data-tab="t-full"].active-t{background:#eef6ff;color:#1971c2;border-bottom-color:#1971c2}
-  .tab-btn[data-tab="t-exam"].active-t{background:#e9f9ef;color:#2b8a3e;border-bottom-color:#2b8a3e}
-  .tab-btn[data-tab="t-life"].active-t{background:#ffecec;color:#c92a2a;border-bottom-color:#c92a2a}
-  .tab-content{display:none}
-  .tab-content.active-t{display:block}
-  .t-full{background:#eef6ff;border:1px solid #b6d6f7}
-  .t-exam{background:#e9f9ef;border:1px solid #b2e2c5}
-  .t-life{background:#ffecec;border:1px solid #ffc9c9}
-  details{margin:14px 0;padding:14px 18px;border-radius:12px;border:1px solid #f6c3d6;background:#fdeef4}
-  details summary::-webkit-details-marker{display:none}
-  details summary::before{content:"▸ ";font-size:12px}
-  details[open] summary::before{content:"▾ ";font-size:12px}
-  @media print{
-    body{background:#fff}
-    .wrap{max-width:none;padding:0}
-    section.card{box-shadow:none;border:1px solid #eee;break-inside:avoid}
-  }
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<a href="解析.html" class="back-link">← 返回目录</a>
-<section class="card" id="q16">
+<section class="card" id="qq16">
   <div class="qhead">
     <span class="badge b-an">案例分析</span>
-    <h2>第 16 题 · 等差数列习题 · 两种解法评价</h2>
+    <h2>第 16 题 · 等差数列求和 · 两位学生不同解法评价</h2>
     <span class="score">20 分</span>
   </div>
-
-  <div class="origin">
-    在一堂习题课上，教师出示等差数列习题。两位学生板演运用了不同的方法，所得结果都是2，但与教师备课内容不一致。问题：<br>
-    (1) 你如何评价两位学生的解题过程。（10分）<br>
-    (2) 假如你是该教师，针对学生板演的情况，如何组织进一步的教学，完成该题的教学任务？（10分）
+  <div class="origin">案例：在一堂习题课上，教师出示如下数列习题：<br>
+    已知数列 {aₙ} 和 {bₙ} 都是等差数列，它们的前 n 项和分别是 Sₙ 和 Tₙ，且有 Sₙ/Tₙ = (2n+3)/(3n-1)，求 a₅/b₅。<br>
+    生1：因为 Sₙ/Tₙ = (2n+3)/(3n-1)，因此可设 Sₙ=(2n+3)nk, Tₙ=(3n-1)nk，于是 a₅=S₅-S₄=13k-11k=2k，b₅=T₅-T₄=14k-11k=3k，故得 a₅/b₅=2/3。<br>
+    生2：因为 Sₙ/Tₙ = (2n+3)/(3n-1)，因此可设 Sₙ=An²+Bn, Tₙ=Cn²+Dn，于是由 Sₙ/Tₙ 的比值可得……故得 a₅/b₅=2/3。<br>
+    （生1和生2运用了不同的方法，所得的结果都是2/3。）教师发现两位学生板演内容与自己备课的内容不一致。<br>
+    问题：(1) 你如何评价两位学生的解题过程。（10分）<br>
+    (2) 假如你是该教师，针对学生板演的情况，如何组织进一步的教学，完成该题的教学任务？（10分）</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><ul class="points">
+        <li>(1) <span class="pt">两位学生的解题过程都是正确的，且体现了不同的数学思维。</span></li>
+      </ul>
+      <p><b>生1的评价：</b>生1由 Sₙ/Tₙ=(2n+3)/(3n-1)，设 Sₙ=(2n+3)nk、Tₙ=(3n-1)nk，再由 a₅=S₅-S₄ 求 a₅，方法<b>简洁巧妙</b>。其依据是：等差数列前 n 项和 Sₙ=na₁+n(n-1)d/2 是 n 的二次式且常数项为0，而 Sₙ/Tₙ 已给出比值结构，故可设 Sₙ=(2n+3)nk（k 为比例常数）。这一方法直接利用了比值结构，减少了待定系数的个数，体现了<b>化繁为简</b>的数学思想。</p>
+      <p><b>生2的评价：</b>生2设 Sₙ=An²+Bn、Tₙ=Cn²+Dn，用<b>待定系数法</b>确定参数，方法<b>规范普适</b>。这是处理等差数列前n项和的一般方法，虽然计算量稍大，但适用范围广，体现了<b>通法通则</b>的数学思维。</p>
+      <p><b>对比：</b>两种方法殊途同归，结果一致。生1的方法更简洁但需要洞察比值结构，生2的方法更一般但计算量大。两种方法都正确，体现了<b>一题多解</b>的价值，是宝贵的生成性教学资源。</p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li>(2) <span class="pt">假如我是该教师，组织进一步教学如下：</span></li>
+      </ul>
+      <p><b>第一步，肯定学生，保护积极性。</b>首先肯定两位学生的解法都是正确的，表扬他们运用了不同的思路解决问题，不因与备课内容不一致而否定学生。<b>设计意图：</b>保护学生的探究热情，营造安全的课堂氛围。</p>
+      <p><b>第二步，对比分析，深化理解。</b>请生1和生2分别讲解自己的思路，引导全班对比两种方法：生1的方法为何可以设 Sₙ=(2n+3)nk？依据是什么？生2的方法更一般，在什么情况下更适用？<b>设计意图：</b>通过对比，让学生理解不同方法的适用条件和内在联系，发展逻辑推理能力。</p>
+      <p><b>第三步，引导评价，提炼通法。</b>组织全班讨论：哪种方法更简洁？哪种方法更通用？总结：生1的方法适合比值结构明确的题目，生2的待定系数法是通法。引导学生根据题目特点灵活选择方法。<b>设计意图：</b>从"会一道题"到"会一类题"，培养策略意识。</p>
+      <p><b>第四步，变式巩固，拓展迁移。</b>布置变式题：改变 Sₙ/Tₙ 的表达式或所求项，让学生用两种方法分别求解，体会不同方法的优劣。<b>设计意图：</b>巩固通法，发展迁移能力。</p></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题：</span>两问。问①评价两位学生的解题过程——生1用<b>设Sₙ=(2n+3)nk的方法</b>（利用等差数列前n项和是n的二次式且常数项为0），生2用<b>一般设 Sₙ=An²+Bn 的方法</b>。两种方法<b>思路不同但都正确</b>，结果一致。问②教师如何应对"板演与备课不一致"——不能否定学生，应<b>顺势而为、对比分析</b>。</li>
+      <li><span class="pt">② 定框架：</span>问①——分别评价生1和生2：生1方法更巧妙（直接利用比值结构设参数），生2方法更一般（用待定系数法），两种方法都正确且体现了不同的数学思维。问②——①肯定学生→②对比两种方法→③引导全班讨论哪种更优→④总结通法→⑤布置变式巩固。</li>
+      <li><span class="pt">③ 填内容：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>生1评价：设 Sₙ=(2n+3)nk 是利用等差数列前n项和 Sₙ=na₁+n(n-1)d/2 的结构特征（二次式且无常数项），由 Sₙ/Tₙ 的比值直接设参数，方法简洁巧妙</li>
+          <li>生2评价：设 Sₙ=An²+Bn 是一般方法，用待定系数法确定 A、B，思路规范普适</li>
+          <li>两种方法都正确，体现"一题多解"，教师应充分利用这一生成性资源</li>
+          <li>教学组织：不否定学生→对比分析→引导评价→总结通法→变式巩固</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p>(1) <b>两种解法都正确，体现一题多解。</b></p>
+      <p><b>生1：</b>设 Sₙ=(2n+3)nk，利用等差数列前n项和是 n 的二次式且无常数项的结构特征，直接由比值设参数，方法<b>简洁巧妙</b>，体现化繁为简思想。</p>
+      <p><b>生2：</b>设 Sₙ=An²+Bn，用待定系数法确定参数，方法<b>规范普适</b>，体现通法通则。两种方法殊途同归，是宝贵的生成性资源。</p>
+      <p>(2) 教学组织四步：</p>
+      <ul class="points">
+        <li><span class="pt">①肯定学生：</span>不因与备课不一致而否定，表扬一题多解，保护探究热情。</li>
+        <li><span class="pt">②对比分析：</span>请两位学生讲解思路，全班对比——生1为何能设(2n+3)nk？依据是什么？生2的通法适用范围？</li>
+        <li><span class="pt">③提炼通法：</span>讨论哪种更简洁、哪种更通用，总结根据题目特点灵活选择方法。</li>
+        <li><span class="pt">④变式巩固：</span>改变 Sₙ/Tₙ 表达式或所求项，用两种方法分别求解，体会优劣。</li>
+      </ul></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>(1) 两种解法<span class="pk">都正确</span>。生1设Sₙ=(2n+3)nk，<span class="pk">简洁巧妙</span>（利用和的结构特征）；生2设Sₙ=An²+Bn，<span class="pk">规范普适</span>（待定系数通法）。体现<span class="pk">一题多解</span>。</p>
+      <p>(2) 四步：<span class="pk">肯定学生</span>→<span class="pk">对比分析</span>两种思路→<span class="pk">提炼通法</span>→<span class="pk">变式巩固</span>。不否定学生，顺势利用生成性资源。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
   </div>
-
-  <details class="block k-bibei">
-    <summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导</summary>
-    <div class="wait">待生成</div>
-  </details>
-
-  <div class="tabs">
-    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版</button>
-    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版</button>
-    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版</button>
-  </div>
-  <div class="tab-content active-t" id="t-full">
-    <div class="block t-full"><div class="wait">待生成</div></div>
-  </div>
-  <div class="tab-content" id="t-exam">
-    <div class="block t-exam"><div class="wait">待生成</div></div>
-  </div>
-  <div class="tab-content" id="t-life">
-    <div class="block t-life"><div class="wait">待生成</div></div>
-  </div>
-
-  <div class="block k-gold">
+  <div class="k-gold">
     <h3>💡 得分技巧</h3>
-    <div class="wait">待生成</div>
+    <ul class="tips"><li>问①必须<b>分别评价</b>生1和生2，先判断（都正确），再分析各自特点和依据；</li>
+      <li>核心区分：生1<span class="pk">简洁巧妙</span>（利用比值结构设参数）vs 生2<span class="pk">规范普适</span>（待定系数通法）；</li>
+      <li>问②关键得分点：不否定学生、<b>顺势而为</b>利用生成性资源——这是教学机智的体现；</li>
+      <li>教学组织四步缺一不可：<span class="pk">肯定→对比→提炼→变式</span>；</li>
+      <li>金句：<span class="pk">"一题多解""殊途同归""从会一道题到会一类题"</span>。</li></ul>
   </div>
-
 </section>
-<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></div>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
 <footer><a href="解析.html">← 返回目录</a></footer>
-<script>
-function switchTab(id){
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
-  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
-}
-</script>
 </div>
 </body>
 </html>

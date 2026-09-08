@@ -3,119 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2023下 · 第17题 · 教学设计</title>
+<title>2023下 · 第q17题</title>
 <style>
   :root{
     --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
     --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
   }
-  *{box-sizing:border-box}
-  body{margin:0;background:#f2f3f7;color:var(--ink);
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
        font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-       line-height:1.85;font-size:16px}
-  .wrap{max-width:860px;margin:0 auto;padding:28px 18px 60px}
-  section.card{background:#fff;border-radius:16px;padding:24px 26px;margin-bottom:20px;
-       box-shadow:0 2px 10px rgba(30,30,60,.07)}
-  .qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-  .qhead h2{font-size:19px;margin:0}
-  .badge{border-radius:8px;padding:2px 12px;font-size:13px;font-weight:600;white-space:nowrap}
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
   .b-she{background:#0ca678;color:#fff}
-  .score{color:var(--pink);font-weight:700;font-size:14px}
-  .origin{background:#f7f7fa;border-left:4px solid #b9bdc9;border-radius:8px;
-       padding:12px 16px;color:#555;font-size:15px;margin:12px 0}
-  .block{border-radius:12px;padding:14px 18px;margin:14px 0}
-  .block h3{margin:0 0 8px;font-size:15px}
-  .k-bibei{background:var(--pink-bg);border:1px solid #f6c3d6}
-  .k-bibei h3{color:var(--pink)}
-  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0}
-  .k-gold h3{color:var(--gold)}
-  a{color:#1971c2;text-decoration:underline;text-underline-offset:3px}
-  mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:4px}
+  .b-lun{background:#e5487c;color:#fff}
+  .b-an{background:#f08c00;color:#fff}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
   .pk{color:var(--pink);font-weight:700}
-  .ex{background:#fff3bf;border-radius:8px;padding:2px 8px;color:#9a7b00}
-  .points{list-style:none;padding-left:4px}
-  .points>li{margin:10px 0}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
   .points .pt{font-weight:700;color:var(--pink)}
-  ul.tips{margin:6px 0;padding-left:20px}
-  ul.tips li{margin:6px 0}
-  .wait{color:#9aa0aa;text-align:center;padding:10px 0;font-size:14px}
-  footer{color:#9aa0aa;font-size:13px;text-align:center;margin-top:26px}
-  .back-link{position:fixed;top:12px;left:12px;z-index:200;background:rgba(255,255,255,.9);
-    border:1px solid #e8e8ee;border-radius:8px;padding:5px 14px;font-size:14px;
-    text-decoration:none;color:#1971c2;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-  .tabs{display:flex;gap:0;margin:14px 0 0;border-radius:12px 12px 0 0;overflow:hidden}
-  .tab-btn{flex:1;padding:10px 8px;border:none;background:#f2f3f7;font-size:14px;font-weight:600;
-    cursor:pointer;text-align:center;color:#8a8f98;border-bottom:3px solid transparent;transition:.2s}
-  .tab-btn.active-t{color:#fff}
-  .tab-btn[data-tab="t-full"].active-t{background:#eef6ff;color:#1971c2;border-bottom-color:#1971c2}
-  .tab-btn[data-tab="t-exam"].active-t{background:#e9f9ef;color:#2b8a3e;border-bottom-color:#2b8a3e}
-  .tab-btn[data-tab="t-life"].active-t{background:#ffecec;color:#c92a2a;border-bottom-color:#c92a2a}
-  .tab-content{display:none}
-  .tab-content.active-t{display:block}
-  .t-full{background:#eef6ff;border:1px solid #b6d6f7}
-  .t-exam{background:#e9f9ef;border:1px solid #b2e2c5}
-  .t-life{background:#ffecec;border:1px solid #ffc9c9}
-  details{margin:14px 0;padding:14px 18px;border-radius:12px;border:1px solid #f6c3d6;background:#fdeef4}
-  details summary::-webkit-details-marker{display:none}
-  details summary::before{content:"▸ ";font-size:12px}
-  details[open] summary::before{content:"▾ ";font-size:12px}
-  @media print{
-    body{background:#fff}
-    .wrap{max-width:none;padding:0}
-    section.card{box-shadow:none;border:1px solid #eee;break-inside:avoid}
-  }
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<a href="解析.html" class="back-link">← 返回目录</a>
-<section class="card" id="q17">
+<section class="card" id="qq17">
   <div class="qhead">
     <span class="badge b-she">教学设计</span>
     <h2>第 17 题 · 等比数列前n项和公式 · 教学设计</h2>
     <span class="score">30 分</span>
   </div>
+  <div class="origin">下面是人教版教材高中选择性必修二"等比数列前n项和公式"的部分内容。完成下列任务：<br>
+    (1) 利用推导等比数列前n项和公式的方法，求数列的前n项和。（8分）<br>
+    (2) 写出这部分内容的教学设计，包括教学目标、教学重点、教学过程（含引导学生探究的活动和设计意图）。（22分）</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><p><b>(1) 利用错位相减法推导等比数列前n项和公式</b></p>
+      <p>设等比数列 {aₙ} 的首项为 a₁，公比为 q（q≠1），前 n 项和为 Sₙ。</p>
+      <p>Sₙ = a₁ + a₁q + a₁q² + … + a₁qⁿ⁻¹  ……①</p>
+      <p>两边同乘公比 q：</p>
+      <p>qSₙ = a₁q + a₁q² + a₁q³ + … + a₁qⁿ  ……②</p>
+      <p>①-②（错位相减）：</p>
+      <p>(1-q)Sₙ = a₁ - a₁qⁿ = a₁(1-qⁿ)</p>
+      <p>因为 q≠1，所以 1-q≠0，两边同除以 (1-q)：</p>
+      <p><b>Sₙ = a₁(1-qⁿ)/(1-q)</b>（q≠1）</p>
+      <p>当 q=1 时，等比数列为常数列，Sₙ = na₁。</p>
 
-  <div class="origin">
-    下面是人教版版本教材高中选择性必修二"等比数列前n项和公式"的部分内容。完成下列任务：<br>
-    (1) 利用推导等比数列前n项和公式的方法，求数列前n项和。（8分）<br>
-    (2) 写出这部分内容的教学设计，包括教学目标、教学重点、教学过程（含引导学生探究的活动和设计意图）。（22分）
-  </div>
+      <p><b>(2) 教学设计</b></p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li><span class="pt">教学目标：</span><br>
+          ①知识与技能：掌握等比数列前n项和公式及其推导方法（错位相减法），能运用公式解决简单求和问题。<br>
+          ②过程与方法：通过自主探究错位相减法的过程，体会"化多为一"的数学思想，发展<b>逻辑推理</b>与<b>数学运算</b>素养。<br>
+          ③情感态度与价值观：了解等比数列求和的历史背景，感受数学的文化价值，激发学习兴趣。</li>
+        <li><span class="pt">教学重点：</span>等比数列前n项和公式的推导（错位相减法）及应用。</li>
+      </ul>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li><span class="pt">环节一：情境引入</span><br>
+          <b>教师活动：</b>教师讲述国际象棋麦粒故事——棋盘第1格放1粒麦子，第2格2粒，第3格4粒……每格是前一格的2倍，共需多少麦粒？引导学生列出求和式：S=1+2+4+…+2⁶³。<br>
+          <b>学生活动：</b>学生认真听讲，就教师提问展开独立思考或小组讨论，发现这是等比数列求和问题。<br>
+          <b>设计意图：</b>以历史故事激发兴趣，将抽象公式与生动情境联系，使学生感受数学的文化价值，为探究求和方法做铺垫。</li>
+        <li><span class="pt">环节二：公式探究</span><br>
+          <b>教师活动：</b>教师提出目标问题——如何求 S=a₁+a₁q+a₁q²+…+a₁qⁿ⁻¹？组织学生四人一组讨论，教师巡视指导。引导提示：观察等比数列的特征，每一项乘以 q 得到下一项，能否利用这一关系？<br>
+          <b>学生活动：</b>学生在教师引导下尝试：两边乘 q 得 qS=a₁q+a₁q²+…+a₁qⁿ，将两式<b>错位相减</b>，发现中间项全部消去，只剩 a₁ 和 a₁qⁿ，从而得到 (1-q)S=a₁(1-qⁿ)。<br>
+          <b>教师活动：</b>教师引导学生总结归纳公式：Sₙ=a₁(1-qⁿ)/(1-q)（q≠1），并讨论 q=1 的情形（Sₙ=na₁）。<br>
+          <b>设计意图：</b>学生经历"发现问题→尝试方法→推导公式→讨论特例"的完整探究过程，体会错位相减法的巧妙——利用等比数列的特征实现"化多为一"，发展逻辑推理与数学运算素养，体现教师主导、学生主体。</li>
+        <li><span class="pt">环节三：巩固应用</span><br>
+          <b>教师活动：</b>教师通过多媒体展示不同层次的练习题，引导学生独立思考并作答，找学生代表板演，完成后针对结果给予评价并总结。<br>
+          <b>学生活动：</b>练习1——回到情境问题，求棋盘麦粒总数 S=2⁶⁴-1；练习2——已知等比数列 a₁=2, q=3, n=5，求 S₅。<br>
+          <b>设计意图：</b>设置不同层次的练习，首尾呼应解决引入问题，变式练习巩固公式应用，及时反馈，分层达标。</li>
+        <li><span class="pt">环节四：小结作业</span><br>
+          <b>小结：</b>教师引导学生从知识（公式+错位相减法）、方法（化多为一）、思想（化归）等方面畅谈收获，利用多种方式进行评价并总结。<br>
+          <b>作业：</b>学生完成课后练习题，并思考：错位相减法还能求哪些数列的和？<br>
+          <b>设计意图：</b>小结检验学生对重点内容的认识，增强信心；作业再巩固再认识，拓展思维。</li>
+      </ul></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题：</span>两问。问①用<b>推导等比数列前n项和的方法</b>（即"错位相减法"）求数列前n项和——题目没给具体数列，这里需用<b>错位相减法的思路</b>求等差×等比型数列的和。问②写教学设计，环节包括教学目标、教学重点、教学过程（含探究活动和设计意图）。</li>
+      <li><span class="pt">② 定框架：</span>问①——等比数列求和用<b>错位相减法</b>：S=a₁+a₁q+...+a₁qⁿ⁻¹，两边乘q得 qS=a₁q+...+a₁qⁿ，相减得 (1-q)S=a₁(1-qⁿ)，S=a₁(1-qⁿ)/(1-q)（q≠1）。问②——教学设计五环节：教学目标（三维）→教学重点→教学过程（情境引入、公式探究、巩固应用、小结作业）。</li>
+      <li><span class="pt">③ 填内容：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>错位相减法核心：S与qS错位相减，中间项全部消去，只剩首尾两项</li>
+          <li>教学过程关键：从国际象棋麦粒故事引入→探究求和思路→错位相减推导公式→讨论q=1的情形→巩固应用</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p><b>(1) 错位相减法推导：</b>S=a₁+a₁q+…+a₁qⁿ⁻¹ ①，两边乘q：qS=a₁q+…+a₁qⁿ ②，①-②得 (1-q)S=a₁(1-qⁿ)，所以 <b>S=a₁(1-qⁿ)/(1-q)</b>（q≠1）；q=1时 S=na₁。</p>
 
-  <details class="block k-bibei">
-    <summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导</summary>
-    <div class="wait">待生成</div>
-  </details>
-
-  <div class="tabs">
-    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版</button>
-    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版</button>
-    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版</button>
+      <p><b>(2) 教学设计</b></p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li><span class="pt">教学目标：</span>①掌握公式及错位相减法，能解决简单求和问题；②通过探究体会"化多为一"思想，发展逻辑推理与数学运算素养；③感受数学文化价值。</li>
+        <li><span class="pt">教学重点：</span>公式推导（错位相减法）及应用。</li>
+        <li><span class="pt">情境引入：</span>国际象棋麦粒故事，列出求和式。意图：激发兴趣，引出求和问题。</li>
+        <li><span class="pt">公式探究：</span>教师引导"每项乘q得下一项"，学生尝试两边乘q、错位相减，中间项消去得 (1-q)S=a₁(1-qⁿ)，归纳公式并讨论q=1。意图：经历探究→推导→讨论特例，发展运算素养。</li>
+        <li><span class="pt">巩固应用：</span>练习1求棋盘麦粒总数；练习2已知a₁,q,n求S。意图：首尾呼应，变式巩固。</li>
+        <li><span class="pt">小结作业：</span>小结公式+方法+思想；作业课后练习+拓展思考。意图：再巩固。</li>
+      </ul></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>(1) S=a₁+a₁q+…+a₁qⁿ⁻¹，乘q得qS=a₁q+…+a₁qⁿ，相减：<span class="pk">(1-q)S=a₁(1-qⁿ)</span>，S=<span class="pk">a₁(1-qⁿ)/(1-q)</span>（q≠1）；q=1时S=na₁。</p>
+      <p>(2) 目标：掌握公式+错位相减法。重点：推导与应用。<br>
+      引入：麦粒故事。意图：<span class="pk">激发兴趣</span>。<br>
+      探究：两边乘q→错位相减→消中间项→得公式。意图：<span class="pk">化多为一，探究发现</span>。<br>
+      巩固：求棋盘总数+已知参数求S。意图：巩固应用。<br>
+      小结作业：公式+方法+思想。意图：再巩固。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
   </div>
-  <div class="tab-content active-t" id="t-full">
-    <div class="block t-full"><div class="wait">待生成</div></div>
-  </div>
-  <div class="tab-content" id="t-exam">
-    <div class="block t-exam"><div class="wait">待生成</div></div>
-  </div>
-  <div class="tab-content" id="t-life">
-    <div class="block t-life"><div class="wait">待生成</div></div>
-  </div>
-
-  <div class="block k-gold">
+  <div class="k-gold">
     <h3>💡 得分技巧</h3>
-    <div class="wait">待生成</div>
+    <ul class="tips"><li>问①推导必须写全四步：<span class="pk">写出S→两边乘q→错位相减→整理得公式</span>，缺步骤扣分；</li>
+      <li>必须讨论<b>q=1 的特例</b>（S=na₁），不讨论扣分；</li>
+      <li>问②教学过程每个环节都要写<b>"设计意图"</b>，这是阅卷按点给分的关键；</li>
+      <li>导入用<b>国际象棋麦粒故事</b>是经典素材，贴合教材；</li>
+      <li>探究环节核心得分词：<span class="pk">错位相减</span>、<span class="pk">化多为一</span>、<span class="pk">中间项消去</span>；</li>
+      <li>巩固练习要<b>首尾呼应</b>——回到引入的麦粒问题，体现教学完整性。</li></ul>
   </div>
-
 </section>
-<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></div>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
 <footer><a href="解析.html">← 返回目录</a></footer>
-<script>
-function switchTab(id){
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
-  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
-}
-</script>
 </div>
 </body>
 </html>

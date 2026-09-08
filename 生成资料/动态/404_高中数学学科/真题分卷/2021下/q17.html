@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2021下 · 第q17题</title>
+<style>
+  :root{
+    --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
+    --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
+       font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
+  .b-an{background:#f08c00;color:#fff}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
+  .pk{color:var(--pink);font-weight:700}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
+  .points .pt{font-weight:700;color:var(--pink)}
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="card" id="qq17">
+  <div class="qhead">
+    <span class="badge b-she">教学设计</span>
+    <h2>第 17 题 · 点到直线的距离公式 · 教学设计</h2>
+    <span class="score">30 分</span>
+  </div>
+  <div class="origin">材料是某高中数学教材"点到直线的距离公式"一节的内容片段：已知点 P(x₀,y₀)，直线 l: Ax+By+C=0，求点P到直线l的距离。教材给出了用垂足坐标求距离的方法（先求垂线方程→求交点→用距离公式），但推导过程未完整。<br>
+    完成下列任务：<br>
+    (1) 补充"点到直线的距离公式"的推导过程；（10分）<br>
+    (2) 设计这部分内容的教学目标；（8分）<br>
+    (3) 根据教学目标设计这部分内容的教学过程（含课堂导入、公式推导、巩固提高、课堂小结及设计意图）。（12分）</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><p><b>(1) 点到直线的距离公式推导过程</b></p>
+      <p>已知点 P(x₀,y₀)，直线 l: Ax+By+C=0（A、B 不全为0）。求 P 到 l 的距离 d。</p>
+      <p><b>方法（向量法）：</b></p>
+      <p>直线 l: Ax+By+C=0 的法向量为 <b>n=(A,B)</b>。</p>
+      <p>在直线 l 上取一点 Q(x₁,y₁)，满足 Ax₁+By₁+C=0。</p>
+      <p>向量 PQ=(x₁-x₀, y₁-y₀)。</p>
+      <p>点 P 到直线 l 的距离等于向量 PQ 在法向量 n 方向上的投影的绝对值：</p>
+      <p>d = |PQ·n| / |n| = |A(x₁-x₀)+B(y₁-y₀)| / √(A²+B²)</p>
+      <p>因为 Ax₁+By₁+C=0，即 Ax₁+By₁=-C，所以：</p>
+      <p>A(x₁-x₀)+B(y₁-y₀) = (Ax₁+By₁) - (Ax₀+By₀) = -C - (Ax₀+By₀) = -(Ax₀+By₀+C)</p>
+      <p>因此：<b>d = |Ax₀+By₀+C| / √(A²+B²)</b></p>
+      <p>这就是点到直线的距离公式。</p>
+
+      <p><b>(2) 教学目标</b></p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li><span class="pt">①知识与技能：</span>掌握点到直线的距离公式及其推导方法，能运用公式求点到直线的距离。</li>
+        <li><span class="pt">②过程与方法：</span>通过探究公式推导的过程，体会<b>数形结合</b>与<b>向量法</b>的思想，发展<b>逻辑推理</b>与<b>数学运算</b>素养。</li>
+        <li><span class="pt">③情感态度与价值观：</span>感受数学公式的简洁美，培养严谨的数学思维。</li>
+      </ul>
+
+      <p><b>(3) 教学过程</b></p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li><span class="pt">环节一：课堂导入</span><br>
+          <b>教师活动：</b>教师提出问题：已知点P和直线l，如何求P到l的距离？引导学生回顾初中方法（作垂线→量长度）和解析几何方法（坐标运算）。<br>
+          <b>学生活动：</b>学生回顾已有方法，思考如何在坐标系中用代数方法求距离。<br>
+          <b>设计意图：</b>从已有知识出发提出新问题，激发探究动机，为公式推导做铺垫。</li>
+        <li><span class="pt">环节二：公式推导</span><br>
+          <b>教师活动：</b>教师提出目标问题——如何用坐标方法推导P(x₀,y₀)到直线Ax+By+C=0的距离公式？组织学生讨论，引导用向量法：法向量n=(A,B)，距离等于PQ在n方向投影的绝对值。<br>
+          <b>学生活动：</b>学生在教师引导下：取直线上点Q→求PQ→算PQ在n上的投影→化简得 d=|Ax₀+By₀+C|/√(A²+B²)。<br>
+          <b>设计意图：</b>学生经历"几何直观→向量方法→代数推导"的完整过程，体会向量法的简洁，发展逻辑推理与数学运算素养。</li>
+        <li><span class="pt">环节三：巩固提高</span><br>
+          <b>教师活动：</b>展示不同层次的练习题，引导学生独立完成，板演评价。<br>
+          <b>学生活动：</b>练习1——求具体点到具体直线的距离；练习2——已知距离求参数；练习3——判断直线与圆的位置关系（用距离公式）。<br>
+          <b>设计意图：</b>分层练习巩固公式，练习3拓展应用，培养综合运用能力。</li>
+        <li><span class="pt">环节四：课堂小结</span><br>
+          <b>小结：</b>教师引导学生总结公式内容、推导方法（向量法）和注意事项（A、B不全为0、绝对值不能漏）。<br>
+          <b>作业：</b>完成课后练习，思考两条平行线间的距离公式。<br>
+          <b>设计意图：</b>小结检验重点掌握情况；作业拓展到平行线距离，再巩固。</li>
+      </ul></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题：</span>三问。问①补充<b>距离公式推导</b>（10分）；问②设计<b>教学目标</b>（8分）；问③设计<b>教学过程</b>含四环节及设计意图（12分）。</li>
+      <li><span class="pt">② 定框架：</span>问①——推导方法可用<b>向量法</b>或<b>面积法</b>或<b>函数法</b>。教材用垂足法（求垂线方程→交点→距离公式），补充完整即可。结果：d=|Ax₀+By₀+C|/√(A²+B²)。问②——三维目标。问③——四环节：课堂导入、公式推导、巩固提高、课堂小结。</li>
+      <li><span class="pt">③ 填内容：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>推导思路：①过P作l的垂线l'，求l'方程（斜率为B/A）→②求l与l'交点Q→③|PQ|用两点距离公式</li>
+          <li>或用向量法：直线方向向量(A,-B)/√(A²+B²)，法向量n=(A,B)，d=|n·PQ|/|n|=|Ax₀+By₀+C|/√(A²+B²)</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p><b>(1) 推导：</b>直线法向量n=(A,B)，取直线上点Q，d=|PQ·n|/|n|=|A(x₁-x₀)+B(y₁-y₀)|/√(A²+B²)。由Ax₁+By₁=-C化简得 <b>d=|Ax₀+By₀+C|/√(A²+B²)</b>。</p>
+      <p><b>(2) 教学目标：</b>①掌握公式及推导，能求距离；②通过探究体会数形结合与向量法，发展运算与推理素养；③感受公式简洁美。</p>
+      <p><b>(3) 教学过程：</b></p>
+      <ul class="points">
+        <li><span class="pt">导入：</span>回顾初中方法→提出坐标法。意图：激发探究。</li>
+        <li><span class="pt">推导：</span>向量法：法向量n→PQ投影→化简。意图：数形结合，发展运算素养。</li>
+        <li><span class="pt">巩固：</span>求距离+已知距离求参数+判断直线与圆位置。意图：分层巩固。</li>
+        <li><span class="pt">小结：</span>公式+方法+注意（绝对值不漏）。作业：平行线距离。意图：再巩固。</li>
+      </ul></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>(1) 法向量n=(A,B)，d=|PQ·n|/|n|→<span class="pk">d=|Ax₀+By₀+C|/√(A²+B²)</span>。</p>
+      <p>(2) 目标：掌握公式+推导+应用。发展运算推理素养。<br>
+      (3) 导入（回顾提新问题）→推导（向量法）→巩固（分层练习）→小结（公式+注意绝对值）。意图：<span class="pk">数形结合</span>。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="k-gold">
+    <h3>💡 得分技巧</h3>
+    <ul class="tips"><li>问①推导可用<b>向量法</b>（推荐，简洁）或<b>垂足法</b>（教材方法），结果都是 <span class="pk">d=|Ax₀+By₀+C|/√(A²+B²)</span>；</li>
+      <li>向量法核心：<span class="pk">法向量n=(A,B)</span> + <span class="pk">投影=|PQ·n|/|n|</span>；</li>
+      <li>问②三维目标各一句话；</li>
+      <li>问③四环节名称固定：<span class="pk">课堂导入、公式推导、巩固提高、课堂小结</span>，每个都要写设计意图；</li>
+      <li>注意事项提醒<b>绝对值不能漏</b>是得分点。</li></ul>
+  </div>
+</section>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
+<footer><a href="解析.html">← 返回目录</a></footer>
+</div>
+</body>
+</html>

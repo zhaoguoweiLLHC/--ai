@@ -3,114 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2025上 · 第15题 · 论述题</title>
+<title>2025上 · 第q15题</title>
 <style>
   :root{
     --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
     --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
   }
-  *{box-sizing:border-box}
-  body{margin:0;background:#f2f3f7;color:var(--ink);
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
        font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-       line-height:1.85;font-size:16px}
-  .wrap{max-width:860px;margin:0 auto;padding:28px 18px 60px}
-  section.card{background:#fff;border-radius:16px;padding:24px 26px;margin-bottom:20px;
-       box-shadow:0 2px 10px rgba(30,30,60,.07)}
-  .qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-  .qhead h2{font-size:19px;margin:0}
-  .badge{border-radius:8px;padding:2px 12px;font-size:13px;font-weight:600;white-space:nowrap}
-  .b-lun{background:var(--pink);color:#fff}
-  .score{color:var(--pink);font-weight:700;font-size:14px}
-  .origin{background:#f7f7fa;border-left:4px solid #b9bdc9;border-radius:8px;
-       padding:12px 16px;color:#555;font-size:15px;margin:12px 0}
-  .block{border-radius:12px;padding:14px 18px;margin:14px 0}
-  .block h3{margin:0 0 8px;font-size:15px}
-  .k-bibei{background:var(--pink-bg);border:1px solid #f6c3d6}
-  .k-bibei h3{color:var(--pink)}
-  .k-user{background:#e8f4fd;border:1px solid #c4dcf8}
-  .k-user h3{color:#1971c2}
-  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0}
-  .k-gold h3{color:var(--gold)}
-  a{color:#1971c2;text-decoration:underline;text-underline-offset:3px}
-  mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:4px}
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
+  .b-an{background:#f08c00;color:#fff}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
   .pk{color:var(--pink);font-weight:700}
-  .ex{background:#fff3bf;border-radius:8px;padding:2px 8px;color:#9a7b00}
-  .points{list-style:none;padding-left:4px}
-  .points>li{margin:10px 0}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
   .points .pt{font-weight:700;color:var(--pink)}
-  ul.tips{margin:6px 0;padding-left:20px}
-  ul.tips li{margin:6px 0}
-  .wait{color:#9aa0aa;text-align:center;padding:10px 0;font-size:14px}
-  footer{color:#9aa0aa;font-size:13px;text-align:center;margin-top:26px}
-  .back-link{position:fixed;top:12px;left:12px;z-index:200;background:rgba(255,255,255,.9);
-    border:1px solid #e8e8ee;border-radius:8px;padding:5px 14px;font-size:14px;
-    text-decoration:none;color:#1971c2;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-  .tabs{display:flex;gap:0;margin:14px 0 0;border-radius:12px 12px 0 0;overflow:hidden}
-  .tab-btn{flex:1;padding:10px 8px;border:none;background:#f2f3f7;font-size:14px;font-weight:600;
-    cursor:pointer;text-align:center;color:#8a8f98;border-bottom:3px solid transparent;transition:.2s}
-  .tab-btn.active-t{color:#fff}
-  .tab-btn[data-tab="t-full"].active-t{background:#eef6ff;color:#1971c2;border-bottom-color:#1971c2}
-  .tab-btn[data-tab="t-exam"].active-t{background:#e9f9ef;color:#2b8a3e;border-bottom-color:#2b8a3e}
-  .tab-btn[data-tab="t-life"].active-t{background:#ffecec;color:#c92a2a;border-bottom-color:#c92a2a}
-  .tab-content{display:none}
-  .tab-content.active-t{display:block}
-  .t-full{background:#eef6ff;border:1px solid #b6d6f7}
-  .t-exam{background:#e9f9ef;border:1px solid #b2e2c5}
-  .t-life{background:#ffecec;border:1px solid #ffc9c9}
-  details{margin:14px 0;padding:14px 18px;border-radius:12px;border:1px solid #f6c3d6;background:#fdeef4}
-  details summary::-webkit-details-marker{display:none}
-  details summary::before{content:"▸ ";font-size:12px}
-  details[open] summary::before{content:"▾ ";font-size:12px}
-  @media print{
-    body{background:#fff}
-    .wrap{max-width:none;padding:0}
-    section.card{box-shadow:none;border:1px solid #eee;break-inside:avoid}
-  }
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<a href="解析.html" class="back-link">← 返回目录</a>
-<section class="card" id="q15">
+<section class="card" id="qq15">
   <div class="qhead">
     <span class="badge b-lun">论述题</span>
     <h2>第 15 题 · 论述提高教师教学专业能力</h2>
     <span class="score">10 分</span>
   </div>
-
   <div class="origin">结合普通高中数学学科内容，试论述为了更好落实高中数学课程标准，应如何进一步提高教师教学专业能力。</div>
-
-  <!-- 推导区 -->
-  <details class="block k-bibei" open>
-    <summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导 · 教师专业能力提升五点怎么来的</summary>
-
-    <ul class="points" style="list-style:none;padding-left:4px">
-      <li><span class="pt">① 审题 · 三个硬约束：</span>必须回应<b>"落实高中数学课程标准"</b>这一目标；落脚<b>教师教学专业能力</b>（不是泛泛的教学能力，而是专业能力）；题目分值<b>10分</b>，10分论述题＝开头＋3-5个分点＋结尾。</li>
-      <li><span class="pt">② 选框架：</span>"应如何提高…"＝<b>做法类论述</b>，需列举具体措施。课标第104-105页有明确的五个方面（<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>课标P104-105</mark></a>），直接对应五个分点，不需再用角度库。另有宏观要求"加强教师专业发展和团队建设"可作为结尾补充。</li>
-      <li><span class="pt">③ 填内容 · 课标原文逐点对应：</span>
-        <ul style="padding-left:20px;margin:6px 0">
-          <li>点一：<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>以教师专业标准理念为指导，提升专业水平</mark></a>——育人本、师德为先、能力为重、终身学习；从专业理念与师德、专业知识、专业能力三个维度</li>
-          <li>点二：<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>努力提升通识素养</mark></a>——科学素养、人文素养、信息技术素养</li>
-          <li>点三：<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>努力提升数学专业素养</mark></a>——数学知识体系、数学思想方法、数学应用意识</li>
-          <li>点四：<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>努力提升数学教育理论素养</mark></a>——数学教育理论、学习理论、课程理论</li>
-          <li>点五：<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>努力提升教学实践能力</mark></a>——教学设计、课堂实施、教学评价与反思</li>
-        </ul>
-      </li>
-      <li><span class="pt">④ 取点：</span>课标明确给出五个方面，<b>五个全写＝满分版</b>；考场版10分钟预算选最核心的<b>3个</b>（点一专业标准＋点三数学素养＋点五教学实践），删去通识素养和教育理论；救急版浓缩为一句概括＋关键词列举。</li>
-    </ul>
-    <p style="margin:6px 0 0;font-size:14px"><b>换一道"如何提高…"题怎么办：</b>本题是<b>课标有原文清单</b>的类型，直接照搬即可；若课标无明确清单，则用 <a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html#角度库" target="_blank" rel="noopener" title="打开框架页·角度库" style="color:#1971c2"><b>角度库</b> ↗</a> 补充——<b class="pk">课标有原文就抄原文，没有就套角度库</b>。</p>
-
-  </details>
-
-  <!-- 三档答案区 -->
-  <div class="tabs">
-    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版 <small style="font-size:11px;color:#888">700字≈25min·得分：9-10</small></button>
-    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版 <small style="font-size:11px;color:#888">450字≈10min·得分：8-9</small></button>
-    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版 <small style="font-size:11px;color:#888">100字≈3min·得分：5-6</small></button>
-  </div>
-  <div class="tab-content active-t" id="t-full">
-    <div class="block t-full">
-      <p>落实高中数学课程标准，关键在于教师。教师是课程实施的主力军，其专业能力直接影响课程标准的落地效果。为更好地落实高中数学课程标准，应从以下五个方面进一步提高教师教学专业能力。</p>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><p>落实高中数学课程标准，关键在于教师。教师是课程实施的主力军，其专业能力直接影响课程标准的落地效果。为更好地落实高中数学课程标准，应从以下五个方面进一步提高教师教学专业能力。</p>
       <ul class="points">
         <li><span class="pt">一、以教师专业标准理念为指导，提升专业水平。</span>教师应以"育人本、师德为先、能力为重、终身学习"为基本理念，从<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>专业理念与师德、专业知识、专业能力</mark></a>三个维度系统提升自身水平。<span class="ex">例：参加新课程标准专题培训，更新教育理念，将立德树人融入日常教学，做到既教书又育人。</span></li>
         <li><span class="pt">二、努力提升通识素养。</span>教师应具备广博的知识视野，不断提升<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>科学素养、人文素养和信息技术素养</mark></a>，以适应课程综合化、信息化的要求。<span class="ex">例：学习GeoGebra等信息技术工具辅助数学教学，将数学与物理、信息技术等学科融合。</span></li>
@@ -118,46 +85,63 @@
         <li><span class="pt">四、努力提升数学教育理论素养。</span>教师应主动学习<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>数学教育理论、学习理论和课程理论</mark></a>，用科学理论指导教学实践。<span class="ex">例：研读建构主义学习理论，理解学生数学认知发展规律，据此设计符合学生认知水平的教学活动。</span></li>
         <li><span class="pt">五、努力提升教学实践能力。</span>教师应在<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>教学设计、课堂实施、教学评价与反思</mark></a>等环节中不断提升实践能力，在实践中创新教学方式。<span class="ex">例：每节课后撰写教学反思，记录学生易错点和教学改进策略，通过同伴互助和集体备课持续优化教学设计。</span></li>
       </ul>
-      <p>综上所述，提高教师教学专业能力是落实高中数学课程标准的关键。教师应以专业标准理念为指导，提升通识素养、数学专业素养、教育理论素养和教学实践能力，同时学校应加强教师专业发展和团队建设，通过教研活动、集体备课、名师工作室等途径促进教师共同成长，才能将课程标准真正落到实处。</p>
+      <p>综上所述，提高教师教学专业能力是落实高中数学课程标准的关键。教师应以专业标准理念为指导，提升通识素养、数学专业素养、教育理论素养和教学实践能力，同时学校应加强教师专业发展和团队建设，通过教研活动、集体备课、名师工作室等途径促进教师共同成长，才能将课程标准真正落到实处。</p></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题 · 三个硬约束：</span>必须回应<b>"落实高中数学课程标准"</b>这一目标；落脚<b>教师教学专业能力</b>（不是泛泛的教学能力，而是专业能力）；题目分值<b>10分</b>，10分论述题＝开头＋3-5个分点＋结尾。</li>
+      <li><span class="pt">② 选框架：</span>"应如何提高…"＝<b>做法类论述</b>，需列举具体措施。课标第104-105页有明确的五个方面（<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>课标P104-105</mark></a>），直接对应五个分点，不需再用角度库。另有宏观要求"加强教师专业发展和团队建设"可作为结尾补充。</li>
+      <li><span class="pt">③ 填内容 · 课标原文逐点对应：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>点一：<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>以教师专业标准理念为指导，提升专业水平</mark></a>——育人本、师德为先、能力为重、终身学习；从专业理念与师德、专业知识、专业能力三个维度</li>
+          <li>点二：<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>努力提升通识素养</mark></a>——科学素养、人文素养、信息技术素养</li>
+          <li>点三：<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>努力提升数学专业素养</mark></a>——数学知识体系、数学思想方法、数学应用意识</li>
+          <li>点四：<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>努力提升数学教育理论素养</mark></a>——数学教育理论、学习理论、课程理论</li>
+          <li>点五：<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>努力提升教学实践能力</mark></a>——教学设计、课堂实施、教学评价与反思</li></ul>
+      </div>
     </div>
-  </div>
-  <div class="tab-content" id="t-exam">
-    <div class="block t-exam">
-      <p>落实高中数学课程标准，关键在于教师。为更好落实课标，应从以下方面进一步提高教师教学专业能力。</p>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p>落实高中数学课程标准，关键在于教师。为更好落实课标，应从以下方面进一步提高教师教学专业能力。</p>
       <ul class="points">
         <li><span class="pt">一、以教师专业标准理念为指导，提升专业水平。</span>以"育人本、师德为先、能力为重、终身学习"为理念，从<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>专业理念与师德、专业知识、专业能力</mark></a>三个维度系统提升。<span class="ex">例：参加新课标专题培训，将立德树人融入日常教学。</span></li>
         <li><span class="pt">二、努力提升数学专业素养。</span>深化对数学知识体系、思想方法和应用的理解，提高<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>数学专业素养</mark></a>。<span class="ex">例：研读数学前沿著作，教学中渗透数学建模、逻辑推理等思想方法。</span></li>
         <li><span class="pt">三、努力提升教学实践能力。</span>在<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>教学设计、课堂实施、教学评价与反思</mark></a>等环节不断提升实践能力。<span class="ex">例：每节课后撰写教学反思，通过集体备课持续优化教学设计。</span></li>
       </ul>
-      <p>综上，教师应以专业标准理念为指导，提升数学专业素养和教学实践能力，同时学校应加强教研团队建设，才能将课标真正落到实处。</p>
+      <p>综上，教师应以专业标准理念为指导，提升数学专业素养和教学实践能力，同时学校应加强教研团队建设，才能将课标真正落到实处。</p></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p><b class="pk">【不会时怎么蹭分】</b>本题是"如何提高…"类论述题，即使不会具体内容，按以下结构写也能拿3-5分：</p>
+      <p><b class="pk">第一步：开头点题。</b>"落实高中数学课程标准，关键在于教师。教师应从以下几个方面提高教学专业能力。"</p>
+      <p><b class="pk">第二步：分点写框架。</b>每点写"教师应……"+套课标术语：</p>
+      <ul class="points">
+        <li>一、教师应以<b class="pk">育人本、师德为先、能力为重、终身学习</b>理念为指导，提升专业水平。</li>
+        <li>二、教师应提升<b class="pk">数学专业素养</b>，深化对数学知识体系、思想方法的理解。</li>
+        <li>三、教师应提升<b class="pk">教学实践能力</b>，在教学设计、课堂实施、教学评价与反思中不断改进。</li>
+      </ul>
+      <p><b class="pk">第三步：结尾总结。</b>"综上所述，教师应不断提升专业能力，才能将课程标准落到实处。"</p>
+      <p style="font-size:13px;color:#888;margin-top:8px">得分逻辑：开头点题1分 + 分点结构2分 + 课标术语关键词1分 + 结尾1分 = 5分保底。核心得分词：育人本/师德为先/能力为重/终身学习、数学专业素养、教学实践能力。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
     </div>
   </div>
-  <div class="tab-content" id="t-life">
-    <div class="block t-life">
-      <p>为更好落实高中数学课程标准，教师应从五方面提高专业能力：一是以<b class="pk">教师专业标准理念</b>为指导提升专业水平；二是提升<b class="pk">通识素养</b>（科学、人文、信息技术）；三是提升<b class="pk">数学专业素养</b>；四是提升<b class="pk">数学教育理论素养</b>；五是提升<b class="pk">教学实践能力</b>（教学设计、课堂实施、评价反思）。（<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页">课标P104-105</a>）</p>
-    </div>
-  </div>
-
-  <div class="block k-gold">
+  <div class="k-gold">
     <h3>💡 得分技巧</h3>
-    <ul class="tips">
-      <li>分点作答（一、二、三……），阅卷按点给分；10分论述题写3-4个分点即可拿满；</li>
+    <ul class="tips"><li>分点作答（一、二、三……），阅卷按点给分；10分论述题写3-4个分点即可拿满；</li>
       <li>首尾各1-2句点题，呼应"落实课程标准"与"教师专业能力"，拿结构分；</li>
       <li>课标原话是得分关键词，务必引用：<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>专业理念与师德、专业知识、专业能力</mark></a>、<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>科学素养、人文素养和信息技术素养</mark></a>、<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>数学专业素养</mark></a>、<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>数学教育理论素养</mark></a>、<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=105" target="_blank" rel="noopener" title="新标签页打开课标PDF 第105页"><mark>教学实践能力</mark></a>；</li>
       <li>本题是课标有原文清单的类型，五个方面直接照搬课标P104-105，不需要套角度库；</li>
-      <li>考场时间紧时优先写"专业标准理念""数学专业素养""教学实践能力"三点，通识素养和教育理论可省略。</li>
-    </ul>
+      <li>考场时间紧时优先写"专业标准理念""数学专业素养""教学实践能力"三点，通识素养和教育理论可省略。</li></ul>
   </div>
-
 </section>
-<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></div>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
 <footer><a href="解析.html">← 返回目录</a></footer>
-<script>
-function switchTab(id){
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
-  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
-}
-</script>
 </div>
 </body>
 </html>

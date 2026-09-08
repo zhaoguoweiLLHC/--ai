@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2021下 · 第q15题</title>
+<style>
+  :root{
+    --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
+    --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
+       font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
+  .b-an{background:#f08c00;color:#fff}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
+  .pk{color:var(--pink);font-weight:700}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
+  .points .pt{font-weight:700;color:var(--pink)}
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="card" id="qq15">
+  <div class="qhead">
+    <span class="badge b-lun">论述题</span>
+    <h2>第 15 题 · 函数定义 + 高中与初中函数定义的异同</h2>
+    <span class="score">15 分</span>
+  </div>
+  <div class="origin">函数是中学数学的重要概念，回答下列问题：<br>
+    (1) 写出高中阶段函数的定义；（5分）<br>
+    (2) 阐述高中阶段函数的定义与初中阶段函数的定义的相同点与不同点。（10分）</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><p><b>(1) 高中阶段函数的定义</b></p>
+      <p>设 A、B 是两个<b>非空的数集</b>，如果按某个确定的对应法则 f，使对于集合 A 中的<b>任意一个数 x</b>，在集合 B 中都有<b>唯一确定</b>的数 f(x) 和它对应，那么就称 f:A→B 为从集合 A 到集合 B 的一个<b>函数</b>，记作 y=f(x)，x∈A。</p>
+      <p>其中，x 叫做自变量，x 的取值范围 A 叫做函数的<b>定义域</b>；与 x 的值对应的 y 值叫做函数值，函数值的集合 {f(x)|x∈A} 叫做函数的<b>值域</b>。</p>
+
+      <p><b>(2) 高中与初中函数定义的相同点与不同点</b></p>
+      <p><b>相同点：</b></p>
+      <ul class="points">
+        <li><span class="pt">①都强调对应关系。</span>两种定义都要求存在一个对应法则（规则），将一个量的值对应到另一个量的值，体现了函数的本质——变量之间的<b>依赖关系</b>。</li>
+        <li><span class="pt">②都要求唯一确定。</span>两种定义都强调对于每一个自变量的值，对应的函数值是<b>唯一确定</b>的，这是函数最核心的特征。</li>
+        <li><span class="pt">③都涉及两个量/集合。</span>两种定义都涉及输入（自变量/定义域）和输出（因变量/值域）两个方面，体现了"一对一或多对一"的对应关系。</li>
+      </ul>
+      <p><b>不同点：</b></p>
+      <ul class="points">
+        <li><span class="pt">①描述语言不同。</span>初中用<b>变量语言</b>描述——"在一个变化过程中，有两个变量 x 和 y，如果对于 x 的每一个值，y 都有唯一确定的值与之对应，则 y 是 x 的函数"，侧重"变化"和"依赖"。高中用<b>集合映射语言</b>描述——明确两个非空数集 A、B 和对应法则 f，侧重"集合间的映射关系"。</li>
+        <li><span class="pt">②抽象层次不同。</span>初中定义较具体，学生对函数的理解依赖于"变化过程"的直观感受；高中定义更抽象，将函数理解为<b>集合间的映射</b>，不再依赖"变化"的直观，适用于更广泛的函数类型（如常数函数、分段函数、离散函数等）。</li>
+        <li><span class="pt">③定义域和值域的明确程度不同。</span>初中定义对定义域和值域的表述较模糊，通常通过实际问题隐含确定；高中定义<b>明确</b>定义域 A 和值域 {f(x)|x∈A} 是数集，强调函数的三要素（定义域、值域、对应法则），使函数概念更严谨、更完整。</li>
+      </ul>
+      <p>总之，高中函数定义是初中函数定义的<b>抽象和推广</b>，从变量依赖到集合映射，体现了数学概念的<b>严谨化</b>和<b>一般化</b>过程。</p></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题 · 两个任务：</span>任务一写<b>高中函数定义</b>（5分，背记题）；任务二阐述高中与初中函数定义的<b>相同点与不同点</b>（10分，对比论述题）。</li>
+      <li><span class="pt">② 定框架：</span>问①——高中用<b>集合映射</b>定义函数：设A、B是非空数集，如果按某对应法则 f，使A中任一数 x 在B中都有唯一确定的数 f(x) 与之对应，则称 f:A→B 为函数。问②——相同点：都强调<b>对应关系</b>和<b>唯一性</b>；不同点：初中用<b>变量</b>描述（两个变量的依赖关系），高中用<b>集合映射</b>描述（更抽象、更精确）。</li>
+      <li><span class="pt">③ 填内容：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>相同点：①都有对应法则；②都要求唯一确定；③都涉及两个集合/变量</li>
+          <li>不同点：①初中用变量语言"y随x变化"，高中用集合映射语言；②高中明确定义域和值域是数集；③高中定义更抽象、更一般化，适用于更广泛的函数类型</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p><b>(1) 高中函数定义：</b>设A、B是非空数集，若按对应法则f，使A中任一数x在B中都有唯一确定的数f(x)对应，则称f:A→B为函数，记作y=f(x)，x∈A。x的取值范围A为定义域，{f(x)|x∈A}为值域。</p>
+      <p><b>(2) 异同：</b></p>
+      <p><b>相同点：</b>①都强调对应法则；②都要求唯一确定；③都涉及输入和输出。</p>
+      <p><b>不同点：</b>①初中用<b>变量语言</b>（变化过程），高中用<b>集合映射语言</b>（集合间映射）；②初中较具体，高中更抽象，适用于更广函数类型；③初中定义域值域较模糊，高中明确三要素（定义域、值域、对应法则）。</p>
+      <p>高中定义是初中定义的抽象推广，体现数学概念的严谨化和一般化。</p></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>(1) 高中：A、B非空数集，对应法则f使A中任一x→B中唯一f(x)，f:A→B为函数。<br>
+      (2) 同：<span class="pk">对应法则+唯一确定</span>。异：初中<span class="pk">变量语言</span>（变化），高中<span class="pk">集合映射</span>（抽象）；初中具体高中一般；初中模糊高中明确三要素。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="k-gold">
+    <h3>💡 得分技巧</h3>
+    <ul class="tips"><li>问①定义必须包含：<span class="pk">非空数集</span>+<span class="pk">任意x</span>+<span class="pk">唯一确定</span>+<span class="pk">对应法则f</span>，缺要素扣分；</li>
+      <li>问②必须分<b>相同点和不同点</b>两部分，不能混着写；</li>
+      <li>相同点核心：<span class="pk">对应关系+唯一性</span>；</li>
+      <li>不同点核心：<span class="pk">变量语言 vs 集合映射语言</span>、<span class="pk">具体 vs 抽象</span>、<span class="pk">模糊 vs 明确三要素</span>；</li>
+      <li>结尾金句：<span class="pk">"高中定义是初中定义的抽象和推广"</span>。</li></ul>
+  </div>
+</section>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
+<footer><a href="解析.html">← 返回目录</a></footer>
+</div>
+</body>
+</html>

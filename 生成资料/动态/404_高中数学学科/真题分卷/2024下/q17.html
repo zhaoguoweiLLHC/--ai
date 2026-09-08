@@ -3,122 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2024下 · 第17题 · 教学设计</title>
+<title>2024下 · 第q17题</title>
 <style>
   :root{
     --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
     --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
   }
-  *{box-sizing:border-box}
-  body{margin:0;background:#f2f3f7;color:var(--ink);
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
        font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-       line-height:1.85;font-size:16px}
-  .wrap{max-width:860px;margin:0 auto;padding:28px 18px 60px}
-  section.card{background:#fff;border-radius:16px;padding:24px 26px;margin-bottom:20px;
-       box-shadow:0 2px 10px rgba(30,30,60,.07)}
-  .qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-  .qhead h2{font-size:19px;margin:0}
-  .badge{border-radius:8px;padding:2px 12px;font-size:13px;font-weight:600;white-space:nowrap}
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
   .b-she{background:#0ca678;color:#fff}
-  .score{color:var(--pink);font-weight:700;font-size:14px}
-  .origin{background:#f7f7fa;border-left:4px solid #b9bdc9;border-radius:8px;
-       padding:12px 16px;color:#555;font-size:15px;margin:12px 0}
-  .block{border-radius:12px;padding:14px 18px;margin:14px 0}
-  .block h3{margin:0 0 8px;font-size:15px;letter-spacing:.5px}
-  .k-bibei{background:var(--pink-bg);border:1px solid #f6c3d6}
-  .k-bibei h3{color:var(--pink)}
-  .k-blue{background:var(--blue-bg);border:1px solid #c4dcf8}
-  .k-blue h3{color:var(--blue)}
-  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0}
-  .k-gold h3{color:var(--gold)}
-  a{color:#1971c2;text-decoration:underline;text-underline-offset:3px}
-  mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:4px}
+  .b-lun{background:#e5487c;color:#fff}
+  .b-an{background:#f08c00;color:#fff}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
   .pk{color:var(--pink);font-weight:700}
-  .ex{background:#fff3bf;border-radius:8px;padding:2px 8px;color:#9a7b00}
-  .points{list-style:none;padding-left:4px}
-  .points>li{margin:10px 0}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
   .points .pt{font-weight:700;color:var(--pink)}
-  ul.tips{margin:6px 0;padding-left:20px}
-  ul.tips li{margin:6px 0}
-  .wait{color:#9aa0aa;text-align:center;padding:10px 0;font-size:14px}
-  footer{color:#9aa0aa;font-size:13px;text-align:center;margin-top:26px}
-  .back-link{position:fixed;top:12px;left:12px;z-index:200;background:rgba(255,255,255,.9);
-    border:1px solid #e8e8ee;border-radius:8px;padding:5px 14px;font-size:14px;
-    text-decoration:none;color:#1971c2;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-  .tabs{display:flex;gap:0;margin:14px 0 0;border-radius:12px 12px 0 0;overflow:hidden}
-  .tab-btn{flex:1;padding:10px 8px;border:none;background:#f2f3f7;font-size:14px;font-weight:600;
-    cursor:pointer;text-align:center;color:#8a8f98;border-bottom:3px solid transparent;transition:.2s}
-  .tab-btn.active-t{color:#fff}
-  .tab-btn[data-tab="t-full"].active-t{background:#eef6ff;color:#1971c2;border-bottom-color:#1971c2}
-  .tab-btn[data-tab="t-exam"].active-t{background:#e9f9ef;color:#2b8a3e;border-bottom-color:#2b8a3e}
-  .tab-btn[data-tab="t-life"].active-t{background:#ffecec;color:#c92a2a;border-bottom-color:#c92a2a}
-  .tab-content{display:none}
-  .tab-content.active-t{display:block}
-  .t-full{background:#eef6ff;border:1px solid #b6d6f7}
-  .t-exam{background:#e9f9ef;border:1px solid #b2e2c5}
-  .t-life{background:#ffecec;border:1px solid #ffc9c9}
-  details{margin:14px 0;padding:14px 18px;border-radius:12px;border:1px solid #f6c3d6;background:#fdeef4}
-  details summary::-webkit-details-marker{display:none}
-  details summary::before{content:"▸ ";font-size:12px}
-  details[open] summary::before{content:"▾ ";font-size:12px}
-  .tip{position:relative;cursor:pointer}
-  .tip-box{display:none;position:absolute;bottom:130%;left:50%;transform:translateX(-50%);
-    width:380px;max-width:90vw;background:#fff;border:1px solid #f6c3d6;border-radius:12px;
-    padding:12px 16px;font-size:14px;line-height:1.7;color:#333;z-index:100;
-    box-shadow:0 4px 16px rgba(0,0,0,.12)}
-  .tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
-    border:8px solid transparent;border-top-color:#fff}
-  .tip-box b.pk{color:#d6336c}
-  .tip-box mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:3px}
-  .tip:hover .tip-box{display:block}
-  @media print{
-    body{background:#fff}
-    .wrap{max-width:none;padding:0}
-    section.card{box-shadow:none;border:1px solid #eee;break-inside:avoid}
-  }
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<a href="解析.html" class="back-link">← 返回目录</a>
-<section class="card" id="q17">
+<section class="card" id="qq17">
   <div class="qhead">
     <span class="badge b-she">教学设计</span>
-    <h2><a href="../../../../../外部资料/404_高中数学学科/真题分卷/2024下原卷.pdf" target="_blank" rel="noopener" style="color:inherit;text-decoration:none" title="点击打开原卷PDF">第 17 题 · 倾斜角和斜率 · 教案设计</a></h2>
+    <h2>第 17 题 · 倾斜角和斜率 · 教案设计</h2>
     <span class="score">30 分</span>
   </div>
-
-  <div class="origin">
-    根据上面内容，完成下列任务：<br>
+  <div class="origin">根据上面内容，完成下列任务：<br>
     (1) 请给出直线的倾斜角的取值范围及斜率的定义；<br>
     (2) 若直线L上有两点，请给出斜率的表达式；<br>
-    (3) 请以"倾斜角和斜率"为题，撰写教案。要求包含教学目标、教学重点、课程导入、新课讲授、巩固练习、小结作业等环节及每一环节的设计意图。（30分）
-  </div>
-
-  <details class="block k-bibei" open>
-<summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导 · 教学设计三问拆解</summary>
-
-    
-    <ul class="points" style="list-style:none;padding-left:4px">
-      <li><span class="pt">① 审题 · 三问拆解：</span>问(1)数学知识：倾斜角取值范围＋斜率定义（约5-6分）；问(2)数学知识：两点式斜率公式（约4-5分）；问(3)教学设计：完整教案，含六个环节及设计意图（约19-21分）。<b>问(3)是核心得分点</b>，环节名称固定，不能自己编。</li>
-      <li><span class="pt">② 选框架：</span>问(1)(2)直接作答；问(3)用 <a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html#角度库" target="_blank" rel="noopener"><b>教学设计六环节</b> ↗</a>：教学目标（三维）→教学重点→课程导入→新课讲授→巩固练习→小结作业，每环节写"教师活动/学生活动/设计意图"。</li>
-      <li><span class="pt">③ 填内容：</span>问(1)倾斜角范围[0°,180°)，斜率k=tan α（α≠90°）。问(2)两点P1(x1,y1)、P2(x2,x2)在直线L上，k=(y2-y1)/(x2-x1)（x1≠x2）。问(3)课标要求理解<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=25" target="_blank" rel="noopener" title="新标签页打开课标PDF 第25页"><mark>直线的倾斜角和斜率的概念</mark></a>；导入用坡度实例（如楼梯坡度、道路坡度）；新课讲授从倾斜角定义→斜率定义→两点式公式层层推进。</li>
-      <li><span class="pt">④ 取点：</span>问(1)2句；问(2)1个公式＋1句说明；问(3)每环节约120-150字，六个环节共约800字。设计意图是阅卷按点给分的关键，每个环节都不能漏。</li>
-    </ul>
-    <p style="margin:0 0 0;font-size:14px"><b>换个知识点怎么办：</b>教学设计六环节框架不变，内容换成该知识点的课标要求和具体实例——<b class="pk">框架是模板，内容不是</b>。</p>
-  
-</details>
-
-  
-
-  <div class="tabs">
-    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版 <small style="font-size:11px;color:#888">952字≈32min·得分：27-30</small></button>
-    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版 <small style="font-size:11px;color:#888">580字≈20min·得分：24-27</small></button>
-    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版 <small style="font-size:11px;color:#888">185字≈7min·得分：12-15</small></button>
-  </div>
-  <div class="tab-content active-t" id="t-full">
-    <div class="block t-full">
-      <p>(1) <b>倾斜角的取值范围：</b>当直线L与x轴相交时，把x轴绕交点按逆时针方向旋转到与直线L重合时所转的最小正角α称为直线L的倾斜角。规定当直线L与x轴平行或重合时，倾斜角α=0°。因此倾斜角的取值范围是 <b>0° ≤ α < 180°</b>。</p>
+    (3) 请以"倾斜角和斜率"为题，撰写教案。要求包含教学目标、教学重点、课程导入、新课讲授、巩固练习、小结作业等环节及每一环节的设计意图。（30分）</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><p>(1) <b>倾斜角的取值范围：</b>当直线L与x轴相交时，把x轴绕交点按逆时针方向旋转到与直线L重合时所转的最小正角α称为直线L的倾斜角。规定当直线L与x轴平行或重合时，倾斜角α=0°。因此倾斜角的取值范围是 <b>0° ≤ α < 180°</b>。</p>
       <p><b>斜率的定义：</b>当倾斜角α≠90°时，把 <b>k = tan α</b> 称为直线L的斜率。当α=90°时，直线L垂直于x轴，斜率k不存在。</p>
 
       <p>(2) <b>两点式斜率表达式：</b>若直线L上有两点 P₁(x₁, y₁) 和 P₂(x₂, y₂)（其中 x₁ ≠ x₂），则直线L的斜率为：<br>
@@ -153,12 +115,18 @@
           小结：教师引导学生从知识（倾斜角范围、斜率定义、两点式公式）、方法（数形结合、坐标法）、思想（从几何到代数的转化）三方面总结本节课收获。<br>
           作业：①课本课后练习第1-3题；②思考题：斜率k的符号与倾斜角α的关系，并画出k>0、k<0、k=0时的直线示意图。<br>
           <b>设计意图：</b>小结帮助学生建构知识体系，作业分层布置巩固课堂所学，思考题为下节"直线方程"做铺垫。</li>
-      </ul>
+      </ul></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题 · 三问拆解：</span>问(1)数学知识：倾斜角取值范围＋斜率定义（约5-6分）；问(2)数学知识：两点式斜率公式（约4-5分）；问(3)教学设计：完整教案，含六个环节及设计意图（约19-21分）。<b>问(3)是核心得分点</b>，环节名称固定，不能自己编。</li>
+      <li><span class="pt">② 选框架：</span>问(1)(2)直接作答；问(3)用 <a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html#角度库" target="_blank" rel="noopener"><b>教学设计六环节</b> ↗</a>：教学目标（三维）→教学重点→课程导入→新课讲授→巩固练习→小结作业，每环节写"教师活动/学生活动/设计意图"。</li>
+      <li><span class="pt">③ 填内容：</span>问(1)倾斜角范围[0°,180°)，斜率k=tan α（α≠90°）。问(2)两点P1(x1,y1)、P2(x2,x2)在直线L上，k=(y2-y1)/(x2-x1)（x1≠x2）。问(3)课标要求理解<a href="../../../../../外部资料/404_高中数学学科/404.02课程标准.pdf#page=25" target="_blank" rel="noopener" title="新标签页打开课标PDF 第25页"><mark>直线的倾斜角和斜率的概念</mark></a>；导入用坡度实例（如楼梯坡度、道路坡度）；新课讲授从倾斜角定义→斜率定义→两点式公式层层推进。</li>
+      <li><span class="pt">④ 取点：</span>问(1)2句；问(2)1个公式＋1句说明；问(3)每环节约120-150字，六个环节共约800字。设计意图是阅卷按点给分的关键，每个环节都不能漏。</li></ul>
+      </div>
     </div>
-  </div>
-  <div class="tab-content" id="t-exam">
-    <div class="block t-exam">
-      <p>(1) <b>倾斜角范围：</b>0° ≤ α < 180°。<b>斜率定义：</b>k = tan α（α≠90°时），α=90°时斜率不存在。</p>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p>(1) <b>倾斜角范围：</b>0° ≤ α < 180°。<b>斜率定义：</b>k = tan α（α≠90°时），α=90°时斜率不存在。</p>
       <p>(2) <b>两点式斜率：</b>k = (y₂ - y₁) / (x₂ - x₁)（x₁ ≠ x₂）。</p>
 
       <ul class="points" style="list-style:none;padding-left:4px">
@@ -185,12 +153,15 @@
         <li><span class="pt">六、小结作业</span><br>
           小结：从知识、方法、思想三方面总结。作业：课后练习1-3题＋思考斜率符号与倾斜角关系。<br>
           <b>设计意图：</b>建构知识体系，巩固所学，为后续做铺垫。</li>
-      </ul>
+      </ul></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
     </div>
-  </div>
-  <div class="tab-content" id="t-life">
-    <div class="block t-life">
-      <p>(1) 倾斜角范围<span class="pk">0°≤α<180°</span>，斜率<span class="pk">k=tan α</span>（α≠90°），α=90°时不存在。</p>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>(1) 倾斜角范围<span class="pk">0°≤α<180°</span>，斜率<span class="pk">k=tan α</span>（α≠90°），α=90°时不存在。</p>
       <p>(2) 两点式：<span class="pk">k=(y₂-y₁)/(x₂-x₁)</span>（x₁≠x₂）。</p>
       <p>(3) 教案：<br>
       ①教学目标：理解概念掌握公式，数形结合，激发兴趣。<br>
@@ -199,78 +170,26 @@
       ④新课：倾斜角定义→斜率定义→两点式推导，<span class="pk">数形结合</span>。<br>
       ⑤巩固：求斜率、倾斜角、共线问题，分层练习。<br>
       ⑥小结作业：总结知识方法思想，课后练习＋思考斜率符号。</p>
-      <p style="font-size:13px;color:#777;margin-top:8px"><a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html" target="_blank" style="font-size:13px;color:#b26a00;text-decoration:none">📐 查看万能骨架（教学设计六环节）→</a></p>
+      <p style="font-size:13px;color:#777;margin-top:8px"><a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html" target="_blank" style="font-size:13px;color:#b26a00;text-decoration:none">📐 查看万能骨架（教学设计六环节）→</a></p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
     </div>
   </div>
-
-  <div class="block k-gold">
+  <div class="k-gold">
     <h3>💡 得分技巧</h3>
-    <ul class="tips">
-      <li>三问必须<b>分开作答</b>，标明(1)(2)(3)，阅卷按问给分；</li>
+    <ul class="tips"><li>三问必须<b>分开作答</b>，标明(1)(2)(3)，阅卷按问给分；</li>
       <li>问(1)倾斜角范围必须写<b>半开半闭区间</b> <span class="pk">0° ≤ α < 180°</span>，漏掉"="或"<"都扣分；</li>
       <li>问(2)两点式公式必须写<b> x₁ ≠ x₂ </b>的条件，否则不严谨；</li>
       <li>问(3)环节名称必须用题目给的六个：<span class="pk">教学目标、教学重点、课程导入、新课讲授、巩固练习、小结作业</span>，不能自己编；</li>
       <li>每个环节都要写<b>"设计意图"</b>，这是阅卷按点给分的关键；</li>
       <li>新课讲授要体现<b>从倾斜角到斜率到两点式</b>的层层递进，写出数形结合思想；</li>
-      <li>巩固练习要<b>分层设计</b>（基础/提高/拓展），体现因材施教。</li>
-    </ul>
+      <li>巩固练习要<b>分层设计</b>（基础/提高/拓展），体现因材施教。</li></ul>
   </div>
-
 </section>
-<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></div>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
 <footer><a href="解析.html">← 返回目录</a></footer>
-<script>
-function switchTab(id){
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
-  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
-}
-// 课标原文 tooltip
-(function(){
-  var texts={
-    'page=25':'课标要求：在平面直角坐标系中，结合具体图形，探索确定直线位置的几何要素。理解<mark>直线的倾斜角和斜率的概念</mark>，经历用代数方法刻画直线斜率的过程，掌握过两点的直线斜率公式，感受<mark>数形结合</mark>的思想方法。'
-  };
-  document.querySelectorAll('a[href*="404.02课程标准.pdf"]').forEach(function(a){
-    var m=a.href.match(/page=(\d+)/);
-    if(!m) return;
-    var key='page='+m[1];
-    if(!texts[key]) return;
-    var kw=a.textContent.trim();
-    kw=kw.replace(/^L\d[\d\-]*\s*/,'').replace(/^[\u201c\u201d""\u0022]+|[\u201c\u201d""\u0022]+$/g,'').trim();
-    var kwMap={'直线的倾斜角和斜率的概念':'直线的倾斜角和斜率的概念'};
-    kw=kwMap[kw]||kw;
-    var html=texts[key];
-    var esc=kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-    html=html.replace(new RegExp(esc,'g'),'<mark>$&</mark>');
-    a.classList.add('tip');
-    var box=document.createElement('span');
-    box.className='tip-box';
-    box.innerHTML=html;
-    a.appendChild(box);
-  });
-})();
-// 中公教学知识 tooltip
-(function(){
-  var text='创设数学问题情境的意义（中公L66）：<mark>激发学生学习兴趣</mark>，使学生积极主动投入学习活动；<mark>反映数学与生活的联系</mark>；<mark>体现数学化的过程</mark>；<mark>增强学生应用数学的意识</mark>。<br><br>教学设计五件套（L38-51）：教学目标三维→重难点→教学环节+意图→板书设计→特色注意。本题要求六环节：教学目标、教学重点、课程导入、新课讲授、巩固练习、小结作业。';
-  document.querySelectorAll('a[href*="404.04中公教学知识"]').forEach(function(a){
-    a.classList.add('tip');
-    var box=document.createElement('span');
-    box.className='tip-box';
-    box.innerHTML=text;
-    a.appendChild(box);
-  });
-})();
-// 框架 tooltip
-(function(){
-  var text='<b class="pk">教学设计六环节（30分）</b><br>本题固定环节：<br>(1) 教学目标·三维（≤120字）<br>(2) 教学重点·重难点（≤60字）<br>(3) 课程导入·生活实例（≤120字）<br>(4) 新课讲授·层层递进（≤250字）<br>(5) 巩固练习·分层设计（≤150字）<br>(6) 小结作业·总结+拓展（≤100字）<br><br>每环节必写"设计意图"，阅卷按环节给分。';
-  document.querySelectorAll('a[href*="404主观题框架"]').forEach(function(a){
-    a.classList.add('tip');
-    var box=document.createElement('span');
-    box.className='tip-box';
-    box.innerHTML=text;
-    a.appendChild(box);
-  });
-})();
-</script>
 </div>
 </body>
 </html>

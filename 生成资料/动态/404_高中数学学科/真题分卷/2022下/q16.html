@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2022下 · 第q16题</title>
+<style>
+  :root{
+    --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
+    --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
+       font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
+  .b-an{background:#f08c00;color:#fff}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
+  .pk{color:var(--pink);font-weight:700}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
+  .points .pt{font-weight:700;color:var(--pink)}
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="card" id="qq16">
+  <div class="qhead">
+    <span class="badge b-an">案例分析</span>
+    <h2>第 16 题 · 求函数单调递增区间 · 学生错误分析</h2>
+    <span class="score">20 分</span>
+  </div>
+  <div class="origin">案例：某习题课上，求函数 f(x)=log₂(x²-2x-3) 的单调递增区间。<br>
+    某同学的解法：由于 log₂(t) 是增函数，所以只需求 t=x²-2x-3 的增区间。因为 x²-2x-3=(x-1)²-4，该二次函数的单调递增区间为 [1,+∞)。所以 f(x) 的单调递增区间为 [1,+∞)。<br>
+    问题：(1) 指出这名学生在求解过程中的错误，并叙述理由；（8分）<br>
+    (2) 给出上述题目的正确解答过程。（12分）</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><ul class="points">
+        <li>(1) <span class="pt">学生的错误及理由：</span></li>
+      </ul>
+      <p>学生的错误在于<b>忽略了函数的定义域</b>。</p>
+      <p>函数 f(x)=log₂(x²-2x-3) 是对数函数，其真数 x²-2x-3 必须<b>大于0</b>，即函数的定义域为 x²-2x-3>0，解得 x<-1 或 x>3。</p>
+      <p>学生直接在整个实数集上求 t=x²-2x-3 的单调递增区间 [1,+∞)，但 [1,3] 这一段不在函数的定义域内（此时真数 x²-2x-3≤0，对数无意义）。因此，将 [1,+∞) 作为 f(x) 的单调递增区间是<b>错误的</b>——必须在定义域内讨论单调性。</p>
+      <p><b>核心理由：</b>研究函数的单调性必须先确定定义域，单调区间是定义域的子集。忽略定义域是学生最常见错误之一。</p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li>(2) <span class="pt">正确解答过程：</span></li>
+      </ul>
+      <p><b>第一步：求定义域。</b></p>
+      <p>由 x²-2x-3>0，即 (x-3)(x+1)>0，解得 x<-1 或 x>3。</p>
+      <p>所以函数 f(x) 的定义域为 (-∞,-1)∪(3,+∞)。</p>
+      <p><b>第二步：分析内层函数 t=x²-2x-3 的单调性。</b></p>
+      <p>t=(x-1)²-4，开口向上的抛物线，对称轴 x=1。</p>
+      <p>在 (-∞,1) 上 t 单调递减；在 (1,+∞) 上 t 单调递增。</p>
+      <p><b>第三步：结合定义域，用复合函数单调性法则分析。</b></p>
+      <p>外层函数 y=log₂(t) 在 t>0 上单调递增。由"同增异减"法则：</p>
+      <p>①在 (-∞,-1) 上：t 单调递减，y 单调递增 → f(x)=log₂(t) 单调<b>递减</b>。</p>
+      <p>②在 (3,+∞) 上：t 单调递增，y 单调递增 → f(x)=log₂(t) 单调<b>递增</b>。</p>
+      <p><b>结论：</b>函数 f(x)=log₂(x²-2x-3) 的单调递增区间为 <b>(3,+∞)</b>。</p></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题：</span>两问。问①指出学生的<b>错误</b>并说明<b>理由</b>——学生忽略了<b>定义域</b>问题。问②给出<b>正确解答</b>——需要先求定义域，再在定义域内求单调区间。</li>
+      <li><span class="pt">② 定框架：</span>问①——学生错误：未考虑真数 x²-2x-3>0 的条件，直接在整个实数集上求二次函数的单调区间，导致结果包含了不在定义域内的部分。问②——正确步骤：①求定义域 x²-2x-3>0 → x<-1或x>3；②在定义域内分析 t=x²-2x-3 的单调性；③由复合函数"同增异减"法则得 f(x) 的单调性。</li>
+      <li><span class="pt">③ 填内容：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>定义域：x²-2x-3>0 → (x-3)(x+1)>0 → x<-1或x>3</li>
+          <li>t=x²-2x-3=(x-1)²-4，在 (-∞,1) 递减，在 (1,+∞) 递增</li>
+          <li>在定义域内：(-∞,-1) 上 t 递减，log₂(t) 递增 → f(x) 递减；(3,+∞) 上 t 递增，log₂(t) 递增 → f(x) 递增</li>
+          <li>所以 f(x) 的单调递增区间为 (3,+∞)，不是 [1,+∞)</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p>(1) <b>错误：忽略了定义域。</b>对数函数要求真数 x²-2x-3>0，定义域为 x<-1或x>3。学生直接在 R 上求 t 的增区间 [1,+∞)，但 [1,3] 不在定义域内。理由：单调区间必须是定义域的子集。</p>
+      <p>(2) <b>正确解答：</b></p>
+      <p>①定义域：x²-2x-3>0 → (x-3)(x+1)>0 → x<-1或x>3。</p>
+      <p>②t=(x-1)²-4：在(-∞,1)递减，在(1,+∞)递增。</p>
+      <p>③外层 log₂(t) 递增，由"同增异减"：</p>
+      <p>  (-∞,-1)上 t减→f减；(3,+∞)上 t增→f增。</p>
+      <p><b>结论：</b>单调递增区间为 (3,+∞)。</p></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>(1) 错误：<span class="pk">忽略定义域</span>。真数 x²-2x-3>0 → x<-1或x>3，[1,3]不在定义域内。单调区间必须是定义域子集。</p>
+      <p>(2) 定义域(-∞,-1)∪(3,+∞)→t在(-∞,1)减(1,+∞)增→<span class="pk">同增异减</span>→增区间为<span class="pk">(3,+∞)</span>。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="k-gold">
+    <h3>💡 得分技巧</h3>
+    <ul class="tips"><li>问①核心得分词：<span class="pk">忽略定义域</span>——对数真数必须大于0；</li>
+      <li>理由金句：<span class="pk">"单调区间是定义域的子集"</span>，写出即被识别；</li>
+      <li>问②必须分三步：<span class="pk">求定义域→分析内层单调性→同增异减</span>；</li>
+      <li>复合函数单调性法则：<span class="pk">"同增异减"</span>——内外同向则增，反向则减；</li>
+      <li>最终答案 (3,+∞) 而非 [1,+∞)，注意用<b>开区间</b>（定义域端点不包含）。</li></ul>
+  </div>
+</section>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
+<footer><a href="解析.html">← 返回目录</a></footer>
+</div>
+</body>
+</html>

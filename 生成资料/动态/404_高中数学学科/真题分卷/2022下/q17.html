@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2022下 · 第q17题</title>
+<style>
+  :root{
+    --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
+    --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
+       font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
+  .b-an{background:#f08c00;color:#fff}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
+  .pk{color:var(--pink);font-weight:700}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
+  .points .pt{font-weight:700;color:var(--pink)}
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="card" id="qq17">
+  <div class="qhead">
+    <span class="badge b-she">教学设计</span>
+    <h2>第 17 题 · 椭圆及其标准方程 · 教学设计</h2>
+    <span class="score">30 分</span>
+  </div>
+  <div class="origin">材料是某高中数学教材"椭圆及其标准方程"一节的内容片段：取一条定长细绳，两端固定在图板两点F₁、F₂，套上铅笔拉紧绳子移动笔尖画出轨迹——椭圆。定义：平面内与两个定点F₁、F₂的距离的和等于常数（大于|F₁F₂|）的点的轨迹叫椭圆。完成下列任务：<br>
+    (1) 写出椭圆标准方程的推导过程（设椭圆的焦距为2c，绳长为2a，焦点在x轴上）；（10分）<br>
+    (2) 根据材料设计这部分内容的教学设计，包括教学目标、教学重点、教学过程（含引导学生研究的活动和设计意图）。（20分）</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><p><b>(1) 椭圆标准方程的推导过程</b></p>
+      <p>设椭圆焦距为 2c（c>0），绳长为 2a（a>c>0），焦点在 x 轴上。</p>
+      <p><b>建系设点：</b>以 F₁F₂ 的中点为原点，F₁F₂ 所在直线为 x 轴建立直角坐标系。则 F₁(-c,0)、F₂(c,0)。设椭圆上任一点 M(x,y)。</p>
+      <p><b>列条件：</b>由椭圆定义，|MF₁|+|MF₂|=2a，即：</p>
+      <p>√((x+c)²+y²) + √((x-c)²+y²) = 2a  ……①</p>
+      <p><b>化简：</b>将一个根号移到右边：</p>
+      <p>√((x+c)²+y²) = 2a - √((x-c)²+y²)</p>
+      <p>两边平方：</p>
+      <p>(x+c)²+y² = 4a² - 4a√((x-c)²+y²) + (x-c)²+y²</p>
+      <p>整理得：4cx = 4a² - 4a√((x-c)²+y²)</p>
+      <p>即：a√((x-c)²+y²) = a² - cx  ……②</p>
+      <p>两边再平方：</p>
+      <p>a²((x-c)²+y²) = (a²-cx)²</p>
+      <p>展开：a²x² - 2a²cx + a²c² + a²y² = a⁴ - 2a²cx + c²x²</p>
+      <p>整理得：(a²-c²)x² + a²y² = a²(a²-c²)</p>
+      <p>因为 a>c>0，所以 a²-c²>0，令 <b>b²=a²-c²</b>（b>0），得：</p>
+      <p>b²x² + a²y² = a²b²</p>
+      <p>两边同除以 a²b²，得椭圆标准方程：</p>
+      <p><b>x²/a² + y²/b² = 1</b>（a>b>0）</p>
+
+      <p><b>(2) 教学设计</b></p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li><span class="pt">教学目标：</span><br>
+          ①知识与技能：掌握椭圆的定义和标准方程，能运用定义和方程解决简单问题。<br>
+          ②过程与方法：通过动手实验和方程推导，体会<b>数形结合</b>与<b>化归</b>思想，发展<b>直观想象</b>与<b>数学运算</b>素养。<br>
+          ③情感态度与价值观：在动手实践中感受数学美，激发探究兴趣。</li>
+        <li><span class="pt">教学重点：</span>椭圆的定义及标准方程的推导。</li>
+      </ul>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li><span class="pt">环节一：情境引入（绳绳实验）</span><br>
+          <b>教师活动：</b>教师让同桌两人合作，用细绳和图钉在纸上画椭圆——将绳两端固定在两点，笔尖拉紧绳子移动。<br>
+          <b>学生活动：</b>学生动手实验，观察画出的轨迹形状，思考笔尖满足的几何条件。<br>
+          <b>设计意图：</b>动手实验激发兴趣，让学生直观感受椭圆的形成过程，为归纳定义做铺垫。</li>
+        <li><span class="pt">环节二：定义归纳</span><br>
+          <b>教师活动：</b>教师提问：笔尖移动过程中，什么保持不变？笔尖到两个定点的距离之和等于什么？组织学生讨论。<br>
+          <b>学生活动：</b>学生发现绳长不变，即|MF₁|+|MF₂|=定值2a。教师引导归纳椭圆定义：平面内与两定点距离之和等于常数（大于|F₁F₂|）的点的轨迹。<br>
+          <b>设计意图：</b>从实验中归纳定义，体现"实践→理论"的认知过程。</li>
+        <li><span class="pt">环节三：方程推导</span><br>
+          <b>教师活动：</b>教师提出目标问题——如何建立椭圆的方程？组织学生讨论建系方法，按"建系设点→列条件→坐标化→化简"步骤推导。<br>
+          <b>学生活动：</b>学生选择以F₁F₂中点为原点建系，写出|MF₁|+|MF₂|=2a，在教师引导下两次平方消根号，化简得标准方程。<br>
+          <b>设计意图：</b>学生经历完整的方程推导过程，掌握坐标法求曲线方程的通法，发展数学运算素养。</li>
+        <li><span class="pt">环节四：巩固应用</span><br>
+          <b>教师活动：</b>展示练习题，引导学生运用定义和方程解题。<br>
+          <b>学生活动：</b>练习1——已知a、b求标准方程；练习2——判断点是否在椭圆上。<br>
+          <b>设计意图：</b>巩固定义和方程，及时反馈。</li>
+        <li><span class="pt">环节五：小结作业</span><br>
+          <b>小结：</b>总结椭圆定义、标准方程及推导方法。<br>
+          <b>作业：</b>完成课后练习，思考焦点在y轴上的标准方程。<br>
+          <b>设计意图：</b>再巩固，拓展思维。</li>
+      </ul></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题：</span>两问。问①写<b>椭圆标准方程推导过程</b>（10分，知识推导题）。问②教学设计（目标+重点+过程含探究和意图，20分）。</li>
+      <li><span class="pt">② 定框架：</span>问①——建系→设点→列条件（|MF₁|+|MF₂|=2a）→坐标化→化简（两次平方消根号）→得标准方程。问②——教学设计五环节：目标（三维）→重点→过程（绳绳实验引入、定义归纳、方程推导、巩固应用、小结作业）。</li>
+      <li><span class="pt">③ 填内容：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>建系：F₁(-c,0), F₂(c,0)，设 M(x,y)</li>
+          <li>条件：√((x+c)²+y²) + √((x-c)²+y²) = 2a</li>
+          <li>化简：移一项→平方→整理→再平方→得 (a²-c²)x² + a²y² = a²(a²-c²)</li>
+          <li>令 b²=a²-c²，得 x²/a² + y²/b² = 1</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p><b>(1) 推导：</b>F₁(-c,0), F₂(c,0)，设M(x,y)。由|MF₁|+|MF₂|=2a：√((x+c)²+y²)+√((x-c)²+y²)=2a。移项平方→整理→再平方→(a²-c²)x²+a²y²=a²(a²-c²)。令b²=a²-c²，得 <b>x²/a²+y²/b²=1</b>（a>b>0）。</p>
+
+      <p><b>(2) 教学设计</b></p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li><span class="pt">教学目标：</span>①掌握定义和标准方程；②通过实验和推导体会数形结合，发展运算素养；③感受数学美。</li>
+        <li><span class="pt">教学重点：</span>椭圆定义及标准方程推导。</li>
+        <li><span class="pt">绳绳实验引入：</span>用细绳画椭圆。意图：动手激发兴趣。</li>
+        <li><span class="pt">定义归纳：</span>发现|MF₁|+|MF₂|=定值→归纳定义。意图：实践→理论。</li>
+        <li><span class="pt">方程推导：</span>建系设点→列条件→化简→标准方程。意图：掌握坐标法通法。</li>
+        <li><span class="pt">巩固应用：</span>已知a,b求方程+判断点在椭圆上。意图：巩固反馈。</li>
+        <li><span class="pt">小结作业：</span>总结+思考y轴标准方程。意图：再巩固。</li>
+      </ul></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>(1) 建系F₁(-c,0)F₂(c,0)→|MF₁|+|MF₂|=2a→两次平方化简→令b²=a²-c²→<span class="pk">x²/a²+y²/b²=1</span>。</p>
+      <p>(2) 目标：掌握定义+方程。重点：定义及推导。<br>
+      引入：绳绳实验画椭圆。意图：<span class="pk">激发兴趣</span>。<br>
+      探究：发现距离和不变→归纳定义→推导方程。意图：<span class="pk">数形结合</span>。<br>
+      巩固：求方程+判断点。意图：巩固。<br>
+      小结作业：总结+思考y轴方程。意图：再巩固。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="k-gold">
+    <h3>💡 得分技巧</h3>
+    <ul class="tips"><li>问①推导必须写全步骤：<span class="pk">建系设点→列条件→移项平方→整理→再平方→令b²→标准方程</span>；</li>
+      <li>核心：令 <span class="pk">b²=a²-c²</span> 是关键一步，必须说明 a>c>0 所以 a²-c²>0；</li>
+      <li>问②绳绳实验是<b>经典导入</b>，贴合教材原文——动手画椭圆激发兴趣；</li>
+      <li>每个环节都要写<b>"设计意图"</b>；</li>
+      <li>推导方程的核心方法：<span class="pk">坐标法</span>（建系设点→列条件→坐标化→化简），是求曲线方程的通法。</li></ul>
+  </div>
+</section>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
+<footer><a href="解析.html">← 返回目录</a></footer>
+</div>
+</body>
+</html>

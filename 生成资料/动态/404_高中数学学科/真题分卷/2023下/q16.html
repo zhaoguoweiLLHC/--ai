@@ -3,119 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2023下 · 第16题 · 案例分析</title>
+<title>2023下 · 第q16题</title>
 <style>
   :root{
     --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
     --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
   }
-  *{box-sizing:border-box}
-  body{margin:0;background:#f2f3f7;color:var(--ink);
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
        font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-       line-height:1.85;font-size:16px}
-  .wrap{max-width:860px;margin:0 auto;padding:28px 18px 60px}
-  section.card{background:#fff;border-radius:16px;padding:24px 26px;margin-bottom:20px;
-       box-shadow:0 2px 10px rgba(30,30,60,.07)}
-  .qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-  .qhead h2{font-size:19px;margin:0}
-  .badge{border-radius:8px;padding:2px 12px;font-size:13px;font-weight:600;white-space:nowrap}
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
   .b-an{background:#f08c00;color:#fff}
-  .score{color:var(--pink);font-weight:700;font-size:14px}
-  .origin{background:#f7f7fa;border-left:4px solid #b9bdc9;border-radius:8px;
-       padding:12px 16px;color:#555;font-size:15px;margin:12px 0}
-  .block{border-radius:12px;padding:14px 18px;margin:14px 0}
-  .block h3{margin:0 0 8px;font-size:15px}
-  .k-bibei{background:var(--pink-bg);border:1px solid #f6c3d6}
-  .k-bibei h3{color:var(--pink)}
-  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0}
-  .k-gold h3{color:var(--gold)}
-  a{color:#1971c2;text-decoration:underline;text-underline-offset:3px}
-  mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:4px}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
   .pk{color:var(--pink);font-weight:700}
-  .ex{background:#fff3bf;border-radius:8px;padding:2px 8px;color:#9a7b00}
-  .points{list-style:none;padding-left:4px}
-  .points>li{margin:10px 0}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
   .points .pt{font-weight:700;color:var(--pink)}
-  ul.tips{margin:6px 0;padding-left:20px}
-  ul.tips li{margin:6px 0}
-  .wait{color:#9aa0aa;text-align:center;padding:10px 0;font-size:14px}
-  footer{color:#9aa0aa;font-size:13px;text-align:center;margin-top:26px}
-  .back-link{position:fixed;top:12px;left:12px;z-index:200;background:rgba(255,255,255,.9);
-    border:1px solid #e8e8ee;border-radius:8px;padding:5px 14px;font-size:14px;
-    text-decoration:none;color:#1971c2;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-  .tabs{display:flex;gap:0;margin:14px 0 0;border-radius:12px 12px 0 0;overflow:hidden}
-  .tab-btn{flex:1;padding:10px 8px;border:none;background:#f2f3f7;font-size:14px;font-weight:600;
-    cursor:pointer;text-align:center;color:#8a8f98;border-bottom:3px solid transparent;transition:.2s}
-  .tab-btn.active-t{color:#fff}
-  .tab-btn[data-tab="t-full"].active-t{background:#eef6ff;color:#1971c2;border-bottom-color:#1971c2}
-  .tab-btn[data-tab="t-exam"].active-t{background:#e9f9ef;color:#2b8a3e;border-bottom-color:#2b8a3e}
-  .tab-btn[data-tab="t-life"].active-t{background:#ffecec;color:#c92a2a;border-bottom-color:#c92a2a}
-  .tab-content{display:none}
-  .tab-content.active-t{display:block}
-  .t-full{background:#eef6ff;border:1px solid #b6d6f7}
-  .t-exam{background:#e9f9ef;border:1px solid #b2e2c5}
-  .t-life{background:#ffecec;border:1px solid #ffc9c9}
-  details{margin:14px 0;padding:14px 18px;border-radius:12px;border:1px solid #f6c3d6;background:#fdeef4}
-  details summary::-webkit-details-marker{display:none}
-  details summary::before{content:"▸ ";font-size:12px}
-  details[open] summary::before{content:"▾ ";font-size:12px}
-  @media print{
-    body{background:#fff}
-    .wrap{max-width:none;padding:0}
-    section.card{box-shadow:none;border:1px solid #eee;break-inside:avoid}
-  }
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<a href="解析.html" class="back-link">← 返回目录</a>
-<section class="card" id="q16">
+<section class="card" id="qq16">
   <div class="qhead">
     <span class="badge b-an">案例分析</span>
     <h2>第 16 题 · 抛掷硬币实验 · 频率的稳定性</h2>
     <span class="score">20 分</span>
   </div>
-
-  <div class="origin">
-    在"统计与概率"一节课中，老师利用计算机模块抛掷一枚硬币的实验。问题：<br>
-    (1) 针对学生1、2的回答，你怎么理解频率的稳定性？（12分）<br>
-    (2) 学生3的回答是否正确？请说明理由。（8分）
+  <div class="origin">在"统计与概率"一节课中，老师利用计算机模拟抛掷一枚硬币的实验。下图是模拟抛掷硬币"正面向上"事件发生的频率变化图。<br>
+    学生1：随着抛掷次数的增加，频率越来越稳定。<br>
+    学生2：试验次数增加，频率不一定稳定，因为图中试验次数为577时的频率比试验次数为721时的频率更接近0.5。<br>
+    学生3：根据频率变化趋势，抛掷一枚硬币，正面向上的概率一定是 1/2。<br>
+    问题：(1) 针对学生1、2的回答，你怎么理解频率的稳定性？（12分）<br>
+    (2) 学生3的回答是否正确？请说明理由。（8分）</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><ul class="points">
+        <li>(1) <span class="pt">频率稳定性的理解：</span></li>
+      </ul>
+      <p><b>学生1的回答基本正确。</b>随着抛掷次数的增加，"正面向上"的频率确实会呈现出趋于稳定的趋势，即在某个常数附近波动，且试验次数越大，波动的幅度越小。这体现了频率的稳定性——<b>大量重复试验中，事件发生的频率趋于稳定</b>。但"越来越稳定"的表述可以更精确：频率并非单调趋近，而是在常数附近<b>波动的幅度逐渐减小</b>。</p>
+      <p><b>学生2的回答理解有偏差。</b>学生2注意到577次时频率比721次时更接近0.5，由此认为"频率不一定稳定"。这一判断是错误的。频率的稳定性是一个<b>整体趋势</b>，是指在大量重复试验中频率围绕某个常数上下波动且波动幅度逐渐减小的总体规律，并不排除<b>局部波动</b>——个别试验次数时频率可能偏离常数。577次时频率恰好更接近0.5，是随机波动的正常表现，不能以此否定整体趋势。正如抛掷硬币时，某一次出现连续10个正面并不意味着频率不稳定。</p>
+      <p>综上所述，频率的稳定性应理解为：<b>大量重复试验中，事件发生的频率在某个常数附近波动，且随着试验次数的增加，波动的幅度趋于减小</b>。这个常数可以作为事件概率的估计值。</p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li>(2) <span class="pt">学生3的回答不完全正确。</span></li>
+      </ul>
+      <p>学生3认为"根据频率变化趋势，正面向上的概率一定是1/2"，这一结论<b>本身是正确的</b>（均匀硬币正面向上的概率确实为1/2），但<b>推理过程不够严谨</b>。理由如下：</p>
+      <p>第一，频率的变化趋势可以用来<b>估计</b>概率，但不能<b>证明</b>概率"一定"等于某个值。频率趋近于0.5，只能说明概率的<b>估计值</b>约为0.5，这是经验层面的推断。</p>
+      <p>第二，"正面向上的概率一定是1/2"这一结论，其依据应来自<b>理论分析</b>——硬币是均匀的、只有正反两面、正面向上的可能性相等，由<b>古典概型</b>可知概率为1/2。这是理论概率，而非仅由频率趋势推出的结论。</p>
+      <p>因此，频率趋势可以"支持"或"验证"概率为1/2的判断，但"一定是1/2"的确定性来自理论分析，不能仅凭频率趋势得出。学生3的回答应修正为：<b>由硬币的对称性可知正面向上的概率为1/2，频率的变化趋势验证了这一结论</b>。</p></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题：</span>两问。问①评价学生1和2的回答，阐述频率稳定性的<b>正确理解</b>（12分，主体）；问②判断学生3的回答是否正确，说明理由（8分）。核心概念：<b>频率</b>vs<b>概率</b>的关系。</li>
+      <li><span class="pt">② 定框架：</span>问①——学生1<b>基本正确</b>（频率随试验次数增加趋于稳定），但"越来越稳定"表述不够精确，应说"趋于某个常数"；学生2<b>理解有偏差</b>（频率稳定性是<b>整体趋势</b>，不排除局部波动，个别点偏离不否定整体趋势）。问②——学生3<b>不完全正确</b>（频率趋势可以提示概率，但"一定是1/2"的结论<b>来自对称性理论</b>而非仅由频率趋势推出）。</li>
+      <li><span class="pt">③ 填内容：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>频率稳定性：大量重复试验中，事件A的频率趋于稳定，在某个常数附近波动，且试验次数越大波动越小</li>
+          <li>学生1正确：方向对，但"越来越稳定"应理解为"趋于某个常数附近波动"</li>
+          <li>学生2错误：用个别数据点否定整体趋势，577次比721次更接近0.5是局部波动，不矛盾</li>
+          <li>学生3不完全正确：频率趋势可"估计"概率，但"一定是1/2"需由硬币对称性（理论概率）确定，频率不能"证明"概率</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p>(1) <b>学生1基本正确：</b>频率随试验次数增加趋于稳定，在常数附近波动且幅度减小。表述可更精确——并非单调趋近，而是波动幅度减小。</p>
+      <p><b>学生2理解有偏差：</b>577次比721次更接近0.5是<b>局部波动</b>，频率稳定性是<b>整体趋势</b>，个别数据点偏离不否定整体规律。用个别点否定趋势是错误的。</p>
+      <p>频率稳定性＝大量重复试验中，频率在某个常数附近波动，试验次数越大波动幅度越小，该常数可作为概率的估计值。</p>
+      <p>(2) <b>学生3不完全正确。</b>结论本身正确（概率确为1/2），但推理不严谨。频率趋势只能<b>估计</b>概率，不能"证明"概率一定等于某值。"一定是1/2"的依据来自<b>古典概型理论分析</b>（硬币均匀、两面等可能），而非仅由频率趋势推出。应修正为：由对称性可知概率为1/2，频率趋势验证了这一结论。</p></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>(1) 学生1<span class="pk">基本正确</span>（频率趋于稳定），学生2<span class="pk">有偏差</span>（局部波动不否定整体趋势）。频率稳定性＝大量试验中频率在常数附近波动，幅度递减。</p>
+      <p>(2) 学生3<span class="pk">不完全正确</span>：结论对但推理不严谨。频率趋势只能<span class="pk">估计</span>概率，"一定"来自<span class="pk">古典概型理论</span>，不能仅凭频率推出。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
   </div>
-
-  <details class="block k-bibei">
-    <summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导</summary>
-    <div class="wait">待生成</div>
-  </details>
-
-  <div class="tabs">
-    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版</button>
-    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版</button>
-    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版</button>
-  </div>
-  <div class="tab-content active-t" id="t-full">
-    <div class="block t-full"><div class="wait">待生成</div></div>
-  </div>
-  <div class="tab-content" id="t-exam">
-    <div class="block t-exam"><div class="wait">待生成</div></div>
-  </div>
-  <div class="tab-content" id="t-life">
-    <div class="block t-life"><div class="wait">待生成</div></div>
-  </div>
-
-  <div class="block k-gold">
+  <div class="k-gold">
     <h3>💡 得分技巧</h3>
-    <div class="wait">待生成</div>
+    <ul class="tips"><li>问①必须<b>分别评价</b>学生1和学生2，先下判断句（正确/有偏差），再说理由；</li>
+      <li>核心区分：<span class="pk">整体趋势 vs 局部波动</span>——学生2的错误在于用个别点否定整体；</li>
+      <li>问②核心：<span class="pk">频率估计概率 vs 理论确定概率</span>——"一定"来自古典概型，不来自频率趋势；</li>
+      <li>金句：<span class="pk">"频率是概率的估计值，不是概率本身"</span>；</li>
+      <li>判断学生3时要区分<b>结论正确</b>和<b>推理严谨</b>——不能简单说"正确"或"错误"。</li></ul>
   </div>
-
 </section>
-<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></div>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
 <footer><a href="解析.html">← 返回目录</a></footer>
-<script>
-function switchTab(id){
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
-  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
-}
-</script>
 </div>
 </body>
 </html>

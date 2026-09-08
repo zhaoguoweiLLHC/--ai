@@ -3,115 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2024上 · 第15题 · 论述题</title>
+<title>2024上 · 第q15题</title>
 <style>
   :root{
     --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
     --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
   }
-  *{box-sizing:border-box}
-  body{margin:0;background:#f2f3f7;color:var(--ink);
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
        font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-       line-height:1.85;font-size:16px}
-  .wrap{max-width:860px;margin:0 auto;padding:28px 18px 60px}
-  section.card{background:#fff;border-radius:16px;padding:24px 26px;margin-bottom:20px;
-       box-shadow:0 2px 10px rgba(30,30,60,.07)}
-  .qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-  .qhead h2{font-size:19px;margin:0}
-  .badge{border-radius:8px;padding:2px 12px;font-size:13px;font-weight:600;white-space:nowrap}
-  .b-lun{background:var(--pink);color:#fff}
-  .score{color:var(--pink);font-weight:700;font-size:14px}
-  .origin{background:#f7f7fa;border-left:4px solid #b9bdc9;border-radius:8px;
-       padding:12px 16px;color:#555;font-size:15px;margin:12px 0}
-  .block{border-radius:12px;padding:14px 18px;margin:14px 0}
-  .block h3{margin:0 0 8px;font-size:15px}
-  .k-bibei{background:var(--pink-bg);border:1px solid #f6c3d6}
-  .k-bibei h3{color:var(--pink)}
-  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0}
-  .k-gold h3{color:var(--gold)}
-  a{color:#1971c2;text-decoration:underline;text-underline-offset:3px}
-  mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:4px}
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
+  .b-an{background:#f08c00;color:#fff}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
   .pk{color:var(--pink);font-weight:700}
-  .ex{background:#fff3bf;border-radius:8px;padding:2px 8px;color:#9a7b00}
-  .points{list-style:none;padding-left:4px}
-  .points>li{margin:10px 0}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
   .points .pt{font-weight:700;color:var(--pink)}
-  ul.tips{margin:6px 0;padding-left:20px}
-  ul.tips li{margin:6px 0}
-  .wait{color:#9aa0aa;text-align:center;padding:10px 0;font-size:14px}
-  footer{color:#9aa0aa;font-size:13px;text-align:center;margin-top:26px}
-  .back-link{position:fixed;top:12px;left:12px;z-index:200;background:rgba(255,255,255,.9);
-    border:1px solid #e8e8ee;border-radius:8px;padding:5px 14px;font-size:14px;
-    text-decoration:none;color:#1971c2;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-  .tabs{display:flex;gap:0;margin:14px 0 0;border-radius:12px 12px 0 0;overflow:hidden}
-  .tab-btn{flex:1;padding:10px 8px;border:none;background:#f2f3f7;font-size:14px;font-weight:600;
-    cursor:pointer;text-align:center;color:#8a8f98;border-bottom:3px solid transparent;transition:.2s}
-  .tab-btn.active-t{color:#fff}
-  .tab-btn[data-tab="t-full"].active-t{background:#eef6ff;color:#1971c2;border-bottom-color:#1971c2}
-  .tab-btn[data-tab="t-exam"].active-t{background:#e9f9ef;color:#2b8a3e;border-bottom-color:#2b8a3e}
-  .tab-btn[data-tab="t-life"].active-t{background:#ffecec;color:#c92a2a;border-bottom-color:#c92a2a}
-  .tab-content{display:none}
-  .tab-content.active-t{display:block}
-  .t-full{background:#eef6ff;border:1px solid #b6d6f7}
-  .t-exam{background:#e9f9ef;border:1px solid #b2e2c5}
-  .t-life{background:#ffecec;border:1px solid #ffc9c9}
-  details{margin:14px 0;padding:14px 18px;border-radius:12px;border:1px solid #f6c3d6;background:#fdeef4}
-  details summary::-webkit-details-marker{display:none}
-  details summary::before{content:"▸ ";font-size:12px}
-  details[open] summary::before{content:"▾ ";font-size:12px}
-  @media print{
-    body{background:#fff}
-    .wrap{max-width:none;padding:0}
-    section.card{box-shadow:none;border:1px solid #eee;break-inside:avoid}
-  }
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<a href="解析.html" class="back-link">← 返回目录</a>
-<section class="card" id="q15">
+<section class="card" id="qq15">
   <div class="qhead">
     <span class="badge b-lun">论述题</span>
     <h2>第 15 题 · 数学课题研究四环节与建模成果评价</h2>
     <span class="score">15 分</span>
   </div>
-
-  <div class="origin">高中数学课题研究的过程包括选题、开题、做题、结题四个环节，请回答四个步骤的具体内容以及如何评价数学建模活动成果。（15分）</div>
-
-  <details class="block k-bibei">
-    <summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导</summary>
-    <div class="wait">待生成</div>
-  </details>
-
-  <div class="tabs">
-    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版</button>
-    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版</button>
-    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版</button>
+  <div class="origin">高中数学课题研究的过程包括选题、开题、做题、结题四个环节，请回答四个步骤的具体内容以及如何评价数学建模活动成果。</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><p>高中数学课题研究是培养学生数学建模和探究能力的重要途径，其过程包括选题、开题、做题、结题四个环节。</p>
+      <ul class="points">
+        <li><span class="pt">一、选题。</span>从现实生活、社会热点或其他学科领域中发现有数学建模价值的问题，明确研究目标和范围。选题应具有<b>现实意义、可操作性和数学建模价值</b>，难度适中。<span class="ex">例：调查学校食堂排队等候时间，建立排队论模型优化服务效率。</span></li>
+        <li><span class="pt">二、开题。</span>制定研究方案，包括：明确问题假设、选择合适的数学模型类型、确定数据收集方法和来源、制定分工计划和时间安排。开题阶段需论证方案的<b>可行性</b>，必要时请教师指导修改。<span class="ex">例：确定用何种函数拟合数据、如何设计问卷收集数据、组内分工。</span></li>
+        <li><span class="pt">三、做题。</span>按方案执行研究：①收集和整理数据；②建立数学模型（选择变量、建立关系式）；③求解模型并验证（与实际数据对比检验）；④根据检验结果修改和完善模型。<span class="ex">例：用线性回归模型拟合数据后，发现残差较大，改用二次函数模型重新拟合。</span></li>
+        <li><span class="pt">四、结题。</span>撰写研究报告或小论文，内容包括问题背景、建模过程、模型结果、结论与反思。进行成果展示和交流，接受师生评价，总结研究中的收获和不足。</li>
+      </ul>
+      <p><b>数学建模活动成果的评价</b>应从以下维度进行：</p>
+      <ul class="points">
+        <li><span class="pt">①选题质量：</span>问题是否有现实意义和建模价值，目标是否明确。</li>
+        <li><span class="pt">②建模过程：</span>假设是否合理，模型选择是否恰当，数据收集是否规范，求解验证是否严谨。</li>
+        <li><span class="pt">③成果质量：</span>模型结论是否可靠，报告结构是否完整，表达是否清晰。</li>
+        <li><span class="pt">④团队协作：</span>分工是否合理，合作是否有效，每人是否有明确贡献。</li>
+        <li><span class="pt">⑤展示交流：</span>成果展示是否条理清晰，回答问题是否准确，反思是否深入。</li>
+      </ul>
+      <p>评价应坚持<b>过程性评价与结果性评价相结合</b>，既关注建模成果的质量，也关注学生在过程中的参与度和成长。</p></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题 · 两个任务：</span>任务一回答<b>四个环节的具体内容</b>（背记题）；任务二回答<b>如何评价数学建模活动成果</b>（评价框架题）。分值<b>15分</b>，四环节各约2-3分（8-10分），评价约5-7分。</li>
+      <li><span class="pt">② 定框架：</span>四环节按<b>选题→开题→做题→结题</b>顺序，每环节写"做什么+怎么做"。评价从<b>过程性评价</b>和<b>结果性评价</b>两个维度展开，具体可从选题质量、建模过程、成果质量、团队协作、展示交流等方面评价。</li>
+      <li><span class="pt">③ 填内容：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>选题：从现实情境中发现问题，明确研究目标，确保问题有数学建模价值且可操作</li>
+          <li>开题：制定研究方案，包括假设、模型选择、数据来源、分工计划，论证可行性</li>
+          <li>做题：按方案执行——收集数据、建立模型、求解验证、修改完善</li>
+          <li>结题：撰写报告、展示交流、反思评价</li>
+          <li>评价：从选题（是否有价值）、过程（是否规范合理）、成果（模型质量、结论可靠性）、合作（团队分工）、展示（表达清晰）五个维度评价</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p>课题研究四环节：</p>
+      <ul class="points">
+        <li><span class="pt">一、选题：</span>从现实情境发现有建模价值的问题，明确目标，确保现实意义和可操作性。</li>
+        <li><span class="pt">二、开题：</span>制定方案——假设、模型选择、数据来源、分工计划，论证可行性。</li>
+        <li><span class="pt">三、做题：</span>收集数据→建立模型→求解验证→修改完善。</li>
+        <li><span class="pt">四、结题：</span>撰写报告、展示交流、反思评价。</li>
+      </ul>
+      <p>建模成果评价维度：</p>
+      <ul class="points">
+        <li><span class="pt">①选题质量：</span>现实意义、建模价值、目标明确。</li>
+        <li><span class="pt">②建模过程：</span>假设合理、模型恰当、数据规范、验证严谨。</li>
+        <li><span class="pt">③成果质量：</span>结论可靠、报告完整、表达清晰。</li>
+        <li><span class="pt">④团队协作：</span>分工合理、合作有效。</li>
+        <li><span class="pt">⑤展示交流：</span>条理清晰、反思深入。</li>
+      </ul>
+      <p>坚持过程性评价与结果性评价相结合。</p></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>四环节：<span class="pk">选题</span>（发现问题、明确目标）→<span class="pk">开题</span>（定方案、论证可行）→<span class="pk">做题</span>（建模型、求解验证）→<span class="pk">结题</span>（写报告、展示交流）。</p>
+      <p>评价：从<span class="pk">选题质量、建模过程、成果质量、团队协作、展示交流</span>五个维度，过程性评价与结果性评价相结合。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
   </div>
-  <div class="tab-content active-t" id="t-full">
-    <div class="block t-full"><div class="wait">待生成</div></div>
-  </div>
-  <div class="tab-content" id="t-exam">
-    <div class="block t-exam"><div class="wait">待生成</div></div>
-  </div>
-  <div class="tab-content" id="t-life">
-    <div class="block t-life"><div class="wait">待生成</div></div>
-  </div>
-
-  <div class="block k-gold">
+  <div class="k-gold">
     <h3>💡 得分技巧</h3>
-    <div class="wait">待生成</div>
+    <ul class="tips"><li>四环节名称<span class="pk">选题、开题、做题、结题</span>是固定术语，不能改写；</li>
+      <li>每环节写"做什么+怎么做"，至少2句话，不能只写一句话；</li>
+      <li>评价部分核心词：<span class="pk">过程性评价与结果性评价相结合</span>，写出即被识别；</li>
+      <li>评价五个维度可用口诀记忆：<span class="pk">选题、过程、成果、协作、展示</span>；</li>
+      <li>开头点题"课题研究是培养建模能力的重要途径"，结尾总结呼应。</li></ul>
   </div>
-
 </section>
-<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></div>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
 <footer><a href="解析.html">← 返回目录</a></footer>
-<script>
-function switchTab(id){
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
-  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
-}
-</script>
 </div>
 </body>
 </html>

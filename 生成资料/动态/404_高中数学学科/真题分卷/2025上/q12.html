@@ -3,50 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2025上 · 简答题 12-13（主观题部分）</title>
+<title>2025上 · 第q12题</title>
 <style>
-  *{box-sizing:border-box}body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f2f3f7;color:#2b2b33;max-width:860px;margin:0 auto;padding:28px 18px 60px;line-height:1.85}
-  h1{font-size:22px;border-bottom:3px solid #ff7ab8;padding-bottom:8px}
-  .card{background:#fff;border-radius:12px;padding:20px 24px;margin:12px 0;box-shadow:0 2px 10px rgba(30,30,60,.07)}
-  .q{margin:14px 0;padding:12px 16px;border-left:3px solid #5b8def;background:#eaf3fe;border-radius:0 8px 8px 0}
-  .q .num{font-weight:700;color:#2b7de9}
-  .wait{color:#9aa0aa;text-align:center;padding:10px 0;font-size:14px}
-  .back-link{position:fixed;top:12px;left:12px;z-index:200;background:rgba(255,255,255,.9);border:1px solid #e8e8ee;border-radius:8px;padding:5px 14px;font-size:14px;text-decoration:none;color:#1971c2;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-  footer{color:#9aa0aa;font-size:13px;text-align:center;margin-top:26px}
-  .k-user{background:#e8f4fd;border:1px solid #c4dcf8;border-radius:12px;padding:14px 18px;margin:14px 0}
-  .k-user h3{color:#1971c2;margin:0 0 8px;font-size:15px}
-  .k-gold{background:#fff7e0;border:1px solid #f3d9a0;border-radius:12px;padding:14px 18px;margin:14px 0}
-  .k-gold h3{color:#b26a00;margin:0 0 8px;font-size:15px}
-  .pk{color:#d6336c;font-weight:700}
-  mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:4px}
+  :root{
+    --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
+    --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
+       font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
+  .b-an{background:#f08c00;color:#fff}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
+  .pk{color:var(--pink);font-weight:700}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
+  .points .pt{font-weight:700;color:var(--pink)}
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
 </style>
 </head>
 <body>
-<a href="解析.html" class="back-link">← 返回目录</a>
-<h1>2025上 · 简答题 12-13（主观题部分，各7分）</h1>
-
-<div class="card">
-<div class="q"><span class="num">12.</span> 说明二项分布的两个实例（不用计算）。</div>
-<div class="q"><span class="num">13.</span> 简述普通高中数学课程目标。</div>
-</div>
-
-<div class="k-gold">
-<h3>参考答案</h3>
-<p><strong>第12题（二项分布实例）：</strong>二项分布描述的是n次独立重复试验中某事件恰好发生k次的概率分布。两个实例：</p>
+<div class="wrap">
+<section class="card" id="qq12">
+  <div class="qhead">
+    <span class="badge b-jie">简答题</span>
+    <h2>第 12 题 · 二项分布实例</h2>
+    <span class="score">7 分</span>
+  </div>
+  <div class="origin">说明二项分布的两个实例（不用计算）。</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><p>二项分布描述的是n次独立重复试验中某事件恰好发生k次的概率分布。两个实例：</p>
 <ol>
 <li>抛硬币：连续抛掷一枚均匀硬币n次，每次正面向上的概率为0.5，正面向上的次数服从二项分布B(n,0.5)。</li>
 <li>产品检验：从一批产品中有放回地抽取n件，每件为次品的概率为p，抽到的次品数服从二项分布B(n,p)。</li>
-</ol>
-<hr style="border:none;border-top:1px dashed #f3d9a0;margin:14px 0">
-<p><strong>第13题（课程目标）：</strong>普通高中数学课程目标包括：</p>
-<ol>
-<li>获得必要的数学基础知识和基本技能，理解基本的数学概念和数学结论的本质。</li>
-<li>体会和运用数学思想方法，发展数学学科核心素养（数学抽象、逻辑推理、数学建模、直观想象、数学运算、数据分析）。</li>
-<li>提高空间想象能力、抽象概括能力、推理论证能力、运算求解能力和数据处理能力。</li>
-<li>发展数学应用意识和创新意识，提高学习数学的兴趣，形成科学态度和理性精神。</li>
-</ol>
-</div>
-
+</ol></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题：</span>举两个二项分布的实例，不用计算。关键是找到"独立重复试验+每次概率固定+计数"的场景。</li>
+<li><span class="pt">② 找特征：</span>二项分布B(n,p)的三个要素：n次<b>独立</b>重复试验、每次成功概率<b>固定</b>为p、随机变量是成功<b>次数</b>k。</li>
+<li><span class="pt">③ 选实例：</span>抛硬币（最经典，p=0.5）、产品检验（有放回抽取，p=次品率）。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p>①抛硬币n次，正面向上次数服从B(n,0.5)；②有放回抽取产品n件，次品数服从B(n,p)。</p></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>抛硬币<span class="pk">B(n,0.5)</span>、产品检验<span class="pk">B(n,p)</span>。关键：独立重复+概率固定+计次数。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="k-gold">
+    <h3>💡 得分技巧</h3>
+    <ul class="tips"><li>只需举实例不用计算，答出"独立重复试验+概率固定"即可；</li>
+<li>抛硬币和产品检验是最经典两个例子。</li></ul>
+  </div>
+</section>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
 <footer><a href="解析.html">← 返回目录</a></footer>
+</div>
 </body>
 </html>

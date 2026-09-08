@@ -3,124 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2024下 · 第16题 · 案例分析</title>
+<title>2024下 · 第q16题</title>
 <style>
   :root{
     --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
     --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
   }
-  *{box-sizing:border-box}
-  body{margin:0;background:#f2f3f7;color:var(--ink);
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
        font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-       line-height:1.85;font-size:16px}
-  .wrap{max-width:860px;margin:0 auto;padding:28px 18px 60px}
-  section.card{background:#fff;border-radius:16px;padding:24px 26px;margin-bottom:20px;
-       box-shadow:0 2px 10px rgba(30,30,60,.07)}
-  .qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-  .qhead h2{font-size:19px;margin:0}
-  .badge{border-radius:8px;padding:2px 12px;font-size:13px;font-weight:600;white-space:nowrap}
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
   .b-an{background:#f08c00;color:#fff}
-  .score{color:var(--pink);font-weight:700;font-size:14px}
-  .origin{background:#f7f7fa;border-left:4px solid #b9bdc9;border-radius:8px;
-       padding:12px 16px;color:#555;font-size:15px;margin:12px 0}
-  .block{border-radius:12px;padding:14px 18px;margin:14px 0}
-  .block h3{margin:0 0 8px;font-size:15px;letter-spacing:.5px}
-  .k-bibei{background:var(--pink-bg);border:1px solid #f6c3d6}
-  .k-bibei h3{color:var(--pink)}
-  .k-blue{background:var(--blue-bg);border:1px solid #c4dcf8}
-  .k-blue h3{color:var(--blue)}
-  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0}
-  .k-gold h3{color:var(--gold)}
-  a{color:#1971c2;text-decoration:underline;text-underline-offset:3px}
-  mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:4px}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
   .pk{color:var(--pink);font-weight:700}
-  .ex{background:#fff3bf;border-radius:8px;padding:2px 8px;color:#9a7b00}
-  .points{list-style:none;padding-left:4px}
-  .points>li{margin:10px 0}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
   .points .pt{font-weight:700;color:var(--pink)}
-  ul.tips{margin:6px 0;padding-left:20px}
-  ul.tips li{margin:6px 0}
-  .wait{color:#9aa0aa;text-align:center;padding:10px 0;font-size:14px}
-  footer{color:#9aa0aa;font-size:13px;text-align:center;margin-top:26px}
-  .back-link{position:fixed;top:12px;left:12px;z-index:200;background:rgba(255,255,255,.9);
-    border:1px solid #e8e8ee;border-radius:8px;padding:5px 14px;font-size:14px;
-    text-decoration:none;color:#1971c2;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-  .tabs{display:flex;gap:0;margin:14px 0 0;border-radius:12px 12px 0 0;overflow:hidden}
-  .tab-btn{flex:1;padding:10px 8px;border:none;background:#f2f3f7;font-size:14px;font-weight:600;
-    cursor:pointer;text-align:center;color:#8a8f98;border-bottom:3px solid transparent;transition:.2s}
-  .tab-btn.active-t{color:#fff}
-  .tab-btn[data-tab="t-full"].active-t{background:#eef6ff;color:#1971c2;border-bottom-color:#1971c2}
-  .tab-btn[data-tab="t-exam"].active-t{background:#e9f9ef;color:#2b8a3e;border-bottom-color:#2b8a3e}
-  .tab-btn[data-tab="t-life"].active-t{background:#ffecec;color:#c92a2a;border-bottom-color:#c92a2a}
-  .tab-content{display:none}
-  .tab-content.active-t{display:block}
-  .t-full{background:#eef6ff;border:1px solid #b6d6f7}
-  .t-exam{background:#e9f9ef;border:1px solid #b2e2c5}
-  .t-life{background:#ffecec;border:1px solid #ffc9c9}
-  details{margin:14px 0;padding:14px 18px;border-radius:12px;border:1px solid #f6c3d6;background:#fdeef4}
-  details summary::-webkit-details-marker{display:none}
-  details summary::before{content:"▸ ";font-size:12px}
-  details[open] summary::before{content:"▾ ";font-size:12px}
-  .tip{position:relative;cursor:pointer}
-  .tip-box{display:none;position:absolute;bottom:130%;left:50%;transform:translateX(-50%);
-    width:380px;max-width:90vw;background:#fff;border:1px solid #f6c3d6;border-radius:12px;
-    padding:12px 16px;font-size:14px;line-height:1.7;color:#333;z-index:100;
-    box-shadow:0 4px 16px rgba(0,0,0,.12)}
-  .tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
-    border:8px solid transparent;border-top-color:#fff}
-  .tip-box b.pk{color:#d6336c}
-  .tip-box mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:3px}
-  .tip:hover .tip-box{display:block}
-  @media print{
-    body{background:#fff}
-    .wrap{max-width:none;padding:0}
-    section.card{box-shadow:none;border:1px solid #eee;break-inside:avoid}
-  }
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<a href="解析.html" class="back-link">← 返回目录</a>
-<section class="card" id="q16">
+<section class="card" id="qq16">
   <div class="qhead">
     <span class="badge b-an">案例分析</span>
-    <h2><a href="../../../../../外部资料/404_高中数学学科/真题分卷/2024下原卷.pdf" target="_blank" rel="noopener" style="color:inherit;text-decoration:none" title="点击打开原卷PDF">第 16 题 · 指数拓展 · 情境创设与教学评析</a></h2>
+    <h2>第 16 题 · 指数拓展 · 情境创设与教学评析</h2>
     <span class="score">20 分</span>
   </div>
-
-  <div class="origin">
-    在"指数"的教学中，为研究指数函数，拓展指数范围，两位老师创设了如下情境。<br>
+  <div class="origin">在"指数"的教学中，为研究指数函数，拓展指数范围，两位老师创设了如下情境。<br>
     教师甲：让学生看课本，并思考三个问题。<br>
     教师乙：景区游客问题引入。<br>
     问题：<br>
     (1) 比较几个数的大小（直接写出结果即可）；<br>
     (2) 请给出指数拓展的详细过程；<br>
-    (3) 评析甲乙两位老师的教学行为。（20分）
-  </div>
-
-  <details class="block k-bibei" open>
-<summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导 · 案例分析三问拆解</summary>
-
-    
-    <ul class="points" style="list-style:none;padding-left:4px">
-      <li><span class="pt">① 审题 · 三问拆解：</span>问(1)比较大小（数学知识，直接写结果，约3-4分）；问(2)指数拓展过程（数学知识，从正整数指数→零指数→负整数指数→分数指数的推导，约6-8分）；问(3)教学评析（教育理论，评析两位教师情境创设的优劣，约8-10分）。<b>问(3)是核心得分点</b>。</li>
-      <li><span class="pt">② 定框架：</span>问(1)(2)是数学知识题，直接作答；问(3)用 <a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html#角度库" target="_blank" rel="noopener"><b>情境创设意义四条</b> ↗</a>（中公L66）逐条对号评价：激发兴趣、反映数学与生活联系、体现数学化过程、增强应用意识。</li>
-      <li><span class="pt">③ 填内容：</span>问(1)比较大小：如比较 2^(1/2)、3^(1/3) 等幂值大小，直接写结果。问(2)指数拓展：正整数指数幂（a^n）→零指数幂（a^0=1）→负整数指数幂（a^(-n)=1/a^n）→分数指数幂（a^(m/n)=ⁿ√(a^m)），每步说明合理性和定义动机。问(3)教师甲（看课本）偏传统讲授式，教师乙（景区游客问题）创设真实情境——逐条评价。<a href="../../../../../外部资料/404_高中数学学科/404.04中公教学知识.webp" target="_blank">中公L66-67情境创设意义与方法</a>。</li>
-      <li><span class="pt">④ 取点：</span>问(1)直接写结果2-3个比较；问(2)四步拓展各1-2句；问(3)甲乙各评2-3个角度（各说好坏）。阅卷按问给分，问(3)分值最高。</li>
-    </ul>
-  
-</details>
-
-  
-
-  <div class="tabs">
-    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版 <small style="font-size:11px;color:#888">785字≈27min·得分：17-19</small></button>
-    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版 <small style="font-size:11px;color:#888">498字≈17min·得分：14-16</small></button>
-    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版 <small style="font-size:11px;color:#888">118字≈4min·得分：8-10</small></button>
-  </div>
-  <div class="tab-content active-t" id="t-full">
-    <div class="block t-full">
-      <ul class="points">
+    (3) 评析甲乙两位老师的教学行为。（20分）</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><ul class="points">
         <li>(1) <span class="pt">比较大小：</span>比较下列各组数的大小（直接写结果）：<br>
           ① 2^(1/2) ≈ 1.414 与 3^(1/3) ≈ 1.442，故 <b>2^(1/2) < 3^(1/3)</b>；<br>
           ② 2^(-1) = 0.5 与 3^(-1) ≈ 0.333，故 <b>2^(-1) > 3^(-1)</b>；<br>
@@ -141,12 +104,18 @@
           ①<b>优点</b>：以景区游客增长的真实情境引入，贴近生活，<a href="../../../../../外部资料/404_高中数学学科/404.04中公教学知识.webp" target="_blank">激发学生学习兴趣</a>，使学生积极主动投入学习活动；将指数函数与现实问题关联，<b class="pk">反映数学与生活的联系</b>，体现数学应用价值；学生在分析游客数据中经历从实际问题到数学模型的抽象，<b class="pk">体现数学化过程</b>，增强应用意识。<br>
           ②<b>不足</b>：情境创设需注意与数学本质的联系，<b class="pk">不能为情境而情境</b>；应确保情境指向指数拓展的核心目标，避免学生注意力停留在情境表面而忽略数学本质。</li>
         <li><span class="pt">总结：</span>两位教师各有优劣。教师甲注重知识系统性和效率，但缺乏情境激发；教师乙注重情境创设和兴趣激发，更符合新课标理念。理想的教学应将两者结合：以真实情境引入激发兴趣，再通过问题引导深入数学本质。</li>
-      </ul>
+      </ul></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题 · 三问拆解：</span>问(1)比较大小（数学知识，直接写结果，约3-4分）；问(2)指数拓展过程（数学知识，从正整数指数→零指数→负整数指数→分数指数的推导，约6-8分）；问(3)教学评析（教育理论，评析两位教师情境创设的优劣，约8-10分）。<b>问(3)是核心得分点</b>。</li>
+      <li><span class="pt">② 定框架：</span>问(1)(2)是数学知识题，直接作答；问(3)用 <a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html#角度库" target="_blank" rel="noopener"><b>情境创设意义四条</b> ↗</a>（中公L66）逐条对号评价：激发兴趣、反映数学与生活联系、体现数学化过程、增强应用意识。</li>
+      <li><span class="pt">③ 填内容：</span>问(1)比较大小：如比较 2^(1/2)、3^(1/3) 等幂值大小，直接写结果。问(2)指数拓展：正整数指数幂（a^n）→零指数幂（a^0=1）→负整数指数幂（a^(-n)=1/a^n）→分数指数幂（a^(m/n)=ⁿ√(a^m)），每步说明合理性和定义动机。问(3)教师甲（看课本）偏传统讲授式，教师乙（景区游客问题）创设真实情境——逐条评价。<a href="../../../../../外部资料/404_高中数学学科/404.04中公教学知识.webp" target="_blank">中公L66-67情境创设意义与方法</a>。</li>
+      <li><span class="pt">④ 取点：</span>问(1)直接写结果2-3个比较；问(2)四步拓展各1-2句；问(3)甲乙各评2-3个角度（各说好坏）。阅卷按问给分，问(3)分值最高。</li></ul>
+      </div>
     </div>
-  </div>
-  <div class="tab-content" id="t-exam">
-    <div class="block t-exam">
-      <ul class="points">
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><ul class="points">
         <li>(1) <span class="pt">比较大小：</span>① 2^(1/2) < 3^(1/3)；② 2^(-1) > 3^(-1)；③ 4^(3/2) > 8^(1/3)。</li>
       </ul>
       <ul class="points" style="list-style:none;padding-left:4px">
@@ -160,61 +129,36 @@
         <li>(3) <span class="pt">教师甲（看课本）：</span>传统讲授式。优点：目标明确，效率高，引导自主学习；不足：情境单一，<span class="pk">未激发兴趣</span>，学生被动接受，缺乏数学化过程。</li>
         <li><span class="pt">教师乙（景区游客）：</span>情境创设式。优点：真实情境<span class="pk">激发兴趣</span>、<span class="pk">反映数学与生活联系</span>、<span class="pk">体现数学化过程</span>、增强应用意识；不足：需注意<span class="pk">不能为情境而情境</span>，应指向数学本质。</li>
         <li><span class="pt">总结：</span>两者结合为佳——以情境引入激发兴趣，再引导深入数学本质。</li>
-      </ul>
+      </ul></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
     </div>
-  </div>
-  <div class="tab-content" id="t-life">
-    <div class="block t-life">
-      <p>(1) 2^(1/2)<3^(1/3)；2^(-1)>3^(-1)；4^(3/2)>8^(1/3)。</p>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>(1) 2^(1/2)<3^(1/3)；2^(-1)>3^(-1)；4^(3/2)>8^(1/3)。</p>
       <p>(2) 指数拓展：正整数→零指数(a^0=1)→负整数(a^(-n)=1/a^n)→分数(a^(m/n)=ⁿ√(a^m))，每步保持运算律。</p>
       <p>(3) 教师甲看课本：<span class="pk">效率高但未激发兴趣</span>，学生被动。教师乙景区游客：<span class="pk">激发兴趣、反映生活联系、体现数学化</span>，但需注意<span class="pk">不能为情境而情境</span>。两者结合为佳。</p>
-      <p style="font-size:13px;color:#777;margin-top:8px"><a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html" target="_blank" style="font-size:13px;color:#b26a00;text-decoration:none">📐 查看万能骨架（案例四角度＋方法四条）→</a></p>
+      <p style="font-size:13px;color:#777;margin-top:8px"><a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html" target="_blank" style="font-size:13px;color:#b26a00;text-decoration:none">📐 查看万能骨架（案例四角度＋方法四条）→</a></p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
     </div>
   </div>
-
-  <div class="block k-gold">
+  <div class="k-gold">
     <h3>💡 得分技巧</h3>
-    <ul class="tips">
-      <li>三问必须<b>分开作答</b>，标明(1)(2)(3)，阅卷按问给分；</li>
+    <ul class="tips"><li>三问必须<b>分开作答</b>，标明(1)(2)(3)，阅卷按问给分；</li>
       <li>问(1)只需<b>直接写结果</b>，题目说"直接写出即可"，不必写过程；</li>
       <li>问(2)指数拓展四步缺一不可：<span class="pk">零指数→负整数→分数指数</span>，每步说明"为什么这样定义"（保持运算律）；</li>
       <li>问(3)必须<b>分别评析</b>甲乙，每个教师先说优点再说不足，用判定句开头；</li>
       <li>评价关键词固定四条：<span class="pk">激发兴趣、联系生活、数学化过程、应用意识</span>，每条一句话+对应材料；</li>
-      <li>教师甲的关键得分点：指出"未激发兴趣、被动接受"；教师乙的关键得分点：指出"不能为情境而情境"。</li>
-    </ul>
+      <li>教师甲的关键得分点：指出"未激发兴趣、被动接受"；教师乙的关键得分点：指出"不能为情境而情境"。</li></ul>
   </div>
-
 </section>
-<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></div>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
 <footer><a href="解析.html">← 返回目录</a></footer>
-<script>
-function switchTab(id){
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
-  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
-}
-// 中公教学知识 tooltip
-(function(){
-  var text='创设数学问题情境的意义（中公L66）：<mark>激发学生学习兴趣</mark>，使学生积极主动投入学习活动；<mark>反映数学与生活的联系</mark>；<mark>体现数学化的过程</mark>；<mark>增强学生应用数学的意识</mark>。<br><br>创设数学问题情境的方法（中公L67）：<mark>联系生活实际</mark>、<mark>利用数学故事</mark>、<mark>动手实践</mark>、<mark>编设具体数学问题</mark>等，引导学生在真实情境中发现问题和提出问题。<br><br>奥苏贝尔"有意义的接受学习"（L50）：情境创设应服务于教学目标，不能脱离数学本质。';
-  document.querySelectorAll('a[href*="404.04中公教学知识"]').forEach(function(a){
-    a.classList.add('tip');
-    var box=document.createElement('span');
-    box.className='tip-box';
-    box.innerHTML=text;
-    a.appendChild(box);
-  });
-})();
-// 角度库/框架 tooltip
-(function(){
-  var text='<b class="pk">案例分析·情境评价框架</b><br>问(3)评析教师行为：先判定句（合理/需改进），再用意义四条逐条对号：<br><br>① <mark>激发兴趣</mark>：是否贴近生活、调动积极性<br>② <mark>反映数学与生活联系</mark>：是否体现数学应用价值<br>③ <mark>体现数学化过程</mark>：学生是否经历从生活到模型的抽象<br>④ <mark>增强应用意识</mark>：是否指向实际问题解决<br><br>注意：不能为情境而情境，情境应服务于教学目标。';
-  document.querySelectorAll('a[href*="404主观题框架"]').forEach(function(a){
-    a.classList.add('tip');
-    var box=document.createElement('span');
-    box.className='tip-box';
-    box.innerHTML=text;
-    a.appendChild(box);
-  });
-})();
-</script>
 </div>
 </body>
 </html>

@@ -3,120 +3,171 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2023上 · 第17题 · 教学设计</title>
+<title>2023上 · 第q17题</title>
 <style>
   :root{
     --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
     --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
   }
-  *{box-sizing:border-box}
-  body{margin:0;background:#f2f3f7;color:var(--ink);
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
        font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-       line-height:1.85;font-size:16px}
-  .wrap{max-width:860px;margin:0 auto;padding:28px 18px 60px}
-  section.card{background:#fff;border-radius:16px;padding:24px 26px;margin-bottom:20px;
-       box-shadow:0 2px 10px rgba(30,30,60,.07)}
-  .qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-  .qhead h2{font-size:19px;margin:0}
-  .badge{border-radius:8px;padding:2px 12px;font-size:13px;font-weight:600;white-space:nowrap}
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
   .b-she{background:#0ca678;color:#fff}
-  .score{color:var(--pink);font-weight:700;font-size:14px}
-  .origin{background:#f7f7fa;border-left:4px solid #b9bdc9;border-radius:8px;
-       padding:12px 16px;color:#555;font-size:15px;margin:12px 0}
-  .block{border-radius:12px;padding:14px 18px;margin:14px 0}
-  .block h3{margin:0 0 8px;font-size:15px}
-  .k-bibei{background:var(--pink-bg);border:1px solid #f6c3d6}
-  .k-bibei h3{color:var(--pink)}
-  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0}
-  .k-gold h3{color:var(--gold)}
-  a{color:#1971c2;text-decoration:underline;text-underline-offset:3px}
-  mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:4px}
+  .b-lun{background:#e5487c;color:#fff}
+  .b-an{background:#f08c00;color:#fff}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
   .pk{color:var(--pink);font-weight:700}
-  .ex{background:#fff3bf;border-radius:8px;padding:2px 8px;color:#9a7b00}
-  .points{list-style:none;padding-left:4px}
-  .points>li{margin:10px 0}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
   .points .pt{font-weight:700;color:var(--pink)}
-  ul.tips{margin:6px 0;padding-left:20px}
-  ul.tips li{margin:6px 0}
-  .wait{color:#9aa0aa;text-align:center;padding:10px 0;font-size:14px}
-  footer{color:#9aa0aa;font-size:13px;text-align:center;margin-top:26px}
-  .back-link{position:fixed;top:12px;left:12px;z-index:200;background:rgba(255,255,255,.9);
-    border:1px solid #e8e8ee;border-radius:8px;padding:5px 14px;font-size:14px;
-    text-decoration:none;color:#1971c2;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-  .tabs{display:flex;gap:0;margin:14px 0 0;border-radius:12px 12px 0 0;overflow:hidden}
-  .tab-btn{flex:1;padding:10px 8px;border:none;background:#f2f3f7;font-size:14px;font-weight:600;
-    cursor:pointer;text-align:center;color:#8a8f98;border-bottom:3px solid transparent;transition:.2s}
-  .tab-btn.active-t{color:#fff}
-  .tab-btn[data-tab="t-full"].active-t{background:#eef6ff;color:#1971c2;border-bottom-color:#1971c2}
-  .tab-btn[data-tab="t-exam"].active-t{background:#e9f9ef;color:#2b8a3e;border-bottom-color:#2b8a3e}
-  .tab-btn[data-tab="t-life"].active-t{background:#ffecec;color:#c92a2a;border-bottom-color:#c92a2a}
-  .tab-content{display:none}
-  .tab-content.active-t{display:block}
-  .t-full{background:#eef6ff;border:1px solid #b6d6f7}
-  .t-exam{background:#e9f9ef;border:1px solid #b2e2c5}
-  .t-life{background:#ffecec;border:1px solid #ffc9c9}
-  details{margin:14px 0;padding:14px 18px;border-radius:12px;border:1px solid #f6c3d6;background:#fdeef4}
-  details summary::-webkit-details-marker{display:none}
-  details summary::before{content:"▸ ";font-size:12px}
-  details[open] summary::before{content:"▾ ";font-size:12px}
-  @media print{
-    body{background:#fff}
-    .wrap{max-width:none;padding:0}
-    section.card{box-shadow:none;border:1px solid #eee;break-inside:avoid}
-  }
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<a href="解析.html" class="back-link">← 返回目录</a>
-<section class="card" id="q17">
+<section class="card" id="qq17">
   <div class="qhead">
     <span class="badge b-she">教学设计</span>
-    <h2>第 17 题 · 余弦定理 · 向量方法证明与教学设计</h2>
+    <h2>第 17 题 · 余弦定理 · 教学设计</h2>
     <span class="score">30 分</span>
   </div>
-
-  <div class="origin">
-    高中数学课程要求"借助向量的运算，探索三角形边长与夹角的关系，掌握余弦定理"。完成下列任务：<br>
+  <div class="origin">高中数学课程要求"借助向量的运算，探索三角形边长与夹角的关系，掌握余弦定理"。<br>
+    教材内容：在 △ABC 中，考虑用向量的数量积来探究。设 AB=c，AC=b，BC=a，那么 a=|BC|=|AC-AB|=|b-c|。联想到向量数量积的性质 |a|²=a·a，考虑用向量 (a-b) 与自身做点乘运算。<br>
+    完成下列任务：<br>
     (1) 根据上述材料，写出用向量方法证明余弦定理的过程；<br>
     (2) 设计"余弦定理"这节课的教学目标，并确定教学重点；<br>
-    (3) 针对上述材料中"探究"的问题，设计3个课堂提问，引导学生从三角形的边角关系入手，逐步探索用向量方法证明余弦定理，并说明设计意图。（30分）
-  </div>
+    (3) 针对上述材料中"探究"的问题，设计3个课堂提问，引导学生从三角形的边角关系入手，逐步探索用向量方法证明余弦定理，并说明设计意图。</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><p><b>(1) 用向量方法证明余弦定理</b></p>
+      <p>在 △ABC 中，设角 A、B、C 所对的边分别为 a、b、c。记向量 AB=<b>c</b>，AC=<b>b</b>，BC=<b>a</b>。</p>
+      <p>由向量加减法，BC = AC - AB，即 <b>a</b> = <b>b</b> - <b>c</b>。</p>
+      <p>对两边取模的平方（即向量与自身做数量积）：</p>
+      <p>|<b>a</b>|² = <b>a</b>·<b>a</b> = (<b>b</b>-<b>c</b>)·(<b>b</b>-<b>c</b>) = |<b>b</b>|² - 2<b>b</b>·<b>c</b> + |<b>c</b>|²</p>
+      <p>由向量数量积的定义，<b>b</b>·<b>c</b> = |<b>b</b>||<b>c</b>|cosA = bc·cosA。</p>
+      <p>因此：<b>a² = b² + c² - 2bc·cosA</b>。</p>
+      <p>同理可证：b² = a² + c² - 2ac·cosB，c² = a² + b² - 2ab·cosC。</p>
+      <p>这就是余弦定理。</p>
 
-  <details class="block k-bibei">
-    <summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导</summary>
-    <div class="wait">待生成</div>
-  </details>
+      <p><b>(2) 教学目标与教学重点</b></p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li><span class="pt">教学目标：</span><br>
+          ①知识与技能：掌握余弦定理的内容及其向量证明方法，能运用余弦定理解决"已知两边及夹角求第三边"和"已知三边求角"的问题。<br>
+          ②过程与方法：通过用向量方法探究余弦定理的过程，体会向量作为数学工具的价值，发展<b>逻辑推理</b>与<b>数学运算</b>素养。<br>
+          ③情感态度与价值观：感受数学知识之间的内在联系（代数与几何、向量与三角），激发探究兴趣，培养严谨的数学思维。</li>
+        <li><span class="pt">教学重点：</span>余弦定理的内容及其向量证明方法，余弦定理的简单应用。</li>
+      </ul>
 
-  <div class="tabs">
-    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版</button>
-    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版</button>
-    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版</button>
-  </div>
-  <div class="tab-content active-t" id="t-full">
-    <div class="block t-full"><div class="wait">待生成</div></div>
-  </div>
-  <div class="tab-content" id="t-exam">
-    <div class="block t-exam"><div class="wait">待生成</div></div>
-  </div>
-  <div class="tab-content" id="t-life">
-    <div class="block t-life"><div class="wait">待生成</div></div>
-  </div>
+      <p><b>(3) 3个课堂提问及设计意图</b></p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li><span class="pt">提问1：</span>"在 △ABC 中，已知两边 b、c 及夹角 A，能否求出第三边 a？如果能，需要建立怎样的关系？"<br>
+          <b>设计意图：</b>从学生已有的解三角形经验出发，提出核心问题，激发探究欲望，明确本节课的研究目标——建立边角之间的定量关系，体现<b>问题驱动</b>的教学理念。</li>
+        <li><span class="pt">提问2：</span>"向量可以用来表示三角形的边吗？如果设 AB=<b>c</b>，AC=<b>b</b>，那么 BC 怎样用 <b>b</b> 和 <b>c</b> 表示？"<br>
+          <b>设计意图：</b>引导学生将几何问题转化为向量问题，建立向量与三角形边的联系，体会向量是连接几何与代数的桥梁，为后续用数量积推导做铺垫，发展<b>直观想象</b>素养。</li>
+        <li><span class="pt">提问3：</span>"我们已知道 |<b>a</b>|² = <b>a</b>·<b>a</b>，那么将 <b>a</b>=<b>b</b>-<b>c</b> 代入展开后，<b>b</b>·<b>c</b> 这一项如何与角 A 建立联系？"<br>
+          <b>设计意图：</b>引导学生从向量数量积的定义出发，将 <b>b</b>·<b>c</b> 转化为 |<b>b</b>||<b>c</b>|cosA，从而建立边与角的等式关系，完成余弦定理的推导。此问是推导的<b>关键一步</b>，体现了"逐步引导、层层深入"的探究式教学策略。</li>
+      </ul></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题：</span>三问。问①写<b>向量法证明余弦定理</b>的过程（知识推导题）；问②设计<b>教学目标+教学重点</b>（教学设计基础题）；问③设计<b>3个课堂提问</b>引导探究并说明设计意图（教学设计实践题）。</li>
+      <li><span class="pt">② 定框架：</span>问①用向量数量积证明：设 a=BC, b=AC, c=AB，则 a=b-c，|a|²=(b-c)·(b-c)=|b|²+|c|²-2b·c=|b|²+|c|²-2|b||c|cosA，即 a²=b²+c²-2bc·cosA。问②三维目标（知识与技能/过程与方法/情感态度）+重点。问③3个递进提问：从"已知两边及夹角如何求第三边"→"向量可以表示边吗"→"向量数量积能联系边和角吗"。</li>
+      <li><span class="pt">③ 填内容：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>证明：在 △ABC 中，设 AB=c, AC=b, BC=a（向量），则 BC=AC-AB，即 a=b-c</li>
+          <li>|a|² = a·a = (b-c)·(b-c) = |b|² - 2b·c + |c|²</li>
+          <li>b·c = |b||c|cosA</li>
+          <li>所以 a² = b² + c² - 2bc·cosA，同理可证 b²=a²+c²-2ac·cosB, c²=a²+b²-2ab·cosC</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p><b>(1) 向量法证明：</b>在 △ABC 中，设 AB=<b>c</b>，AC=<b>b</b>，BC=<b>a</b>，则 <b>a</b>=<b>b</b>-<b>c</b>。|<b>a</b>|²=(<b>b</b>-<b>c</b>)·(<b>b</b>-<b>c</b>)=|<b>b</b>|²-2<b>b</b>·<b>c</b>+|<b>c</b>|²。由 <b>b</b>·<b>c</b>=|<b>b</b>||<b>c</b>|cosA=bc·cosA，得 <b>a²=b²+c²-2bc·cosA</b>。同理可证其余两式。</p>
 
-  <div class="block k-gold">
+      <p><b>(2) 教学目标：</b>①掌握余弦定理内容及向量证明，能解决"已知两边及夹角"和"已知三边"问题；②通过向量探究过程，体会向量工具价值，发展逻辑推理与数学运算素养；③感受数学内在联系，培养严谨思维。<br>
+        <b>重点：</b>余弦定理内容及向量证明方法。</p>
+
+      <p><b>(3) 3个提问：</b></p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li><span class="pt">提问1：</span>"已知两边 b、c 及夹角 A，能求第三边 a 吗？需建立什么关系？"<br>
+          <b>意图：</b>提出核心问题，明确研究目标，问题驱动激发探究欲望。</li>
+        <li><span class="pt">提问2：</span>"设 AB=<b>c</b>，AC=<b>b</b>，BC 怎样用 <b>b</b>、<b>c</b> 表示？"<br>
+          <b>意图：</b>将几何问题转化为向量问题，建立向量与边的联系，为数量积推导做铺垫。</li>
+        <li><span class="pt">提问3：</span>"<b>a</b>=<b>b</b>-<b>c</b> 展开后，<b>b</b>·<b>c</b> 如何与角 A 联系？"<br>
+          <b>意图：</b>引导用数量积定义将 <b>b</b>·<b>c</b> 转为 bc·cosA，完成推导关键一步，层层深入。</li>
+      </ul></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>(1) <b>a</b>=<b>b</b>-<b>c</b>，|<b>a</b>|²=(<b>b</b>-<b>c</b>)²=|<b>b</b>|²-2<b>b</b>·<b>c</b>+|<b>c</b>|²，<b>b</b>·<b>c</b>=bc·cosA ⟹ <span class="pk">a²=b²+c²-2bc·cosA</span>。</p>
+      <p>(2) 目标：掌握定理+向量证明，能解两边夹角/三边问题。重点：定理内容及向量证明。<br>
+      (3) 提问1：已知两边夹角能求第三边吗？意图：<span class="pk">问题驱动</span>。<br>
+      提问2：BC 怎样用向量表示？意图：<span class="pk">几何转向量</span>。<br>
+      提问3：<b>b</b>·<b>c</b> 如何联系角A？意图：<span class="pk">数量积定义转边角关系</span>。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="k-gold">
     <h3>💡 得分技巧</h3>
-    <div class="wait">待生成</div>
+    <ul class="tips"><li>问①证明过程必须写全：<span class="pk">向量表示边</span>→<span class="pk">a=b-c</span>→<span class="pk">取模平方展开</span>→<span class="pk">b·c=bc·cosA</span>→<span class="pk">结论</span>，缺步骤扣分；</li>
+      <li>问②教学目标必须写<b>三维目标</b>（知识与技能/过程与方法/情感态度），各一句话；</li>
+      <li>教学重点只需1-2句，核心是<span class="pk">余弦定理内容及向量证明</span>；</li>
+      <li>问③3个提问必须<b>递进</b>：提出问题→建立向量联系→用数量积转化，不能平行提问；</li>
+      <li>每个提问都要写<b>设计意图</b>，意图中提到"问题驱动""层层深入""探究"等关键词；</li>
+      <li>提问3是得分关键——<span class="pk">b·c = |b||c|cosA</span> 这一步是向量法证明的核心。</li></ul>
   </div>
-
 </section>
-<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></div>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
 <footer><a href="解析.html">← 返回目录</a></footer>
-<script>
-function switchTab(id){
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
-  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
-}
-</script>
 </div>
 </body>
 </html>

@@ -3,108 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2025上 · 第16题 · 案例分析</title>
+<title>2025上 · 第q16题</title>
 <style>
   :root{
     --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
     --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
   }
-  *{box-sizing:border-box}
-  body{margin:0;background:#f2f3f7;color:var(--ink);
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
        font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-       line-height:1.85;font-size:16px}
-  .wrap{max-width:860px;margin:0 auto;padding:28px 18px 60px}
-  section.card{background:#fff;border-radius:16px;padding:24px 26px;margin-bottom:20px;
-       box-shadow:0 2px 10px rgba(30,30,60,.07)}
-  .qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-  .qhead h2{font-size:19px;margin:0}
-  .badge{border-radius:8px;padding:2px 12px;font-size:13px;font-weight:600;white-space:nowrap}
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
   .b-an{background:#f08c00;color:#fff}
-  .score{color:var(--pink);font-weight:700;font-size:14px}
-  .origin{background:#f7f7fa;border-left:4px solid #b9bdc9;border-radius:8px;
-       padding:12px 16px;color:#555;font-size:15px;margin:12px 0}
-  .block{border-radius:12px;padding:14px 18px;margin:14px 0}
-  .block h3{margin:0 0 8px;font-size:15px}
-  .k-bibei{background:var(--pink-bg);border:1px solid #f6c3d6}
-  .k-bibei h3{color:var(--pink)}
-  .k-user{background:#e8f4fd;border:1px solid #c4dcf8}
-  .k-user h3{color:#1971c2}
-  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0}
-  .k-gold h3{color:var(--gold)}
-  a{color:#1971c2;text-decoration:underline;text-underline-offset:3px}
-  mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:4px}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
   .pk{color:var(--pink);font-weight:700}
-  .ex{background:#fff3bf;border-radius:8px;padding:2px 8px;color:#9a7b00}
-  .points{list-style:none;padding-left:4px}
-  .points>li{margin:10px 0}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
   .points .pt{font-weight:700;color:var(--pink)}
-  ul.tips{margin:6px 0;padding-left:20px}
-  ul.tips li{margin:6px 0}
-  .wait{color:#9aa0aa;text-align:center;padding:10px 0;font-size:14px}
-  footer{color:#9aa0aa;font-size:13px;text-align:center;margin-top:26px}
-  .back-link{position:fixed;top:12px;left:12px;z-index:200;background:rgba(255,255,255,.9);
-    border:1px solid #e8e8ee;border-radius:8px;padding:5px 14px;font-size:14px;
-    text-decoration:none;color:#1971c2;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-  .tabs{display:flex;gap:0;margin:14px 0 0;border-radius:12px 12px 0 0;overflow:hidden}
-  .tab-btn{flex:1;padding:10px 8px;border:none;background:#f2f3f7;font-size:14px;font-weight:600;
-    cursor:pointer;text-align:center;color:#8a8f98;border-bottom:3px solid transparent;transition:.2s}
-  .tab-btn.active-t{color:#fff}
-  .tab-btn[data-tab="t-full"].active-t{background:#eef6ff;color:#1971c2;border-bottom-color:#1971c2}
-  .tab-btn[data-tab="t-exam"].active-t{background:#e9f9ef;color:#2b8a3e;border-bottom-color:#2b8a3e}
-  .tab-btn[data-tab="t-life"].active-t{background:#ffecec;color:#c92a2a;border-bottom-color:#c92a2a}
-  .tab-content{display:none}
-  .tab-content.active-t{display:block}
-  .t-full{background:#eef6ff;border:1px solid #b6d6f7}
-  .t-exam{background:#e9f9ef;border:1px solid #b2e2c5}
-  .t-life{background:#ffecec;border:1px solid #ffc9c9}
-  details{margin:14px 0;padding:14px 18px;border-radius:12px;border:1px solid #f6c3d6;background:#fdeef4}
-  details summary::-webkit-details-marker{display:none}
-  details summary::before{content:"▸ ";font-size:12px}
-  details[open] summary::before{content:"▾ ";font-size:12px}
-  @media print{
-    body{background:#fff}
-    .wrap{max-width:none;padding:0}
-    section.card{box-shadow:none;border:1px solid #eee;break-inside:avoid}
-  }
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<a href="解析.html" class="back-link">← 返回目录</a>
-<section class="card" id="q16">
+<section class="card" id="qq16">
   <div class="qhead">
     <span class="badge b-an">案例分析</span>
     <h2>第 16 题 · 杨辉三角性质与应用 · 过程性评价</h2>
     <span class="score">20 分</span>
   </div>
-
-  <div class="origin">
-    在数学探究课——《杨辉三角的性质与应用》授课结束后，教师展示了一份学生学习评价量表，其部分内容如下：<br>
+  <div class="origin">在数学探究课——《杨辉三角的性质与应用》授课结束后，教师展示了一份学生学习评价量表，其部分内容如下：<br>
     (1) 除材料中提到的性质之外，杨辉三角形还有哪些性质？（6分）<br>
     (2) 结合评价量表从教师和学生的角度分析过程性评价的作用。（8分）<br>
-    (3) 可以从哪些维度评价研究报告。（6分）
-  </div>
-
-  <details class="block k-bibei" open>
-    <summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导 · 三问拆解</summary>
-
-    <ul class="points" style="list-style:none;padding-left:4px">
-      <li><span class="pt">① 审题：</span>三问。问①考杨辉三角性质（知识题，背记）；问②从教师和学生两个角度分析过程性评价作用（教学理论题）；问③评价研究报告的维度（评价理论题，背框架）。</li>
-      <li><span class="pt">② 定框架：</span>问①背杨辉三角性质——<a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html#角度库" target="_blank" rel="noopener"><b>对称性、二项式系数和、递推关系</b> ↗</a>等；问②从教师角度（及时反馈、调整教学、了解学情）和学生角度（自我反思、激发动力、明确方向）展开；问③从<a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html" target="_blank" rel="noopener"><b>科学性、规范性、创新性、实用性</b> ↗</a>等维度评价。</li>
-      <li><span class="pt">③ 填内容：</span>问①列出3-4条杨辉三角性质，每条一句话；问②教师角度3点+学生角度3点，结合"评价量表"关键词；问③列出4个评价维度，各一句话说明。</li>
-      <li><span class="pt">④ 取点：</span>问①≤90字；问②≤250字（本题主体）；问③≤120字。</li>
-    </ul>
-
-  </details>
-
-  <div class="tabs">
-    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版 <small style="font-size:11px;color:#888">612字≈20min·得分：18-20</small></button>
-    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版 <small style="font-size:11px;color:#888">398字≈15min·得分：15-17</small></button>
-    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版 <small style="font-size:11px;color:#888">102字≈4min·得分：9-11</small></button>
-  </div>
-  <div class="tab-content active-t" id="t-full">
-    <div class="block t-full">
-      <ul class="points">
+    (3) 可以从哪些维度评价研究报告。（6分）</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><ul class="points">
         <li>(1) <span class="pt">杨辉三角形的其他性质：</span>①<b>对称性</b>：杨辉三角中每一行的二项式系数关于中间项对称，即 C(n,k)=C(n,n-k)；②<b>二项式系数和</b>：第 n 行各系数之和为 2^n，即 C(n,0)+C(n,1)+…+C(n,n)=2^n；③<b>递推关系</b>：每个数等于它上方两数之和，即 C(n,k)=C(n-1,k-1)+C(n-1,k)；④<b>斜行求和</b>：第 k 条斜行（从左上到右下）上各数之和等于第 k 个斐波那契数。</li>
       </ul>
       <ul class="points" style="list-style:none;padding-left:4px">
@@ -113,12 +89,18 @@
       </ul>
       <ul class="points" style="list-style:none;padding-left:4px">
         <li>(3) <span class="pt">评价研究报告的维度：</span>①<b>科学性</b>：研究方法是否正确，数据是否准确，结论是否合理；②<b>规范性</b>：报告结构是否完整，格式是否规范，语言表达是否清晰；③<b>创新性</b>：是否有独特的视角或方法，是否提出新的发现或见解；④<b>实用性</b>：研究成果是否有实际应用价值，能否解决实际问题。</li>
-      </ul>
+      </ul></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题：</span>三问。问①考杨辉三角性质（知识题，背记）；问②从教师和学生两个角度分析过程性评价作用（教学理论题）；问③评价研究报告的维度（评价理论题，背框架）。</li>
+      <li><span class="pt">② 定框架：</span>问①背杨辉三角性质——<a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html#角度库" target="_blank" rel="noopener"><b>对称性、二项式系数和、递推关系</b> ↗</a>等；问②从教师角度（及时反馈、调整教学、了解学情）和学生角度（自我反思、激发动力、明确方向）展开；问③从<a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html" target="_blank" rel="noopener"><b>科学性、规范性、创新性、实用性</b> ↗</a>等维度评价。</li>
+      <li><span class="pt">③ 填内容：</span>问①列出3-4条杨辉三角性质，每条一句话；问②教师角度3点+学生角度3点，结合"评价量表"关键词；问③列出4个评价维度，各一句话说明。</li>
+      <li><span class="pt">④ 取点：</span>问①≤90字；问②≤250字（本题主体）；问③≤120字。</li></ul>
+      </div>
     </div>
-  </div>
-  <div class="tab-content" id="t-exam">
-    <div class="block t-exam">
-      <ul class="points">
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><ul class="points">
         <li>(1) <span class="pt">杨辉三角性质：</span>①<b>对称性</b>：C(n,k)=C(n,n-k)；②<b>系数和</b>：第 n 行系数之和为 2^n；③<b>递推关系</b>：C(n,k)=C(n-1,k-1)+C(n-1,k)；④<b>斜行求和</b>：斜行各数之和构成斐波那契数列。</li>
       </ul>
       <ul class="points" style="list-style:none;padding-left:4px">
@@ -127,37 +109,44 @@
       </ul>
       <ul class="points" style="list-style:none;padding-left:4px">
         <li>(3) <span class="pt">评价维度：</span>①<b>科学性</b>（方法正确、数据准确、结论合理）；②<b>规范性</b>（结构完整、格式规范、语言清晰）；③<b>创新性</b>（独特视角或新发现）；④<b>实用性</b>（有应用价值、能解决实际问题）。</li>
+      </ul></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p><b class="pk">【不会时怎么蹭分】</b>本题三问，即使不会具体内容，按以下结构写也能拿8-10分：</p>
+      <p><b class="pk">问①（背记题，不会就写能想到的性质）：</b>写3条，每条"名称+一句话"：</p>
+      <ul class="points">
+        <li>①<b class="pk">对称性</b>：杨辉三角每行关于中间对称。</li>
+        <li>②<b class="pk">递推关系</b>：每个数等于上方两数之和。</li>
+        <li>③<b class="pk">系数和</b>：第n行各数之和为2的n次方。</li>
       </ul>
+      <p><b class="pk">问②（评价作用题，不会就套"教师角度+学生角度"框架）：</b></p>
+      <ul class="points">
+        <li>从<b class="pk">教师角度</b>：过程性评价有助于教师及时了解学情、调整教学策略。</li>
+        <li>从<b class="pk">学生角度</b>：过程性评价有助于学生自我反思、明确努力方向。</li>
+      </ul>
+      <p><b class="pk">问③（评价维度题，不会就背这四个词）：</b>可以从<b class="pk">科学性、规范性、创新性、实用性</b>四个维度评价。</p>
+      <p style="font-size:13px;color:#888;margin-top:8px">得分逻辑：问①写3条性质=4分，问②分教师学生两角度=4分，问③四个维度=4分。核心得分词：对称性/递推/系数和、教师角度/学生角度、科学性/规范性/创新性/实用性。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
     </div>
   </div>
-  <div class="tab-content" id="t-life">
-    <div class="block t-life">
-      <p>(1) 杨辉三角性质：<span class="pk">对称性</span>（C(n,k)=C(n,n-k)）、<span class="pk">系数和为2^n</span>、<span class="pk">递推关系</span>、<span class="pk">斜行和为斐波那契数</span>。</p>
-      <p>(2) 教师：<span class="pk">及时反馈、了解学情、调整教学</span>；学生：<span class="pk">自我反思、激发动力、明确方向</span>。</p>
-      <p>(3) 评价维度：<span class="pk">科学性、规范性、创新性、实用性</span>。</p>
-      <p style="font-size:13px;color:#777;margin-top:8px"><a href="../../../../固定/404_高中数学学科/404.05速记卡/404主观题框架.html" target="_blank" style="font-size:13px;color:#b26a00;text-decoration:none">📐 查看万能骨架（性质+评价+报告维度）→</a></p>
-    </div>
-  </div>
-
-  <div class="block k-gold">
+  <div class="k-gold">
     <h3>💡 得分技巧</h3>
-    <ul class="tips">
-      <li>问①是<b>纯背记题</b>，至少写出3条杨辉三角性质，每条带名称+一句话解释；</li>
+    <ul class="tips"><li>问①是<b>纯背记题</b>，至少写出3条杨辉三角性质，每条带名称+一句话解释；</li>
       <li>问②必须<b>分教师和学生两个角度</b>作答，各写2-3点，每点用<span class="pk">关键词+一句话</span>，务必提到"评价量表"这一材料关键词；</li>
       <li>问③背评价维度框架：<span class="pk">科学性、规范性、创新性、实用性</span>，每个维度一句话说明即可；</li>
-      <li>三问时间分配建议：问①3min、问②8min、问③4min，合计约15min。</li>
-    </ul>
+      <li>三问时间分配建议：问①3min、问②8min、问③4min，合计约15min。</li></ul>
   </div>
-
 </section>
-<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></div>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
 <footer><a href="解析.html">← 返回目录</a></footer>
-<script>
-function switchTab(id){
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
-  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
-}
-</script>
 </div>
 </body>
 </html>

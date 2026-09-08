@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2021上 · 第q15题</title>
+<style>
+  :root{
+    --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
+    --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
+       font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
+  .b-an{background:#f08c00;color:#fff}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
+  .pk{color:var(--pink);font-weight:700}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
+  .points .pt{font-weight:700;color:var(--pink)}
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="card" id="qq15">
+  <div class="qhead">
+    <span class="badge b-lun">论述题</span>
+    <h2>第 15 题 · 数学运算能力的表现 + 整式运算为例</h2>
+    <span class="score">15 分</span>
+  </div>
+  <div class="origin">数学运算能力是中学数学教学需要培养的基本能力。学生的数学运算能力具体表现为哪些方面？请以整式运算为例予以说明。</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><p>数学运算能力是数学核心素养之一，也是中学数学教学需要培养的基本能力。学生的数学运算能力具体表现为以下五个方面，以整式运算为例分别说明。</p>
+      <ul class="points">
+        <li><span class="pt">一、理解运算对象。</span>学生能正确理解运算涉及的对象的概念、性质和结构。<span class="ex">例：在整式运算中，学生需理解单项式和多项式的概念，能区分系数、次数和项，理解同类项的含义，才能进行后续运算。如 3x²y 与 -5x²y 是同类项，而 3x²y 与 3xy² 不是。</span></li>
+        <li><span class="pt">二、掌握运算法则。</span>学生能熟练掌握各种运算的法则、公式和定律，并在运算中正确运用。<span class="ex">例：整式运算中需掌握合并同类项法则（系数相加减、字母不变）、去括号法则（注意符号变化）、幂的运算性质（aᵐ·aⁿ=aᵐ⁺ⁿ）、乘法公式（(a+b)²=a²+2ab+b², (a+b)(a-b)=a²-b²）等。</span></li>
+        <li><span class="pt">三、选择运算方法。</span>学生能根据题目特点，选择恰当、简洁的运算方法和路径，避免机械套用。<span class="ex">例：计算 (x+3)²-(x-3)² 时，可直接用平方差公式分解为 [(x+3)+(x-3)]·[(x+3)-(x-3)]=2x·6=12x，而非先展开再合并，体现方法选择的灵活性。</span></li>
+        <li><span class="pt">四、实施运算过程。</span>学生能准确、有序地执行运算的每一步骤，不跳步、不漏步、不出错。<span class="ex">例：化简 2(x²-3x+1)-3(x-2) 时，按"去括号→合并同类项"顺序：=2x²-6x+2-3x+6=2x²-9x+8，每步注意系数和符号的准确性。</span></li>
+        <li><span class="pt">五、反思运算结果。</span>学生能对运算结果进行检验和反思，判断结果是否合理，运算是否彻底。<span class="ex">例：整式化简后检查是否还有同类项未合并、括号是否去尽、结果是否最简。如化简结果为 x²+x² 应反思合并为 2x²。</span></li>
+      </ul>
+      <p>综上所述，数学运算能力不是简单的"算对数"，而是从理解对象、掌握法则、选择方法、实施运算到反思结果的<b>完整能力链条</b>，以整式运算为例可以清晰地看到每一环节的具体表现。</p></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题 · 两个任务：</span>任务一回答数学运算能力的<b>具体表现</b>（背记+论述）；任务二以<b>整式运算为例</b>说明（举例论述）。分值<b>15分</b>，表现约8分，举例约7分。</li>
+      <li><span class="pt">② 定框架：</span>运算能力表现为<b>五个方面</b>：①理解运算对象→②掌握运算法则→③选择运算方法→④实施运算过程→⑤反思运算结果。每方面用整式运算的具体例子说明。</li>
+      <li><span class="pt">③ 填内容：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>理解运算对象：理解整式（单项式、多项式）的概念和结构</li>
+          <li>掌握运算法则：掌握合并同类项、去括号、幂的运算、乘法公式等法则</li>
+          <li>选择运算方法：根据题目特点选择合适的运算路径（如先化简再代入）</li>
+          <li>实施运算过程：准确执行每一步运算，不跳步不出错</li>
+          <li>反思运算结果：检验结果是否合理，化简是否彻底</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p>数学运算能力表现为五个方面，以整式运算为例：</p>
+      <ul class="points">
+        <li><span class="pt">①理解运算对象：</span>理解整式概念和结构。<span class="ex">例：区分同类项 3x²y 与 3xy²。</span></li>
+        <li><span class="pt">②掌握运算法则：</span>掌握合并同类项、去括号、幂运算、乘法公式。<span class="ex">例：(a+b)²=a²+2ab+b²。</span></li>
+        <li><span class="pt">③选择运算方法：</span>根据特点选简洁路径。<span class="ex">例：(x+3)²-(x-3)² 用平方差公式简化。</span></li>
+        <li><span class="pt">④实施运算过程：</span>准确执行不跳步。<span class="ex">例：2(x²-3x+1)-3(x-2)=2x²-9x+8。</span></li>
+        <li><span class="pt">⑤反思运算结果：</span>检验是否最简。<span class="ex">例：检查同类项是否合并完。</span></li>
+      </ul>
+      <p>运算能力是"理解→法则→方法→实施→反思"的完整链条。</p></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>运算能力五方面：<span class="pk">理解对象</span>（同类项）、<span class="pk">掌握法则</span>（合并/去括号/公式）、<span class="pk">选择方法</span>（平方差简化）、<span class="pk">实施运算</span>（准确不跳步）、<span class="pk">反思结果</span>（检验最简）。以整式运算各举一例说明。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="k-gold">
+    <h3>💡 得分技巧</h3>
+    <ul class="tips"><li>五方面核心词：<span class="pk">理解对象、掌握法则、选择方法、实施运算、反思结果</span>，顺序不能乱；</li>
+      <li>每方面必须配<b>整式运算的具体例子</b>——题目明确要求"以整式运算为例"；</li>
+      <li>例子要<b>具体</b>——写出具体算式，不能只说"例如合并同类项"而不给具体式子；</li>
+      <li>开头点题"运算能力是核心素养"，结尾总结"完整能力链条"；</li>
+      <li>选择运算方法一栏的例子最值分——体现<b>方法灵活性</b>是高阶能力。</li></ul>
+  </div>
+</section>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
+<footer><a href="解析.html">← 返回目录</a></footer>
+</div>
+</body>
+</html>

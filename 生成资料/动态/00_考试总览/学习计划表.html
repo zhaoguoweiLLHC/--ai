@@ -138,14 +138,14 @@ function renderPlan(data){
     if(m) return '<a href="'+ZT+year+'/'+m[1]+'.html" style="color:#1971c2;text-decoration:none">'+cell+'</a>';
     return cell;
   }
-  h+='<h2>二、真题进度追踪</h2><table><tr><th>年份</th><th>简答(主观)</th><th>论述</th><th>案例</th><th>设计</th><th>状态</th></tr>';
+  h+='<h2>二、真题进度追踪</h2><table><tr><th>年份</th><th>简答12</th><th>简答13</th><th>论述</th><th>案例</th><th>设计</th></tr>';
   data.progress.forEach(function(r){
     h+='<tr><td><a href="'+ZT+r.year+'/解析.html" style="color:#1971c2;text-decoration:none">'+r.year+'</a></td>'+
-        '<td>'+progressLink(r.year,r.简答)+'</td>'+
+        '<td>'+progressLink(r.year,r.简答12)+'</td>'+
+        '<td>'+progressLink(r.year,r.简答13)+'</td>'+
         '<td>'+progressLink(r.year,r.论述)+'</td>'+
         '<td>'+progressLink(r.year,r.案例)+'</td>'+
-        '<td>'+progressLink(r.year,r.设计)+'</td>'+
-        '<td>'+escapeHtml(r.状态)+'</td></tr>';
+        '<td>'+progressLink(r.year,r.设计)+'</td></tr>';
   });
   h+='</table>';
   // 附录

@@ -3,118 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2023上 · 第16题 · 案例分析</title>
+<title>2023上 · 第q16题</title>
 <style>
   :root{
     --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
     --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
   }
-  *{box-sizing:border-box}
-  body{margin:0;background:#f2f3f7;color:var(--ink);
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
        font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-       line-height:1.85;font-size:16px}
-  .wrap{max-width:860px;margin:0 auto;padding:28px 18px 60px}
-  section.card{background:#fff;border-radius:16px;padding:24px 26px;margin-bottom:20px;
-       box-shadow:0 2px 10px rgba(30,30,60,.07)}
-  .qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-  .qhead h2{font-size:19px;margin:0}
-  .badge{border-radius:8px;padding:2px 12px;font-size:13px;font-weight:600;white-space:nowrap}
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
   .b-an{background:#f08c00;color:#fff}
-  .score{color:var(--pink);font-weight:700;font-size:14px}
-  .origin{background:#f7f7fa;border-left:4px solid #b9bdc9;border-radius:8px;
-       padding:12px 16px;color:#555;font-size:15px;margin:12px 0}
-  .block{border-radius:12px;padding:14px 18px;margin:14px 0}
-  .block h3{margin:0 0 8px;font-size:15px}
-  .k-bibei{background:var(--pink-bg);border:1px solid #f6c3d6}
-  .k-bibei h3{color:var(--pink)}
-  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0}
-  .k-gold h3{color:var(--gold)}
-  a{color:#1971c2;text-decoration:underline;text-underline-offset:3px}
-  mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:4px}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
   .pk{color:var(--pink);font-weight:700}
-  .ex{background:#fff3bf;border-radius:8px;padding:2px 8px;color:#9a7b00}
-  .points{list-style:none;padding-left:4px}
-  .points>li{margin:10px 0}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
   .points .pt{font-weight:700;color:var(--pink)}
-  ul.tips{margin:6px 0;padding-left:20px}
-  ul.tips li{margin:6px 0}
-  .wait{color:#9aa0aa;text-align:center;padding:10px 0;font-size:14px}
-  footer{color:#9aa0aa;font-size:13px;text-align:center;margin-top:26px}
-  .back-link{position:fixed;top:12px;left:12px;z-index:200;background:rgba(255,255,255,.9);
-    border:1px solid #e8e8ee;border-radius:8px;padding:5px 14px;font-size:14px;
-    text-decoration:none;color:#1971c2;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-  .tabs{display:flex;gap:0;margin:14px 0 0;border-radius:12px 12px 0 0;overflow:hidden}
-  .tab-btn{flex:1;padding:10px 8px;border:none;background:#f2f3f7;font-size:14px;font-weight:600;
-    cursor:pointer;text-align:center;color:#8a8f98;border-bottom:3px solid transparent;transition:.2s}
-  .tab-btn.active-t{color:#fff}
-  .tab-btn[data-tab="t-full"].active-t{background:#eef6ff;color:#1971c2;border-bottom-color:#1971c2}
-  .tab-btn[data-tab="t-exam"].active-t{background:#e9f9ef;color:#2b8a3e;border-bottom-color:#2b8a3e}
-  .tab-btn[data-tab="t-life"].active-t{background:#ffecec;color:#c92a2a;border-bottom-color:#c92a2a}
-  .tab-content{display:none}
-  .tab-content.active-t{display:block}
-  .t-full{background:#eef6ff;border:1px solid #b6d6f7}
-  .t-exam{background:#e9f9ef;border:1px solid #b2e2c5}
-  .t-life{background:#ffecec;border:1px solid #ffc9c9}
-  details{margin:14px 0;padding:14px 18px;border-radius:12px;border:1px solid #f6c3d6;background:#fdeef4}
-  details summary::-webkit-details-marker{display:none}
-  details summary::before{content:"▸ ";font-size:12px}
-  details[open] summary::before{content:"▾ ";font-size:12px}
-  @media print{
-    body{background:#fff}
-    .wrap{max-width:none;padding:0}
-    section.card{box-shadow:none;border:1px solid #eee;break-inside:avoid}
-  }
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<a href="解析.html" class="back-link">← 返回目录</a>
-<section class="card" id="q16">
+<section class="card" id="qq16">
   <div class="qhead">
     <span class="badge b-an">案例分析</span>
     <h2>第 16 题 · 建立直线的点斜式方程 · 教学片段分析</h2>
     <span class="score">20 分</span>
   </div>
-
-  <div class="origin">
-    下面是某教师关于"建立直线的点斜式方程"的教学片段。<br><br>
-    问题：(1) 学生甲的回答正确吗？为什么？(2) 学生乙的回答不严谨，请说明理由并完善。（20分）
+  <div class="origin">某教师关于"建立直线的点斜式方程"的教学片段：<br>
+    教师：直线 l 经过点 P₀(x₀,y₀)，斜率为 k，设 P(x,y) 是直线 l 上不同于 P₀ 的任意一点，如何由 P₀、P(x,y) 两点的坐标表示直线的方程？<br>
+    学生甲：因为直线 l 经过点 P₀(x₀,y₀)、P(x,y) 两点，由过两点的直线斜率公式，得 (y-y₀)/(x-x₀)=k，我认为这就是直线 l 的方程。<br>
+    教师：直线 l 上任意点的坐标 (x,y) 都满足关系式 y-y₀=k(x-x₀) 吗？坐标满足关系式 y-y₀=k(x-x₀) 的每一个点都在直线 l 上吗？<br>
+    学生乙：由前面的直线方程就可以看出：直线 l 上每一个点的坐标 (x,y) 都满足关系式 y-y₀=k(x-x₀)；坐标满足关系式 y-y₀=k(x-x₀) 的每一个点显然也都在直线 l 上。<br>
+    问题：(1) 学生甲的回答正确吗？为什么？<br>
+    (2) 学生乙的回答不严谨，请说明理由并完善。</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><ul class="points">
+        <li>(1) <span class="pt">学生甲的回答基本正确，但不完整。</span></li>
+      </ul>
+      <p>甲由斜率公式 (y-y₀)/(x-x₀)=k 出发，得出 y-y₀=k(x-x₀)，<b>结论是正确的</b>。但存在以下不严谨之处：斜率公式 (y-y₀)/(x-x₀)=k 要求分母 x-x₀≠0，即 x≠x₀，此时仅说明了直线 l 上<b>除 P₀ 以外的点</b>满足方程。而点斜式方程 y-y₀=k(x-x₀) 对直线 l 上的<b>所有点</b>（包括 P₀）都成立。甲未说明当 x=x₀ 时（即 P=P₀），方程 y-y₀=k(x-x₀) 也成立，因此表述不完整。</p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li>(2) <span class="pt">学生乙的回答不严谨，理由及完善如下：</span></li>
+      </ul>
+      <p>学生乙说"显然"缺乏严格的逻辑论证。直线方程的建立需要证明<b>完备性</b>（直线上的点的坐标都满足方程）和<b>纯粹性</b>（满足方程的点都在直线上）两个方面，不能以"显然"代替证明。</p>
+      <p><b>完善如下：</b></p>
+      <p><b>正向（完备性）：</b>设 P(x,y) 是直线 l 上任一点。①若 P≠P₀，则 x≠x₀，由斜率公式得 (y-y₀)/(x-x₀)=k，即 y-y₀=k(x-x₀)，满足方程。②若 P=P₀，则 x=x₀, y=y₀，代入 y-y₀=k(x-x₀) 得 0=k·0=0，成立。故直线 l 上<b>所有点</b>的坐标都满足方程 y-y₀=k(x-x₀)。</p>
+      <p><b>反向（纯粹性）：</b>设点 Q(x,y) 的坐标满足 y-y₀=k(x-x₀)。①若 x=x₀，则 y=y₀，即 Q=P₀，在直线 l 上。②若 x≠x₀，则 (y-y₀)/(x-x₀)=k，说明 Q 与 P₀ 连线的斜率为 k，故 Q 在过 P₀ 且斜率为 k 的直线 l 上。故满足方程的<b>所有点</b>都在直线 l 上。</p>
+      <p>综上，y-y₀=k(x-x₀) 是直线 l 的方程，称为直线的<b>点斜式方程</b>。</p></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题：</span>两问。问①判断学生甲的回答是否正确——甲用斜率公式 (y-y₀)/(x-x₀)=k 得出方程，<b>方向正确但表述不完整</b>，因为该式要求 x≠x₀，遗漏了 x=x₀ 的情形。问②学生乙说"显然"不严谨——<b>需要给出严格的正向和反向验证</b>。</li>
+      <li><span class="pt">② 定框架：</span>问①先下判断（基本正确但不完整），再说明理由（斜率公式有 x≠x₀ 的限制）。问②指出乙的"显然"缺乏论证，需分别证明<b>正向</b>（直线上点→满足方程）和<b>反向</b>（满足方程→在直线上），即方程的"纯粹性"和"完备性"。</li>
+      <li><span class="pt">③ 填内容：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>问①：甲用斜率公式得 (y-y₀)/(x-x₀)=k，化为 y-y₀=k(x-x₀)，<b>结论正确</b>。但斜率公式 (y-y₀)/(x-x₀)=k 要求 x≠x₀，而点斜式方程 y-y₀=k(x-x₀) 对<b>所有 x 都成立</b>（包括 x=x₀），甲未说明此转化，表述不完整。</li>
+          <li>问②：乙说"显然"不严谨。需完善：<b>正向</b>——设 P(x,y) 是直线 l 上任一点，若 P≠P₀ 则 (y-y₀)/(x-x₀)=k，即 y-y₀=k(x-x₀)；若 P=P₀ 则 x=x₀, y=y₀，代入 y-y₀=k(x-x₀) 也成立。<b>反向</b>——设 (x,y) 满足 y-y₀=k(x-x₀)，若 x=x₀ 则 y=y₀ 即 P=P₀ 在直线 l 上；若 x≠x₀ 则 (y-y₀)/(x-x₀)=k，斜率为 k 且过 P₀，故 P 在直线 l 上。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><ul class="points">
+        <li>(1) <span class="pt">甲基本正确但不完整。</span>甲由斜率公式 (y-y₀)/(x-x₀)=k 得 y-y₀=k(x-x₀)，结论正确。但斜率公式要求 x≠x₀，仅说明 P₀ 以外的点满足方程，未验证 x=x₀（即 P₀）时方程也成立，表述不完整。</li>
+      </ul>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li>(2) <span class="pt">乙说"显然"不严谨，需分别证明完备性和纯粹性。</span></li>
+      </ul>
+      <p><b>完备性</b>（直线上→满足方程）：设 P(x,y) 在直线 l 上。若 P≠P₀，由斜率公式得 y-y₀=k(x-x₀)；若 P=P₀，则 x=x₀, y=y₀ 代入成立。故直线上所有点满足方程。</p>
+      <p><b>纯粹性</b>（满足方程→在直线上）：设 Q(x,y) 满足 y-y₀=k(x-x₀)。若 x=x₀ 则 y=y₀，Q=P₀ 在直线上；若 x≠x₀ 则 (y-y₀)/(x-x₀)=k，斜率为 k 且过 P₀，Q 在直线 l 上。故满足方程的点都在直线上。</p>
+      <p>综上，y-y₀=k(x-x₀) 是直线 l 的点斜式方程。</p></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>(1) 甲<span class="pk">基本正确但不完整</span>：斜率公式要求 x≠x₀，未验证 P₀ 点也满足方程。</p>
+      <p>(2) 乙"显然"不严谨，需证<span class="pk">完备性</span>（直线上点→满足方程，分 P≠P₀ 和 P=P₀ 讨论）和<span class="pk">纯粹性</span>（满足方程→在直线上，分 x=x₀ 和 x≠x₀ 讨论），两个方向都要严格证明。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
   </div>
-
-  <details class="block k-bibei">
-    <summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导</summary>
-    <div class="wait">待生成</div>
-  </details>
-
-  <div class="tabs">
-    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版</button>
-    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版</button>
-    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版</button>
-  </div>
-  <div class="tab-content active-t" id="t-full">
-    <div class="block t-full"><div class="wait">待生成</div></div>
-  </div>
-  <div class="tab-content" id="t-exam">
-    <div class="block t-exam"><div class="wait">待生成</div></div>
-  </div>
-  <div class="tab-content" id="t-life">
-    <div class="block t-life"><div class="wait">待生成</div></div>
-  </div>
-
-  <div class="block k-gold">
+  <div class="k-gold">
     <h3>💡 得分技巧</h3>
-    <div class="wait">待生成</div>
+    <ul class="tips"><li>问①先下判断句"<b>基本正确但不完整</b>"，再说理由——不能只说"正确"或只说"错误"；</li>
+      <li>核心得分点：指出斜率公式有 <span class="pk">x≠x₀ 的限制</span>，而方程 y-y₀=k(x-x₀) 对所有 x 成立；</li>
+      <li>问②核心词：<span class="pk">完备性</span>（直线上→满足方程）+ <span class="pk">纯粹性</span>（满足方程→在直线上），写出这两个词即被识别；</li>
+      <li>证明必须<b>分类讨论</b>：正向分 P≠P₀ 和 P=P₀，反向分 x=x₀ 和 x≠x₀；</li>
+      <li>"显然"是案例分析题的典型错误——凡是学生用"显然"的，都需指出<span class="pk">缺乏严格论证</span>。</li></ul>
   </div>
-
 </section>
-<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></div>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
 <footer><a href="解析.html">← 返回目录</a></footer>
-<script>
-function switchTab(id){
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
-  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
-}
-</script>
 </div>
 </body>
 </html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2022上 · 第q17题</title>
+<style>
+  :root{
+    --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
+    --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
+       font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
+  .b-an{background:#f08c00;color:#fff}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
+  .pk{color:var(--pink);font-weight:700}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
+  .points .pt{font-weight:700;color:var(--pink)}
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="card" id="qq17">
+  <div class="qhead">
+    <span class="badge b-she">教学设计</span>
+    <h2>第 17 题 · 空间中直线与平面的位置关系 · 教学设计</h2>
+    <span class="score">30 分</span>
+  </div>
+  <div class="origin">下面是高中必修二教材"空间中直线与平面的位置关系"中的部分内容。完成下列任务：<br>
+    (1) 画出直线与平面的位置关系的示意图，并举出生活中体现这三种位置关系的实例；（12分）<br>
+    (2) 写出这部分内容的教学设计，包括教学目标、教学重难点、教学过程（含引导学生探究的活动和设计意图）。（18分）</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><p><b>(1) 直线与平面的三种位置关系</b></p>
+      <p>设直线 l，平面 α，直线与平面的位置关系有三种：</p>
+      <ul class="points">
+        <li><span class="pt">① 直线在平面内（l⊂α）：</span>直线 l 上<b>所有点</b>都在平面 α 内，即直线与平面有<b>无数个公共点</b>。<br>
+          <b>示意图：</b>画一个平行四边形表示平面 α，在 α 内画一条直线 l。<br>
+          <b>生活实例：</b>放在桌面上的铅笔，铅笔所在的直线在桌面所在的平面内。</li>
+        <li><span class="pt">② 直线与平面相交（l∩α=P）：</span>直线 l 与平面 α <b>有且只有一个公共点</b> P。<br>
+          <b>示意图：</b>画一个平行四边形表示平面 α，画一条直线 l 穿过 α，交点为 P（可见部分实线，被遮挡部分虚线）。<br>
+          <b>生活实例：</b>插在地面上的旗杆，旗杆所在直线与地面所在平面相交于一点。</li>
+        <li><span class="pt">③ 直线与平面平行（l∥α）：</span>直线 l 与平面 α <b>没有公共点</b>。<br>
+          <b>示意图：</b>画一个平行四边形表示平面 α，在 α 外画一条直线 l 与 α 无交点。<br>
+          <b>生活实例：</b>天花板上的日光灯管与地面平行——灯管所在直线与地面所在平面没有公共点。</li>
+      </ul>
+
+      <p><b>(2) 教学设计</b></p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li><span class="pt">教学目标：</span><br>
+          ①知识与技能：理解直线与平面的三种位置关系，能画出示意图并举出实例。<br>
+          ②过程与方法：通过观察实物和归纳分类，体会空间位置关系的分类思想，发展<b>直观想象</b>素养。<br>
+          ③情感态度与价值观：从生活中发现数学，感受数学与生活的联系，激发学习立体几何的兴趣。</li>
+        <li><span class="pt">教学重难点：</span>重点——直线与平面的三种位置关系及其特征。难点——空间想象能力的培养，从实物中抽象出几何位置关系。</li>
+      </ul>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li><span class="pt">环节一：情境引入</span><br>
+          <b>教师活动：</b>教师展示实物——桌面上的笔、插在地上的旗杆（图片）、天花板上的灯管（图片），提问：这些直线与所在平面有什么不同的位置关系？<br>
+          <b>学生活动：</b>学生观察实物，展开独立思考或小组讨论。<br>
+          <b>设计意图：</b>以生活实例引入，激发兴趣，让学生直观感受直线与平面有不同的位置关系，为分类探究做铺垫。</li>
+        <li><span class="pt">环节二：探究分类</span><br>
+          <b>教师活动：</b>教师提出目标问题——直线与平面有几种位置关系？如何分类？组织学生四人一组讨论，教师巡视指导。<br>
+          <b>学生活动：</b>学生按公共点个数分类：无数个公共点→直线在平面内；一个公共点→相交；无公共点→平行。在教师引导下画出三种示意图。<br>
+          <b>教师活动：</b>引导学生总结三种位置关系的定义和特征，强调分类标准是<b>公共点个数</b>。<br>
+          <b>设计意图：</b>学生经历"观察实物→归纳分类→画图表征"的完整过程，发展直观想象素养，体会分类讨论思想。</li>
+        <li><span class="pt">环节三：巩固应用</span><br>
+          <b>教师活动：</b>展示练习题，引导学生判断给定直线与平面的位置关系并画图。<br>
+          <b>学生活动：</b>练习1——判断正方体中棱所在直线与各面的位置关系；练习2——举出生活中三种位置关系的其他实例。<br>
+          <b>设计意图：</b>通过正方体模型巩固知识，培养空间想象能力；联系生活加深理解。</li>
+        <li><span class="pt">环节四：小结作业</span><br>
+          <b>小结：</b>教师引导学生总结三种位置关系及分类标准，利用多种方式评价总结。<br>
+          <b>作业：</b>完成课后练习，观察教室中的直线与平面的位置关系并记录。<br>
+          <b>设计意图：</b>小结检验重点掌握情况；作业联系生活再巩固。</li>
+      </ul></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题：</span>两问。问①画<b>三种位置关系的示意图</b>+举<b>生活实例</b>（知识题12分）。问②教学设计（目标+重难点+过程含探究和意图，18分）。</li>
+      <li><span class="pt">② 定框架：</span>问①——直线与平面的三种位置关系：①直线在平面内（有无数公共点）；②直线与平面相交（有且只有一个公共点）；③直线与平面平行（无公共点）。各画示意图+举例。问②——教学设计五环节：目标（三维）→重难点→过程（情境引入、探究分类、巩固应用、小结作业）。</li>
+      <li><span class="pt">③ 填内容：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>直线在平面内：如笔在桌面上</li>
+          <li>直线与平面相交：如旗杆与地面</li>
+          <li>直线与平面平行：如天花板上的日光灯管与地面</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p><b>(1) 三种位置关系：</b></p>
+      <ul class="points">
+        <li><span class="pt">①直线在平面内：</span>无数公共点。图：直线画在平面内。例：桌面上的笔。</li>
+        <li><span class="pt">②直线与平面相交：</span>有且只有一个公共点。图：直线穿过平面。例：地面上的旗杆。</li>
+        <li><span class="pt">③直线与平面平行：</span>无公共点。图：直线在平面外不穿过。例：天花板灯管与地面。</li>
+      </ul>
+      <p><b>(2) 教学设计</b></p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li><span class="pt">教学目标：</span>①理解三种位置关系，能画图举例；②通过观察归纳体会分类思想，发展直观想象素养；③感受数学与生活的联系。</li>
+        <li><span class="pt">重难点：</span>重点——三种位置关系及特征。难点——从实物抽象几何关系。</li>
+        <li><span class="pt">情境引入：</span>展示实物（笔、旗杆、灯管），提问不同位置关系。意图：激发兴趣，直观感受。</li>
+        <li><span class="pt">探究分类：</span>按公共点个数分类→画图→总结定义。意图：归纳分类，发展直观想象。</li>
+        <li><span class="pt">巩固应用：</span>正方体中判断位置关系+生活实例。意图：巩固知识，培养空间想象。</li>
+        <li><span class="pt">小结作业：</span>总结三种关系+观察教室实例。意图：再巩固。</li>
+      </ul></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>(1) ①<span class="pk">在平面内</span>（无数公共点，桌面上的笔）；②<span class="pk">相交</span>（一个公共点，旗杆与地面）；③<span class="pk">平行</span>（无公共点，灯管与地面）。</p>
+      <p>(2) 目标：理解三种关系+画图举例。重点：三种关系及特征。<br>
+      引入：实物观察。意图：<span class="pk">激发兴趣</span>。<br>
+      探究：按公共点分类→画图→定义。意图：<span class="pk">归纳分类</span>。<br>
+      巩固：正方体判断+生活实例。意图：培养空间想象。<br>
+      小结作业：总结+观察教室。意图：再巩固。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="k-gold">
+    <h3>💡 得分技巧</h3>
+    <ul class="tips"><li>问①三种关系的<b>分类标准</b>是<span class="pk">公共点个数</span>（无数/一个/零），必须说清楚；</li>
+      <li>每种关系都要画<b>示意图</b>+举<b>生活实例</b>，缺一扣分；</li>
+      <li>问②每个环节都要写<b>"设计意图"</b>；</li>
+      <li>探究环节核心得分词：<span class="pk">分类讨论</span>、<span class="pk">公共点个数</span>、<span class="pk">直观想象</span>；</li>
+      <li>巩固环节用<b>正方体模型</b>是经典素材，贴合立体几何教学。</li></ul>
+  </div>
+</section>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
+<footer><a href="解析.html">← 返回目录</a></footer>
+</div>
+</body>
+</html>

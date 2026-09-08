@@ -3,115 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2023上 · 第15题 · 论述题</title>
+<title>2023上 · 第q15题</title>
 <style>
   :root{
     --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
     --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
   }
-  *{box-sizing:border-box}
-  body{margin:0;background:#f2f3f7;color:var(--ink);
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
        font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-       line-height:1.85;font-size:16px}
-  .wrap{max-width:860px;margin:0 auto;padding:28px 18px 60px}
-  section.card{background:#fff;border-radius:16px;padding:24px 26px;margin-bottom:20px;
-       box-shadow:0 2px 10px rgba(30,30,60,.07)}
-  .qhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-  .qhead h2{font-size:19px;margin:0}
-  .badge{border-radius:8px;padding:2px 12px;font-size:13px;font-weight:600;white-space:nowrap}
-  .b-lun{background:var(--pink);color:#fff}
-  .score{color:var(--pink);font-weight:700;font-size:14px}
-  .origin{background:#f7f7fa;border-left:4px solid #b9bdc9;border-radius:8px;
-       padding:12px 16px;color:#555;font-size:15px;margin:12px 0}
-  .block{border-radius:12px;padding:14px 18px;margin:14px 0}
-  .block h3{margin:0 0 8px;font-size:15px}
-  .k-bibei{background:var(--pink-bg);border:1px solid #f6c3d6}
-  .k-bibei h3{color:var(--pink)}
-  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0}
-  .k-gold h3{color:var(--gold)}
-  a{color:#1971c2;text-decoration:underline;text-underline-offset:3px}
-  mark{background:#d0ebff;color:#1971c2;padding:0 3px;border-radius:4px}
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
+  .b-an{background:#f08c00;color:#fff}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
   .pk{color:var(--pink);font-weight:700}
-  .ex{background:#fff3bf;border-radius:8px;padding:2px 8px;color:#9a7b00}
-  .points{list-style:none;padding-left:4px}
-  .points>li{margin:10px 0}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
   .points .pt{font-weight:700;color:var(--pink)}
-  ul.tips{margin:6px 0;padding-left:20px}
-  ul.tips li{margin:6px 0}
-  .wait{color:#9aa0aa;text-align:center;padding:10px 0;font-size:14px}
-  footer{color:#9aa0aa;font-size:13px;text-align:center;margin-top:26px}
-  .back-link{position:fixed;top:12px;left:12px;z-index:200;background:rgba(255,255,255,.9);
-    border:1px solid #e8e8ee;border-radius:8px;padding:5px 14px;font-size:14px;
-    text-decoration:none;color:#1971c2;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-  .tabs{display:flex;gap:0;margin:14px 0 0;border-radius:12px 12px 0 0;overflow:hidden}
-  .tab-btn{flex:1;padding:10px 8px;border:none;background:#f2f3f7;font-size:14px;font-weight:600;
-    cursor:pointer;text-align:center;color:#8a8f98;border-bottom:3px solid transparent;transition:.2s}
-  .tab-btn.active-t{color:#fff}
-  .tab-btn[data-tab="t-full"].active-t{background:#eef6ff;color:#1971c2;border-bottom-color:#1971c2}
-  .tab-btn[data-tab="t-exam"].active-t{background:#e9f9ef;color:#2b8a3e;border-bottom-color:#2b8a3e}
-  .tab-btn[data-tab="t-life"].active-t{background:#ffecec;color:#c92a2a;border-bottom-color:#c92a2a}
-  .tab-content{display:none}
-  .tab-content.active-t{display:block}
-  .t-full{background:#eef6ff;border:1px solid #b6d6f7}
-  .t-exam{background:#e9f9ef;border:1px solid #b2e2c5}
-  .t-life{background:#ffecec;border:1px solid #ffc9c9}
-  details{margin:14px 0;padding:14px 18px;border-radius:12px;border:1px solid #f6c3d6;background:#fdeef4}
-  details summary::-webkit-details-marker{display:none}
-  details summary::before{content:"▸ ";font-size:12px}
-  details[open] summary::before{content:"▾ ";font-size:12px}
-  @media print{
-    body{background:#fff}
-    .wrap{max-width:none;padding:0}
-    section.card{box-shadow:none;border:1px solid #eee;break-inside:avoid}
-  }
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<a href="解析.html" class="back-link">← 返回目录</a>
-<section class="card" id="q15">
+<section class="card" id="qq15">
   <div class="qhead">
     <span class="badge b-lun">论述题</span>
     <h2>第 15 题 · 对数的概念与运算性质</h2>
     <span class="score">15 分</span>
   </div>
-
-  <div class="origin">写出对数的概念和3条运算性质，并结合对数的运算性质谈谈你对对数加法运算与乘法运算互相转化的认识。（15分）</div>
-
-  <details class="block k-bibei">
-    <summary style="font-size:15px;font-weight:700;color:#e5487c;cursor:pointer;list-style:none">🧠 推导</summary>
-    <div class="wait">待生成</div>
-  </details>
-
-  <div class="tabs">
-    <button class="tab-btn active-t" data-tab="t-full" onclick="switchTab('t-full')">🏆 满分版</button>
-    <button class="tab-btn" data-tab="t-exam" onclick="switchTab('t-exam')">🎯 考场版</button>
-    <button class="tab-btn" data-tab="t-life" onclick="switchTab('t-life')">🛟 救急版</button>
+  <div class="origin">写出对数的概念和3条运算性质，并结合对数的运算性质谈谈你对对数加法运算与乘法运算互相转化的认识。</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><p><b>一、对数的概念</b></p>
+      <p>一般地，如果 <b>aᵇ = N</b>（a>0且a≠1，N>0），那么 b 叫做以 a 为底 N 的对数，记作 <b>b = logₐN</b>。其中 a 叫做对数的底数，N 叫做真数。</p>
+      <p><b>二、对数的运算性质</b></p>
+      <p>设 a>0且a≠1，M>0，N>0，则：</p>
+      <ul class="points">
+        <li><span class="pt">性质1：</span>logₐ(M·N) = logₐM + logₐN ——两个正数积的对数等于各因子对数的和。</li>
+        <li><span class="pt">性质2：</span>logₐ(M/N) = logₐM - logₐN ——两个正数商的对数等于被除数的对数减去除数的对数。</li>
+        <li><span class="pt">性质3：</span>logₐMⁿ = n·logₐM（n∈R）——正数幂的对数等于幂指数乘以该数的对数。</li>
+      </ul>
+      <p><b>三、对数加法运算与乘法运算互相转化的认识</b></p>
+      <p>由性质1可知，<b>两个正数乘积的对数等于各自对数的和</b>，即 logₐ(MN) = logₐM + logₐN。这表明：在真数层面进行的<b>乘法运算</b>，在对数层面转化为<b>加法运算</b>；反过来，对数层面的<b>加法运算</b>，也对应真数层面的<b>乘法运算</b>。</p>
+      <p>这一转化关系体现了对数的核心价值——<b>运算降级</b>。具体而言：真数的乘法降为对数的加法（性质1），真数的除法降为对数的减法（性质2），真数的幂运算降为对数的乘法（性质3）。<span class="ex">例：计算 2³×2⁵ 时，取以2为底的对数得 log₂(2³×2⁵) = 3+5 = 8，将乘法转化为加法，大大简化了计算。</span>正是这种运算降级的特性，使对数在历史上成为重要的计算工具，也为现代数学中简化复杂运算提供了理论基础。</p></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题 · 三个任务：</span>任务一写<b>对数的概念</b>（定义）；任务二写<b>3条运算性质</b>（背记，固定三条）；任务三结合运算性质谈<b>对数加法与乘法互相转化</b>的认识（理解论述）。分值<b>15分</b>，概念3分＋性质6分（每条2分）＋认识6分。</li>
+      <li><span class="pt">② 定框架：</span>概念→性质（3条）→认识（论述），顺序不能乱。认识部分核心逻辑：<b>对数加法＝真数乘法</b>，即 logₐM + logₐN = logₐ(MN)，将乘法运算降为加法运算，这是对数发明的核心价值——简化运算。</li>
+      <li><span class="pt">③ 填内容：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>概念：若 aᵇ = N（a>0且a≠1，N>0），则 b 叫做以 a 为底 N 的对数，记作 b = logₐN</li>
+          <li>性质1：logₐ(M·N) = logₐM + logₐN（积的对数＝对数的和）</li>
+          <li>性质2：logₐ(M/N) = logₐM - logₐN（商的对数＝对数的差）</li>
+          <li>性质3：logₐMⁿ = n·logₐM（幂的对数＝指数乘以对数）</li>
+          <li>认识：性质1将<b>真数的乘法</b>转化为<b>对数的加法</b>，性质3将<b>真数的幂运算</b>转化为<b>对数的乘法</b>，整体体现"降级运算"思想——高一级运算降为低一级运算，这是对数作为计算工具的核心价值</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p><b>一、概念：</b>若 aᵇ = N（a>0且a≠1，N>0），则 b 叫做以 a 为底 N 的对数，记作 b = logₐN。a 为底数，N 为真数。</p>
+      <p><b>二、运算性质</b>（a>0且a≠1，M>0，N>0）：</p>
+      <ul class="points">
+        <li><span class="pt">性质1：</span>logₐ(M·N) = logₐM + logₐN</li>
+        <li><span class="pt">性质2：</span>logₐ(M/N) = logₐM - logₐN</li>
+        <li><span class="pt">性质3：</span>logₐMⁿ = n·logₐN</li>
+      </ul>
+      <p><b>三、认识：</b>由性质1，logₐ(MN) = logₐM + logₐN，<b>真数的乘法</b>在对数层面转化为<b>加法</b>，反之对数的加法对应真数的乘法。这体现<b>运算降级</b>思想：乘法降为加法、幂运算降为乘法，简化了复杂运算，是对数作为计算工具的核心价值。</p></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p><b>概念：</b>aᵇ=N ⟹ b=logₐN（a>0,a≠1,N>0）。</p>
+      <p><b>三条性质：</b>①logₐ(MN)=logₐM+logₐN；②logₐ(M/N)=logₐM-logₐN；③logₐMⁿ=n·logₐM。</p>
+      <p><b>认识：</b><span class="pk">真数乘法⇄对数加法</span>，体现<span class="pk">运算降级</span>——乘法降为加法、幂降为乘法，简化计算是对数的核心价值。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
   </div>
-  <div class="tab-content active-t" id="t-full">
-    <div class="block t-full"><div class="wait">待生成</div></div>
-  </div>
-  <div class="tab-content" id="t-exam">
-    <div class="block t-exam"><div class="wait">待生成</div></div>
-  </div>
-  <div class="tab-content" id="t-life">
-    <div class="block t-life"><div class="wait">待生成</div></div>
-  </div>
-
-  <div class="block k-gold">
+  <div class="k-gold">
     <h3>💡 得分技巧</h3>
-    <div class="wait">待生成</div>
+    <ul class="tips"><li>概念必须写全三个要素：<span class="pk">aᵇ=N</span> + <span class="pk">条件 a>0且a≠1</span> + <span class="pk">记法 b=logₐN</span>，缺条件扣分；</li>
+      <li>三条性质必须标注<span class="pk">前提条件 M>0, N>0</span>，不写前提是常见失分点；</li>
+      <li>认识部分核心金句：<span class="pk">"运算降级"</span>——乘法降为加法、幂降为乘法，写出即被阅卷识别；</li>
+      <li>性质3的指数 n 是<b>任意实数</b>，不能只写正整数；</li>
+      <li>15分论述题首尾点题，认识部分至少3句话，不能只写一句结论。</li></ul>
   </div>
-
 </section>
-<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></div>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
 <footer><a href="解析.html">← 返回目录</a></footer>
-<script>
-function switchTab(id){
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active-t',b.dataset.tab===id)});
-  document.querySelectorAll('.tab-content').forEach(function(c){c.classList.toggle('active-t',c.id===id)});
-}
-</script>
 </div>
 </body>
 </html>

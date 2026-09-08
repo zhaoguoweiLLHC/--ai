@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2021上 · 第q17题</title>
+<style>
+  :root{
+    --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
+    --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
+       font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#0ca678;color:#fff}
+  .b-lun{background:#e5487c;color:#fff}
+  .b-an{background:#f08c00;color:#fff}
+  .b-jie{background:#5b8def;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
+  .pk{color:var(--pink);font-weight:700}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
+  .points .pt{font-weight:700;color:var(--pink)}
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="card" id="qq17">
+  <div class="qhead">
+    <span class="badge b-she">教学设计</span>
+    <h2>第 17 题 · 等比数列前n项和公式 · 三问设计</h2>
+    <span class="score">30 分</span>
+  </div>
+  <div class="origin">"等比数列前n项和公式"是普通高中数学教学的重要内容，请完成下列任务：<br>
+    (1) 设计一组问题，说明学习"等比数列前n项和公式"的重要性；（10分）<br>
+    (2) 写出等比数列前n项和公式，并给出两种不同的推导方法；（10分）<br>
+    (3) 针对其中一种推导方法写出教学过程。（10分）</div>
+  <div class="tiers-row">
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版</div>
+      <div class="tier-body tier-full-b"><p><b>(1) 设计问题组说明学习等比数列前n项和的重要性</b></p>
+      <p>设计如下递进问题组：</p>
+      <ul class="points">
+        <li><span class="pt">问题1（生活情境）：</span>某种细菌每分裂一次数量翻倍，初始有1个细菌，分裂10次后共有多少个细菌？（列出算式：1+2+4+…+2⁹=?）</li>
+        <li><span class="pt">问题2（引出需求）：</span>上述算式是等比数列求和，逐项相加可行吗？如果分裂100次呢？有没有简便公式？</li>
+        <li><span class="pt">问题3（知识联系）：</span>我们已学了等比数列的通项公式，能否利用通项的特征找到求和的方法？</li>
+        <li><span class="pt">问题4（应用价值）：</span>储蓄复利、传染病传播、折旧计算中都涉及等比数列求和，掌握公式能解决哪些实际问题？</li>
+      </ul>
+      <p>通过这组问题，从生活实例引出求和需求，激发探究动机，体现等比数列求和公式的<b>现实意义和应用价值</b>。</p>
+
+      <p><b>(2) 公式及两种推导方法</b></p>
+      <p><b>公式：</b>等比数列 {aₙ}（公比 q），前 n 项和 Sₙ = <b>a₁(1-qⁿ)/(1-q)</b>（q≠1）；当 q=1 时，Sₙ=na₁。</p>
+      <p><b>方法一：错位相减法。</b></p>
+      <p>Sₙ = a₁ + a₁q + a₁q² + … + a₁qⁿ⁻¹  ……①</p>
+      <p>qSₙ = a₁q + a₁q² + … + a₁qⁿ  ……②</p>
+      <p>①-②：(1-q)Sₙ = a₁ - a₁qⁿ = a₁(1-qⁿ)，所以 Sₙ = a₁(1-qⁿ)/(1-q)（q≠1）。</p>
+      <p><b>方法二：利用等比定理（提取公比法）。</b></p>
+      <p>Sₙ = a₁ + a₁q + a₁q² + … + a₁qⁿ⁻¹ = a₁(1 + q + q² + … + qⁿ⁻¹)。</p>
+      <p>令 T = 1 + q + q² + … + qⁿ⁻¹，则 qT = q + q² + … + qⁿ，T - qT = 1 - qⁿ，T = (1-qⁿ)/(1-q)（q≠1）。</p>
+      <p>所以 Sₙ = a₁·(1-qⁿ)/(1-q)。</p>
+      <p><b>注：</b>两种方法本质相同（都是利用等比数列"乘q后错位"的特征消去中间项），但切入点不同：方法一直接对 Sₙ 操作，方法二先提取 a₁ 再处理。</p>
+
+      <p><b>(3) 错位相减法的教学过程</b></p>
+      <ul class="points" style="list-style:none;padding-left:4px">
+        <li><span class="pt">环节一：回顾引入</span><br>
+          教师回顾等比数列定义和通项公式，提出问题：如何求 Sₙ=a₁+a₁q+…+a₁qⁿ⁻¹？引导学生观察等比数列的特征——每项乘q得下一项。<br>
+          <b>设计意图：</b>从已有知识出发，引导学生发现等比数列的结构特征，为探究错位相减法做铺垫。</li>
+        <li><span class="pt">环节二：探究推导</span><br>
+          教师提问：既然每项乘q得下一项，能否利用这一关系？组织学生讨论。学生尝试：两边乘q得 qSₙ，与原式<b>错位相减</b>，中间项全部消去，只剩 a₁ 和 a₁qⁿ，得到 (1-q)Sₙ=a₁(1-qⁿ)。<br>
+          <b>设计意图：</b>学生经历"观察特征→尝试方法→推导公式"的完整过程，体会错位相减法的巧妙，发展逻辑推理与数学运算素养。</li>
+        <li><span class="pt">环节三：归纳讨论</span><br>
+          教师引导学生整理公式 Sₙ=a₁(1-qⁿ)/(1-q)（q≠1），讨论 q=1 的特例（Sₙ=na₁）。<br>
+          <b>设计意图：</b>分类讨论q=1的特例，培养严谨思维。</li>
+        <li><span class="pt">环节四：巩固应用</span><br>
+          练习：求具体等比数列的前n项和，首尾呼应解决问题1中的细菌数量问题。<br>
+          <b>设计意图：</b>巩固公式应用，首尾呼应。</li>
+      </ul></div>
+            <div class="derive-box derive-full">
+        <div class="derive-title">🧠 推导</div>
+        <ul><li><span class="pt">① 审题：</span>三问。问①设计<b>问题组</b>说明学习重要性（10分，设计题）；问②写出公式+<b>两种推导方法</b>（10分，知识题）；问③针对一种方法写<b>教学过程</b>（10分，教学设计题）。</li>
+      <li><span class="pt">② 定框架：</span>问①——从生活实例（细胞分裂、传染病传播、储蓄复利）设计递进问题组，引出求和需求。问②——公式 Sₙ=a₁(1-qⁿ)/(1-q)（q≠1），两种方法：①<b>错位相减法</b>（S与qS错位相减）；②<b>分组求和法/等比定理法</b>（利用等比性质）。问③——选错位相减法写教学过程。</li>
+      <li><span class="pt">③ 填内容：</span>
+        <ul style="padding-left:20px;margin:6px 0">
+          <li>问题组：细胞分裂→1+2+4+…+2⁶³=? →引出求和需求</li>
+          <li>两种推导：错位相减法 + 利用等比数列定义分组法</li>
+          <li>教学过程：回顾引入→探究推导→归纳公式→巩固应用</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版</div>
+      <div class="tier-body tier-exam-b"><p><b>(1) 问题组：</b>①细菌分裂10次共多少个？(1+2+…+2⁹=?) ②逐项相加可行吗？100次呢？有无公式？③能否利用通项特征求和？④复利、传播等实际问题中如何应用？</p>
+
+      <p><b>(2) 公式：</b>Sₙ=<b>a₁(1-qⁿ)/(1-q)</b>（q≠1），q=1时Sₙ=na₁。</p>
+      <p><b>方法一·错位相减法：</b>S=a₁+…+a₁qⁿ⁻¹①，qS=a₁q+…+a₁qⁿ②，①-②得(1-q)S=a₁(1-qⁿ)→S=a₁(1-qⁿ)/(1-q)。</p>
+      <p><b>方法二·提取公比法：</b>S=a₁(1+q+…+qⁿ⁻¹)，令T=1+q+…+qⁿ⁻¹，qT=q+…+qⁿ，T-qT=1-qⁿ→T=(1-qⁿ)/(1-q)→S=a₁(1-qⁿ)/(1-q)。</p>
+
+      <p><b>(3) 教学过程（错位相减法）：</b></p>
+      <ul class="points">
+        <li><span class="pt">引入：</span>回顾通项，提出求和问题，引导观察"乘q得下一项"特征。意图：铺垫。</li>
+        <li><span class="pt">探究：</span>两边乘q→错位相减→中间项消去→(1-q)S=a₁(1-qⁿ)。意图：探究发现，发展运算素养。</li>
+        <li><span class="pt">归纳：</span>整理公式+讨论q=1特例。意图：培养严谨思维。</li>
+        <li><span class="pt">巩固：</span>求具体数列和+解决细菌问题。意图：巩固应用，首尾呼应。</li>
+      </ul></div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul><li>从满分版砍例子和展开说明，保留核心结论句。</li><li>砍掉黄色例子，黑色结论句一字不砍。</li></ul>
+      </div>
+    </div>
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版</div>
+      <div class="tier-body tier-life-b"><p>(1) 问题组：细菌分裂→逐项加太慢→有无公式→实际应用。<br>
+      (2) <span class="pk">S=a₁(1-qⁿ)/(1-q)</span>（q≠1）。法一<span class="pk">错位相减</span>（S-qS消中间项）；法二<span class="pk">提取公比</span>（令T=1+q+…+qⁿ⁻¹）。<br>
+      (3) 引入→探究（乘q错位相减）→归纳（公式+q=1特例）→巩固。意图：<span class="pk">探究发现</span>。</p></div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul><li>不会时写通用框架+得分关键词，不依赖具体内容也能拿结构分。</li><li>分点作答、写环节名称、写课标术语——这三样不依赖具体知识。</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="k-gold">
+    <h3>💡 得分技巧</h3>
+    <ul class="tips"><li>问①问题组必须<b>递进</b>：生活实例→引出需求→知识联系→应用价值，不能平行提问；</li>
+      <li>问②两种方法必须<b>不同</b>：错位相减法 + 提取公比法（或等比定理法），不能写两个一样的；</li>
+      <li>公式必须讨论<b>q=1特例</b>（S=na₁），不讨论扣分；</li>
+      <li>问③每个环节都要写<b>"设计意图"</b>；</li>
+      <li>核心得分词：<span class="pk">错位相减</span>、<span class="pk">中间项消去</span>、<span class="pk">乘q得下一项</span>。</li></ul>
+  </div>
+</section>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明 →</a></div>
+<footer><a href="解析.html">← 返回目录</a></footer>
+</div>
+</body>
+</html>
