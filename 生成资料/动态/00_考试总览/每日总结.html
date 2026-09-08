@@ -49,8 +49,8 @@ function renderSummary(data){
   data.schedule.forEach(function(r){
     var parts=r.date.split('/');
     var rowDate=new Date(now.getFullYear(),parseInt(parts[0])-1,parseInt(parts[1]));
-    // 只显示历史日期（今天之前）
-    if(rowDate >= today0) return;
+    // 只显示历史日期和今天
+    if(rowDate > today0) return;
 
     // 期望计划：拆分任务
     var planTasks=r.tasks.split(/ (?=[\u{1f319}\u{1f3e2}\u{1f305}\u2600\ufe0f])/u);
