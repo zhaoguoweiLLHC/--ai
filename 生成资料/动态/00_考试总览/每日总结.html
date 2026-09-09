@@ -34,9 +34,11 @@
 <a href="学习计划表.html" class="back-link">← 返回计划表</a>
 <h1>每日总结 <small>期望计划 vs 实际执行</small></h1>
 
-<blockquote>每天晚上0.5h：对比期望计划和实际执行，总结偏差原因。</blockquote>
+<blockquote>每天晚上0.5h：对比期望计划和实际执行，总结偏差原因。每次更新每日总结时，AI 同步更新学习计划表中的当日计划状态和真题进度追踪（学过的题目标记✅）。</blockquote>
 
+<div id="today-plan"></div>
 <div id="summary-table"></div>
+<div id="progress-table"></div>
 
 <script>
 function escapeHtml(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
@@ -46,6 +48,25 @@ function renderSummary(data){
   var today0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
   var rows='';
 
+  // 找到今天的计划
+  var todayRow=null;
+  data.schedule.forEach(function(r){
+    var parts=r.date.split('/');
+    var rowDate=new Date(now.getFullYear(),parseInt(parts[0])-1,parseInt(parts[1]));
+    if(rowDate.getTime()===today0.getTime()) todayRow=r;
+  });
+
+  // 渲染今日计划卡片
+  if(todayRow){
+    var tp='<div class="card" style="border-left:4px solid #ff7ab8"><b>📅 今日计划（'+todayRow.date+' '+todayRow.weekday+'）</b><br>'+
+           '<span class="plan">'+escapeHtml(todayRow.tasks)+'</span>';
+    if(todayRow.note) tp+='<br><span class="actual">📝 '+escapeHtml(todayRow.note)+'</span>';
+    if(todayRow.status) tp+='<br><span style="color:#888">状态：'+escapeHtml(todayRow.status)+'</span>';
+    tp+='</div>';
+    document.getElementById('today-plan').innerHTML=tp;
+  }
+
+  // 每日总结表格（历史+今天）
   data.schedule.forEach(function(r){
     var parts=r.date.split('/');
     var rowDate=new Date(now.getFullYear(),parseInt(parts[0])-1,parseInt(parts[1]));
@@ -77,8 +98,28 @@ function renderSummary(data){
   }
 
   document.getElementById('summary-table').innerHTML=
-    '<table><thead><tr><th>日期</th><th>期望计划</th><th>实际执行</th></tr></thead><tbody>'+
+    '<h2>📊 每日总结</h2><table><thead><tr><th>日期</th><th>期望计划</th><th>实际执行</th></tr></thead><tbody>'+
     rows+'</tbody></table>';
+
+  // 渲染真题进度追踪
+  var ZT='../404_高中数学学科/真题分卷/';
+  function progressLink(year,cell){
+    if(!cell||cell==='⬜') return cell||'⬜';
+    var m=cell.match(/✅(q\d+)/);
+    if(m) return '<a href="'+ZT+year+'/'+m[1]+'.html" style="color:#1971c2;text-decoration:none">'+cell+'</a>';
+    return cell;
+  }
+  var pr='<h2>📋 真题进度追踪</h2><table style="font-size:14px"><thead><tr><th>年份</th><th>简答12</th><th>简答13</th><th>论述</th><th>案例</th><th>设计</th></tr></thead><tbody>';
+  data.progress.forEach(function(r){
+    pr+='<tr><td><a href="'+ZT+r.year+'/解析.html" style="color:#1971c2;text-decoration:none">'+r.year+'</a></td>'+
+        '<td>'+progressLink(r.year,r.简答12)+'</td>'+
+        '<td>'+progressLink(r.year,r.简答13)+'</td>'+
+        '<td>'+progressLink(r.year,r.论述)+'</td>'+
+        '<td>'+progressLink(r.year,r.案例)+'</td>'+
+        '<td>'+progressLink(r.year,r.设计)+'</td></tr>';
+  });
+  pr+='</tbody></table>';
+  document.getElementById('progress-table').innerHTML=pr;
 }
 
 fetch('../../../.ai-cache/数据/学习计划表.json').then(r=>r.json()).then(renderSummary).catch(function(e){
