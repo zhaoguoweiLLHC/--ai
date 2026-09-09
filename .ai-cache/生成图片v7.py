@@ -6,7 +6,7 @@ Image.MAX_IMAGE_PIXELS = None
 import subprocess, os, tempfile
 
 BASE = "/Users/zhaoguowei/Documents/personal/教资学习-ai/生成资料/动态/404_高中数学学科/真题分卷"
-OUTPUT_DIR = "/Users/zhaoguowei/Documents/personal/教资学习-ai/生成资料/动态/404_高中数学学科/答案图片合集"
+OUTPUT_DIR = "/Users/zhaoguowei/Documents/personal/教资学习-ai/生成资料/动态/404_高中数学学科/真题解析-手机用"
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 def screenshot(filepath, outpath):
