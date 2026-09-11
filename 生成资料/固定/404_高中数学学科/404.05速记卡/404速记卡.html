@@ -34,13 +34,64 @@
 <hr>
 <p style="margin:4px 0">A1 等价无穷小（x→0）：sin x∼x∼tan x∼ln(1+x)∼eˣ−1；1−cos x∼x²/2（二阶，趋于 0 更慢）；高阶比低阶快。</p>
 <p style="margin:2px 0;padding-left:1.5em;color:#555">〔2024上4 比趋近速度〕口诀：带平方的是&quot;慢郎中&quot;。</p>
+<svg viewBox="0 0 280 150" style="display:block;margin:8px auto 2px;max-width:340px" font-family="inherit" font-size="12">
+  <line x1="40" y1="120" x2="255" y2="120" stroke="#ccc" stroke-width="1"/>
+  <line x1="60" y1="135" x2="60" y2="20" stroke="#ccc" stroke-width="1"/>
+  <line x1="60" y1="120" x2="145" y2="35" stroke="#aaa" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M60 120 Q103 78 140 62" fill="none" stroke="#ff7ab8" stroke-width="2.2"/>
+  <path d="M60 120 Q103 110 140 80" fill="none" stroke="#2b7de9" stroke-width="2.2"/>
+  <text x="148" y="38" fill="#888" font-size="11">y=x</text>
+  <text x="100" y="64" fill="#ff7ab8" font-size="11">sin x ∼ x</text>
+  <text x="100" y="98" fill="#2b7de9" font-size="11">1−cos x ∼ x²/2</text>
+</svg>
+<p style="text-align:center;color:#98a0ab;font-size:11px;margin:0 0 6px">看：原点处 sin x 贴直线 y=x（一阶）；1−cos x 更贴 x 轴（二阶）</p>
 <p style="margin:4px 0">A2 两个重要极限：lim sin x/x＝1；lim (1+1/x)ˣ＝e。</p>
+<svg viewBox="0 0 240 160" style="display:block;margin:8px auto 2px;max-width:300px" font-family="inherit" font-size="12">
+  <circle cx="80" cy="95" r="55" fill="none" stroke="#ddd" stroke-width="1.5"/>
+  <path d="M135 95 Q100 48 116.6 53.5" fill="none" stroke="#ff7ab8" stroke-width="2.5"/>
+  <line x1="80" y1="95" x2="135" y2="95" stroke="#2b2b2b" stroke-width="1.5"/>
+  <line x1="80" y1="95" x2="116.6" y2="53.5" stroke="#2b2b2b" stroke-width="1.5"/>
+  <line x1="116.6" y1="53.5" x2="116.6" y2="95" stroke="#2b7de9" stroke-width="2.2"/>
+  <circle cx="80" cy="95" r="3" fill="#2b2b2b"/>
+  <circle cx="135" cy="95" r="3" fill="#2b2b2b"/>
+  <circle cx="116.6" cy="53.5" r="3" fill="#d6336c"/>
+  <text x="70" y="108" fill="#555" font-size="13">O</text>
+  <text x="140" y="108" fill="#555" font-size="13">A</text>
+  <text x="122" y="48" fill="#d6336c" font-size="13">B</text>
+  <text x="120" y="80" fill="#2b7de9" font-size="11">sin x</text>
+  <text x="94" y="72" fill="#ff7ab8" font-size="11">弧=x</text>
+  <text x="92" y="90" fill="#555" font-size="11">x</text>
+</svg>
+<p style="text-align:center;color:#98a0ab;font-size:11px;margin:0 0 6px">看：x→0 时弧长 x ≈ 正弦线 sin x ⇒ sin x/x →1</p>
 <p style="margin:4px 0">A3 单调与极值：y′≥0 递增；y′＝0 是极值嫌疑点，左正右负=极大。</p>
 <p style="margin:2px 0;padding-left:1.5em;color:#555">两个增函数之和必增；之积、之差都未必〔2022上3〕。</p>
+<svg viewBox="0 0 320 150" style="display:block;margin:8px auto 2px;max-width:340px" font-family="inherit" font-size="12">
+  <line x1="20" y1="125" x2="305" y2="125" stroke="#ccc" stroke-width="1"/>
+  <line x1="20" y1="20" x2="20" y2="135" stroke="#ccc" stroke-width="1"/>
+  <path d="M30 100 C55 100 75 40 95 40 C115 40 165 120 210 120 C255 120 275 55 295 50" fill="none" stroke="#ff7ab8" stroke-width="2.5"/>
+  <circle cx="95" cy="40" r="3.5" fill="#d6336c"/>
+  <text x="66" y="33" fill="#d6336c" font-size="13">极大</text>
+  <circle cx="210" cy="120" r="3.5" fill="#d6336c"/>
+  <text x="218" y="135" fill="#d6336c" font-size="13">极小</text>
+  <text x="35" y="60" fill="#2b7de9" font-size="12">y′&gt;0 ↗</text>
+  <text x="143" y="60" fill="#2b7de9" font-size="12">y′&lt;0 ↘</text>
+  <text x="245" y="60" fill="#2b7de9" font-size="12">y′&gt;0 ↗</text>
+</svg>
+<p style="text-align:center;color:#98a0ab;font-size:11px;margin:0 0 6px">看：极值点＝y′变号处；左正右负⇒极大，左负右正⇒极小</p>
 <p style="margin:4px 0">A4 切线：k＝y′(x₀)，y−y₀＝k(x−x₀)〔2022下3〕。</p>
 <p style="margin:4px 0">A5 |f| 的可导性：f(0)＝0 时 |f| 在 0 可导 ⇔ f′(0)＝0；f(0)≠0 则可导性同 f〔2020下5〕。</p>
 <p style="margin:4px 0">A6 隐函数求导：方程两边对 x 求导，y 当函数、带 y′，解出 y′〔2022下9〕。</p>
 <p style="margin:4px 0">A7 定积分表面积：上下型 S＝∫(上−下)dx；圆 x²+y²=a² 面积＝∫₋ᵃ 2√(a²−x²)dx〔2023下2〕。</p>
+<svg viewBox="0 0 240 180" style="display:block;margin:8px auto 2px;max-width:300px" font-family="inherit" font-size="12">
+  <line x1="25" y1="100" x2="155" y2="100" stroke="#ccc" stroke-width="1"/>
+  <line x1="90" y1="30" x2="90" y2="160" stroke="#ccc" stroke-width="1"/>
+  <circle cx="90" cy="100" r="60" fill="none" stroke="#ff7ab8" stroke-width="2"/>
+  <rect x="112" y="45.5" width="6" height="109" fill="#cfe4fb" stroke="#2b7de9" stroke-width="1"/>
+  <text x="122" y="70" fill="#2b7de9" font-size="11">2√(a²−x²)</text>
+  <text x="100" y="160" fill="#555" font-size="11">dx</text>
+  <text x="90" y="175" fill="#2b2b2b" font-size="12" text-anchor="middle">圆面积＝∫ 2√(a²−x²) dx</text>
+</svg>
+<p style="text-align:center;color:#98a0ab;font-size:11px;margin:0 0 6px">看：竖条高＝2√(a²−x²)，积分累加＝圆面积</p>
 
 <hr>
 <h2 id="B">B 线代簇</h2>
@@ -60,15 +111,90 @@
 <h2 id="C">C 解几与概率簇</h2>
 <hr>
 <p style="margin:4px 0">C1 截线类型：代入平面方程看二次式——xy=k 双曲线；x²+y²=r² 圆；y=ax² 抛物线〔2020下2：xyz=1 被 x=1 截得 yz=1＝双曲线〕。</p>
+<svg viewBox="0 0 280 170" style="display:block;margin:8px auto 2px;max-width:340px" font-family="inherit" font-size="12">
+  <text x="140" y="16" fill="#555" font-size="11" text-anchor="middle">平截面位置不同 ⇒ 圆/椭圆/抛物线/双曲线</text>
+  <path d="M140 32 L60 145 A80 16 0 0 0 220 145 Z" fill="#fff5fa" stroke="#2b2b2b" stroke-width="1.8"/>
+  <path d="M60 145 A80 16 0 0 1 220 145" fill="none" stroke="#aaa" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <ellipse cx="140" cy="95" rx="42" ry="12" fill="none" stroke="#d6336c" stroke-width="2.5" transform="rotate(-12 140 95)"/>
+</svg>
+<p style="text-align:center;color:#98a0ab;font-size:11px;margin:0 0 6px">看：斜切圆锥截出二次曲线；代方程看二次式判类型</p>
 <p style="margin:4px 0">C2 线面关系：方向 s、法向 n；s∥n⇒垂直相交；s·n=0⇒平行或在内（代点区分）〔2020下4〕。</p>
+<svg viewBox="0 0 300 140" style="display:block;margin:8px auto 2px;max-width:360px" font-family="inherit" font-size="12">
+  <defs><marker id="m_c2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6 z" fill="#555"/></marker></defs>
+  <path d="M30 95 L95 78 L120 100 L55 117 Z" fill="#f4f9ff" stroke="#999" stroke-width="1.3"/>
+  <line x1="58" y1="102" x2="58" y2="45" stroke="#2b7de9" stroke-width="2" marker-end="url(#m_c2)"/>
+  <line x1="70" y1="118" x2="70" y2="35" stroke="#d6336c" stroke-width="2"/>
+  <text x="44" y="52" fill="#2b7de9" font-size="11">n</text>
+  <text x="6" y="132" fill="#555" font-size="11">s∥n ⇒ 线⊥面</text>
+  <path d="M190 95 L255 78 L280 100 L215 117 Z" fill="#f4f9ff" stroke="#999" stroke-width="1.3"/>
+  <line x1="225" y1="102" x2="225" y2="45" stroke="#2b7de9" stroke-width="2" marker-end="url(#m_c2)"/>
+  <line x1="200" y1="111" x2="260" y2="84" stroke="#d6336c" stroke-width="2" marker-end="url(#m_c2)"/>
+  <text x="229" y="52" fill="#2b7de9" font-size="11">n</text>
+  <text x="162" y="132" fill="#555" font-size="11">s·n=0 ⇒ 线∥面/在内</text>
+</svg>
+<p style="text-align:center;color:#98a0ab;font-size:11px;margin:0 0 6px">看：方向 s 与法向 n 的关系决定直线与平面位置</p>
 <p style="margin:4px 0">C3 球切线：PM²＝PO²−R²（切线⊥半径，勾股）〔2020下6〕。</p>
+<svg viewBox="0 0 240 165" style="display:block;margin:8px auto 2px;max-width:300px" font-family="inherit" font-size="12">
+  <circle cx="70" cy="95" r="42" fill="#fff5fa" stroke="#ff7ab8" stroke-width="2"/>
+  <line x1="70" y1="95" x2="180" y2="40" stroke="#999" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <path d="M107.8 130.8 L100.9 138.0 L93.6 131.2" fill="none" stroke="#2b7de9" stroke-width="1.5"/>
+  <line x1="70" y1="95" x2="100.5" y2="123.9" stroke="#2b7de9" stroke-width="2"/>
+  <line x1="180" y1="40" x2="100.5" y2="123.9" stroke="#2b2b2b" stroke-width="2"/>
+  <circle cx="70" cy="95" r="3" fill="#2b2b2b"/>
+  <circle cx="180" cy="40" r="3" fill="#2b2b2b"/>
+  <circle cx="100.5" cy="123.9" r="3" fill="#d6336c"/>
+  <text x="58" y="91" fill="#555" font-size="13">O</text>
+  <text x="186" y="37" fill="#555" font-size="13">P</text>
+  <text x="82" y="129" fill="#d6336c" font-size="13">M</text>
+  <text x="82" y="107" fill="#2b7de9" font-size="12">R</text>
+  <text x="128" y="60" fill="#888" font-size="11">PO</text>
+  <text x="145" y="88" fill="#2b2b2b" font-size="11">PM</text>
+  <text x="120" y="158" fill="#2b2b2b" font-size="13" text-anchor="middle">PM² ＝ PO² − R²</text>
+</svg>
+<p style="text-align:center;color:#98a0ab;font-size:11px;margin:0 0 6px">看：切线⊥半径 ⇒ Rt△OMP ⇒ 勾股</p>
 <p style="margin:4px 0">C4 垂直与夹角：a⊥b ⇔ a·b=0；cosθ=a·b/(‖a‖‖b‖)；(a+λb)⊥b 展开点积解 λ〔2022上2、2021下2〕。</p>
+<svg viewBox="0 0 240 150" style="display:block;margin:8px auto 2px;max-width:300px" font-family="inherit" font-size="12">
+  <defs><marker id="m_c4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6 z" fill="#555"/></marker></defs>
+  <circle cx="45" cy="120" r="3" fill="#2b2b2b"/>
+  <line x1="45" y1="120" x2="195" y2="120" stroke="#d6336c" stroke-width="2.5" marker-end="url(#m_c4)"/>
+  <line x1="45" y1="120" x2="150" y2="40" stroke="#2b7de9" stroke-width="2.5" marker-end="url(#m_c4)"/>
+  <path d="M80 120 A35 35 0 0 0 72.8 98.8" fill="none" stroke="#2b2b2b" stroke-width="1.3"/>
+  <text x="84" y="110" fill="#2b2b2b" font-size="12">θ</text>
+  <text x="182" y="134" fill="#d6336c" font-size="13">a</text>
+  <text x="153" y="38" fill="#2b7de9" font-size="13">b</text>
+  <text x="32" y="135" fill="#555" font-size="12">O</text>
+  <text x="50" y="80" fill="#2b2b2b" font-size="11">cosθ=a·b/(|a||b|)</text>
+</svg>
+<p style="text-align:center;color:#98a0ab;font-size:11px;margin:0 0 6px">看：夹角由点积定；垂直 ⇔ a·b=0</p>
 <p style="margin:4px 0">C5 平面⊥xOy面 ⇔ C=0（两法向量垂直，点积=0）〔2025上4〕。</p>
 <p style="margin:4px 0">C6 旋转曲面：方程含&quot;x²+y²&quot;成对出现才是；否则不是〔2024下2〕。</p>
+<svg viewBox="0 0 240 175" style="display:block;margin:8px auto 2px;max-width:300px" font-family="inherit" font-size="12">
+  <line x1="120" y1="20" x2="120" y2="160" stroke="#888" stroke-width="1.3" stroke-dasharray="4 3"/>
+  <text x="125" y="26" fill="#888" font-size="11">z</text>
+  <ellipse cx="120" cy="120" rx="28" ry="5" fill="none" stroke="#cfcfcf" stroke-width="1"/>
+  <ellipse cx="120" cy="85" rx="42" ry="8" fill="none" stroke="#bbb" stroke-width="1"/>
+  <ellipse cx="120" cy="50" rx="52" ry="10" fill="none" stroke="#bbb" stroke-width="1"/>
+  <path d="M120 150 Q185 90 175 35" fill="none" stroke="#ff7ab8" stroke-width="2.5"/>
+  <path d="M120 150 Q55 90 65 35" fill="none" stroke="#ff7ab8" stroke-width="2.5"/>
+  <path d="M168 85 a14 5 0 1 1 0 1" fill="none" stroke="#2b7de9" stroke-width="1.4"/>
+  <text x="36" y="172" fill="#555" font-size="11">母线绕 z 轴转一周</text>
+  <text x="180" y="172" fill="#2b7de9" font-size="11">⇒ x²+y²</text>
+</svg>
+<p style="text-align:center;color:#98a0ab;font-size:11px;margin:0 0 6px">看：方程含 x²+y² 成对 ⇒ 某曲线绕 z 轴旋转</p>
 <p style="margin:4px 0">C7 古典概率（数数/组合）：两骰和为 7 有 6 种→1/6〔2021上5〕；抛 4 次 2 正＝C(4,2)/16=3/8〔2022下6〕。</p>
 <p style="margin:4px 0">C8 至少一次：P＝1−(1−p₁)(1−p₂)〔2023上6：0.4/0.5→0.7〕。</p>
 <p style="margin:4px 0">C9 P(A)+P(B)&gt;1 ⇒ A、B 必相交（不互斥）〔2023下6〕。</p>
 <p style="margin:4px 0">C10 几何概型：概率＝长度比/面积比〔2025上6〕。</p>
+<svg viewBox="0 0 280 120" style="display:block;margin:8px auto 2px;max-width:320px" font-family="inherit" font-size="12">
+  <line x1="30" y1="68" x2="250" y2="68" stroke="#888" stroke-width="3"/>
+  <line x1="110" y1="68" x2="185" y2="68" stroke="#d6336c" stroke-width="4"/>
+  <text x="132" y="58" fill="#d6336c" font-size="12">有利 a</text>
+  <text x="120" y="88" fill="#888" font-size="11">总长 L</text>
+  <text x="22" y="88" fill="#555" font-size="11">0</text>
+  <text x="246" y="88" fill="#555" font-size="11">1</text>
+  <text x="140" y="110" fill="#2b2b2b" font-size="12" text-anchor="middle">P = a/L（长度比；面积比同理）</text>
+</svg>
+<p style="text-align:center;color:#98a0ab;font-size:11px;margin:0 0 6px">看：几何概型＝有利测度/总测度（长度或面积）</p>
 
 <hr>
 <h2 id="D">D 数学史与课标簇（7–8 题）</h2>
@@ -76,9 +202,45 @@
 <p style="margin:4px 0">D1 六大核心素养＝抽象、推理、建模、直观想象、运算、数据分析；干扰项＝旧课标&quot;空间想象&quot;或&quot;应用意识&quot;〔2021上7、2022下8〕。</p>
 <p style="margin:4px 0">D2 四条内容主线＝函数、几何与代数、概率与统计、数学建模与数学探究活动〔2023上7、2023下7〕。</p>
 <p style="margin:4px 0">D3 对联认人：机器证明/拓扑＝吴文俊〔2022下7〕；&quot;幂势既同，则积不容异&quot;＝祖暅＝祖氏原理（等高同截⇒等体积）〔2023下8、2025上8〕；方程术＝《九章算术》〔2024下7〕。</p>
+<svg viewBox="0 0 280 155" style="display:block;margin:8px auto 2px;max-width:320px" font-family="inherit" font-size="12">
+  <text x="140" y="16" fill="#555" font-size="11" text-anchor="middle">幂势既同，则积不容异</text>
+  <circle cx="75" cy="85" r="38" fill="#fff5fa" stroke="#2b2b2b" stroke-width="1.8"/>
+  <path d="M165 123 L235 123 L235 47 L165 47 Z" fill="#f4f9ff" stroke="#2b2b2b" stroke-width="1.8"/>
+  <line x1="20" y1="85" x2="260" y2="85" stroke="#d6336c" stroke-width="1.3" stroke-dasharray="5 3"/>
+  <text x="62" y="138" fill="#555" font-size="11">立体一</text>
+  <text x="190" y="138" fill="#555" font-size="11">立体二</text>
+  <text x="200" y="82" fill="#d6336c" font-size="10">同高截面等积</text>
+  <text x="140" y="152" fill="#2b2b2b" font-size="11" text-anchor="middle">⇒ 两立体体积相等</text>
+</svg>
+<p style="text-align:center;color:#98a0ab;font-size:11px;margin:0 0 6px">看：祖暅原理＝同高同截面 ⇒ 等体积</p>
 <p style="margin:4px 0">D4 命题＝能判断真假的陈述句；疑问/祈使/感叹都不是〔2022上7〕。</p>
 <p style="margin:4px 0">D5 教学难度依据＝学生认知水平（学情），不是教材或考纲〔2024上8〕。</p>
 <p style="margin:4px 0">D6 初高中三角函数区别＝初中用直角三角形比值（锐角）、高中用单位圆任意角〔2025上7〕。</p>
+<svg viewBox="0 0 300 150" style="display:block;margin:8px auto 2px;max-width:360px" font-family="inherit" font-size="12">
+  <text x="78" y="16" fill="#555" font-size="11" text-anchor="middle">初中：直角三角形</text>
+  <text x="225" y="16" fill="#555" font-size="11" text-anchor="middle">高中：单位圆</text>
+  <polygon points="35,115 125,115 125,45" fill="#fff5fa" stroke="#2b2b2b" stroke-width="1.8"/>
+  <path d="M118 115 l0 -8 l8 0" fill="none" stroke="#2b2b2b" stroke-width="1.2"/>
+  <path d="M50 115 A12 12 0 0 0 49 107" fill="none" stroke="#d6336c" stroke-width="1.3"/>
+  <text x="54" y="108" fill="#d6336c" font-size="11">θ</text>
+  <text x="130" y="83" fill="#2b7de9" font-size="11">对</text>
+  <text x="70" y="130" fill="#555" font-size="11">邻</text>
+  <text x="38" y="72" fill="#555" font-size="11" transform="rotate(-33 38 72)">斜</text>
+  <text x="80" y="143" fill="#d6336c" font-size="11" text-anchor="middle">sinθ=对/斜</text>
+  <circle cx="220" cy="95" r="40" fill="none" stroke="#ff7ab8" stroke-width="2"/>
+  <circle cx="220" cy="95" r="3" fill="#2b2b2b"/>
+  <line x1="178" y1="95" x2="262" y2="95" stroke="#ccc" stroke-width="1"/>
+  <line x1="220" y1="95" x2="250.6" y2="69.3" stroke="#2b2b2b" stroke-width="1.5"/>
+  <line x1="250.6" y1="69.3" x2="250.6" y2="95" stroke="#2b7de9" stroke-width="2.2"/>
+  <line x1="220" y1="95" x2="250.6" y2="95" stroke="#999" stroke-width="1.5"/>
+  <circle cx="250.6" cy="69.3" r="2.8" fill="#d6336c"/>
+  <path d="M233 95 A13 13 0 0 0 231 87" fill="none" stroke="#d6336c" stroke-width="1.3"/>
+  <text x="235" y="91" fill="#d6336c" font-size="10">θ</text>
+  <text x="255" y="85" fill="#2b7de9" font-size="11">sinθ</text>
+  <text x="225" y="108" fill="#555" font-size="11">cosθ</text>
+  <text x="225" y="143" fill="#d6336c" font-size="11" text-anchor="middle">sinθ=纵坐标(任意角)</text>
+</svg>
+<p style="text-align:center;color:#98a0ab;font-size:11px;margin:0 0 6px">看：初中锐角比值 vs 高中单位圆纵坐标（推广到任意角）</p>
 <p style="margin:4px 0">D7 不适合指数模型教学＝增长为&quot;匀速/线性&quot;的情境（如匀速储蓄），指数＝等比增长〔2023上8〕。</p>
 
 <hr>
