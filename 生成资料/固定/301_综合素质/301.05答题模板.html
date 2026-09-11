@@ -110,14 +110,14 @@
 <style>
 .grid-wrap{text-align:center}
 .grid-container{display:inline-block;margin:0 auto;position:relative}
-.grid-paper{background:#fff;border:1px solid #ddd;border-radius:8px;display:inline-block;position:relative}
-.grid-line{display:flex;flex-wrap:nowrap;padding:0;position:relative;min-height:32px}
-.grid-char{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;font-size:16px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;flex-shrink:0;box-sizing:border-box}
-.grid-empty{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;flex-shrink:0;box-sizing:border-box}
+.grid-paper{background:#fff;border:1px solid #ddd;border-radius:8px;display:inline-block;position:relative;padding:6px 2px}
+.grid-line{display:flex;flex-wrap:nowrap;padding:0;position:relative;min-height:30px}
+.grid-char{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;font-size:16px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;flex-shrink:0;box-sizing:border-box}
+.grid-empty{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-right:1px solid #e8e8ee;border-bottom:1px solid #e8e8ee;flex-shrink:0;box-sizing:border-box}
 .grid-line>span:last-child{border-right:none}
-.grid-mark{position:absolute;right:-42px;top:50%;transform:translateY(-50%);font-size:12px;color:#d6336c;font-weight:700;white-space:nowrap}
-.grid-seglabel{position:absolute;left:-132px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:600;color:#d6336c;text-align:right;width:120px;white-space:nowrap;line-height:1.4}
-.grid-seglabel button{font-size:11px;padding:1px 8px;border:1px solid #ff7ab8;border-radius:10px;background:#fff;color:#d6336c;cursor:pointer;margin-top:2px}
+.grid-mark{position:absolute;right:-26px;top:50%;transform:translateY(-50%);font-size:11px;color:#d6336c;font-weight:700;white-space:nowrap}
+.grid-seglabel{position:absolute;left:-130px;top:50%;transform:translateY(-50%);font-size:11px;font-weight:600;color:#d6336c;text-align:right;white-space:nowrap;line-height:1.4}
+.grid-seglabel button{font-size:10px;padding:1px 5px;border:1px solid #ff7ab8;border-radius:10px;background:#fff;color:#d6336c;cursor:pointer;margin-top:3px}
 </style>
 <script>
 var introMain='钱塘江的潮水遵循着月球的引力，人类文明的每次升华都结合着XX的周期，不同的时代，不同的国家，不同的领域，实现价值的道路却出奇的一致。XX，让无数个体实现了自我价值的升华，在时代洪流中找到自己的坐标。历史反复验证——能穿透至暗时刻的，从来不是幸运的闪电，而是XX铸就的永恒曙光。';
@@ -144,7 +144,7 @@ function updateTotal(){
 function renderEssay(){
   var essaySections=getSections();
   var out=document.getElementById('essay-output');
-  var totalGrids=1240,lineLen=20,totalLines=totalGrids/lineLen;
+  var totalGrids=1250,lineLen=25,totalLines=totalGrids/lineLen;
   var gridContent=[],segLabels={},absPos=0;
   essaySections.forEach(function(s){
     var labelHtml=s.title;
@@ -152,10 +152,10 @@ function renderEssay(){
     segLabels[absPos]=labelHtml;
     if(s.title.indexOf('标题')===0){
       var titleChars=s.text.split('');
-      var pad=Math.floor((20-titleChars.length)/2);
+      var pad=Math.floor((lineLen-titleChars.length)/2);
       for(var p=0;p<pad;p++){gridContent[absPos++]={empty:true};}
       for(var t=0;t<titleChars.length;t++){gridContent[absPos++]={char:titleChars[t],bold:true};}
-      for(var p2=0;p2<20-pad-titleChars.length;p2++){gridContent[absPos++]={empty:true};}
+      for(var p2=0;p2<lineLen-pad-titleChars.length;p2++){gridContent[absPos++]={empty:true};}
       return;
     }
     gridContent[absPos++]={empty:true};
