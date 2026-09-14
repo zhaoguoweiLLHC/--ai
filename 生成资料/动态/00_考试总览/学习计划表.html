@@ -41,24 +41,38 @@
 <body>
 <div id="app"></div>
 <script>
-var DATA_URL='../../../.ai-cache/数据/学习计划表.json';
+var DATA_URL='../../../.ai-cache/数据/学习计划表.json?v=15';
 var R='../';          // 到 生成资料/动态/ 根
 var F='../../固定/';   // 到 生成资料/固定/ 根
 var EXT='../../../外部资料/'; // 到 外部资料/ 根
 
 var LINK_MAP=[
+  // 404 速记卡
   [/速记卡([A-D])簇/, F+'404_高中数学学科/404.05速记卡/404速记卡.html#$1'],
-  [/速记卡/, F+'404_高中数学学科/404.05速记卡/404速记卡.html'],
+  [/速记卡[全速过A-D+]*簇?/, F+'404_高中数学学科/404.05速记卡/404速记卡.html'],
+  // 404 主观题框架
+  [/论述角度库|角度库/, F+'404_高中数学学科/404.05速记卡/404主观题框架.html#角度库'],
+  [/案例四步|案例分析/, F+'404_高中数学学科/404.05速记卡/404主观题框架.html'],
+  [/设计六环节|设计[一-龥]*环节/, F+'404_高中数学学科/404.05速记卡/404主观题框架.html'],
   [/主观题.*框架[^＋]*|五类框架[^＋]*|框架终背[^＋]*/, F+'404_高中数学学科/404.05速记卡/404主观题框架.html'],
-  [/科一\s*作文立意[^＋]*/, F+'301_综合素质/301.05答题模板.html'],
-  [/作文立意[^＋]*/, F+'301_综合素质/301.05答题模板.html'],
-  [/科一.*模板[^＋]*/, F+'301_综合素质/301.05答题模板.html'],
-  [/科一\s*材料分析[^＋]*/, F+'301_综合素质/301.05答题模板.html'],
-  [/材料分析[^＋]*/, F+'301_综合素质/301.05答题模板.html'],
-  [/作文1篇[^＋]*/, R+'301_综合素质/作文立意学习记录.html'],
-  [/错题录入/, R+'错题本.html'],
+  [/救急蹭分[^＋]*|蹭分策略|三档说明|三档/, F+'404_高中数学学科/三档说明.html'],
+  // 面试指南：流程评分/结构化/教材速览
+  [/面试流程|评分标准|5项测评|全程模拟/, F+'404_高中数学学科/面试指南.html#流程'],
+  [/试讲10分钟[^＜]*/, F+'404_高中数学学科/面试指南.html#试讲'],
+  [/结构化[^＋]*/, F+'404_高中数学学科/面试指南.html#结构化'],
+  [/教材梳理[^＋]*|必修[一二三]/, F+'404_高中数学学科/面试指南.html#教材'],
+  // 试讲教案→主观题框架；教学设计模板图→原件
+  [/试讲教案[^＋]*|教学设计五环节|写教学设计/, F+'404_高中数学学科/404.05速记卡/404主观题框架.html'],
+  [/教学设计模板图|教学设计模板/, EXT+'404_高中数学学科/教学设计模板/01.jpg'],
+  // 301 立意/职业理念/作文模板
+  [/作文立意[^＋]*|立意练习[^＋]*|立意3题|立意分析/, F+'301_综合素质/立意分析.html'],
+  [/作文1篇[^＋]*|作文.*模板[^＋]*/, F+'301_综合素质/301.05答题模板.html'],
+  [/职业理念|师德/, F+'301_综合素质/301.05答题模板.html'],
+  [/科一.*模板[^＋]*|三观.*师德[^＋]*|材料分析[^＋]*|阅读理解/, F+'301_综合素质/301.05答题模板.html'],
+  // 错题本/考场策略/总结
+  [/错题录入|错题本|翻错题/, R+'错题本.html'],
+  [/考场策略/, F+'00_考试总览/考场策略.html'],
   [/总结/, R+'00_考试总览/每日总结.html'],
-  [/阅读理解/, F+'301_综合素质/301.05答题模板.html'],
 ];
 
 function addLinks(text){
@@ -92,8 +106,8 @@ function escapeHtml(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').repla
 function renderPlan(data){
   var now=new Date();
   var todayKey=(now.getMonth()+1)+'/'+now.getDate();
-  var examDate='9/12';
-  var exam=new Date(now.getFullYear(),8,12); // 9/12 考试日
+  var examDate='12/5';
+  var exam=new Date(now.getFullYear(),11,5); // 12/5 面试日
   // 用日期差（去掉时分秒），今天不算
   var today0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
   var days=Math.round((exam-today0)/86400000);
@@ -105,7 +119,7 @@ function renderPlan(data){
   // 今日卡片
   h+='<div class="card yellow" id="today-focus" style="border:2px solid #ffb400"><div id="tf-body"></div></div>';
   // 逐日安排 + 学习策略（只显示今天及未来）
-  h+='<h2><span>一、逐日安排</span><small style="font-size:12px;color:#888;font-weight:normal">⏰ 通勤不安排任务，晚上0.5h总结，白天公司时间重点突破大题</small></h2>';
+  h+='<h2><span>一、逐日安排</span><small style="font-size:12px;color:#888;font-weight:normal">⏰ 预热期每周2-3次任务；11/6出成绩后冲刺每日；周末全程模拟</small></h2>';
   h+='<table><tr><th>日期</th><th>当天计划</th></tr>';
   data.schedule.forEach(function(r){
     var isToday=r.date===todayKey;
@@ -138,16 +152,18 @@ function renderPlan(data){
     if(m) return '<a href="'+ZT+year+'/'+m[1]+'.html" style="color:#1971c2;text-decoration:none">'+cell+'</a>';
     return cell;
   }
-  h+='<h2>二、真题进度追踪</h2><table><tr><th>年份</th><th>简答12</th><th>简答13</th><th>论述</th><th>案例</th><th>设计</th></tr>';
-  data.progress.forEach(function(r){
-    h+='<tr><td><a href="'+ZT+r.year+'/解析.html" style="color:#1971c2;text-decoration:none">'+r.year+'</a></td>'+
-        '<td>'+progressLink(r.year,r.简答12)+'</td>'+
-        '<td>'+progressLink(r.year,r.简答13)+'</td>'+
-        '<td>'+progressLink(r.year,r.论述)+'</td>'+
-        '<td>'+progressLink(r.year,r.案例)+'</td>'+
-        '<td>'+progressLink(r.year,r.设计)+'</td></tr>';
-  });
-  h+='</table>';
+  if(data.progress && data.progress.length){
+    h+='<h2>二、真题进度追踪</h2><table><tr><th>年份</th><th>简答12</th><th>简答13</th><th>论述</th><th>案例</th><th>设计</th></tr>';
+    data.progress.forEach(function(r){
+      h+='<tr><td><a href="'+ZT+r.year+'/解析.html" style="color:#1971c2;text-decoration:none">'+r.year+'</a></td>'+
+          '<td>'+progressLink(r.year,r.简答12)+'</td>'+
+          '<td>'+progressLink(r.year,r.简答13)+'</td>'+
+          '<td>'+progressLink(r.year,r.论述)+'</td>'+
+          '<td>'+progressLink(r.year,r.案例)+'</td>'+
+          '<td>'+progressLink(r.year,r.设计)+'</td></tr>';
+    });
+    h+='</table>';
+  }
   // 附录
   h+='<h2>附录</h2><div class="card" style="background:#f9f9f9"><ul style="margin:6px 0;padding-left:20px;font-size:13px">';
   h+='<li><a href="../../固定/00_考试总览/考场策略.html" style="color:#1971c2;text-decoration:none">📋 考场策略（铁律+时间分配） →</a></li>';
