@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025下 · 结构化第1题 · 张玉滚扁担挑书</title>
+<style>
+  :root{
+    --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
+    --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
+       font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#e5487c;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
+  .pk{color:var(--pink);font-weight:700}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
+  .points .pt{font-weight:700;color:var(--pink)}
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  /* 三列布局 */
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  /* 推导区 */
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="解析.html" class="back-link">← 返回目录</a>
+<section class="card" id="q01">
+  <div class="qhead">
+    <span class="badge b-she">结构化 · 职业理念类</span>
+    <h2>2025下 · 试卷90 第1题 · 张玉滚扁担挑书</h2>
+  </div>
+
+  <div class="origin">
+    对于"张玉滚老师用一根扁担挑起书本，挑出大山孩子教育的希望"，你怎么看？
+  </div>
+
+  <!-- 三列并排 -->
+  <div class="tiers-row">
+
+    <!-- 满分版 -->
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版 · 考场不整篇抄</div>
+      <div class="tier-body tier-full-b">
+        <p>各位考官，张玉滚老师的事迹令我深受感动，他用一根扁担诠释了新时代教师的使命担当，是"四有"好老师的生动典范。下面谈谈我的看法。</p>
+        <ul class="points">
+          <li><span class="pt">第一，体现了爱岗敬业、无私奉献的职业道德。</span>张老师扎根深山17年，不畏条件艰苦，用扁担为学生挑教材、挑物资。一根扁担挑的不只是书本，更是一份沉甸甸的责任与承诺，体现了对教育事业的无限忠诚和<mark>爱岗敬业</mark>的职业道德规范。</li>
+          <li><span class="pt">第二，体现了以人为本的学生观。</span>山里孩子出不去，他就把教育资源挑进去，不放弃任何一个孩子，让偏远地区学生也能享有接受教育的机会和希望，真正做到了<mark>关注每一个、不放弃每一个</mark>。</li>
+          <li><span class="pt">第三，是对教育公平的身体力行。</span>乡村教育是教育公平的短板，张老师用扁担架起了山里孩子通向知识的桥梁，用个人坚守弥补了<mark>资源差距</mark>，体现了教育者促进教育公平的责任担当。</li>
+          <li><span class="pt">第四，是教育家精神的生动缩影。</span>他的坚守体现了"心有大我、至诚报国"的理想信念，把个人选择融入乡村教育振兴的大局，是<mark>为党育人、为国育才</mark>最朴素的实践。</li>
+        </ul>
+        <p><b>总之</b>，作为未来教师，我将以张玉滚老师为榜样，坚守教育初心，关爱每一位学生，努力做有理想信念、有道德情操、有扎实学识、有仁爱之心的"四有"好老师。回答完毕。</p>
+      </div>
+      <div class="derive-box derive-full">
+        <div class="derive-title">🧠 满分版怎么来的</div>
+        <ul>
+          <li><b>审题：</b>事迹评析题，框架＝表态赞扬 → 分析体现的教育理念（3-4点）→ 联系自身。张玉滚＝时代楷模，河南南阳深山小学扎根17年。</li>
+          <li><b>分点逻辑：</b>从"个人品质"（爱岗敬业）→ "学生层面"（以人为本）→ "社会层面"（教育公平）→ "时代高度"（教育家精神），层层递进。</li>
+          <li><b>得分词：</b>"四有"好老师、爱岗敬业、以人为本、教育公平、为党育人为国育才、教育家精神——每个分点都嵌入关键词。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 考场版 -->
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版 · 按预算照抄</div>
+      <div class="tier-body tier-exam-b">
+        <p>各位考官，张玉滚老师用扁担诠释了教师的使命担当，是"四有"好老师的典范。</p>
+        <ul class="points">
+          <li><span class="pt">第一，爱岗敬业、无私奉献。</span>扎根深山17年，扁担挑的不只是书本，更是责任与承诺。</li>
+          <li><span class="pt">第二，以人为本，不放弃每一个孩子。</span>把教育资源挑进大山，让偏远学生也有希望。</li>
+          <li><span class="pt">第三，身体力行促进教育公平。</span>用扁担弥补资源差距，架起通向知识的桥梁。</li>
+          <li><span class="pt">第四，教育家精神的缩影。</span>"心有大我、至诚报国"，把个人选择融入乡村教育振兴。</li>
+        </ul>
+        <p><b>总之</b>，作为未来教师，我以他为榜样，坚守初心，关爱每个学生，做"四有"好老师。回答完毕。</p>
+      </div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul>
+          <li>从满分版砍掉展开说明和实例细节，每点只保留"关键词＋一句话"。</li>
+          <li>保留四个分点的<span class="pk">关键词标题</span>和<b>结尾"四有"好老师</b>——这些是阅卷采分点。</li>
+          <li>表态句和总结句一字不砍，中间正文精简50%。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 救急版 -->
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版 · 不会时蹭分</div>
+      <div class="tier-body tier-life-b">
+        <p>各位考官，张玉滚老师的事迹令人感动，值得学习。我的看法如下：</p>
+        <ul class="points">
+          <li><b class="pk">第一，爱岗敬业。</b>扎根深山，无私奉献。</li>
+          <li><b class="pk">第二，以人为本。</b>不放弃每一个学生。</li>
+          <li><b class="pk">第三，促进教育公平。</b>弥补资源差距。</li>
+          <li><b class="pk">第四，教育家精神。</b>心有大我，至诚报国。</li>
+        </ul>
+        <p><b>总之</b>，作为未来教师，我要做<b class="pk">"四有"好老师</b>，关爱每个学生。回答完毕。</p>
+      </div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul>
+          <li><b>万能框架：</b>表态赞扬 → 3-4个关键词分点 → 总结"四有"好老师。这个框架不依赖具体事迹内容，任何事迹评析题都能用。</li>
+          <li><b>蹭分词：</b>"爱岗敬业""以人为本""教育公平""为党育人为国育才""四有好老师"——写出就给结构分。</li>
+          <li><b>核心策略：</b>总—分—总结构 + 关键词分点 + 结尾升华。内容不会编也没关系，框架在就有分。</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- tiers-row end -->
+
+  <div class="k-gold">
+    <h3>💡 得分技巧</h3>
+    <ul class="tips">
+      <li><span class="pk">关键词必出</span>：四有好老师、爱岗敬业、无私奉献、以人为本、教育公平、为党育人为国育才、教育家精神</li>
+      <li>张玉滚核心信息：时代楷模、扎根乡村17年、扁担挑书、河南南阳深山小学</li>
+      <li>事迹题公式：<span class="pk">表态赞扬 → 以事析理（每点提炼一个教育理念）→ 联系自身</span></li>
+      <li>不能只感动不分析——每点都要"事 + 理"，光说"很感动"不得分</li>
+      <li>结尾落到"四有"好老师，呼应新时代教师标准</li>
+    </ul>
+  </div>
+
+  <div class="k-gold" style="background:#eaf3fe;border-color:#c4dcf8">
+    <h3 style="color:#1971c2">🔗 类似题型</h3>
+    <p><b>题型特征：</b>事迹评析题——给一位模范教师事迹，问"你怎么看"。</p>
+    <p><b>解题通法：</b></p>
+    <ul class="tips">
+      <li>第一步：表态——"令人感动/值得学习/深表认同"；</li>
+      <li>第二步：分3-4点，每点 = 事迹对应点 + 提炼教育理念关键词；</li>
+      <li>第三步：总结升华——"作为未来教师，我将以XX为榜样……做四有好老师"。</li>
+    </ul>
+    <p><b>常见事迹对应词：</b>扎根乡村→爱岗敬业/教育公平；关爱学生→以人为本/仁爱之心；创新教学→育人智慧/因材施教；坚守初心→教育家精神/理想信念。</p>
+    <p><b>变体考法：</b>"谈谈对XX教师做法的理解"→同框架；"XX教师给你什么启示"→多加"启示我……"的行动句。</p>
+  </div>
+</section>
+<div style="text-align:center;margin:14px 0"><a href="../../../../固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></div>
+<footer><a href="解析.html">← 返回目录</a></footer>
+</div>
+</body>
+</html>
