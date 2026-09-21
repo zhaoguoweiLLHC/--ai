@@ -131,17 +131,15 @@ function renderPlan(data){
   h+='</table>';
   // 结构化真题进度
   var ZT='../404_高中数学学科/结构化真题分卷/';
-  function progressLink(year,cell){
-    if(cell==='⬜') return cell;
-    var m=cell.match(/✅(q\d+)/);
-    if(m) return '<a href="'+ZT+year+'/'+m[1]+'.html" style="color:#1971c2;text-decoration:none">'+cell+'</a>';
-    return cell;
-  }
   if(data.progress && data.progress.length){
-    h+='<h2>二、结构化真题进度追踪</h2><table><tr><th>年份</th><th>进度</th></tr>';
+    h+='<h2>二、结构化真题进度追踪</h2><table><tr><th>试卷</th><th>状态</th></tr>';
     data.progress.forEach(function(r){
-      h+='<tr><td><a href="'+ZT+r.year+'/解析.html" style="color:#1971c2;text-decoration:none">'+r.year+'</a></td>'+
-          '<td>'+progressLink(r.year,r.进度||'')+'</td></tr>';
+      var statusHtml = r.status==='✅' ? '<span style="color:#2b8a3e">✅ 已学</span>' : '<span style="color:#8a8f98">⬜ 未学</span>';
+      var labelHtml = r.label;
+      if(r.year && r.file){
+        labelHtml = '<a href="'+ZT+r.year+'/'+r.file+'.html" style="color:#1971c2;text-decoration:none">'+r.label+'</a>';
+      }
+      h+='<tr><td>'+labelHtml+'</td><td>'+statusHtml+'</td></tr>';
     });
     h+='</table>';
   }
@@ -151,7 +149,7 @@ function renderPlan(data){
   h+='<li><a href="../../固定/404_高中数学学科/面试指南.html" style="color:#1971c2;text-decoration:none">📋 面试指南（流程·评分·7类框架） →</a></li>';
   h+='<li><a href="每日总结.html" style="color:#1971c2;text-decoration:none">📝 每日总结 →</a></li>';
   h+='</ul></div>';
-  h+='<footer>数据存 .ai-cache/00_考试总览/学习计划表.json · 改数据刷新即生效</footer>';
+  h+='<footer>数据存 学习计划表.json · 改数据刷新即生效</footer>';
 
   document.getElementById('app').innerHTML=h;
 
