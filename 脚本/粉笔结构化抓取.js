@@ -1,130 +1,128 @@
 /**
- * 粉笔结构化真题批量抓取脚本
+ * 粉笔结构化真题批量抓取脚本 v2（反检测+断点续抓）
+ * 
+ * 反检测措施：
+ * - 随机延迟（2-6秒），非固定间隔
+ * - 模拟人类点击（先 hover 再 click，带随机偏移）
+ * - 每抓几套随机停顿更久（模拟人走开）
+ * - console.log 降频，避免刷屏暴露
+ * - 断点续抓：中间断了可从上次位置继续
+ * - 检测到异常弹窗/验证码自动暂停
  * 
  * 使用方法：
- * 1. 打开粉笔题库结构化列表页（如 https://www.fenbi.com/tiku/... 2025下分类页）
- * 2. 按 F12 打开开发者工具，切到 Console
- * 3. 粘贴此脚本，回车运行
- * 4. 脚本会自动翻页 + 逐个打开试卷详情页提取题目
- * 5. 完成后在控制台输出 JSON，自动复制到剪贴板
- * 
- * 注意：需要已登录粉笔账号，会员专享内容取决于账号权限
+ * 1. 打开粉笔题库结构化列表页
+ * 2. F12 → Console，粘贴此脚本回车
+ * 3. 如中途断开，重新打开列表页再跑一次，自动从断点继续
  */
 
 (async function () {
   'use strict';
 
-  // ============ 配置 ============
-  const DELAY = 2000;        // 每次操作间隔(ms)
-  const OUTPUT_KEY = 'fenbi_questions_result';
+  // ============ 反检测工具 ============
 
-  function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
-  // ============ 第一步：收集所有试卷链接 ============
-  async function collectPapers() {
-    const papers = [];
-    let pageNum = 1;
-
-    while (true) {
-      console.log(`[收集试卷] 第${pageNum}页...`);
-
-      // 从DOM提取当前页的试卷项
-      const items = document.querySelectorAll('app-paper-item');
-      if (!items.length) {
-        console.log('[收集试卷] 当前页无试卷项，结束');
-        break;
-      }
-
-      items.forEach(item => {
-        const titleEl = item.querySelector('.item-info-title');
-        if (!titleEl) return;
-        const title = titleEl.textContent.trim();
-        // 提取试卷号
-        const match = title.match(/试卷(\d+)/);
-        const paperNum = match ? parseInt(match[1]) : null;
-
-        // 获取难度
-        const subtitleEl = item.querySelector('.item-info-subtitle');
-        const difficulty = subtitleEl ? subtitleEl.textContent.trim() : '';
-
-        // paper-item 是可点击的，但没有直接的 href
-        // 我们需要记录 DOM 引用以便后续点击
-        papers.push({
-          title: title,
-          paperNum: paperNum,
-          difficulty: difficulty,
-          element: item  // 保存DOM引用
-        });
-      });
-
-      // 尝试翻到下一页
-      const pager = document.querySelector('fb-pager');
-      if (!pager) {
-        console.log('[收集试卷] 无分页器，单页结束');
-        break;
-      }
-
-      const items2 = pager.querySelectorAll('.item');
-      const nextBtn = items2[items2.length - 1]; // 最后一个是"下一页"箭头
-      const activePage = pager.querySelector('.active');
-      const currentPageNum = activePage ? parseInt(activePage.textContent.trim()) : 1;
-
-      // 检查是否还有下一页
-      const allPageNums = Array.from(pager.querySelectorAll('.item')).map(el => {
-        const t = el.textContent.trim();
-        return /^\d+$/.test(t) ? parseInt(t) : null;
-      }).filter(n => n !== null);
-      const maxPage = Math.max(...allPageNums, currentPageNum);
-
-      if (currentPageNum >= maxPage) {
-        console.log(`[收集试卷] 已到第${currentPageNum}页(共${maxPage}页)，收集完毕`);
-        break;
-      }
-
-      // 点击下一页
-      if (nextBtn) {
-        console.log(`[收集试卷] 翻到第${currentPageNum + 1}页...`);
-        nextBtn.click();
-        await sleep(DELAY);
-
-        // 翻页后DOM引用失效，需要重新收集剩余页
-        // 递归收集下一页
-        const morePapers = await collectPapersFromCurrentPage();
-        // 去重（可能翻页后旧数据还在）
-        morePapers.forEach(p => {
-          if (!papers.find(existing => existing.title === p.title)) {
-            papers.push(p);
-          }
-        });
-
-        // 检查翻页后的页码是否变了
-        const newActive = document.querySelector('fb-pager .active');
-        const newPageNum = newActive ? parseInt(newActive.textContent.trim()) : currentPageNum;
-        if (newPageNum <= currentPageNum) {
-          console.log('[收集试卷] 翻页未生效，结束');
-          break;
-        }
-
-        if (newPageNum >= maxPage) {
-          console.log(`[收集试卷] 已到最后一页，收集完毕`);
-          break;
-        }
-      } else {
-        console.log('[收集试卷] 无下一页按钮，结束');
-        break;
-      }
-
-      pageNum++;
-      if (pageNum > 20) {
-        console.log('[收集试卷] 安全限制：超过20页，停止');
-        break;
-      }
-    }
-
-    return papers;
+  // 随机延迟：min~max 毫秒，默认 2-6秒
+  function randomDelay(min = 2000, max = 6000) {
+    const ms = min + Math.random() * (max - min);
+    return new Promise(r => setTimeout(r, ms));
   }
 
-  // 从当前页DOM提取试卷（翻页后调用）
+  // 短延迟：500-1500ms（页面内快速操作）
+  function quickDelay() {
+    return randomDelay(500, 1500);
+  }
+
+  // 模拟人类点击：先 hover 再 click
+  function humanClick(el) {
+    return new Promise(resolve => {
+      // 先触发 mouseover（模拟鼠标移过去）
+      const rect = el.getBoundingClientRect();
+      const x = rect.left + rect.width * (0.3 + Math.random() * 0.4);
+      const y = rect.top + rect.height * (0.3 + Math.random() * 0.4);
+
+      el.dispatchEvent(new MouseEvent('mouseover', {
+        bubbles: true, clientX: x, clientY: y
+      }));
+
+      // 停顿一下再点击
+      setTimeout(() => {
+        el.dispatchEvent(new MouseEvent('mousedown', {
+          bubbles: true, clientX: x, clientY: y
+        }));
+        el.dispatchEvent(new MouseEvent('click', {
+          bubbles: true, clientX: x, clientY: y
+        }));
+        el.dispatchEvent(new MouseEvent('mouseup', {
+          bubbles: true, clientX: x, clientY: y
+        }));
+
+        // 如果是 Angular 组件，也触发原生 click
+        if (el.click) el.click();
+
+        resolve();
+      }, 100 + Math.random() * 200);
+    });
+  }
+
+  // 模拟人类滚动（让页面看起来有人在看）
+  function humanScroll() {
+    window.scrollTo({
+      top: 100 + Math.random() * 300,
+      behavior: 'smooth'
+    });
+  }
+
+  // 检测异常：验证码/弹窗/被封提示
+  function checkBlocked() {
+    const body = document.body.innerText || '';
+    const blockWords = ['验证', 'captcha', '安全验证', '请求过于频繁', '账号异常', '访问受限'];
+    for (const w of blockWords) {
+      if (body.includes(w)) {
+        console.log('⚠️ 检测到可能的拦截提示：' + w);
+        return true;
+      }
+    }
+    // 检查是否有遮罩层弹窗
+    const overlay = document.querySelector('[class*="modal"], [class*="dialog"], [class*="overlay"]');
+    if (overlay && overlay.offsetParent !== null) {
+      const overlayText = overlay.innerText || '';
+      if (overlayText.includes('验证') || overlayText.includes('异常') || overlayText.includes('频繁')) {
+        console.log('⚠️ 检测到弹窗拦截');
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // 静默日志（减少控制台输出频率）
+  let lastLogTime = 0;
+  function log(msg, force = false) {
+    const now = Date.now();
+    if (force || now - lastLogTime > 3000) {
+      console.log(msg);
+      lastLogTime = now;
+    }
+  }
+
+  // ============ 配置 ============
+  const OUTPUT_KEY = 'fenbi_questions_result';
+  const PROGRESS_KEY = 'fenbi_questions_progress';
+
+  // 读取断点
+  function loadProgress() {
+    try {
+      const raw = localStorage.getItem(PROGRESS_KEY);
+      if (!raw) return { completedPapers: [], results: [], allPaperTitles: [] };
+      return JSON.parse(raw);
+    } catch (e) {
+      return { completedPapers: [], results: [], allPaperTitles: [] };
+    }
+  }
+
+  function saveProgress(progress) {
+    localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+  }
+
+  // ============ 第一步：收集所有试卷 ============
   function collectPapersFromCurrentPage() {
     const papers = [];
     const items = document.querySelectorAll('app-paper-item');
@@ -145,29 +143,106 @@
     return papers;
   }
 
-  // ============ 第二步：逐个打开试卷详情，提取题目 ============
-  async function extractQuestionsFromPaper(paper) {
-    console.log(`[抓取] 正在打开：${paper.title}...`);
+  async function collectAllPapers() {
+    const allPapers = [];
+    let visitedPages = new Set();
 
-    // 点击试卷项进入详情
-    if (paper.element && paper.element.isConnected) {
-      paper.element.click();
-    } else {
-      console.log(`[抓取] DOM引用失效，跳过 ${paper.title}`);
+    while (true) {
+      if (checkBlocked()) {
+        console.log('⚠️ 收集试卷时检测到拦截，暂停。请手动处理后重新运行脚本。');
+        return allPapers;
+      }
+
+      const papers = collectPapersFromCurrentPage();
+      if (!papers.length) {
+        log('当前页无试卷项');
+        break;
+      }
+
+      // 去重添加
+      papers.forEach(p => {
+        if (!allPapers.find(a => a.title === p.title)) {
+          allPapers.push(p);
+        }
+      });
+
+      // 尝试翻页
+      const pager = document.querySelector('fb-pager');
+      if (!pager) break;
+
+      const activePage = pager.querySelector('.active');
+      const currentPageNum = activePage ? parseInt(activePage.textContent.trim()) : 1;
+      visitedPages.add(currentPageNum);
+
+      const allPageNums = Array.from(pager.querySelectorAll('.item')).map(el => {
+        const t = el.textContent.trim();
+        return /^\d+$/.test(t) ? parseInt(t) : null;
+      }).filter(n => n !== null);
+      const maxPage = allPageNums.length ? Math.max(...allPageNums) : 1;
+
+      if (currentPageNum >= maxPage) break;
+
+      // 找下一页按钮
+      const items = Array.from(pager.querySelectorAll('.item'));
+      const nextBtn = items[items.length - 1];
+
+      if (nextBtn) {
+        log(`翻到第${currentPageNum + 1}页...`);
+        humanScroll();
+        await quickDelay();
+        await humanClick(nextBtn);
+        await randomDelay(2500, 5000);
+
+        // 验证翻页是否成功
+        const newActive = document.querySelector('fb-pager .active');
+        const newPageNum = newActive ? parseInt(newActive.textContent.trim()) : currentPageNum;
+        if (visitedPages.has(newPageNum)) {
+          log('翻页未生效，可能已到末页');
+          break;
+        }
+        if (newPageNum <= currentPageNum) break;
+      } else {
+        break;
+      }
+    }
+
+    return allPapers;
+  }
+
+  // ============ 第二步：提取单张试卷题目 ============
+  async function extractQuestionsFromPaper(paper) {
+    if (!paper.element || !paper.element.isConnected) {
+      log(`DOM引用失效，跳过 ${paper.title}`);
       return null;
     }
 
-    await sleep(DELAY);
+    log(`打开 ${paper.title}...`);
 
-    // 等待题目渲染
+    // 模拟人类操作：先滚动到元素位置再点击
+    paper.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    await quickDelay();
+    await humanClick(paper.element);
+
+    // 随机等待页面加载（3-6秒）
+    await randomDelay(3000, 6000);
+
+    if (checkBlocked()) {
+      console.log('⚠️ 抓取时检测到拦截，暂停。');
+      return null;
+    }
+
+    // 等待题目渲染（最多等15秒）
     let retries = 0;
-    while (retries < 5) {
+    while (retries < 10) {
       const solutions = document.querySelectorAll('app-fb-solution');
       if (solutions.length > 0) break;
       retries++;
-      console.log(`[抓取] 等待题目渲染...(${retries}/5)`);
-      await sleep(1000);
+      await quickDelay();
     }
+
+    // 模拟人类浏览：先滚动看看
+    humanScroll();
+    await quickDelay();
 
     // 提取题目
     const questions = [];
@@ -178,23 +253,21 @@
         index: index + 1,
         type: '',
         content: '',
-        auditAnalysis: '',    // 粉笔审题
-        memberContent: '',     // 会员专享内容（考察能力+思维+示例）
+        auditAnalysis: '',
+        memberContent: '',
         source: '',
         keypoints: []
       };
 
-      // 题型
       const typeEl = sol.querySelector('.essay-ques-type');
       question.type = typeEl ? typeEl.textContent.trim() : '';
 
-      // 题干
       const contentEl = sol.querySelector('.question-content');
       if (contentEl) {
         question.content = contentEl.innerText.trim();
       }
 
-      // 粉笔审题（免费可见）
+      // 粉笔审题
       const auditItems = sol.querySelectorAll('.solu-detail-item');
       auditItems.forEach(item => {
         const headerEl = item.querySelector('h4');
@@ -207,7 +280,7 @@
         }
       });
 
-      // 会员专享内容（考察能力与重点 / 粉笔思维 / 粉笔示例）
+      // 会员专享
       const memberSection = sol.querySelector('app-member-solution-accessory');
       if (memberSection) {
         const memberItems = memberSection.querySelectorAll('.solu-detail-item');
@@ -215,7 +288,6 @@
         memberItems.forEach(item => {
           const headerEl = item.querySelector('h4');
           const headerText = headerEl ? headerEl.textContent.trim() : '';
-          // 检查是否被遮挡（swBg-container 覆盖了内容）
           const swBg = item.querySelector('.swBg-container');
           if (swBg) {
             memberParts.push(`${headerText}：[会员专享-未解锁]`);
@@ -229,8 +301,7 @@
       }
 
       // 来源
-      const sourceItems = sol.querySelectorAll('.solu-detail-item');
-      sourceItems.forEach(item => {
+      auditItems.forEach(item => {
         const headerEl = item.querySelector('h4');
         const headerText = headerEl ? headerEl.textContent.trim() : '';
         if (headerText === '来源') {
@@ -248,7 +319,7 @@
       questions.push(question);
     });
 
-    console.log(`[抓取] ${paper.title}：提取到 ${questions.length} 道题`);
+    log(`${paper.title}：${questions.length}题`, true);
 
     return {
       paperTitle: paper.title,
@@ -258,56 +329,91 @@
     };
   }
 
-  // ============ 第三步：返回列表页 ============
+  // ============ 返回列表页 ============
   async function goBackToList() {
-    // 粉笔详情页有"退出"按钮
     const quitBtn = document.querySelector('.quit-btn');
     if (quitBtn) {
-      quitBtn.click();
-      console.log('[导航] 返回列表页...');
-      await sleep(DELAY);
+      await humanClick(quitBtn);
+      await randomDelay(2500, 4500);
       return true;
     }
-
-    // 备用：浏览器后退
     history.back();
-    await sleep(DELAY);
+    await randomDelay(2500, 4500);
     return true;
   }
 
   // ============ 主流程 ============
-  console.log('===== 粉笔结构化真题抓取脚本启动 =====');
-  console.log('请确保当前在试卷列表页（显示"结构化试卷XX"的页面）');
-  console.log('脚本将自动翻页收集所有试卷，然后逐个打开提取题目...\n');
+  console.log('===== 粉笔结构化真题抓取 v2（反检测版）=====');
+  console.log('特性：随机延迟·模拟人类点击·断点续抓·异常检测');
 
-  // 1. 收集所有试卷
-  console.log('===== 第一步：收集试卷列表 =====');
-  const papers = await collectPapers();
-  console.log(`共收集到 ${papers.length} 套试卷：`);
-  papers.forEach(p => console.log(`  - ${p.title} (${p.difficulty})`));
+  // 加载断点
+  const progress = loadProgress();
+  if (progress.completedPapers.length > 0) {
+    console.log(`检测到断点：已完成 ${progress.completedPapers.length} 套试卷，将继续抓取剩余部分`);
+    console.log('已完成：' + progress.completedPapers.join(', '));
+  }
+
+  // 1. 收集试卷列表
+  console.log('\n===== 第一步：收集试卷列表 =====');
+  const papers = await collectAllPapers();
+  console.log(`共 ${papers.length} 套试卷`);
 
   if (!papers.length) {
-    console.log('未找到任何试卷，请确保在正确的列表页');
+    console.log('未找到试卷，请确保在列表页');
     return;
   }
 
-  // 2. 逐个抓取
-  console.log('\n===== 第二步：逐个抓取题目 =====');
-  const results = [];
+  // 保存全部试卷标题（断点用）
+  progress.allPaperTitles = papers.map(p => p.title);
+  saveProgress(progress);
+
+  // 2. 逐个抓取（跳过已完成的）
+  console.log('\n===== 第二步：逐个抓取 =====');
+  let results = progress.results || [];
+  let count = 0;
+  let total = papers.length;
 
   for (let i = 0; i < papers.length; i++) {
     const paper = papers[i];
-    console.log(`\n[${i + 1}/${papers.length}] 处理 ${paper.title}...`);
+
+    // 跳过已完成
+    if (progress.completedPapers.includes(paper.title)) {
+      log(`跳过已完成：${paper.title}`);
+      continue;
+    }
+
+    count++;
+    console.log(`\n[${progress.completedPapers.length + 1}/${total}] ${paper.title}`);
+
+    // 每抓3套，随机长停顿（模拟人走开休息）
+    if (count > 1 && count % 3 === 0) {
+      const pauseTime = 5 + Math.random() * 10;
+      console.log(`休息 ${pauseTime.toFixed(1)} 秒...`);
+      await randomDelay(pauseTime * 1000, pauseTime * 1000 + 2000);
+    }
 
     const result = await extractQuestionsFromPaper(paper);
+
     if (result) {
       results.push(result);
+      progress.completedPapers.push(paper.title);
+      progress.results = results;
+      saveProgress(progress);
+      log(`已保存进度（${progress.completedPapers.length}/${total}）`, true);
+    }
+
+    // 检测异常
+    if (checkBlocked()) {
+      console.log('⚠️ 检测到拦截，脚本暂停。');
+      console.log('请手动处理（关闭验证/等待几分钟），然后重新运行脚本。');
+      console.log('已完成的进度已保存，重新运行会从断点继续。');
+      return;
     }
 
     // 返回列表页
     await goBackToList();
 
-    // 重新获取 DOM 引用（返回后页面重新渲染了）
+    // 刷新 DOM 引用
     const refreshedPapers = collectPapersFromCurrentPage();
     for (let j = i + 1; j < papers.length; j++) {
       const refreshed = refreshedPapers.find(p => p.title === papers[j].title);
@@ -316,46 +422,39 @@
       }
     }
 
-    await sleep(500);
+    // 返回后随机停顿
+    await randomDelay(1500, 3500);
   }
 
   // 3. 输出结果
   console.log('\n===== 抓取完成 =====');
-  console.log(`共抓取 ${results.length} 套试卷，${results.reduce((sum, r) => sum + r.questions.length, 0)} 道题`);
+  const totalQuestions = results.reduce((sum, r) => sum + r.questions.length, 0);
+  console.log(`共 ${results.length} 套试卷，${totalQuestions} 道题`);
 
-  // 统计会员内容解锁情况
+  // 统计
   let unlocked = 0, locked = 0;
   results.forEach(r => {
     r.questions.forEach(q => {
-      if (q.memberContent.includes('[会员专享-未解锁]')) {
-        locked++;
-      } else if (q.memberContent) {
-        unlocked++;
-      }
+      if (q.memberContent.includes('[会员专享-未解锁]')) locked++;
+      else if (q.memberContent) unlocked++;
     });
   });
-  console.log(`会员内容：已解锁 ${unlocked} 题，未解锁 ${locked} 题`);
+  console.log(`会员内容：已解锁 ${unlocked}，未解锁 ${locked}`);
 
-  // 输出JSON
   const json = JSON.stringify(results, null, 2);
-  console.log('\n===== JSON 结果（已复制到剪贴板）=====');
 
-  // 尝试复制到剪贴板
+  // 复制到剪贴板
   try {
     await navigator.clipboard.writeText(json);
-    console.log('✅ JSON 已复制到剪贴板！可直接粘贴到文件中。');
+    console.log('✅ JSON 已复制到剪贴板');
   } catch (e) {
-    console.log('⚠️ 剪贴板复制失败，请手动复制下方JSON：');
+    console.log('⚠️ 剪贴板复制失败');
   }
 
-  // 同时存到 localStorage 备用
+  // 存 localStorage
   localStorage.setItem(OUTPUT_KEY, json);
-  console.log('✅ JSON 已存到 localStorage（key: ' + OUTPUT_KEY + '）');
 
-  // 输出完整JSON
-  console.log(json);
-
-  // 同时提供一个下载链接
+  // 下载文件
   const blob = new Blob([json], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -364,6 +463,14 @@
   a.click();
   URL.revokeObjectURL(url);
   console.log('✅ JSON 文件已下载');
+
+  // 清除断点
+  localStorage.removeItem(PROGRESS_KEY);
+  console.log('✅ 断点进度已清除');
+
+  // 输出完整JSON（较长，建议用下载的文件）
+  console.log('\n--- JSON 预览（前500字符）---');
+  console.log(json.substring(0, 500) + '...');
 
   return results;
 })();
