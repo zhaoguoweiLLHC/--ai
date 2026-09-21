@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025下 · 试卷82 · 面试结构化真题</title>
+<style>
+  :root{
+    --pink:#e5487c; --pink-bg:#fdeef4; --blue:#2b7de9; --blue-bg:#eaf3fe;
+    --gold:#b26a00; --gold-bg:#fff7e0; --ink:#2b2b33; --gray:#8a8f98; --line:#e8e8ee;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:#f2f3f7;color:var(--ink);
+       font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       line-height:1.9;font-size:22px;padding:16px}
+  .wrap{max-width:none;margin:0;padding:0}
+  section.card{background:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .qhead h2{font-size:24px;margin:0}
+  .badge{border-radius:6px;padding:4px 14px;font-size:16px;font-weight:600;white-space:nowrap}
+  .b-she{background:#e5487c;color:#fff}
+  .score{color:var(--pink);font-weight:700;font-size:17px}
+  .origin{background:#f7f7fa;border-left:3px solid #b9bdc9;border-radius:6px;
+       padding:12px 16px;color:#555;font-size:20px;margin:10px 0}
+  a{color:#1971c2;text-decoration:underline;text-underline-offset:2px}
+  mark{background:#d0ebff;color:#1971c2;padding:0 2px;border-radius:3px}
+  .pk{color:var(--pink);font-weight:700}
+  .ex{background:#fff3bf;border-radius:4px;padding:1px 6px;color:#9a7b00}
+  .points{list-style:none;padding-left:0}
+  .points>li{margin:8px 0}
+  .points .pt{font-weight:700;color:var(--pink)}
+  ul.tips{margin:6px 0;padding-left:22px}
+  ul.tips li{margin:6px 0;font-size:18px}
+  footer{color:#9aa0aa;font-size:16px;text-align:center;margin-top:16px}
+  .back-link{display:none}
+  /* 三列布局 */
+  .tiers-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;align-items:start}
+  @media(max-width:1100px){.tiers-row{grid-template-columns:1fr;gap:14px}}
+  .tier-col{display:flex;flex-direction:column;gap:6px}
+  .tier-header{border-radius:8px 8px 0 0;padding:8px 14px;font-size:20px;font-weight:700;text-align:center}
+  .tier-full-h{background:#eef6ff;color:#1971c2;border:1px solid #b6d6f7;border-bottom:none}
+  .tier-exam-h{background:#e9f9ef;color:#2b8a3e;border:1px solid #b2e2c5;border-bottom:none}
+  .tier-life-h{background:#ffecec;color:#c92a2a;border:1px solid #ffc9c9;border-bottom:none}
+  .tier-body{border-radius:0 0 8px 8px;padding:12px 16px;font-size:20px;line-height:1.9}
+  .tier-full-b{background:#f7fbff;border:1px solid #b6d6f7;border-top:none}
+  .tier-exam-b{background:#f5fcf8;border:1px solid #b2e2c5;border-top:none}
+  .tier-life-b{background:#fff8f8;border:1px solid #ffc9c9;border-top:none}
+  .tier-body p{margin:8px 0}
+  .tier-body ul{padding-left:22px;margin:4px 0}
+  .tier-body li{margin:5px 0}
+  /* 推导区 */
+  .derive-box{margin-top:8px;border-radius:8px;padding:10px 16px;font-size:17px;line-height:1.7}
+  .derive-full{background:#f0f7ff;border:1px solid #c4dcf8}
+  .derive-exam{background:#edf9f2;border:1px solid #c4e8d4}
+  .derive-life{background:#fff0f0;border:1px solid #f6c3c3}
+  .derive-box .derive-title{font-weight:700;font-size:17px;margin-bottom:4px}
+  .derive-full .derive-title{color:#1971c2}
+  .derive-exam .derive-title{color:#2b8a3e}
+  .derive-life .derive-title{color:#c92a2a}
+  .derive-box ul{padding-left:20px;margin:4px 0}
+  .derive-box li{margin:4px 0}
+  .k-gold{background:var(--gold-bg);border:1px solid #f3d9a0;border-radius:8px;padding:12px 16px;margin:10px 0}
+  .k-gold h3{color:var(--gold);margin:0 0 6px;font-size:18px}
+  @media print{body{background:#fff}.tiers-row{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="解析.html" class="back-link">← 返回目录</a>
+<section class="card" id="q82-2">
+  <div class="qhead">
+    <span class="badge b-she">结构化 · 职业理念类</span>
+    <h2>2025下 · 试卷82 第2题 · 教育家精神：心有大我、至诚报国</h2>
+  </div>
+
+  <div class="origin">
+    谈谈你对教育家精神中"心有大我、至诚报国的理想信念"的理解。
+  </div>
+
+  <!-- 三列并排 -->
+  <div class="tiers-row">
+
+    <!-- 满分版 -->
+    <div class="tier-col">
+      <div class="tier-header tier-full-h">🏆 满分版 · 考场不整篇抄</div>
+      <div class="tier-body tier-full-b">
+        <p>各位考官，"心有大我、至诚报国的理想信念"是习近平总书记提出的教育家精神的首要方面，我为这一精神深深触动，谈谈我的理解。</p>
+        <ul class="points">
+          <li><span class="pt">第一，"心有大我"体现的是教师的格局与境界。</span>教师不应只关注个人得失和课堂一隅，而应胸怀<mark>"国之大者"</mark>，把教育教学融入国家发展和民族复兴的大局之中。教育的根本问题是培养什么人、为谁培养人，教师心中要有国家、有民族、有人民。</li>
+          <li><span class="pt">第二，"至诚报国"体现的是教师的行动与担当。</span>至诚是赤诚之心，报国是实际行动。不是空喊口号，而是<mark>扎根讲台、潜心育人</mark>，把"为党育人、为国育才"的使命落实到每一节课、每一次与学生的交流之中。</li>
+          <li><span class="pt">第三，理想信念是教育家精神的灵魂和根基。</span>教育家精神包括<mark>理想信念、道德情操、育人智慧、躬耕态度、仁爱之心、弘道追求</mark>六个方面，理想信念排在首位，为其他方面指引方向。没有坚定的理想信念，其他方面就失去了精神坐标。</li>
+          <li><span class="pt">第四，这一理念具有强烈的现实意义。</span>面对多元价值冲击，教师只有坚定理想信念，才能坚守<mark>立德树人</mark>根本任务，培养出有家国情怀、堪当民族复兴大任的时代新人。</li>
+        </ul>
+        <p><b>总之</b>，作为一名未来的高中数学教师，我将以"心有大我、至诚报国"为精神指引，扎根三尺讲台，潜心教书育人，把个人理想融入教育强国事业，为培养担当民族复兴大任的时代新人贡献自己的力量。回答完毕。</p>
+      </div>
+      <div class="derive-box derive-full">
+        <div class="derive-title">🧠 满分版怎么来的</div>
+        <ul>
+          <li><b>审题：</b>理解型题，框架＝表态认同 → 逐句拆解内涵 → 联系教育家精神体系 → 现实意义 → 落到自身。</li>
+          <li><b>分点逻辑：</b>"心有大我"→格局境界（为谁培养人）；"至诚报国"→行动担当（怎么培养人）；六个方面中理想信念排首位→灵魂根基；多元价值冲击→现实意义。</li>
+          <li><b>得分词：</b>教育家精神六方面、国之大者、为党育人为国育才、立德树人、民族复兴——每点嵌入关键词。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 考场版 -->
+    <div class="tier-col">
+      <div class="tier-header tier-exam-h">🎯 考场版 · 按预算照抄</div>
+      <div class="tier-body tier-exam-b">
+        <p>各位考官，"心有大我、至诚报国"是教育家精神的首要方面，谈谈我的理解。</p>
+        <ul class="points">
+          <li><span class="pt">第一，"心有大我"是格局与境界。</span>胸怀"国之大者"，把教育融入国家发展和民族复兴大局。</li>
+          <li><span class="pt">第二，"至诚报国"是行动与担当。</span>扎根讲台、潜心育人，把"为党育人、为国育才"落实到每节课。</li>
+          <li><span class="pt">第三，理想信念是教育家精神的灵魂。</span>六方面中排首位，为其他方面指引方向。</li>
+          <li><span class="pt">第四，有现实意义。</span>坚定理想信念才能坚守立德树人，培养有家国情怀的时代新人。</li>
+        </ul>
+        <p><b>总之</b>，作为未来教师，我将以"心有大我、至诚报国"为指引，扎根讲台，潜心育人，把个人理想融入教育强国事业。回答完毕。</p>
+      </div>
+      <div class="derive-box derive-exam">
+        <div class="derive-title">🧠 考场版怎么来的</div>
+        <ul>
+          <li>从满分版砍掉展开说明和论述细节，每点保留"关键词＋一句话"。</li>
+          <li>保留四个分点的<span class="pk">关键词标题</span>和<b>结尾"教育强国"</b>。</li>
+          <li>教育家精神六方面名称保留但不展开，体现知识储备即可。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 救急版 -->
+    <div class="tier-col">
+      <div class="tier-header tier-life-h">🛟 救急版 · 不会时蹭分</div>
+      <div class="tier-body tier-life-b">
+        <p>各位考官，"心有大我、至诚报国"是教育家精神的理想信念，我的理解如下：</p>
+        <ul class="points">
+          <li><b class="pk">第一，格局境界。</b>胸怀"国之大者"，为国育人。</li>
+          <li><b class="pk">第二，行动担当。</b>扎根讲台，<b class="pk">为党育人、为国育才</b>。</li>
+          <li><b class="pk">第三，灵魂根基。</b>理想信念排六方面首位。</li>
+          <li><b class="pk">第四，现实意义。</b>坚守<b class="pk">立德树人</b>根本任务。</li>
+        </ul>
+        <p><b>总之</b>，作为未来教师，我要<b class="pk">扎根讲台、潜心育人</b>，为<b class="pk">民族复兴</b>贡献力量。回答完毕。</p>
+      </div>
+      <div class="derive-box derive-life">
+        <div class="derive-title">🧠 救急版蹭分逻辑</div>
+        <ul>
+          <li><b>万能框架：</b>表态认同 → 3-4个关键词分点 → 总结升华。理解题不会展开也没关系，框架在就有结构分。</li>
+          <li><b>蹭分词：</b>"国之大者""为党育人为国育才""立德树人""民族复兴""扎根讲台"——写出就给分。</li>
+          <li><b>核心策略：</b>总—分—总 + 关键词分点 + 结尾升华。记不住六方面就只说"理想信念排首位"。</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- tiers-row end -->
+
+  <div class="k-gold">
+    <h3>💡 得分技巧</h3>
+    <ul class="tips">
+      <li><span class="pk">关键词必出</span>：教育家精神、心有大我、至诚报国、为党育人/为国育才、立德树人、国之大者、民族复兴</li>
+      <li>教育家精神六方面最好能提到：<span class="pk">理想信念、道德情操、育人智慧、躬耕态度、仁爱之心、弘道追求</span>，体现知识储备</li>
+      <li>结尾落实到"我作为教师怎么做"，体现使命感和行动力</li>
+      <li>可结合学科：作为数学教师，在教学中融入数学家报国故事（如华罗庚归国），渗透家国情怀</li>
+      <li>此题政治性较强，注意表述准确——"教育家精神"是习近平总书记2023年教师节致信提出的</li>
+    </ul>
+  </div>
+
+  <div class="k-gold" style="background:#eaf3fe;border-color:#c4dcf8">
+    <h3 style="color:#1971c2">🔗 类似题型</h3>
+    <p><b>题型特征：</b>理解型题——给一个教育概念/精神/理念，问"谈谈你的理解"。</p>
+    <p><b>解题通法：</b></p>
+    <ul class="tips">
+      <li>第一步：表态——"这一理念深刻揭示了……，我深表认同"；</li>
+      <li>第二步：逐词拆解，每个关键词提炼一个层面（格局/行动/灵魂/现实）；</li>
+      <li>第三步：总结——"作为未来教师，我将……"。</li>
+    </ul>
+    <p><b>常见概念对应词：</b>"心有大我"→国之大者/格局境界；"至诚报国"→为党育人为国育才/扎根讲台；"理想信念"→立德树人/精神坐标；"教育家精神"→六方面/师德师风。</p>
+    <p><b>变体考法：</b>"谈谈对XX的理解"→同框架；"XX给你什么启示"→多加"启示我……"的行动句；"如何践行XX"→多加具体举措（怎么备课、怎么育人）。</p>
+  </div>
+</section>
+<div style="text-align:center;margin:14px 0"><a href="../../../../../笔试/生成资料/固定/404_高中数学学科/三档说明.html" style="font-size:13px;color:#b26a00;text-decoration:none">🧭 三档制说明（分工/过渡/颜色图例）→</a></div>
+<footer><a href="解析.html">← 返回目录</a></footer>
+</div>
+</body>
+</html>
